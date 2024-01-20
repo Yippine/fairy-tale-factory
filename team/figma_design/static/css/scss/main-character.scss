@@ -1,0 +1,116 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.main-character-exU {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 190, 190, 0.7099999785);
+  box-sizing: border-box;
+  padding: 7.4rem 9.7rem 7.3rem 9.7rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .item--n36 {
+    align-items: center;
+    flex-direction: column;
+    margin-right: 9.7rem;
+    width: 77.4rem;
+    height: 93.3rem;
+    display: flex;
+    background-color: #d6a982;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 8.6rem 7.2rem 8.7rem 7.1rem;
+    row-gap: 5rem;
+
+    .auto-group-sqvl-fMn {
+      width: 100%;
+      font-weight: 700;
+      line-height: 1.4475;
+      color: #000000;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 11.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6.4rem;
+      font-family: Zen Maru Gothic, 'Source Sans Pro';
+      background-color: #ffdec2;
+    }
+    .auto-group-nomn-m9v {
+      justify-content: center;
+      font-size: 6.4rem;
+      font-family: Zen Maru Gothic, 'Source Sans Pro';
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 11.2rem;
+      align-items: center;
+      font-weight: 700;
+      line-height: 1.4475;
+      color: #000000;
+      background-color: #ffdec2;
+      width: 100%;
+      display: flex;
+    }
+    .rectangle-16-g1z {
+      width: 100%;
+      height: 11.2rem;
+      background-color: #ffdec2;
+      flex-shrink: 0;
+    }
+    .rectangle-15-S1A {
+      background-color: #ffdec2;
+      flex-shrink: 0;
+      width: 100%;
+      height: 11.2rem;
+    }
+    .rectangle-17-Pwz {
+      flex-shrink: 0;
+      width: 100%;
+      height: 11.2rem;
+      background-color: #ffdec2;
+    }
+  }
+  .auto-group-zlig-MP2 {
+    width: 85.5rem;
+    height: 93.3rem;
+    position: relative;
+    flex-shrink: 0;
+
+    .rectangle-23-HXa {
+      position: relative;
+      left: 0;
+      top: 0;
+      background-size: 96.384% 100%;
+      background-position: 1.025rem 0.6rem;
+      background-image: url('REPLACE_IMAGE:5ea48d7f44d4d62e3b191ba123c9e6fb40c1cec0');
+      width: 48.4rem;
+      height: 93.3rem;
+    }
+    .rectangle-24-njE {
+      left: 38.7rem;
+      top: 0;
+      background-size: 145.937% 100%;
+      background-position: -6.6993rem 0;
+      background-image: url('REPLACE_IMAGE:3370c3145a7718e50e873ece17b4a3b9219c2e4a');
+      width: 46.8rem;
+      height: 93.3rem;
+      position: relative;
+    }
+  }
+}

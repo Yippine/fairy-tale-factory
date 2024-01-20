@@ -1,0 +1,225 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.slide-16-9-2-Wng {
+  width: 100%;
+  height: 108rem;
+  position: relative;
+  overflow: hidden;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../img/fantasy-74573871280-1-bg.png');
+  background-color: #ffffff;
+}
+.slide-16-9-2-Wng .cartoon-51909421280-1-enQ {
+  width: 151.4rem;
+  height: 108.1rem;
+  position: absolute;
+  left: 22.6rem;
+  top: 0;
+  background: radial-gradient(55.61% 55.61% at 50% 49.95%, rgba(0, 0, 0, 0.349999994) 0%, rgba(0, 0, 0, 0.349999994) 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../img/cartoon-51909421280-1-bg.png');
+  border-radius: 15.9rem;
+}
+.slide-16-9-2-Wng .item--ARJ {
+  width: 192rem;
+  height: 108.1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6650000215) -0%, rgba(255, 255, 255, 0.6650000215) 99.96%, rgba(255, 255, 255, 0.6650000215) 99.97%, rgba(255, 255, 255, 0.6650000215) 99.98%, rgba(255, 255, 255, 0.6650000215) 99.99%);
+}
+.slide-16-9-2-Wng .item--z9S {
+  width: 24.8rem;
+  height: 14.4rem;
+  position: absolute;
+  left: 17rem;
+  top: 12rem;
+  font-size: 4.8rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.0912rem;
+  color: #ffffff;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+}
+.slide-16-9-2-Wng .group-2-Dnt {
+  box-sizing: border-box;
+  padding: 5.2rem 6.6rem 5.2rem 6.5rem;
+  width: 32rem;
+  height: 20rem;
+  cursor: pointer;
+  position: absolute;
+  left: 20.3rem;
+  top: 31.8rem;
+  display: flex;
+  align-items: center;
+  background-color: #d6a982;
+  border-radius: 7.6rem;
+}
+.slide-16-9-2-Wng .group-2-Dnt .item--gAg {
+  margin-right: 3.5rem;
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-2-Dnt .item--nDi {
+  margin-right: 3.6rem;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-2-Dnt .item--HAU {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-5-Nhi {
+  box-sizing: border-box;
+  padding: 5.2rem 6.6rem 5.2rem 6.5rem;
+  width: 32rem;
+  height: 20rem;
+  cursor: pointer;
+  position: absolute;
+  left: 144.2rem;
+  top: 32.1rem;
+  display: flex;
+  align-items: center;
+  background-color: #d6a982;
+  border-radius: 7.6rem;
+}
+.slide-16-9-2-Wng .group-5-Nhi .item--UEx {
+  margin-right: 3.5rem;
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-5-Nhi .item--NbE {
+  margin-right: 3.6rem;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-5-Nhi .item--gM2 {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-3-y5E {
+  box-sizing: border-box;
+  padding: 5.2rem 6.6rem 5.2rem 6.5rem;
+  width: 32rem;
+  height: 20rem;
+  cursor: pointer;
+  position: absolute;
+  left: 82.3rem;
+  top: 31.8rem;
+  display: flex;
+  align-items: center;
+  background-color: #d6a982;
+  border-radius: 7.6rem;
+}
+.slide-16-9-2-Wng .group-3-y5E .item--SDi {
+  margin-right: 3.5rem;
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-3-y5E .item--ZZE {
+  margin-right: 3.6rem;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-3-y5E .item--tbW {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.1216rem;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.slide-16-9-2-Wng .group-9-QJx {
+  width: 50rem;
+  height: 19.6rem;
+  cursor: pointer;
+  position: absolute;
+  left: 73.1rem;
+  top: 74.3rem;
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d6a982;
+  border-radius: 7.6rem;
+}
