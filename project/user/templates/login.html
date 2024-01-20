@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>童話工廠</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">童話工廠</h1>
+        </header>
+        <main>
+            <section class="login-form">
+                <input type="text" placeholder="請輸入帳號">
+                <input type="password" placeholder="請輸入密碼">
+                <button class="login_button">登入</button>
+                <p class="hint">沒有帳號，請點此註冊</p>
+            </section>
+        </main>
+        <footer>
+            <p>版權所有 &copy; 童話工廠</p>
+        </footer>
+    </div>
+    <script>
+        document.getElementsByClassName("login_button")[0].addEventListener("click", function () {
+            // 使用 window.location.href 跳轉到目標路由
+            window.location.href = "/story/createstory";
+        });
+    </script>
+</body>
+</html>

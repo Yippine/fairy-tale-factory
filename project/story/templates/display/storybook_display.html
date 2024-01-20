@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <title>story</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700" />
+        <link rel="stylesheet" href="{% static 'css/display/storybook_display.css' %}" />
+    </head>
+    <body>
+        <div class="story-DUp">
+            <div class="group-13-wQp">
+                <img class="vector-FgQ" src="{% static 'img\vector.png' %}" />
+            </div>
+            <img class="rectangle-10-nRS" src="{% static 'img\rectangle-10.png' %}" />
+            <div class="auto-group-27ks-uW4">
+                <div class="item--qec">.....的故事</div>
+                <div class="group-12-hwi">
+                    <img class="vector-bXJ" src="{% static 'img\vector-7AU.png' %}" />
+                </div>
+                <div class="item--Huv">在一个遥远的村庄里，有一个善良聪明的小女孩，她戴着一顶鲜艳的红色帽子，因此大家都叫她小红帽。</div>
+                <div class="auto-group-t2bw-Dh6">
+                    <div class="group-10-vrQ">回到首頁</div>
+                    <div class="group-11-avx">SAVE</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var urlParams = new URLSearchParams(window.location.search);
+            var page = parseInt(urlParams.get("page"), 10) || 1; // 如果不存在則默認為第 1 頁
+
+            document.getElementsByClassName("vector-bXJ")[0].addEventListener("click", function () {
+                if (page < 19) {
+                    // 如果頁數小於 19，則跳轉到下一頁
+                    window.location.href = `/story/storybookdisplay?page=${page + 1}`;
+                } else {
+                    // 如果是第 19 次加載，則跳轉到 social_features.html
+                    window.location.href = "/story/socialfeatures";
+                }
+            });
+
+            // 如果有向後翻頁的需求，可以加上向後翻的代碼
+            document.getElementsByClassName("vector-FgQ")[0].addEventListener("click", function () {
+                if (page > 1) {
+                    // 如果頁數大於 1，則跳轉到前一頁
+                    window.location.href = `/story/storybookdisplay?page=${page - 1}`;
+                }
+            });
+        </script>
+    </body>
+</html>

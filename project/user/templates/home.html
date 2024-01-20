@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <title>First Main</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    </head>
+    <body>
+        <div class="first-main-rGk">
+            <p class="item--xag">童話工廠</p>
+            <div class="auto-group-cze4-TXS">
+                <div class="auto-group-bgha-L5S">
+                    <div class="frame-2-FCQ">
+                        <img class="user-16996351280-2-mwS" src="static\img\user-16996351280-2.png" />
+                        <img class="book-3125471280-1-H96" src="static\img\book-3125471280-1.png" />
+                        <img class="user-16996351280-1-PT2" src="static\img\user-16996351280-1.png" />
+                    </div>
+                    <div class="frame-1-iEQ">
+                        <div class="item--EiY">關於我們</div>
+                        <div class="item--kgt">收藏的故事</div>
+                        <div class="item--HB2">個人資訊</div>
+                    </div>
+                </div>
+                <div class="auto-group-skme-Con">故事開始</div>
+            </div>
+        </div>
+        <script>
+            document.getElementsByClassName("auto-group-skme-Con")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/user/login";
+            });
+            document.getElementsByClassName("item--HB2")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/user/userinfo1";
+            });
+            document.getElementsByClassName("item--kgt")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/story/mystorybooks";
+            });
+            document.getElementsByClassName("user-16996351280-2-mwS")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/user/aboutus";
+            });
+            document.getElementsByClassName("item--xag")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/";
+            });
+        </script>
+    </body>
+</html>

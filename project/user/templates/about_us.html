@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們</title>
+    <link rel="stylesheet" href="{% static 'css.about_us.css' %}">
+</head>
+<body>
+    <section class="team">
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+        <div class="container">
+            <!-- Repeat this block for each team member -->
+            <div class="team-member" onmouseenter="hoverEffect(true, this)" onmouseleave="hoverEffect(false, this)">
+                <div class="photo" style="background-image: url('member-photo.jpg');"></div>
+                <h3>成員名稱</h3>
+                <p class="title">職稱</p>
+                <ul class="description">
+                    <li>專長描述 1</li>
+                    <li>專長描述 2</li>
+                </ul>
+            </div>
+            <!-- ... Other team members ... -->
+        </div>
+    </section>
+    <script>
+        function hoverEffect(isHovering, element) {
+            if (isHovering) {
+                element.style.boxShadow = '0px 8px 15px rgba(0, 0, 0, 0.2)';
+            } else {
+                element.style.boxShadow = '0px 8px 15px rgba(0, 0, 0, 0.1)';
+            }
+        }
+    </script>
+</body>
+</html>

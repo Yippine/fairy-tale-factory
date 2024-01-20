@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>加載頁面</title>
+        <link rel="stylesheet" href="{% static 'css/display/loading.css' %}" />
+    </head>
+    <body>
+        <div class="loader-container" id="loader-container">
+            <div class="loader" id="loader"></div>
+            <div class="loading-text" id="loading-text">開始生成</div>
+        </div>
+        <script>
+            var loadingTime = 5; // 加載時間為 5 秒
+            setTimeout(function () {
+                document.getElementById("loader").classList.add("hidden");
+                document.getElementById("loading-text").textContent = "加載完成";
+                setTimeout(function () {
+                    window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
+                }, 1000); // 延遲 1 秒後跳轉
+            }, loadingTime * 1000);
+        </script>
+    </body>
+</html>

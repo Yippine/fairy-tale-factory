@@ -1,0 +1,179 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.story-Y4U {
+  box-sizing: border-box;
+  padding: 7.3rem 0.9rem 3rem 0.9rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 190, 190, 0.7099999785);
+}
+.story-Y4U .group-13-Tx8 {
+  margin: 0rem 10.4rem 4.4rem 0rem;
+  box-sizing: border-box;
+  padding: 2.19rem 2.92rem 2.19rem 2.19rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../img/vector-ueU.png');
+  flex-shrink: 0;
+}
+.story-Y4U .group-13-Tx8 .vector-PKz {
+  width: 2.19rem;
+  height: 2.92rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.story-Y4U .auto-group-kqbn-KzL {
+  width: 172.5rem;
+  height: 97.7rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.story-Y4U .auto-group-kqbn-KzL .rectangle-10-GPn {
+  width: 77.4rem;
+  height: 93.3rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  vertical-align: top;
+}
+.story-Y4U .auto-group-kqbn-KzL .item--D48 {
+  width: 13.4rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 146.8rem;
+  top: 8.6rem;
+  display: flex;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: rgba(255, 255, 255, 0.8000000119);
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.story-Y4U .auto-group-kqbn-KzL .item--tRA {
+  width: 77.8rem;
+  height: 13.9rem;
+  position: absolute;
+  left: 84.9rem;
+  top: 59.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: rgba(255, 255, 255, 0.8000000119);
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+}
+.story-Y4U .auto-group-kqbn-KzL .group-10-Ff2 {
+  width: 20.6rem;
+  height: 8.7rem;
+  position: absolute;
+  left: 117.9rem;
+  top: 89rem;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9d9d9;
+  border-radius: 2rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-j4Q {
+  width: 20.6rem;
+  height: 8.7rem;
+  position: absolute;
+  left: 145.9rem;
+  top: 89rem;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9d9d9;
+  border-radius: 2rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-12-bsJ {
+  box-sizing: border-box;
+  padding: 2.19rem 2.19rem 2.19rem 2.92rem;
+  width: 7.3rem;
+  height: 7.3rem;
+  position: absolute;
+  left: 165.2rem;
+  top: 40.7rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../img/vector-JZA.png');
+}
+.story-Y4U .auto-group-kqbn-KzL .group-12-bsJ .vector-KHW {
+  width: 2.19rem;
+  height: 2.92rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa {
+  box-sizing: border-box;
+  padding: 12.033rem 18.933rem 3.5rem 18.967rem;
+  width: 50rem;
+  height: 27.7rem;
+  position: absolute;
+  left: 52.4rem;
+  top: 30.5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #b2f7fb;
+  border-radius: 3.5rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa .item--8kk {
+  margin-bottom: 1.3667rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa .done-outline-dhW {
+  margin-right: 0.035rem;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}

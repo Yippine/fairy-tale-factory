@@ -1,0 +1,105 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.sup-character-5Rv {
+  width: 100%;
+  height: 108rem;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 190, 190, 0.7099999785);
+}
+.sup-character-5Rv .item--RVn {
+  box-sizing: border-box;
+  padding: 8.6rem 7.2rem 8.7rem 7.1rem;
+  width: 77.4rem;
+  height: 93.3rem;
+  position: absolute;
+  left: 9.7rem;
+  top: 7.4rem;
+  row-gap: 5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #d6a982;
+}
+.sup-character-5Rv .item--RVn .auto-group-1mde-VVe {
+  width: 100%;
+  height: 11.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #ffdec2;
+  flex-shrink: 0;
+}
+.sup-character-5Rv .item--RVn .auto-group-pkw4-BtG {
+  width: 100%;
+  height: 11.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #ffdec2;
+  flex-shrink: 0;
+}
+.sup-character-5Rv .item--RVn .rectangle-16-u3a {
+  width: 100%;
+  height: 11.2rem;
+  background-color: #ffdec2;
+  flex-shrink: 0;
+}
+.sup-character-5Rv .item--RVn .rectangle-15-4BN {
+  width: 100%;
+  height: 11.2rem;
+  background-color: #ffdec2;
+  flex-shrink: 0;
+}
+.sup-character-5Rv .item--RVn .rectangle-17-cig {
+  width: 100%;
+  height: 11.2rem;
+  background-color: #ffdec2;
+  flex-shrink: 0;
+}
+.sup-character-5Rv .rectangle-25-Nhr {
+  width: 48.4rem;
+  height: 93.3rem;
+  position: relative;
+  left: 96.8rem;
+  top: 7.4rem;
+  background-size: 96.384% 100%;
+  background-position: 1.025rem 0.6rem;
+  background-image: url('../../img/rectangle-25.png');
+}
+.sup-character-5Rv .rectangle-26-4qa {
+  width: 46.8rem;
+  height: 93.3rem;
+  position: relative;
+  left: 135.5rem;
+  top: 7.4rem;
+  background-size: 145.937% 100%;
+  background-position: -6.6993rem 0;
+  background-image: url('../../img/rectangle-26.png');
+}

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <title>Save story</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700" />
+        <link rel="stylesheet" href="{% static 'css/display/my_storybooks.css' %}" />
+    </head>
+    <body>
+        <div class="save-story-tqi">
+            <div class="auto-group-rpbi-ngC">
+                <div class="rectangle-22-ipk">
+                    <div class="rectangle-22-fzt">
+                        <p class="item--bde">拇指姑娘與聖誕精靈</p>
+                        <p class="item--sr4">很久很久以前，有一個善良的老奶奶，很想要一個孩子。</p>
+                        <p class="item-20240109-P3i">2024.01.09</p>
+                    </div>
+                    <div class="rectangle-22-ipk-bg"></div>
+                </div>
+                <div class="rectangle-22-Mue">
+                    <div class="rectangle-22-ugG">
+                        <p class="item--e84">故事標題</p>
+                        <p class="item--kwn">故事內文</p>
+                        <p class="item-00001122-5z4">0000.11.22</p>
+                    </div>
+                    <div class="rectangle-22-Mue-bg"></div>
+                </div>
+            </div>
+            <div class="auto-group-9lvg-gU4">
+                <div class="rectangle-22-228">
+                    <div class="rectangle-22-Au2">
+                        <p class="item--JkL">故事標題</p>
+                        <p class="item--pya">故事內文</p>
+                        <p class="item-00001122-A1r">0000.11.22</p>
+                    </div>
+                    <div class="rectangle-22-228-bg"></div>
+                </div>
+                <div class="rectangle-22-NNp"></div>
+            </div>
+            <div class="auto-group-hbfz-iBn">
+                <div class="rectangle-22-fcp"></div>
+                <div class="rectangle-22-QaQ"></div>
+            </div>
+            <div class="group-10-x68">回到首頁</div>
+        </div>
+        <script>
+            document.querySelectorAll(".rectangle-22-fzt, .rectangle-22-ugG, .rectangle-22-228").forEach(function (element) {
+                element.addEventListener("click", function () {
+                    // 使用 window.location.href 跳轉到目標路由
+                    window.location.href = "/story/storybookdisplay?page=1";
+                });
+            });
+            document.getElementsByClassName("group-10-x68")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/";
+            });
+        </script>
+    </body>
+</html>
