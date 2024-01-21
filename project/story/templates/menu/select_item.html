@@ -12,17 +12,28 @@
   <link rel="stylesheet" href="{% static 'css/menu/select_item.css' %}">
 </head>
 <body>
-<div class="prop-ZBz">
-  <div class="item--g1i">
-    <div class="auto-group-sydi-Lrx">毒蘋果</div>
-    <div class="auto-group-vjmz-EhS">玻璃鞋</div>
-    <div class="rectangle-16-MGG">
+    <div class="prop-ZBz">
+      <div class="item--g1i">
+        <div class="auto-group-sydi-Lrx">毒蘋果</div>
+        <div class="auto-group-vjmz-EhS">玻璃鞋</div>
+        <div class="rectangle-16-MGG">
+        </div>
+        <div class="rectangle-15-Wex">
+        </div>
+        <div class="rectangle-17-Gu2">
+        </div>
+      </div>
+      <img class="cat-61383661280-2-pQk" src="{% static 'img/cat-61383661280-2-8n8.png' %}">
     </div>
-    <div class="rectangle-15-Wex">
-    </div>
-    <div class="rectangle-17-Gu2">
-    </div>
-  </div>
-  <img class="cat-61383661280-2-pQk" src="{% static 'img/cat-61383661280-2-8n8.png' %}">
-</div>
+    <script>
+      document.getElementsByClassName("auto-group-sydi-Lrx")[0].addEventListener("click", function () {
+           // 使用 window.location.href 跳轉到目標路由
+          window.location.href = "/story/suproledetails";
+      });
+
+      document.getElementsByClassName("auto-group-vjmz-EhS")[0].addEventListener("click", function () {
+           // 使用 window.location.href 跳轉到目標路由
+          window.location.href = "/story/suproledetails";
+      });
+  </script>
 </body>

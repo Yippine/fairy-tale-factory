@@ -12,20 +12,31 @@
   <link rel="stylesheet" href="{% static 'css/menu/select_sup_role.css' %}">
 </head>
 <body>
-<div class="sup-character-5Rv">
-  <div class="item--RVn">
-    <div class="auto-group-1mde-VVe">白雪公主</div>
-    <div class="auto-group-pkw4-BtG">大野狼</div>
-    <div class="rectangle-16-u3a">
+    <div class="sup-character-5Rv">
+      <div class="item--RVn">
+        <div class="auto-group-1mde-VVe">白雪公主</div>
+        <div class="auto-group-pkw4-BtG">大野狼</div>
+        <div class="rectangle-16-u3a">
+        </div>
+        <div class="rectangle-15-4BN">
+        </div>
+        <div class="rectangle-17-cig">
+        </div>
+      </div>
+      <div class="rectangle-25-Nhr">
+      </div>
+      <div class="rectangle-26-4qa">
+      </div>
     </div>
-    <div class="rectangle-15-4BN">
-    </div>
-    <div class="rectangle-17-cig">
-    </div>
-  </div>
-  <div class="rectangle-25-Nhr">
-  </div>
-  <div class="rectangle-26-4qa">
-  </div>
-</div>
+    <script>
+      document.getElementsByClassName("auto-group-1mde-VVe")[0].addEventListener("click", function () {
+           // 使用 window.location.href 跳轉到目標路由
+          window.location.href = "/story/itemdetails";
+      });
+
+      document.getElementsByClassName("auto-group-pkw4-BtG")[0].addEventListener("click", function () {
+           // 使用 window.location.href 跳轉到目標路由
+          window.location.href = "/story/itemdetails";
+      });
+    </script>
 </body>
