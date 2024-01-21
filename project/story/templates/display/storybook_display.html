@@ -28,10 +28,16 @@
                     <div class="group-11-avx">SAVE</div>
                 </div>
             </div>
+            <!-- 更改 -->
         </div>
         <script>
             var urlParams = new URLSearchParams(window.location.search);
             var page = parseInt(urlParams.get("page"), 10) || 1; // 如果不存在則默認為第 1 頁
+
+            document.getElementsByClassName("group-10-vrQ")[0].addEventListener("click", function () {
+                // 使用 window.location.href 跳轉到目標路由
+                window.location.href = "/";
+            });
 
             document.getElementsByClassName("vector-bXJ")[0].addEventListener("click", function () {
                 if (page < 19) {
@@ -49,6 +55,11 @@
                     // 如果頁數大於 1，則跳轉到前一頁
                     window.location.href = `/story/storybookdisplay?page=${page - 1}`;
                 }
+            });
+            
+            document.getElementsByClassName("group-11-avx")[0].addEventListener("click", function () {
+                    // 使用 window.location.href 跳轉到目標路由
+                    window.location.href = "/story/socialfeatures";
             });
         </script>
     </body>

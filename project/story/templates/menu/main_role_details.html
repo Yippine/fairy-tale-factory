@@ -12,20 +12,26 @@
   <link rel="stylesheet" href="{% static 'css/menu/main_role_details.css' %}">
 </head>
 <body>
-<div class="main-character-introduction-4MJ">
-  <div class="rectangle-10-zVr">
-  </div>
-  <div class="rectangle-12-Wyz">
-  </div>
-  <div class="group-10-cn8">選擇</div>
-  <img class="rectangle-13-DG8" src="static\img\rectangle-13-WsN.png"/>
-  <img class="rectangle-13-DG8" src="{% static 'img/rectangle-13-WsN.png' %}">
-  <div class="item--wC8">白雪公主</div>
-  <div class="item--QrQ">
-    角色介紹:
-    <br/>
-    在一个遥远的村庄里，有一个善良聪明的小女孩，她戴着一顶鲜艳的红色帽子，因此大家都叫她小红帽。小红帽的奶奶住在村庄边缘的一座小屋里....................
-  </div>
-  <img class="cat-61383661280-2-hyv" src="{% static 'img/cat-61383661280-2.png' %}">
-</div>
+    <div class="main-character-introduction-4MJ">
+      <div class="rectangle-10-zVr">
+      </div>
+      <div class="rectangle-12-Wyz">
+      </div>
+      <div class="group-10-cn8">選擇</div>
+      <img class="rectangle-13-DG8" src="static\img\rectangle-13-WsN.png"/>
+      <img class="rectangle-13-DG8" src="{% static 'img/rectangle-13-WsN.png' %}">
+      <div class="item--wC8">白雪公主</div>
+      <div class="item--QrQ">
+        角色介紹:
+        <br/>
+        在一个遥远的村庄里，有一个善良聪明的小女孩，她戴着一顶鲜艳的红色帽子，因此大家都叫她小红帽。小红帽的奶奶住在村庄边缘的一座小屋里....................
+      </div>
+      <img class="cat-61383661280-2-hyv" src="{% static 'img/cat-61383661280-2.png' %}">
+    </div>
+    <script>
+      document.getElementsByClassName("group-10-cn8")[0].addEventListener("click", function () {
+           // 使用 window.location.href 跳轉到目標路由
+          window.location.href = "/story/createstory";
+      });
+    </script>
 </body>

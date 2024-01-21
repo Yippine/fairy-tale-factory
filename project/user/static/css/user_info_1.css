@@ -20,7 +20,7 @@ body {
   position: relative;
   overflow: hidden;
   background-color: rgba(255, 190, 190, 0.7099999785);
-  filter: blur(0.2rem);
+  /* filter: blur(0.2rem); */
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
 .user-information-b96 .rectangle-10-X2k {

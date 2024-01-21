@@ -12,19 +12,25 @@
   <link rel="stylesheet" href="{% static 'css/menu/sup_role_details.css' %}">
 </head>
 <body>
-<div class="sup-character-introduction-aur">
-  <div class="rectangle-10-7un">
-  </div>
-  <div class="rectangle-12-fAc">
-  </div>
-  <div class="group-10-Bue">選擇</div>
-  <img class="rectangle-13-eHS" src="{% static 'img/rectangle-13-trg.png' %}">
-  <div class="item--n8k">白雪公主</div>
-  <div class="item--sR6">
-  角色介紹:
-  <br/>
-  在一个遥远的村庄里，有一个善良聪明的小女孩，她戴着一顶鲜艳的红色帽子，因此大家都叫她小红帽。小红帽的奶奶住在村庄边缘的一座小屋里....................
-  </div>
-  <img class="cat-61383661280-2-aip" src="{% static 'img/cat-61383661280-2-71N.png' %}">
-</div>
+    <div class="sup-character-introduction-aur">
+      <div class="rectangle-10-7un">
+      </div>
+      <div class="rectangle-12-fAc">
+      </div>
+      <div class="group-10-Bue">選擇</div>
+      <img class="rectangle-13-eHS" src="{% static 'img/rectangle-13-trg.png' %}">
+      <div class="item--n8k">白雪公主</div>
+      <div class="item--sR6">
+      角色介紹:
+      <br/>
+      在一个遥远的村庄里，有一个善良聪明的小女孩，她戴着一顶鲜艳的红色帽子，因此大家都叫她小红帽。小红帽的奶奶住在村庄边缘的一座小屋里....................
+      </div>
+      <img class="cat-61383661280-2-aip" src="{% static 'img/cat-61383661280-2-71N.png' %}">
+    </div>
+    <script>
+      document.getElementsByClassName("group-10-Bue")[0].addEventListener("click", function () {
+           // 使用 window.location.href 跳轉到目標路由
+          window.location.href = "/story/createstory";
+      });
+    </script>
 </body>
