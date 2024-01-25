@@ -1,0 +1,7 @@
+# 調整 Workbench 安全模式
+SET SQL_SAFE_UPDATES = 0;
+SET SQL_SAFE_UPDATES = 1;
+
+# 調整外鍵約束檢核
+SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 1;
