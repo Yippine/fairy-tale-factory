@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS cover_design (
 	-- 設計圖從 1 開始
 	-- 動畫圖從 10 開始
     cover_design_id TINYINT UNSIGNED,
-    cover_design_prompt_desc VARCHAR(2000) NOT NULL,
+    cover_design_positive_prompt VARCHAR(1000) NOT NULL,
+    cover_design_negative_prompt VARCHAR(1000),
     cover_design_seed_value INT UNSIGNED NOT NULL,
     cover_design_link VARCHAR(255) NOT NULL,
     creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
