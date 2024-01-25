@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from story.models import Item
 
 def create_story(request):
     return render(request, "menu/create_story.html")
@@ -7,7 +8,17 @@ def item_details(request):
     return render(request, "menu/item_details.html")
 
 def select_item(request):
-    return render(request, "menu/select_item.html")
+    items = Item.objects.all().filter(item_type=2)
+    return render(request, "menu/select_item.html", {'items': items})
+
+def select_item2(request):
+    items = Item.objects.all().filter(item_type=2)
+    return render(request, "menu/select_item2.html", {'items': items})
+
+def item_details2(request):
+    item_id = request.POST.get('item')
+    item = get_object_or_404(Item, pk=item_id)
+    return render(request, 'menu/item_details2.html', {'selected_item': item})
 
 def main_role_details(request):
     return render(request, "menu/main_role_details.html")
