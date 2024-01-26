@@ -15,6 +15,3 @@ def user_info_1(request):
 
 def user_info_2(request):
     return render(request, 'user_info_2.html')
-
-def about_us(request):
-    return render(request, 'about_us.html')
