@@ -1,27 +1,27 @@
-
 html {
-	font-size:62.5%;
+  font-size:62.5%;
 }
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 ul, li {
-	list-style: none;
+  list-style: none;
 }
 input {
-	border: none;
+  border: none;
 }
 body {
   width: 192rem;
-}.prop-character-introduction-Py6 {
+}
+.main-character-introduction-4MJ {
   width: 100%;
   height: 108rem;
   position: relative;
   overflow: hidden;
   background-color: rgba(255, 190, 190, 0.7099999785);
 }
-.prop-character-introduction-Py6 .rectangle-10-jXA {
+.main-character-introduction-4MJ .rectangle-10-zVr {
   width: 90rem;
   height: 100rem;
   position: absolute;
@@ -29,7 +29,7 @@ body {
   top: 4rem;
   background-color: #ffdec2;
 }
-.prop-character-introduction-Py6 .rectangle-12-sNU {
+.main-character-introduction-4MJ .rectangle-12-Wyz {
   width: 81.9rem;
   height: 93.7rem;
   position: absolute;
@@ -38,7 +38,7 @@ body {
   background-color: #fbb2e2;
   border-radius: 3.5rem;
 }
-.prop-character-introduction-Py6 .group-10-CQj {
+.main-character-introduction-4MJ .group-10-cn7 {
   width: 11.9rem;
   height: 4.5rem;
   cursor: pointer;
@@ -57,7 +57,7 @@ body {
   background-color: #b2f7fb;
   border-radius: 1.5rem;
 }
-.prop-character-introduction-Py6 .group-10-CQk {
+.main-character-introduction-4MJ .group-10-cn8 {
   width: 11.9rem;
   height: 4.5rem;
   cursor: pointer;
@@ -76,7 +76,7 @@ body {
   background-color: #b2f7fb;
   border-radius: 1.5rem;
 }
-.prop-character-introduction-Py6 .rectangle-13-4xk {
+.main-character-introduction-4MJ .rectangle-13-DG8 {
   width: 75rem;
   height: 45rem;
   position: absolute;
@@ -85,7 +85,7 @@ body {
   object-fit: cover;
   vertical-align: top;
 }
-.prop-character-introduction-Py6 .item--Cp4 {
+.main-character-introduction-4MJ .item--wC8 {
   width: 15.4rem;
   height: 9.3rem;
   position: absolute;
@@ -101,7 +101,7 @@ body {
   font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
-.prop-character-introduction-Py6 .item--6eY {
+.main-character-introduction-4MJ .item--QrQ {
   width: 73.5rem;
   height: 20.9rem;
   position: absolute;
@@ -114,7 +114,7 @@ body {
   color: #000000;
   font-family: Zen Maru Gothic, 'Source Sans Pro';
 }
-.prop-character-introduction-Py6 .cat-61383661280-2-bzc {
+.main-character-introduction-4MJ .cat-61383661280-2-hyv {
   width: 81.4rem;
   height: 81.4rem;
   position: absolute;

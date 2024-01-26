@@ -1,34 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="zh-TW">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>童話工廠 Register</title>
-        <link rel="stylesheet" href="{% static 'css/register.css' %}" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="form-header">
-                <h1>註冊</h1>
-                <p>請填入你的個人資訊</p>
-            </div>
-
-            <div class="form-body">
-                <div class="form-input">
-                    <input type="text" placeholder="請輸入你的帳號" />
-                </div>
-                <div class="form-input">
-                    <input type="text" placeholder="請輸入你的密碼" />
-                </div>
-                <div class="form-input">
-                    <input type="text" placeholder="請輸入一次密碼" />
-                </div>
-                <div class="form-input">
-                    <input type="text" placeholder="設定你的暱稱" />
-                </div>
-                <button type="submit">註冊</button>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>童話工廠 Register</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-header">
+        <h1>註冊</h1>
+        <p>請填入你的個人資訊</p>
+      </div>
+      <div class="form-body">
+        <div class="form-input">
+          <input type="text" placeholder="請輸入你的帳號" />
         </div>
-    </body>
+        <div class="form-input">
+          <input type="text" placeholder="請輸入你的密碼" />
+        </div>
+        <div class="form-input">
+          <input type="text" placeholder="請輸入一次密碼" />
+        </div>
+        <div class="form-input">
+          <input type="text" placeholder="設定你的暱稱" />
+        </div>
+        <button class="register_button" type="submit">註冊</button>
+      </div>
+    </div>
+    <script>
+        document.getElementsByClassName("register_button")[0].addEventListener("click", function () {
+            // 使用 window.location.href 跳轉到目標路由
+            window.location.href = "/user/login";
+        });
+    </script>
+  </body>
 </html>

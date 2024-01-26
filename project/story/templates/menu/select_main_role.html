@@ -1,44 +1,48 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>童話工廠 Select Main Role</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700"/>
-  <link rel="stylesheet" href="{% static 'css/menu/select_main_role.css' %}">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>童話工廠 Select Main Role</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700"/>
+    <link rel="stylesheet" href="{% static 'css/menu/select_main_role.css' %}">
+  </head>
+  <body>
     <div class="main-character-exU">
-    <div class="item--n36">
-      <div class="auto-group-sqvl-fMn">白雪公主</div>
-      <div class="auto-group-nomn-m9v">大野狼</div>
-      <div class="rectangle-16-g1z">
+      <div class="item--n36">
+        <div class="auto-group-sqvl-fMn">白雪公主</div>
+        <div class="auto-group-nomn-m9v">大野狼</div>
+        <div class="rectangle-16-g1z">
+        </div>
+        <div class="rectangle-15-S1A">
+        </div>
+        <div class="rectangle-17-Pwz">
+        </div>
       </div>
-      <div class="rectangle-15-S1A">
+      <div class="auto-group-zlig-MP2">
+        <div class="rectangle-23-HXa">
+        </div>
+        <div class="rectangle-24-njE">
+        </div>
       </div>
-      <div class="rectangle-17-Pwz">
+      <div class="auto-group-zlig-MP3">
+        <div class="group-10-cn7">返回</div>
       </div>
-    </div>
-    <div class="auto-group-zlig-MP2">
-      <div class="rectangle-23-HXa">
-      </div>
-      <div class="rectangle-24-njE">
-      </div>
-    </div>
     </div>
     <script>
         document.getElementsByClassName("auto-group-sqvl-fMn")[0].addEventListener("click", function () {
-             // 使用 window.location.href 跳轉到目標路由
             window.location.href = "/story/mainroledetails";
         });
-
         document.getElementsByClassName("auto-group-nomn-m9v")[0].addEventListener("click", function () {
-             // 使用 window.location.href 跳轉到目標路由
             window.location.href = "/story/mainroledetails";
         });
-    </script>
-</body>
+        document.getElementsByClassName("group-10-cn7")[0].addEventListener("click", function () {
+            window.location.href = "/story/createstory";
+        });
+  </script>
+  </body>
+</html>
