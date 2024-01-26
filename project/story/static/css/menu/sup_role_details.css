@@ -38,6 +38,25 @@ body {
   background-color: #fbb2e2;
   border-radius: 3.5rem;
 }
+.sup-character-introduction-aur .group-10-Bud {
+  width: 11.9rem;
+  height: 4.5rem;
+  cursor: pointer;
+  position: absolute;
+  left: 60.7rem;
+  top: 94.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #b2f7fb;
+  border-radius: 1.5rem;
+}
 .sup-character-introduction-aur .group-10-Bue {
   width: 11.9rem;
   height: 4.5rem;
