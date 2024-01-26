@@ -27,7 +27,7 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../img/fantasy-74573871280-1-bg.png');
+	background-image: url('../img/fantasy.png');
 }
 .first-main-rGk .item--xag {
 	/* 童話工廠文字 */
@@ -165,6 +165,6 @@ body {
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../img/cat-61383661280-1-bg.png');
+	background-image: url('../img/cat.png');
 	flex-shrink: 0;
 }
