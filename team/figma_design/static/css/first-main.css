@@ -28,7 +28,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../img/fantasy.png');
+  background-image: url('/static/img/fantasy.png');
 }
 .first-main-rGk .item--xag {
   margin-bottom: 41rem;
@@ -154,6 +154,6 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../img/cat.png');
+  background-image: url('/static/img/cat.png');
   flex-shrink: 0;
 }

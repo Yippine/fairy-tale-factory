@@ -31,7 +31,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../img/vector middle.png');
+  background-image: url('/static/img/vector middle.png');
   flex-shrink: 0;
 }
 .story-Y4U .group-13-Tx8 .vector-PKz {
@@ -133,7 +133,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../img/vector middle.png');
+  background-image: url('/static/img/vector middle.png');
 }
 .story-Y4U .auto-group-kqbn-KzL .group-12-bsJ .vector-KHW {
   width: 2.19rem;
