@@ -1,0 +1,103 @@
+
+#main_select_table_1 {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 500px;
+    height: 580px;
+    left: 6vw;
+    top: 6vw;
+    background-color: #FFDEC2;
+
+}
+
+#main_select_table_2 {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 450px;
+    height: 540px;
+    left: 7.9vw;
+    top: 7.6vw;
+    background-color: #FCB2E3;
+    border-radius:20px;
+
+}
+
+#main_name{
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 10vw;
+    top: 8.5vw;
+    font-size: 36px;
+
+}
+
+#main_information_image{
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 9.8vw;
+    top: 12.5vw;
+}
+
+#main_information_title{
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 10vw;
+    top: 33vw;
+    font-size: 23px;
+}
+
+#main_information{
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 10vw;
+    top: 36vw;
+    font-size: 23px;
+}
+
+#main_select_sure input {
+    z-index: 2;
+    position: absolute;
+    left: 35.7vw;
+    top: 46.5vw;
+    padding: 2px; /* 設定按鈕的內間距，可根據需要調整 */
+    min-height: 15px;
+    min-width: 70px;
+    font-size: 16px; /* 設定按鈕文字大小，可根據需要調整 */
+    font-weight: bold;
+}
+
+#main_select_rectangle {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 4vw; /* 設定圖片區塊在右側 */
+    top: 7.5vw;
+}
+
+#main_select_rectangle img {
+    z-index: 2;
+}
