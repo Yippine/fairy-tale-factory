@@ -31,7 +31,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../../img/vector middle.png');
+  background-image: url('/static/img/vector/page border.png');
   flex-shrink: 0;
 }
 .story-DUp .group-13-wQp .vector-FgQ {
@@ -74,7 +74,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../../img/vector middle.png');
+  background-image: url('/static/img/vector/page border.png');
   flex-shrink: 0;
 }
 .story-DUp .auto-group-27ks-uW4 .group-12-hwi .vector-bXJ {

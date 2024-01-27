@@ -1,39 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <title>童話工廠 User Info</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A500%2C700" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A500%2C700" />
-        <link rel="stylesheet" href="{% static 'css/user_info_1.css' %}" />
-    </head>
-    <body>
-        <div class="user-information-b96">
-            <div class="rectangle-10-X2k"></div>
-            <p class="item--Rdv">個人資訊</p>
-            <div class="item--bgp">暱稱：</div>
-            <div class="item--H3r">###</div>
-            <div class="item--Nb6">###</div>
-            <div class="item--V9v">******</div>
-            <div class="item--oAc">密碼：</div>
-            <div class="item--V3S">帳號：</div>
-            <div class="group-10-nYL">編輯個人資訊</div>
-            <div class="group-11-2ha">返回</div>
-            <div class="line-1-tzg"></div>
-        </div>
-        <script>
-            document.getElementsByClassName("group-10-nYL")[0].addEventListener("click", function () {
-                // 使用 window.location.href 跳轉到目標路由
-                window.location.href = "/user/userinfo2";
-            });
-            document.getElementsByClassName("group-11-2ha")[0].addEventListener("click", function () {
-                // 使用 window.location.href 跳轉到目標路由
-                window.location.href = "/home";
-            });
-        </script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>童話工廠 User Info</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A500%2C700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A500%2C700" />
+    <link rel="stylesheet" href="{% static 'css/user_info_1.css' %}" />
+  </head>
+  <body>
+    <div class="user-information-b96">
+      <div class="rectangle-10-X2k"></div>
+      <p class="item--Rdv">個人資訊</p>
+      <div class="item--bgp">暱稱：</div>
+      <div class="item--H3r">###</div>
+      <div class="item--Nb6">###</div>
+      <div class="item--V9v">******</div>
+      <div class="item--oAc">密碼：</div>
+      <div class="item--V3S">帳號：</div>
+      <div class="group-10-nYL">編輯個人資訊</div>
+      <div class="group-11-2ha">返回</div>
+      <div class="line-1-tzg"></div>
+    </div>
+    <script>
+        document.getElementsByClassName("group-10-nYL")[0].addEventListener("click", function () {
+            // 使用 window.location.href 跳轉到目標路由
+            window.location.href = "/user/userinfo2";
+        });
+        document.getElementsByClassName("group-11-2ha")[0].addEventListener("click", function () {
+            // 使用 window.location.href 跳轉到目標路由
+            window.location.href = "/home";
+        });
+    </script>
+  </body>
 </html>
