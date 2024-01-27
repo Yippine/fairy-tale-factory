@@ -6,59 +6,51 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <title>童話工廠 Storybook Display</title>
+    <title>童話工廠 Social Features</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700" />
     <link rel="stylesheet" href="{% static 'css/display/storybook_display.css' %}" />
   </head>
   <body>
-    <div class="story-DUp">
-      <div class="group-13-wQp">
-        <img class="vector-FgQ" src="{% static 'img/vector/previous page.png' %}" />
+    <div class="story-Y4U">
+      <div class="group-13-Tx8">
+        <img class="vector-PKz" src="{% static 'img/vector/previous page.png' %}" />
       </div>
-      <img class="rectangle-10-nRS" src="{% static 'img/background/enchanted kingdom.png' %}" />
-      <div class="auto-group-27ks-uW4">
-        <div class="item--qec">.....的故事</div>
-        <div class="group-12-hwi">
-          <img class="vector-bXJ" src="{% static 'img/vector/next page.png' %}" />
+      <div class="auto-group-kqbn-KzL">
+        <img class="rectangle-10-GPn" src="{% static 'img/background/enchanted kingdom.png' %}" />
+        <div class="item--D48">.....的故事</div>
+        <div class="item--tRA" id="page_no"></div>
+        <div class="item--tRB">在一個遙遠的村莊裡，有一個善良聰明的小女孩，她戴著一頂鮮豔的紅色帽子，所以大家都叫她小紅帽。</div>
+        <div class="group-10-Ff2" id="home_button">回到首頁</div>
+        <div class="group-11-j4Q" id="save_button">SAVE</div>
+        <div class="group-12-bsJ">
+          <img class="vector-KHW" src="{% static 'img/vector/next page.png' %}" />
         </div>
-        <div class="item--Huv">在一個遙遠的村莊裡，有一個善良聰明的小女孩，她戴著一頂鮮豔的紅色帽子，所以大家都叫她小紅帽。</div>
-        <div class="auto-group-t2bw-Dh6">
-          <div class="group-10-vrQ">回到首頁</div>
-          <div class="group-11-avx">SAVE</div>
+        <div class="group-11-eqa" id="home_pop_up" style="display: none;">
+          <div class="item--8kk">
+            確認是否回到首頁？
+            <br />
+          </div>
+          <div class="item--9kk"></div>
+          <img class="done-outline-dhW" id="check_home_button" src="{% static 'img/vector/check.png' %}" />
+        </div>
+        <div class="group-11-eqa" id="save_pop_up" style="display: none;">
+          <div class="item--8kk">
+            確認是否儲存？
+            <br />
+          </div>
+          <div class="item--9kk"></div>
+          <img class="done-outline-dhW" id="check_save_button" src="{% static 'img/vector/check.png' %}" />
+        </div>
+        <div class="group-12-eqa" id="save_successful_pop_up" style="display: none;">
+          <div class="item--8kk">
+            儲存成功！
+            <br />
+          </div>
+          <div class="item--9kk"></div>
         </div>
       </div>
-      <!-- 更改 -->
     </div>
-    <script>
-        var urlParams = new URLSearchParams(window.location.search);
-        var page = parseInt(urlParams.get("page"), 10) || 1; // 如果不存在則默認為第 1 頁
-
-        document.getElementsByClassName("group-10-vrQ")[0].addEventListener("click", function () {
-            window.location.href = "/home";
-        });
-
-        document.getElementsByClassName("vector-bXJ")[0].addEventListener("click", function () {
-            if (page < 19) {
-                // 如果頁數小於 19，則跳轉到下一頁
-                window.location.href = `/story/storybookdisplay?page=${page + 1}`;
-            } else {
-                // 如果是第 19 次加載，則跳轉到 social_features.html
-                window.location.href = "/story/socialfeatures";
-            }
-        });
-
-        // 如果有向後翻頁的需求，可以加上向後翻的代碼
-        document.getElementsByClassName("vector-FgQ")[0].addEventListener("click", function () {
-            if (page > 1) {
-                // 如果頁數大於 1，則跳轉到前一頁
-                window.location.href = `/story/storybookdisplay?page=${page - 1}`;
-            }
-        });
-
-        document.getElementsByClassName("group-11-avx")[0].addEventListener("click", function () {
-            window.location.href = "/story/socialfeatures";
-        });
-    </script>
+    <script src="{% static 'js/display/storybook_display.js' %}"></script>
   </body>
 </html>
