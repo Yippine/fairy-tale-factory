@@ -1,0 +1,54 @@
+#background_1 {
+    height: 100vh;
+    background-image: url("img/fantasy-7457387_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+#background_1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #FFDEC2; /* 新增背景色 */
+    z-index: 1; /* 提高層級 */
+}
+
+#main_select_table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 500px;
+    height: 580px;
+    left: 6vw;
+    top: 6vw;
+    background-color: #D6A982;
+    z-index: 2;
+}
+
+#main_select_table input {
+    padding: 10px; /* 設定按鈕的內間距，可根據需要調整 */
+    min-height: 30px;
+    min-width: 370px;
+    font-size: 32px; /* 設定按鈕文字大小，可根據需要調整 */
+    font-weight: bold;
+    margin-bottom: 0px; /* 設定按鈕之間的垂直間距，可根據需要調整 */
+}
+
+#main_select_rectangle {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 2vw; /* 設定圖片區塊在右側 */
+    top: 10vw;
+}
+
+#main_select_rectangle img {
+    margin: 0 -20px; /* 將兩張圖片稍微重疊 */
+    z-index: 2;
+}

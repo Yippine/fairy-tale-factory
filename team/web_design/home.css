@@ -1,0 +1,53 @@
+.relative-container {
+    position: relative;
+}
+
+#story_start{
+    position: absolute;
+    color: aliceblue;
+    right: 9%; /* 調整相對位置的 left 屬性 */
+    top: 83%;
+    font-size:200%
+}
+
+#fair_tale_factory{
+    position: absolute;
+    color: aliceblue;
+    left: 12%;
+    top: 12%;
+    font-size:400%
+
+}
+
+#content{
+    position: absolute;
+    color: aliceblue;
+    left: 13vw;
+    top: 270px;
+    font-size:120%
+}
+
+.cat{
+    position: absolute;
+    color: aliceblue;
+    right: 8%;
+    top: 73%;
+    /* transform-origin: bottom right; 新增 transform-origin 以保持相對位置 */
+}
+
+.img_list{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+}
+
+.img_list div{
+    width: 17%; /* 讓三個元素平均分佈 */
+    text-align: center;
+}
+
+.img_list img{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 75vh;
+}
