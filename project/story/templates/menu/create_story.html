@@ -1,60 +1,56 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <title>童話工廠 Create Story</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A500%2C700" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A500" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A500%2C700" />
-        <link rel="stylesheet" href="{% static 'css/menu/create_story.css' %}" />
-    </head>
-    <body>
-        <div class="slide-16-9-2-Wng">
-            <div class="cartoon-51909421280-1-enQ"></div>
-            <div class="item--ARJ"></div>
-            <p class="item--z9S">
-                創造一個新故事...
-                <br />
-                你需要..
-            </p>
-            <div class="group-2-Dnt">
-                <p class="item--gAg">主</p>
-                <p class="item--nDi">+</p>
-                <p class="item--HAU">角</p>
-            </div>
-            <div class="group-5-Nhi">
-                <p class="item--UEx">道</p>
-                <p class="item--NbE">+</p>
-                <p class="item--gM2">具</p>
-            </div>
-            <div class="group-3-y5E">
-                <p class="item--SDi">配</p>
-                <p class="item--ZZE">+</p>
-                <p class="item--tbW">角</p>
-            </div>
-            <div class="group-9-QJx">開始創造故事</div>
-        </div>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>童話工廠 Create Story</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A500%2C700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A500" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A500%2C700" />
+    <link rel="stylesheet" href="{% static 'css/menu/create_story.css' %}" />
+  </head>
+  <body>
+    <div class="slide-16-9-2-Wng">
+      <div class="cartoon-51909421280-1-enQ"></div>
+      <div class="item--ARJ"></div>
+      <p class="item--z9S">
+        創造一個新故事...
+        <br />
+        你需要..
+      </p>
+      <div class="group-2-Dnt">
+        <p class="item--gAg">主</p>
+        <p class="item--nDi">+</p>
+        <p class="item--HAU">角</p>
+      </div>
+      <div class="group-5-Nhi">
+        <p class="item--UEx">道</p>
+        <p class="item--NbE">+</p>
+        <p class="item--gM2">具</p>
+      </div>
+      <div class="group-3-y5E">
+        <p class="item--SDi">配</p>
+        <p class="item--ZZE">+</p>
+        <p class="item--tbW">角</p>
+      </div>
+      <div class="group-9-QJx">開始創造故事</div>
+    </div>
     <script>
         document.getElementsByClassName("group-2-Dnt")[0].addEventListener("click", function () {
-            // 使用 window.location.href 跳轉到目標路由
             window.location.href = "/story/selectmainrole";
         });
         document.getElementsByClassName("group-5-Nhi")[0].addEventListener("click", function () {
-            // 使用 window.location.href 跳轉到目標路由
             window.location.href = "/story/selectitem";
         });
         document.getElementsByClassName("group-3-y5E")[0].addEventListener("click", function () {
-            // 使用 window.location.href 跳轉到目標路由
             window.location.href = "/story/selectsuprole";
         });
         document.getElementsByClassName("group-9-QJx")[0].addEventListener("click", function () {
-            // 使用 window.location.href 跳轉到目標路由
             window.location.href = "/story/loading";
         });
     </script>
+  </body>
 </html>

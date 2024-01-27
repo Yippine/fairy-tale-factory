@@ -1,248 +1,248 @@
 html {
-    font-size:62.5%;
+  font-size:62.5%;
 }
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 ul, li {
-    list-style: none;
+  list-style: none;
 }
 input {
-    border: none;
+  border: none;
 }
 body {
-    width: 192rem;
+  width: 192rem;
 }
 .save-story-tqi {
-    box-sizing: border-box;
-    padding: 12rem 9.7rem 1.4rem 9.7rem;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    align-items: flex-end;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 190, 190, 0.7099999785);
+  box-sizing: border-box;
+  padding: 12rem 9.7rem 1.4rem 9.7rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 190, 190, 0.7099999785);
 }
 .save-story-tqi .auto-group-rpbi-ngC {
-    margin-bottom: 5.5rem;
-    width: 100%;
-    height: 24.3rem;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  margin-bottom: 5.5rem;
+  width: 100%;
+  height: 24.3rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-ipk {
-    margin-right: 9.6rem;
-    width: 81.5rem;
-    height: 100%;
-    background-size: 100% 335.391%;
-    background-position: 0rem -23.2rem;
-    background-image: url('/static/img/background/whimsy flight.png');
-    border-radius: 3.5rem;
-    flex-shrink: 0;
+  margin-right: 9.6rem;
+  width: 81.5rem;
+  height: 100%;
+  background-size: 100% 335.391%;
+  background-position: 0rem -23.2rem;
+  background-image: url('/static/img/background/whimsy flight.png');
+  border-radius: 3.5rem;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-ipk .rectangle-22-fzt {
-    box-sizing: border-box;
-    padding: 3.7rem 2.7rem 2.7rem 2.7rem;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 3.5rem;
-    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  padding: 3.7rem 2.7rem 2.7rem 2.7rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3.5rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-ipk .rectangle-22-fzt .item--bde {
-    margin-right: 40.1rem;
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  margin-right: 40.1rem;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-ipk .rectangle-22-fzt .item--sr4 {
-    margin: 0rem 34.2rem 3.9rem 0rem;
-    font-size: 2.4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  margin: 0rem 34.2rem 3.9rem 0rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-ipk .rectangle-22-fzt .item-20240109-P3i {
-    margin-left: 56.5rem;
-    text-align: center;
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  margin-left: 56.5rem;
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-Mue {
-    width: 81.5rem;
-    height: 100%;
-    background-size: 100% 240.08%;
-    background-position: 0 -7.2197rem;
-    background-image: url('/static/img/background/twilight bastion.png');
-    border-radius: 3.5rem;
-    flex-shrink: 0;
+  width: 81.5rem;
+  height: 100%;
+  background-size: 100% 240.08%;
+  background-position: 0 -7.2197rem;
+  background-image: url('/static/img/background/twilight bastion.png');
+  border-radius: 3.5rem;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-Mue .rectangle-22-ugG {
-    box-sizing: border-box;
-    padding: 3.7rem 10.8rem 2.7rem 5.6rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 3.5rem;
-    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  padding: 3.7rem 10.8rem 2.7rem 5.6rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3.5rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-Mue .rectangle-22-ugG .item--e84 {
-    width: 100%;
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-Mue .rectangle-22-ugG .item--kwn {
-    margin-bottom: 3.9rem;
-    font-size: 2.4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  margin-bottom: 3.9rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-rpbi-ngC .rectangle-22-Mue .rectangle-22-ugG .item-00001122-5z4 {
-    width: 100%;
-    text-align: center;
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-9lvg-gU4 {
-    margin-bottom: 5.5rem;
-    width: 100%;
-    height: 24.3rem;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  margin-bottom: 5.5rem;
+  width: 100%;
+  height: 24.3rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 {
-    margin-right: 9.6rem;
-    width: 81.5rem;
-    height: 100%;
-    background-size: 100% 500.35%;
-    background-position: 0.4rem -17.2425rem;
-    background-image: url('/static/img/background/nymph's odyssey.png');
-    border-radius: 3.5rem;
-    flex-shrink: 0;
+  margin-right: 9.6rem;
+  width: 81.5rem;
+  height: 100%;
+  background-size: 100% 500.35%;
+  background-position: 0.4rem -17.2425rem;
+  background-image: url("/static/img/background/nymph's odyssey.png");
+  border-radius: 3.5rem;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 {
-    box-sizing: border-box;
-    padding: 3.1rem 2.7rem 2.8rem 2.7rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 3.5rem;
-    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  padding: 3.1rem 2.7rem 2.8rem 2.7rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3.5rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 .item--JkL {
-    width: 100%;
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 .item--pya {
-    margin-bottom: 4.4rem;
-    font-size: 2.4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  margin-bottom: 4.4rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 .item-00001122-A1r {
-    width: 100%;
-    text-align: center;
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-NNp {
-    width: 81.5rem;
-    height: 24.3rem;
-    background-color: #d9d9d9;
-    border-radius: 3.5rem;
-    flex-shrink: 0;
+  width: 81.5rem;
+  height: 24.3rem;
+  background-color: #d9d9d9;
+  border-radius: 3.5rem;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-hbfz-iBn {
-    margin-bottom: 2rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-hbfz-iBn .rectangle-22-fcp {
-    margin-right: 9.6rem;
-    width: 81.5rem;
-    height: 24.3rem;
-    background-color: #d9d9d9;
-    border-radius: 3.5rem;
-    flex-shrink: 0;
+  margin-right: 9.6rem;
+  width: 81.5rem;
+  height: 24.3rem;
+  background-color: #d9d9d9;
+  border-radius: 3.5rem;
+  flex-shrink: 0;
 }
 .save-story-tqi .auto-group-hbfz-iBn .rectangle-22-QaQ {
-    width: 81.5rem;
-    height: 24.3rem;
-    background-color: #d9d9d9;
-    border-radius: 3.5rem;
-    flex-shrink: 0;
+  width: 81.5rem;
+  height: 24.3rem;
+  background-color: #d9d9d9;
+  border-radius: 3.5rem;
+  flex-shrink: 0;
 }
 .save-story-tqi .group-10-x68 {
-    width: 20.6rem;
-    height: 8.7rem;
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.4475;
-    color: #000000;
-    font-family: Zen Maru Gothic, 'Source Sans Pro';
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #d9d9d9;
-    border-radius: 2rem;
-    flex-shrink: 0;
+  width: 20.6rem;
+  height: 8.7rem;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9d9d9;
+  border-radius: 2rem;
+  flex-shrink: 0;
 }
