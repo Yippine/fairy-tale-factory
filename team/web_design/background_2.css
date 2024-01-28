@@ -1,12 +1,12 @@
-#background_1 {
+.background_1 {
     height: 100vh;
-    background-image: url("img/fantasy-7457387_1280.jpg");
+    background-image: url("img/main_background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
 
-#background_1::before {
+.background_1::before {
     z-index: 1; /* 提高層級 */
     content: "";
     position: absolute;
