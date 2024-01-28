@@ -51,3 +51,12 @@
     border-radius: 10px;
     margin-top: 75vh;
 }
+
+
+.book a{
+    text-decoration: none;
+}
+.user a{
+    text-decoration: none;
+}
+
