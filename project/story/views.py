@@ -20,17 +20,23 @@ def item_details2(request):
     item = get_object_or_404(Item, pk=item_id)
     return render(request, 'menu/item_details2.html', {'selected_item': item})
 
-def main_role_details(request):
-    return render(request, "menu/main_role_details.html")
+def main_role_details(request, main_role_name):
+    main_role_id = request.POST.get('role')
+    mainrole = get_object_or_404(Item, pk=main_role_id)
+    return render(request, "menu/main_role_details.html",{'select_main_role': mainrole})
 
 def sup_role_details(request):
-    return render(request, "menu/sup_role_details.html")
+    sup_role_id = request.POST.get('role')
+    suprole = get_object_or_404(Item, pk=sup_role_id)
+    return render(request, "menu/sup_role_details.html",{sup_role_details: suprole})
 
 def select_main_role(request):
-    return render(request, "menu/select_main_role.html")
+    MainRole = Item.objects.all().filter(item_type=1)
+    return render(request, "menu/select_main_role.html",{'select_main_role': MainRole})
 
 def select_sup_role(request):
-    return render(request, "menu/select_sup_role.html")
+    SupRole = Item.objects.all().filter(item_type=1)
+    return render(request, "menu/select_sup_role.html", {'select_sup_role': SupRole})
 
 def loading(request):
     return render(request, "display/loading.html")
