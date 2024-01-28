@@ -39,7 +39,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'project.middleware.webversion.WebVersionMiddleware',
 ]
+
+# WEB_VERSION = 'NEW'
 
 ROOT_URLCONF = 'project.urls'
 
