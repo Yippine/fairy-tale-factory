@@ -12,6 +12,9 @@
       <div class="form-header">
         <h1>註冊</h1>
         <p>請填入你的個人資訊</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
       </div>
       <div class="form-body">
         <div class="form-input">

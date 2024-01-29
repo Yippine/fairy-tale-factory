@@ -5,6 +5,7 @@ urlpatterns = [
     # 一般網頁
     path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
+    path('logout',views.logout,name='logout'),
     path('userinfo/', views.user_info, name='user_info'),
     path('userinfo1/', views.user_info_1, name='user_info_1'),
     path('userinfo2/', views.user_info_2, name='user_info_2'),
