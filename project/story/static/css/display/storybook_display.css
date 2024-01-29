@@ -1,20 +1,21 @@
-
 html {
-	font-size:62.5%;
+  font-size: 62.5%;
 }
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
-ul, li {
-	list-style: none;
+ul,
+li {
+  list-style: none;
 }
 input {
-	border: none;
+  border: none;
 }
 body {
   width: 192rem;
-}.story-DUp {
+}
+.story-Y4U {
   box-sizing: border-box;
   padding: 7.3rem 0.9rem 3rem 0.9rem;
   width: 100%;
@@ -24,69 +25,57 @@ body {
   align-items: center;
   background-color: rgba(255, 190, 190, 0.7099999785);
 }
-.story-DUp .group-13-wQp {
+.story-Y4U .group-13-Tx8 {
   margin: 0rem 10.4rem 4.4rem 0rem;
   box-sizing: border-box;
   padding: 2.19rem 2.92rem 2.19rem 2.19rem;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../../img/vector middle.png');
+  background-image: url("/static/img/vector/page border.png");
   flex-shrink: 0;
 }
-.story-DUp .group-13-wQp .vector-FgQ {
+.story-Y4U .group-13-Tx8 .vector-PKz {
   width: 2.19rem;
   height: 2.92rem;
   object-fit: contain;
   vertical-align: top;
 }
-.story-DUp .rectangle-10-nRS {
-  margin: 0rem 7.5rem 4.4rem 0rem;
+.story-Y4U .auto-group-kqbn-KzL {
+  width: 172.5rem;
+  height: 97.7rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.story-Y4U .auto-group-kqbn-KzL .rectangle-10-GPn {
   width: 77.4rem;
   height: 93.3rem;
+  position: absolute;
+  left: 0;
+  top: 0;
   object-fit: cover;
   vertical-align: top;
-  flex-shrink: 0;
 }
-.story-DUp .auto-group-27ks-uW4 {
-  margin-top: 8.6rem;
-  width: 87.6rem;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
-.story-DUp .auto-group-27ks-uW4 .item--qec {
-  margin: 0rem 12.3rem 26.3rem 0rem;
+.story-Y4U .auto-group-kqbn-KzL .item--D48 {
+  width: 13.4rem;
+  height: 5.8rem;
+  position: absolute;
+  left: 146.8rem;
+  top: 8.6rem;
   display: flex;
   font-size: 4rem;
   font-weight: 700;
   line-height: 1.4475;
   color: rgba(255, 255, 255, 0.8000000119);
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
-  flex-shrink: 0;
 }
-.story-DUp .auto-group-27ks-uW4 .group-12-hwi {
-  margin: 0rem 0rem 11.9rem 80.3rem;
-  box-sizing: border-box;
-  padding: 2.19rem 2.19rem 2.19rem 2.92rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('../../img/vector middle.png');
-  flex-shrink: 0;
-}
-.story-DUp .auto-group-27ks-uW4 .group-12-hwi .vector-bXJ {
-  width: 2.19rem;
-  height: 2.92rem;
-  object-fit: contain;
-  vertical-align: top;
-}
-.story-DUp .auto-group-27ks-uW4 .item--Huv {
-  margin-bottom: 15.2rem;
-  width: 100%;
-  max-width: 77.8rem;
+.story-Y4U .auto-group-kqbn-KzL .item--tRA {
+  width: 77.8rem;
+  height: 13.9rem;
+  position: absolute;
+  left: 84.9rem;
+  top: 25.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,50 +83,151 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: rgba(255, 255, 255, 0.8000000119);
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
-  flex-shrink: 0;
+  font-family: Zen Maru Gothic, "Source Sans Pro";
 }
-.story-DUp .auto-group-27ks-uW4 .auto-group-t2bw-Dh6 {
-  margin: 0rem 6rem 0rem 33rem;
-  width: calc(100% - 39rem);
+.story-Y4U .auto-group-kqbn-KzL .item--tRB {
+  width: 77.8rem;
+  height: 13.9rem;
+  position: absolute;
+  left: 84.9rem;
+  top: 59.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: rgba(255, 255, 255, 0.8000000119);
+  font-family: Zen Maru Gothic, "Source Sans Pro";
+}
+.story-Y4U .auto-group-kqbn-KzL .group-10-Ff2 {
+  width: 20.6rem;
   height: 8.7rem;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.story-DUp .auto-group-27ks-uW4 .auto-group-t2bw-Dh6 .group-10-vrQ {
-  margin-right: 7.4rem;
-  width: 20.6rem;
-  height: 100%;
+  position: absolute;
+  left: 117.9rem;
+  top: 89rem;
   text-align: center;
   font-size: 4rem;
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #d9d9d9;
   border-radius: 2rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-j4Q {
+  width: 20.6rem;
+  height: 8.7rem;
+  position: absolute;
+  left: 145.9rem;
+  top: 89rem;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, "Source Sans Pro";
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9d9d9;
+  border-radius: 2rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-12-bsJ {
+  box-sizing: border-box;
+  padding: 2.19rem 2.19rem 2.19rem 2.92rem;
+  width: 7.3rem;
+  height: 7.3rem;
+  position: absolute;
+  left: 165.2rem;
+  top: 40.7rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/static/img/vector/page border.png");
+}
+.story-Y4U .auto-group-kqbn-KzL .group-12-bsJ .vector-KHW {
+  width: 2.19rem;
+  height: 2.92rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa {
+  box-sizing: border-box;
+  padding: 8rem;
+  width: 50rem;
+  height: 27.7rem;
+  position: absolute;
+  left: 52.4rem;
+  top: 30.5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #b2f7fb;
+  border-radius: 3.5rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-12-eqa {
+  box-sizing: border-box;
+  padding: 8rem;
+  width: 50rem;
+  height: 27.7rem;
+  position: absolute;
+  left: 52.4rem;
+  top: 30.5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #b2f7fb;
+  border-radius: 3.5rem;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa .item--8kk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, "Source Sans Pro";
+  white-space: nowrap;
   flex-shrink: 0;
 }
-.story-DUp .auto-group-27ks-uW4 .auto-group-t2bw-Dh6 .group-11-avx {
-  width: 20.6rem;
-  height: 100%;
+.story-Y4U .auto-group-kqbn-KzL .group-12-eqa .item--8kk {
+  display: flex;
+  margin-top: 3rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, "Source Sans Pro";
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa .item--9kk {
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #000000;
+  font-family: Zen Maru Gothic, "Source Sans Pro";
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.story-Y4U .auto-group-kqbn-KzL .group-11-eqa .done-outline-dhW {
+  width: 5rem;
+  height: 5rem;
   cursor: pointer;
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1.4475;
-  color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d9d9d9;
-  border-radius: 2rem;
+  object-fit: contain;
+  vertical-align: top;
   flex-shrink: 0;
 }

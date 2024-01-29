@@ -39,7 +39,7 @@ body {
   height: 100%;
   background-size: 100% 335.391%;
   background-position: 0rem -23.2rem;
-  background-image: url('../img/bird.png');
+  background-image: url('/static/img/bird.png');
   border-radius: 3.5rem;
   flex-shrink: 0;
 }
@@ -98,7 +98,7 @@ body {
   height: 100%;
   background-size: 100% 240.08%;
   background-position: 0 -7.2197rem;
-  background-image: url('../img/castle.png');
+  background-image: url('/static/img/castle.png');
   border-radius: 3.5rem;
   flex-shrink: 0;
 }
@@ -165,7 +165,7 @@ body {
   height: 100%;
   background-size: 100% 500.35%;
   background-position: 0.4rem -17.2425rem;
-  background-image: url('../img/fairy.png');
+  background-image: url('/static/img/fairy.png');
   border-radius: 3.5rem;
   flex-shrink: 0;
 }

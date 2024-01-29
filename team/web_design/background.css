@@ -1,0 +1,7 @@
+.background_1 {
+    height: 100vh;
+    background-image: url("img/main_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}

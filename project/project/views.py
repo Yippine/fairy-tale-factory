@@ -8,3 +8,9 @@ def home(request):
 
 def about_us(request):
     return render(request, 'about_us.html')
+
+def home_new(request):
+    return render(request, "home_new.html")
+
+def about_us_new(request):
+    return render(request, 'about_us_new.html')

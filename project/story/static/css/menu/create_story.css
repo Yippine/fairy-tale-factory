@@ -22,7 +22,7 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../../img/fantasy.png');
+  background-image: url('/static/img/background/mystic chronicles.png');
   background-color: #ffffff;
 }
 .slide-16-9-2-Wng .cartoon-51909421280-1-enQ {
@@ -35,7 +35,7 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('../../img/cartoon.png');
+  background-image: url('/static/img/background/dreamscape bubble.png');
   border-radius: 15.9rem;
 }
 .slide-16-9-2-Wng .item--ARJ {
