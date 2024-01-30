@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
@@ -12,6 +12,9 @@
       <div class="form-header">
         <h1>註冊</h1>
         <p>請填入你的個人資訊</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
       </div>
       <div class="form-body">
         <div class="form-input">
@@ -35,4 +38,33 @@
         });
     </script>
   </body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>童話工廠 Register</title>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-header">
+      <h1>註冊</h1>
+      <p>請填入你的個人資訊</p>
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="register_button" type="submit">註冊</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementsByClassName("register_button")[0].addEventListener("click", function () {
+      window.location.href = "/user/register";
+    });
+  </script>
+</body>
 </html>
+
