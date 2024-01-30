@@ -15,6 +15,7 @@
     <div class="container">
       <h1>請選擇道具：</h1>
       <select id="item-selector">
+        <option value="-1">請選擇道具</option>
         {% for item in items %}
         <option value="{{ item.item_id }}">{{ item.item_name }}</option>
         {% endfor %}
