@@ -5,6 +5,92 @@ from story.models import Item
 def create_story(request):
     return render(request, "menu/create_story.html")
 
+def item_details(request):
+    return render(request, "menu/item_details.html")
+
+def select_item(request):
+    items = Item.objects.all().filter(item_type=2)
+    return render(request, "menu/select_item.html", {'items': items})
+
+def select_item2(request):
+    items = Item.objects.all().filter(item_type=2)
+    return render(request, "menu/select_item2.html", {'items': items})
+
+def item_details2(request):
+    item_id = request.POST.get('item')
+    item = get_object_or_404(Item, pk=item_id)
+    return render(request, 'menu/item_details2.html', {'selected_item': item})
+
+def main_role_details(request, main_role_name):
+    main_role_id = request.POST.get('role')
+    mainrole = get_object_or_404(Item, pk=main_role_id)
+    return render(request, "menu/main_role_details.html",{'select_main_role': mainrole})
+
+def sup_role_details(request):
+    sup_role_id = request.POST.get('role')
+    suprole = get_object_or_404(Item, pk=sup_role_id)
+    return render(request, "menu/sup_role_details.html",{sup_role_details: suprole})
+
+def select_main_role(request):
+    MainRole = Item.objects.all().filter(item_type=1)
+    return render(request, "menu/select_main_role.html",{'select_main_role': MainRole})
+
+def select_main_role_by_data(request):
+    items = Item.objects.all().filter(item_type=1)
+    return render(request, "menu/select_main_role_by_data.html", {"items": items})
+
+def select_sup_role(request):
+    SupRole = Item.objects.all().filter(item_type=1)
+    return render(request, "menu/select_sup_role.html", {'select_sup_role': SupRole})
+
+def select_sup_role_by_data(request):
+    items = Item.objects.all().filter(item_type=1)
+    return render(request, "menu/select_sup_role_by_data.html", {"items": items})
+
+def select_item(request):
+    return render(request, "menu/select_item.html")
+
+def select_item_by_data(request):
+    items = Item.objects.all().filter(item_type=2)
+    return render(request, "menu/select_item_by_data.html", {"items": items})
+
+def main_role_details(request):
+    return render(request, "menu/main_role_details.html")
+
+# def main_role_details_by_data(request):
+#     role_id = request.POST.get("role")
+#     role = get_object_or_404(Item, pk=role_id)
+#     return render(
+#         request, "menu/main_role_details_by_data.html", {"role_selected": role}
+#     )
+
+def main_role_details_by_data(request, item_id):
+    print('11111111')
+    item = get_object_or_404(Item, pk=item_id)
+    print(f'=============== item: {item} ===============')
+    return JsonResponse({
+        'item_name': item.item_name,
+        'item_info': item.item_info
+    })
+
+def sup_role_details(request):
+    return render(request, "menu/sup_role_details.html")
+
+def sup_role_details_by_data(request):
+    role_id = request.POST.get("role")
+    role = get_object_or_404(Item, pk=role_id)
+    return render(
+        request, "menu/sup_role_details_by_data.html", {"role_selected": role}
+    )
+
+def item_details(request):
+    return render(request, "menu/item_details.html")
+
+def item_details_by_data(request):
+    item_id = request.POST.get("item")
+    item = get_object_or_404(Item, pk=item_id)
+    return render(request, "menu/item_details_by_data.html", {"item_selected": item})
+
 def select_main_role(request):
     return render(request, "menu/select_main_role.html")
 
@@ -14,6 +100,7 @@ def select_main_role_by_data(request):
 
 def select_sup_role(request):
     return render(request, "menu/select_sup_role.html")
+
 
 def select_sup_role_by_data(request):
     items = Item.objects.all().filter(item_type=1)
