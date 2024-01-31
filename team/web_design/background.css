@@ -5,3 +5,10 @@
     background-size: cover;
     position: relative;
 }
+
+
+/* @media screen and (max-width:800px){
+    .background_1{
+        height: 300px;
+    }
+} */

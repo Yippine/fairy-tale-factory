@@ -51,7 +51,7 @@
     z-index: 2;
     position: absolute;
     left: 75%;
-    top: 93%;
+    top: 108%;
 }
 #story_show_gohome input {
     padding: 2px; /* 設定按鈕的內間距，可根據需要調整 */
@@ -65,7 +65,7 @@
     z-index: 2;
     position: absolute;
     left: 87%;
-    top: 93%;
+    top: 108%;
 }
 #story_show_save input {
     padding: 3.5px; /* 設定按鈕的內間距，可根據需要調整 */

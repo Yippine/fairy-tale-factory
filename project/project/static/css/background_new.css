@@ -1,0 +1,7 @@
+.background_1{
+    height: 100vh;
+    background-image: url("/static/img/background/mystic chronicles.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
