@@ -2,6 +2,8 @@
 CREATE DATABASE IF NOT EXISTS fairy_tale_factory;
 USE fairy_tale_factory;
 
+
+
 -- CREATE TABLE 建立表格
 
 -- 故事問題類型 story_issue_category
@@ -121,7 +123,8 @@ CREATE TABLE IF NOT EXISTS item (
     original_story_id MEDIUMINT UNSIGNED,
     creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modification_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    disable_time TIMESTAMP
+    disable_time TIMESTAMP,
+    notes VARCHAR(50)
 );
 
 -- 故事類型 story_category
@@ -142,7 +145,8 @@ CREATE TABLE IF NOT EXISTS original_story (
     original_story_content VARCHAR(2000) NOT NULL,
     creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modification_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    disable_time TIMESTAMP
+    disable_time TIMESTAMP,
+    notes VARCHAR(50)
 );
 
 -- 使用者 user

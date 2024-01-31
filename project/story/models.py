@@ -8,6 +8,7 @@ class OriginalStory(models.Model):
     creation_time = models.DateTimeField(blank=True, null=True)
     modification_time = models.DateTimeField(blank=True, null=True)
     disable_time = models.DateTimeField(blank=True, null=True)
+    notes = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -34,6 +35,7 @@ class Item(models.Model):
     creation_time = models.DateTimeField(blank=True, null=True)
     modification_time = models.DateTimeField(blank=True, null=True)
     disable_time = models.DateTimeField(blank=True, null=True)
+    notes = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         managed = False
