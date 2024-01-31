@@ -5,7 +5,9 @@ from .views import register, login
 urlpatterns = [
     # 一般網頁
     path('login/', views.login, name='login'),
+    path('loginbydata/', views.login_by_data, name='login_by_data'),
     path('register/', views.register, name='register'),
+    path('registerbydata/', views.register_by_data, name='register_by_data'),
     path('logout',views.logout,name='logout'),
     path('userinfo/', views.user_info, name='user_info'),
     path('userinfo1/', views.user_info_1, name='user_info_1'),

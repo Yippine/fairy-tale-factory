@@ -1,11 +1,13 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm, LoginForm
+from .forms import LoginForm, RegisterForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 
 def login(request):
+    return render(request, 'login.html')
+
+def login_by_data(request):
     form = LoginForm()
     if request.method == "POST":
         username = request.POST.get("username")
@@ -17,19 +19,24 @@ def login(request):
     context = {
         'form':form
     }
-    return render(request, 'login.html',context)
+    return render(request, 'login_by_data.html',context)
 
 def register(request):
-    form = RegisterForm()
+    return render(request, 'register.html')
+
+def register_by_data(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/login/')
+            login_url = reverse('login_by_data')
+            return HttpResponseRedirect(login_url)
+    else:
+        form = RegisterForm()
     context ={
-        'form':form
+        'form': form
     }
-    return render(request, 'register.html', context)
+    return render(request, 'register_by_data.html', context)
 
 def logout(request):
     logout(request)
