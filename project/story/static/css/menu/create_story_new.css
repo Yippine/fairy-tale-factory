@@ -1,3 +1,11 @@
+@font-face {
+  font-family: '自定義字體';
+  src: url('/static/fonts/JasonHandwriting1.ttf') format('truetype');
+  /* 添加其他字型格式，以確保跨瀏覽器兼容性 */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   /* border: 1px solid red; */
   overflow: hidden;
@@ -8,7 +16,6 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
 }
 
 .container {
@@ -32,17 +39,22 @@ header, .button_container {
   flex: 2;
   display: flex;
   height: 100vh;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 }
 
 .button_container {
+  width: 15%;
   /* border: 1px solid red; */
   margin: 1rem;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.create_button_container {
+  width: auto;
 }
 
 .middle_button_container {
@@ -53,10 +65,9 @@ header, .button_container {
   border-color: antiquewhite;
   border-width: 0.3rem;
   border-radius: 3rem;
-  width: 12rem;
-  height: 6rem;
+  width: 54%;
+  height: 35%;
   background-color: #d6a982;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   font-size: 2.5rem;
   cursor: pointer;
   display: flex;
@@ -65,22 +76,20 @@ header, .button_container {
 }
 
 .create_button {
-  width: 23rem;
+  width: 30%;
+  height: 62%;
 }
 
 .button_text {
-  font-size: 48px;
+  font-size: 117.5%;
   font-weight: bold;
-  -webkit-text-fill-color: white; /* 使文字內部變成白色 */
-  -webkit-text-stroke-width: 2px; /* 外框寬度 */
-  -webkit-text-stroke-color: rgb(35, 20, 10); /* 外框顏色 */
-}
-
-.create_button .button_text {
-  font-size: clamp(3rem, 3vw, 3rem);
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 0;
+  -webkit-text-fill-color: initial;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: '自定義字體', sans-serif;
 }
 
 .item_button:focus {
@@ -125,14 +134,50 @@ header {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: bold;
-  -webkit-text-fill-color: white; /* 使文字內部變成白色 */
-  -webkit-text-stroke-width: 0.5px; /* 外框寬度 */
-  -webkit-text-stroke-color: rgb(35, 20, 10); /* 外框顏色 */
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 0px;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+  font-family: '自定義字體', sans-serif;
 }
 
 @media screen and (max-width: 768px) {
   body {
     overflow: auto;
     height: auto;
+  }
+
+  header, .button_container {
+    margin: 0.5rem;
+  }
+
+  .button_container {
+    margin: 0.5rem;
+  }
+
+  .middle_button_container {
+    margin: 0.5rem 0;
+  }
+
+  .select_button {
+    margin: 0 0.5rem;
+  }
+
+  .item_button, .create_button {
+    width: 100%;
+    border-width: 0.22rem;
+    height: 25%;
+  }
+
+  .create_button {
+    width: 62.5%;
+    height: 40%;
+  }
+
+  .button_text {
+    font-size: 65%;
+  }
+
+  .header_text {
+    font-size: clamp(1.65rem, 3vw, 2rem);
   }
 }
