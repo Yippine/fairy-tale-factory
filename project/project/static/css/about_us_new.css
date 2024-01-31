@@ -1,0 +1,70 @@
+body,html{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #e7e7e7;
+}
+
+.team {
+  margin: 0;
+  padding: 0;
+  height: 98%;
+}
+
+.row {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 0 2rem 0;
+}
+
+.photo {
+  width: 40%;
+  height: 40%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin: 9% auto;
+  background-image: url('/static/img/item/user.png');
+}
+
+.team-member {
+  background: white;
+  border-radius: 50px;
+  overflow: hidden;
+  text-align: center;
+  margin: 20px;
+  padding: 0;
+  flex: 0 0 23%; /* 使每個成員占據大約25%的寬度，減去邊距 */ 
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 28px;
+  color: #555;
+  margin-bottom: 5px;
+}
+.name {
+  font-size: 36px;
+  margin: 10px 0 5px;
+}
+
+.description {
+  list-style: none;
+  padding: 0;
+}
+.description li {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+
+@media (max-width: 768px) {
+  .team-member {
+    flex: 0 0 calc(50% - 20px); /* 在小屏幕上，每個成員占據大約50%的寬度 */
+  }
+}

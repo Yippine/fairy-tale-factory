@@ -1,51 +1,55 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>童話工廠 Home</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700" />
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home_new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/background_new.css' %}" />
   </head>
+
   <body>
-    <div class="first-main-rGk">
-      <p class="item--xag">童話工廠</p>
-      <div class="auto-group-cze4-TXS">
-        <div class="auto-group-bgha-L5S">
-          <div class="frame-2-FCQ">
-            <img class="user-16996351280-2-mwS" src="{% static 'img/item/chat.png' %}" />
-            <img class="book-3125471280-1-H96" src="{% static 'img/item/book.png' %}" />
-            <img class="user-16996351280-1-PT2" src="{% static 'img/item/user.png' %}" />
+    <div class="background_1">
+      <div class="border1_1">
+        <h1 id="fair_tale_factory"><strong>童話工廠</strong></h1>
+        <p id="content" style="color: aliceblue;">
+          <strong>
+            讓我們來實現<br />
+            實現你幻想中的完美童話 . . .
+          </strong>
+        </p>
+
+        <div class="border2_1">
+          <div class="border3_1">
+            <a href="/aboutus"><img src="{% static 'img/item/chat.png' %}" alt="about_us" /></a>
+            <a href="/aboutus">
+              <p><strong style="color: white;">關於我們</strong></p>
+            </a>
           </div>
-          <div class="frame-1-iEQ">
-            <div class="item--EiY">關於我們</div>
-            <div class="item--kgt">收藏的故事</div>
-            <div class="item--HB2">個人資訊</div>
+
+          <div class="border3_2">
+            <a href="/user/userinfo1"><img src="{% static 'img/item/user.png' %}" alt="user" /></a>
+            <a href="/user/userinfo1">
+              <p><strong style="color: white;">個人資訊</strong></p>
+            </a>
+          </div>
+
+          <div class="border3_3">
+            <a href="user_imformation.html"><img src="{% static 'img/item/book.png' %}" alt="books" />
+            <a href="user_imformation.html">
+              <p><strong style="color: white;">收藏的故事</strong></p>
+            </a>
           </div>
         </div>
-        <div class="auto-group-skme-Con">故事開始</div>
+
+        <div class="border2_2">
+          <a href="/story/createstory"><img class="cat" src="{% static 'img/item/cat.png' %}" alt="cat" /></a>
+          <a href="/story/createstory">
+            <h2 id="story_start"><strong style="color: white;">故事開始</strong></h2>
+          </a>
+        </div>
       </div>
     </div>
-    <script>
-        document.getElementsByClassName("auto-group-skme-Con")[0].addEventListener("click", function () {
-            window.location.href = "/user/login";
-        });
-        document.getElementsByClassName("item--HB2")[0].addEventListener("click", function () {
-            window.location.href = "/user/userinfo1";
-        });
-        document.getElementsByClassName("item--kgt")[0].addEventListener("click", function () {
-            window.location.href = "/story/mystorybooks";
-        });
-        document.getElementsByClassName("user-16996351280-2-mwS")[0].addEventListener("click", function () {
-            window.location.href = "/aboutus";
-        });
-        document.getElementsByClassName("item--xag")[0].addEventListener("click", function () {
-            window.location.href = "/home";
-        });
-    </script>
   </body>
 </html>
