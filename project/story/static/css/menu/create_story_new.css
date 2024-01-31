@@ -1,0 +1,138 @@
+body {
+  /* border: 1px solid red; */
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('/static/img/background/mystic chronicles.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+}
+
+.container {
+  margin: 1rem;
+  /* border: 1px solid red; */
+  height: 95.5vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+header, .button_container {
+  /* border: 1px solid red; */
+  margin: 1rem;
+  flex: 1;
+}
+
+.select_button {
+  /* border: 1px solid red; */
+  margin: 0 1rem;
+  flex: 2;
+  display: flex;
+  height: 100vh;
+  justify-content: space-between;
+  position: relative;
+}
+
+.button_container {
+  /* border: 1px solid red; */
+  margin: 1rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle_button_container {
+  margin: 1rem 0;
+}
+
+.item_button, .create_button {
+  border-color: antiquewhite;
+  border-width: 0.3rem;
+  border-radius: 3rem;
+  width: 12rem;
+  height: 6rem;
+  background-color: #d6a982;
+  font-family: Zen Maru Gothic, 'Source Sans Pro';
+  font-size: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create_button {
+  width: 23rem;
+}
+
+.button_text {
+  font-size: 48px;
+  font-weight: bold;
+  -webkit-text-fill-color: white; /* 使文字內部變成白色 */
+  -webkit-text-stroke-width: 2px; /* 外框寬度 */
+  -webkit-text-stroke-color: rgb(35, 20, 10); /* 外框顏色 */
+}
+
+.create_button .button_text {
+  font-size: clamp(3rem, 3vw, 3rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item_button:focus {
+  outline: none;
+}
+
+.background_image {
+  /* border: 1.5px solid red; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(55.61% 55.61% at 50% 49.95%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/static/img/background/dreamscape bubble.png');
+  border-radius: 10rem;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.select_button:hover .background_image {
+  opacity: 0.6;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header_text {
+  /* border: 1px solid red; */
+  margin: 0;
+  padding-left: 10%;
+  height: 13vh;
+  font-size: clamp(2rem, 3vw, 2rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  -webkit-text-fill-color: white; /* 使文字內部變成白色 */
+  -webkit-text-stroke-width: 0.5px; /* 外框寬度 */
+  -webkit-text-stroke-color: rgb(35, 20, 10); /* 外框顏色 */
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: auto;
+    height: auto;
+  }
+}
