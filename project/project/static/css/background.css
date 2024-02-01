@@ -1,6 +1,6 @@
 @font-face {
   font-family: "自定義字體";
-  src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting1-SemiBold.woff") format("truetype");
+  src: url("/static/fonts/清松手寫體/tw/JasonHandwriting1-SemiBold.ttf") format("truetype");
   /* src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting3-Light.woff") format("truetype"); */
   /* src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting5.woff2") format("truetype"); */
   /* src: url("/static/fonts/新蒂蠟筆體/HanyiSentyCrayon.ttf") format("truetype"); */

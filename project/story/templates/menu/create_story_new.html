@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/menu/create_story_new.css' %}" />
   </head>
   <body>
-    <div class="container">
+    <section class="container">
       <header>
         <p class="header_text">
           創造一個新故事...<br />你需要..
@@ -43,20 +43,15 @@
           <span class="button_text" id="create_button">開始創造故事</span>
         </button>
       </div>
-    </div>
+    </section>
     <script>
-        document.getElementById("main_role_button").addEventListener("click", function () {
-            window.location.href = "/story/selectmainrole";
-        });
-        document.getElementById("sup_role_button").addEventListener("click", function () {
-            window.location.href = "/story/selectsuprole";
-        });
-        document.getElementById("item_button").addEventListener("click", function () {
-            window.location.href = "/story/selectitem";
-        });
-        document.getElementById("create_button").addEventListener("click", function () {
-            window.location.href = "/story/loading";
-        });
+        function redirectTo(path) {
+            window.location.href = `/story/${path}`;
+        }
+        document.getElementById("main_role_button").addEventListener("click", () => redirectTo("selectmainrole"));
+        document.getElementById("sup_role_button").addEventListener("click", () => redirectTo("selectsuprole"));
+        document.getElementById("item_button").addEventListener("click", () => redirectTo("selectitem"));
+        document.getElementById("create_button").addEventListener("click", () => redirectTo("loading"));
     </script>
   </body>
 </html>
