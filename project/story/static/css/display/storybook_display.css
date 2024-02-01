@@ -1,20 +1,28 @@
 html {
   font-size: 62.5%;
 }
+
 * {
   margin: 0;
   padding: 0;
+  -webkit-text-fill-color: #34220d;
+  -webkit-text-stroke-width: 0;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
 }
+
 ul,
 li {
   list-style: none;
 }
+
 input {
   border: none;
 }
+
 body {
   width: 192rem;
 }
+
 .story-Y4U {
   box-sizing: border-box;
   padding: 7.3rem 0.9rem 3rem 0.9rem;
@@ -25,6 +33,7 @@ body {
   align-items: center;
   background-color: rgba(255, 190, 190, 0.7099999785);
 }
+
 .story-Y4U .group-13-Tx8 {
   margin: 0rem 10.4rem 4.4rem 0rem;
   box-sizing: border-box;
@@ -35,18 +44,21 @@ body {
   background-image: url("/static/img/vector/page border.png");
   flex-shrink: 0;
 }
+
 .story-Y4U .group-13-Tx8 .vector-PKz {
   width: 2.19rem;
   height: 2.92rem;
   object-fit: contain;
   vertical-align: top;
 }
+
 .story-Y4U .auto-group-kqbn-KzL {
   width: 172.5rem;
   height: 97.7rem;
   position: relative;
   flex-shrink: 0;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .rectangle-10-GPn {
   width: 77.4rem;
   height: 93.3rem;
@@ -56,6 +68,7 @@ body {
   object-fit: cover;
   vertical-align: top;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .item--D48 {
   width: 13.4rem;
   height: 5.8rem;
@@ -67,9 +80,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: rgba(255, 255, 255, 0.8000000119);
-  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .item--tRA {
   width: 77.8rem;
   height: 13.9rem;
@@ -83,9 +96,10 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: rgba(255, 255, 255, 0.8000000119);
-  font-family: Zen Maru Gothic, "Source Sans Pro";
 }
+
 .story-Y4U .auto-group-kqbn-KzL .item--tRB {
+  font-family: '自定義注音字體', sans-serif;
   width: 77.8rem;
   height: 13.9rem;
   position: absolute;
@@ -98,8 +112,8 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: rgba(255, 255, 255, 0.8000000119);
-  font-family: Zen Maru Gothic, "Source Sans Pro";
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-10-Ff2 {
   width: 20.6rem;
   height: 8.7rem;
@@ -111,7 +125,6 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -119,6 +132,7 @@ body {
   background-color: #d9d9d9;
   border-radius: 2rem;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-11-j4Q {
   width: 20.6rem;
   height: 8.7rem;
@@ -130,7 +144,6 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -138,6 +151,7 @@ body {
   background-color: #d9d9d9;
   border-radius: 2rem;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-12-bsJ {
   box-sizing: border-box;
   padding: 2.19rem 2.19rem 2.19rem 2.92rem;
@@ -151,12 +165,14 @@ body {
   background-position: center;
   background-image: url("/static/img/vector/page border.png");
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-12-bsJ .vector-KHW {
   width: 2.19rem;
   height: 2.92rem;
   object-fit: contain;
   vertical-align: top;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-11-eqa {
   box-sizing: border-box;
   padding: 8rem;
@@ -171,6 +187,7 @@ body {
   background-color: #b2f7fb;
   border-radius: 3.5rem;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-12-eqa {
   box-sizing: border-box;
   padding: 8rem;
@@ -185,6 +202,7 @@ body {
   background-color: #b2f7fb;
   border-radius: 3.5rem;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-11-eqa .item--8kk {
   display: flex;
   align-items: center;
@@ -193,10 +211,10 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-12-eqa .item--8kk {
   display: flex;
   margin-top: 3rem;
@@ -206,10 +224,10 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-11-eqa .item--9kk {
   display: flex;
   height: 3rem;
@@ -219,10 +237,10 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, "Source Sans Pro";
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .story-Y4U .auto-group-kqbn-KzL .group-11-eqa .done-outline-dhW {
   width: 5rem;
   height: 5rem;

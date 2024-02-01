@@ -1,20 +1,29 @@
-
 html {
-	font-size:62.5%;
+  font-size: 62.5%;
 }
+
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
 }
-ul, li {
-	list-style: none;
+
+ul,
+li {
+  list-style: none;
 }
+
 input {
-	border: none;
+  border: none;
 }
+
 body {
   width: 192rem;
-}.user-information-b96 {
+}
+
+.user-information-b96 {
   width: 100%;
   height: 108rem;
   position: relative;
@@ -23,6 +32,7 @@ body {
   /* filter: blur(0.2rem); */
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
+
 .user-information-b96 .rectangle-10-X2k {
   width: 80rem;
   height: 93.3rem;
@@ -32,6 +42,7 @@ body {
   background-color: #d6a982;
   border-radius: 3.5rem;
 }
+
 .user-information-b96 .item--Rdv {
   width: 15.4rem;
   height: 9.3rem;
@@ -43,9 +54,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .item--bgp {
   width: 8.7rem;
   height: 7rem;
@@ -59,9 +70,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .item--H3r {
   width: 8.7rem;
   height: 7rem;
@@ -73,9 +84,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .item--Nb6 {
   width: 8.7rem;
   height: 7rem;
@@ -87,9 +98,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .item--V9v {
   width: 15rem;
   height: 7rem;
@@ -101,9 +112,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .item--oAc {
   width: 8.7rem;
   height: 7rem;
@@ -117,9 +128,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .item--V3S {
   width: 8.7rem;
   height: 7rem;
@@ -133,9 +144,9 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #ffffff;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
 }
+
 .user-information-b96 .group-10-nYL {
   width: 22.6rem;
   height: 6.2927rem;
@@ -150,11 +161,11 @@ body {
   font-weight: 500;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
   background-color: #d9d9d9;
   border-radius: 2rem;
 }
+
 .user-information-b96 .group-11-2ha {
   width: 13rem;
   height: 6.2927rem;
@@ -169,11 +180,17 @@ body {
   font-weight: 500;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
   background-color: #d9d9d9;
   border-radius: 2rem;
 }
+
+.user-information-b96 .group-10-nYL, .user-information-b96 .group-11-2ha {
+  -webkit-text-fill-color: #34220d;
+  -webkit-text-stroke-width: 0;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+}
+
 .user-information-b96 .line-1-tzg {
   width: 60.3rem;
   height: 0.2rem;

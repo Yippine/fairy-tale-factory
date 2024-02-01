@@ -1,60 +1,86 @@
+* {
+  -webkit-text-fill-color: #34220d;
+  -webkit-text-stroke-width: 0;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: "Zen Maru Gothic", sans-serif;
 }
+
+.title {
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+}
+
+.copyright {
+  -webkit-text-fill-color: white;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 header {
   background: purple;
   text-align: center;
   padding: 20px 0;
 }
+
 .title {
   color: white;
   font-size: 4vw;
 }
+
 .login-form {
   margin: auto;
   padding: 20px;
   width: 80%;
   max-width: 400px;
 }
+
 .login-form input,
 .login-form button {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
 }
+
 .login-form button {
   background-color: gold;
   border: none;
   font-size: 1.2em;
 }
+
 .hint {
   text-align: center;
 }
+
 .hint_msg {
   text-decoration: none;
   color: #333;
 }
+
 .hint_msg:hover {
   text-decoration: underline;
   color: #ff6600;
   transition: color 0.3s ease;
 }
+
 footer {
   background: #222;
   color: white;
   text-align: center;
   padding: 10px 0;
 }
+
 @media (min-width: 600px) {
   .title {
     font-size: 3rem;

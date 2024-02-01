@@ -1,19 +1,25 @@
 html {
-  font-size:62.5%;
+  font-size: 62.5%;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
-ul, li {
+
+ul,
+li {
   list-style: none;
 }
+
 input {
   border: none;
 }
+
 body {
   width: 192rem;
 }
+
 .save-story-tqi {
   box-sizing: border-box;
   padding: 12rem 9.7rem 1.4rem 9.7rem;
@@ -25,6 +31,7 @@ body {
   flex-direction: column;
   background-color: rgba(255, 190, 190, 0.7099999785);
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 {
   margin-bottom: 5.5rem;
   width: 100%;
@@ -33,6 +40,7 @@ body {
   align-items: center;
   flex-shrink: 0;
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 {
   margin-right: 9.6rem;
   width: 81.5rem;
@@ -42,15 +50,19 @@ body {
   border-radius: 3.5rem;
   flex-shrink: 0;
 }
+
 #story1 {
   background-image: url("/static/img/background/whimsy flight.png");
 }
+
 #story2 {
   background-image: url("/static/img/background/twilight bastion.png");
 }
+
 #story3 {
   background-image: url("/static/img/background/nymph's odyssey.png");
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 {
   box-sizing: border-box;
   padding: 3.1rem 2.7rem 2.8rem 2.7rem;
@@ -61,7 +73,9 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 3.5rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  word-wrap: break-word;
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 .item--JkL {
   width: 100%;
   text-align: center;
@@ -69,20 +83,21 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 .item--pya {
+  font-family: '自定義注音字體', sans-serif;
   margin-bottom: 4.4rem;
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
-  white-space: nowrap;
+  white-space: normal;
   flex-shrink: 0;
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-228 .rectangle-22-Au2 .item-00001122-A1r {
   width: 100%;
   text-align: center;
@@ -90,10 +105,10 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
 }
+
 .save-story-tqi .auto-group-9lvg-gU4 .rectangle-22-NNp {
   margin-right: 9.6rem;
   width: 81.5rem;
@@ -102,6 +117,7 @@ body {
   border-radius: 3.5rem;
   flex-shrink: 0;
 }
+
 .save-story-tqi .group-10-x68 {
   width: 20.6rem;
   height: 8.7rem;
@@ -110,7 +126,6 @@ body {
   font-weight: 700;
   line-height: 1.4475;
   color: #000000;
-  font-family: Zen Maru Gothic, 'Source Sans Pro';
   white-space: nowrap;
   display: flex;
   align-items: center;

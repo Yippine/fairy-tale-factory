@@ -1,170 +1,192 @@
 html {
-	font-size:62.5%;
+  font-size: 62.5%;
 }
+
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
 }
-ul, li {
-	list-style: none;
+
+ul,
+li {
+  list-style: none;
 }
+
 input {
-	border: none;
+  border: none;
 }
+
 body {
-	width: 192rem;
-}.first-main-rGk {
-	/* 背景圖 */
-	/* box-sizing: border-box; */
-	box-sizing: cover;
-	padding: 17.2rem 13.4rem 1.4rem 7.3rem;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	background-color: rgba(255, 190, 190, 0.7099999785);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-image: url('/static/img/background/mystic chronicles.png');
+  width: 192rem;
 }
+
+.first-main-rGk {
+  /* 背景圖 */
+  /* box-sizing: border-box; */
+  box-sizing: cover;
+  padding: 17.2rem 13.4rem 1.4rem 7.3rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 190, 190, 0.7099999785);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/static/img/background/mystic chronicles.png");
+}
+
 .first-main-rGk .item--xag {
-	/* 童話工廠文字 */
-	margin-bottom: 41rem;
-	width: 100%;
-	text-align: center;
-	font-size: 12.8rem;
-	font-weight: 700;
-	line-height: 1.4475;
-	color: #ffffff;
-	font-family: Zen Maru Gothic, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
+  /* 童話工廠文字 */
+  margin-bottom: 41rem;
+  width: 100%;
+  text-align: center;
+  font-size: 12.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  -webkit-text-stroke-width: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS {
-	/* 背景圖片調整 (直 -> 寬) */
-	width: 100%;
-	height: 29.8rem;
-	display: flex;
-	align-items: flex-end;
-	flex-shrink: 0;
+  /* 背景圖片調整 (直 -> 寬) */
+  width: 100%;
+  height: 29.8rem;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S {
-	/* 調整左下圖檔位置 */
-	margin: 0rem 78.487rem 0.5rem 0rem;
-	width: 72.6134rem;
-	height: 18.1rem;
-	position: relative;
-	flex-shrink: 0;
+  /* 調整左下圖檔位置 */
+  margin: 0rem 78.487rem 0.5rem 0rem;
+  width: 72.6134rem;
+  height: 18.1rem;
+  position: relative;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-2-FCQ {
-	/* 圖檔位置(書) */
-	width: 72.6134rem;
-	height: 17.8112rem;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: flex;
-	align-items: flex-start;
+  /* 圖檔位置(書) */
+  width: 72.6134rem;
+  height: 17.8112rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-2-FCQ .user-16996351280-2-mwS {
-	/* 調整圖檔大小 (關於我們) */
-	margin: 0rem 14.5rem 0rem 0rem;
-	width: 16.1rem;
-	height: 16.7rem;
-	cursor: pointer;
-	object-fit: cover;
-	vertical-align: top;
-	flex-shrink: 0;
+  /* 調整圖檔大小 (關於我們) */
+  margin: 0rem 14.5rem 0rem 0rem;
+  width: 16.1rem;
+  height: 16.7rem;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-2-FCQ .book-3125471280-1-H96 {
-	/* 圖檔大小(書) */
-	margin-right: 14.5rem;
-	width: 14.5134rem;
-	height: 17.8112rem;
-	cursor: pointer;
-	object-fit: cover;
-	vertical-align: top;
-	flex-shrink: 0;
+  /* 圖檔大小(書) */
+  margin-right: 14.5rem;
+  width: 14.5134rem;
+  height: 17.8112rem;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-2-FCQ .user-16996351280-1-PT2 {
-	/* 圖檔大小(個人) */
-	margin-top: 0rem;
-	width: 13rem;
-	height: 16.659rem;
-	cursor: pointer;
-	object-fit: cover;
-	vertical-align: top;
-	flex-shrink: 0;
+  /* 圖檔大小(個人) */
+  margin-top: 0rem;
+  width: 13rem;
+  height: 16.659rem;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-1-iEQ {
-	/* 調整文字位置(關於我們...) */
-	width: 70rem;
-	height: 7rem;
-	position: absolute;
-	left: 2.25rem;
-	top: 11.1rem;
-	display: flex;
-	column-gap: 16.15rem;
-	align-items: center;
+  /* 調整文字位置(關於我們...) */
+  width: 70rem;
+  height: 7rem;
+  position: absolute;
+  left: 2.25rem;
+  top: 11.1rem;
+  display: flex;
+  column-gap: 16.15rem;
+  align-items: center;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-1-iEQ .item--EiY {
-	/* 文字效果、顏色、位置 (關於我們) */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 4.8rem;
-	font-weight: 700;
-	line-height: 1.4475;
-	color: #ffffff;
-	font-family: Zen Maru Gothic, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
+  /* 文字效果、顏色、位置 (關於我們) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-1-iEQ .item--kgt {
-	/* 同上 (收藏故事) */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 4.8rem;
-	font-weight: 700;
-	line-height: 1.4475;
-	color: #ffffff;
-	font-family: Zen Maru Gothic, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
+  /* 同上 (收藏故事) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-bgha-L5S .frame-1-iEQ .item--HB2 {
-	/* 同上 (個人資訊) */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 4.8rem;
-	font-weight: 700;
-	line-height: 1.4475;
-	color: #ffffff;
-	font-family: Zen Maru Gothic, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
+  /* 同上 (個人資訊) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
 .first-main-rGk .auto-group-cze4-TXS .auto-group-skme-Con {
-	/* 故事開始(貓咪圖) */
-	width: 20.2rem;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 6.4rem;
-	font-weight: 700;
-	line-height: 1.4475;
-	color: #ffffff;
-	font-family: Zen Maru Gothic, 'Source Sans Pro';
-	white-space: nowrap;
-	box-shadow: 0.4rem 0.8rem 0.4rem rgba(0, 0, 0, 0.75);
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-image: url('/static/img/item/cat.png');
-	flex-shrink: 0;
+  /* 故事開始(貓咪圖) */
+  width: 20.2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1.4475;
+  color: #ffffff;
+  -webkit-text-stroke-width: 2px;
+  white-space: nowrap;
+  box-shadow: 0.4rem 0.8rem 0.4rem rgba(0, 0, 0, 0.75);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/static/img/item/cat.png");
+  flex-shrink: 0;
 }

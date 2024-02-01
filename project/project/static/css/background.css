@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "自定義字體";
+  src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting1-SemiBold.woff") format("truetype");
+  /* src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting3-Light.woff") format("truetype"); */
+  /* src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting5.woff2") format("truetype"); */
+  /* src: url("/static/fonts/新蒂蠟筆體/HanyiSentyCrayon.ttf") format("truetype"); */
+  /* src: url("/static/fonts/字嗨注音標楷/BpmfZihiKaiStd-Regular.ttf") format("truetype"); */
+  /* src: url("/static/fonts/注音芫荽/BpmfIansui-Regular.ttf") format("truetype"); */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "自定義注音字體";
+  src: url("/static/fonts/注音芫荽/BpmfIansui-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "自定義字體", sans-serif;
+}

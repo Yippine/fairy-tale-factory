@@ -1,13 +1,14 @@
 body {
-  font-family: 'Source Sans Pro', sans-serif;
   background-color: #e7e7e7;
 }
+
 .team-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   margin: 20px;
 }
+
 .photo-container {
   width: 150px;
   height: 150px;
@@ -16,37 +17,45 @@ body {
   margin: auto;
   transition: transform 0.3s ease-in-out;
 }
+
 .team-photo {
   width: 100%;
   height: auto;
   display: block;
 }
+
 .photo-container:hover {
   transform: scale(1.05);
 }
+
 .name {
   font-size: 1.2em;
   margin: 10px 0 5px;
 }
+
 .title {
   font-size: 1em;
   color: #555;
   margin-bottom: 5px;
 }
+
 .description {
   list-style: none;
   padding: 0;
 }
+
 .description li {
   font-size: 0.9em;
   margin-bottom: 5px;
 }
-body, html {
+
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
   background-color: #e7e7e7;
 }
+
 .team {
   display: flex;
   justify-content: center;
@@ -54,11 +63,13 @@ body, html {
   align-items: center;
   padding: 50px 0;
 }
+
 .row {
   display: flex;
   justify-content: center;
   width: 100%;
 }
+
 .team-member {
   background: white;
   border-radius: 10px;
@@ -70,12 +81,15 @@ body, html {
   margin: 10px;
   flex: 0 0 calc(25% - 20px); /* 使每個成員占據大約25%的寬度，減去邊距 */
 }
+
 /* 適應小屏幕 */
 @media (max-width: 768px) {
   .team-member {
     flex: 0 0 calc(50% - 20px); /* 在小屏幕上，每個成員占據大約50%的寬度 */
   }
+  
 }
+
 .photo {
   width: 100px;
   height: 100px;
@@ -83,25 +97,30 @@ body, html {
   background-position: center;
   border-radius: 50%;
   margin: 20px auto;
-  background-image: url('/static/img/item/user.png');
+  background-image: url("/static/img/item/user.png");
 }
+
 .team-member h3 {
   color: #333;
 }
+
 .title {
   color: #555;
   font-size: 0.9em;
 }
+
 .description {
   list-style: none;
   padding: 0;
   text-align: left;
   margin: 10px 20px;
 }
+
 .description li {
   font-size: 0.8em;
   color: #666;
 }
+
 .team-member:hover {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }

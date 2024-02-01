@@ -1,15 +1,19 @@
-body {
-  font-family: Arial, sans-serif;
+* {
+  -webkit-text-fill-color: #34220d;
+  -webkit-text-stroke-width: 0;
 }
+
 .container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
+
 .form-input {
   margin-bottom: 10px;
 }
+
 input[type="text"],
 button {
   width: 100%;
@@ -18,17 +22,20 @@ button {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
 button {
   background-color: gold;
   color: white;
   border: none;
   cursor: pointer;
 }
+
 .stars {
   color: gold;
   font-size: 24px;
   padding: 5px;
 }
+
 .highlight {
   font-size: 20px;
   color: purple;

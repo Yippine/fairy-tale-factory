@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-67rte1i+m((c#_$)kp7q85n6#%+g4gx@#ykz0bi*97d-f=9kjv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.1.5.82']
 
 
 # Application definition
@@ -42,7 +42,7 @@ MIDDLEWARE = [
     'project.middleware.webversion.WebVersionMiddleware',
 ]
 
-WEB_VERSION = 'NEW'
+# WEB_VERSION = 'NEW'
 
 ROOT_URLCONF = 'project.urls'
 
