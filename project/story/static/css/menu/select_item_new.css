@@ -35,13 +35,13 @@ section {
   margin: 4vh 3vw 4vh 1.5vw;
 }
 
-.item {
+.item_name {
   border: 1px solid green;
   padding: 2vw;
   width: 36vw;
   margin: 0 1.5vh;
-  border-radius: 1.75vw 1.75vw 0 0;
-  font-size: clamp(1vw, 3vw, 10vw);
+  border-radius: 1.75vw;
+  font-size: clamp(1vw, 2.25vw, 10vw);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -52,23 +52,28 @@ section {
 
 .item_info {
   border: 1px solid #008000;
-  font-family: "自定義注音字體", sans-serif;
-  letter-spacing: 0.25vw;
+  letter-spacing: 0.5vw;
+  line-height: 7.5vh;
   padding: 2vw;
   width: 36vw;
   border-radius: 0 0 1.75vw 1.75vw;
-  font-size: clamp(1vw, 2vw, 8vw);
-  display: flex;
+  font-family: "自定義注音字體", sans-serif;
+  font-size: clamp(1vw, 1.75vw, 8vw);
+  display: none;
   justify-content: center;
   transition: font-size 0.5s ease-in-out;
   margin: 0 1.5vh;
 }
 
-.item:first-child {
+.item_info.active {
+  display: block;
+}
+
+.first_item_name {
   margin-top: 3.5vh;
 }
 
-.item_info + .item {
+.item_info + .item_name {
   margin-top: 3.5vh;
 }
 
@@ -77,7 +82,7 @@ section {
 }
 
 ::-webkit-scrollbar {
-  width: 0.5vw;
+  width: 0.75vw;
 }
 
 ::-webkit-scrollbar-track {

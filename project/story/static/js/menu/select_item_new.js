@@ -19,24 +19,41 @@ const observer = new MutationObserver((mutationsList, observer) => {
 const config = { childList: true, subtree: true };
 observer.observe(document, config);
 
-function generateItems(itemCount) {
-    var itemListContainer = document.querySelector(".item_list_container");
-    for (var i = 1; i <= itemCount; i++) {
-        var newItem = document.createElement("div");
-        newItem.className = "item";
-        newItem.textContent = i + ". 一二三四五六七八九一二三四五六七八九一二三四五六七八九一二三四五六七八九";
-        itemListContainer.appendChild(newItem);
+function generateItemsFromData() {
+    const dataContainer = document.getElementById("data-container");
+    const itemElements = Array.from(dataContainer.getElementsByClassName("item-data"));
+    const itemListContainer = document.querySelector(".item_list_container");
+
+    itemElements.forEach((element, index) => {
+        const itemName = element.getAttribute("data-name");
+        const itemInfo = element.getAttribute("data-info");
+
+        var newItemName = document.createElement("div");
+        newItemName.className = "item_name";
+        if (index === 0) {
+            newItemName.classList.add("first_item_name");
+        }
+        newItemName.textContent = index + 1 + ". " + itemName;
+        itemListContainer.appendChild(newItemName);
 
         var newItemInfo = document.createElement("div");
         newItemInfo.className = "item_info";
-        newItemInfo.textContent = "項目 " + i + " 的相關資訊相關資訊相關資訊相關資訊相關資訊相關資訊相關資訊";
+        newItemInfo.textContent = itemInfo;
         itemListContainer.appendChild(newItemInfo);
-    }
 
-    // if (itemCount > 0) {
-    //     itemListContainer.children[0].classList.add("first_item");
-    //     itemListContainer.children[itemListContainer.children.length - 1].classList.add("last_item");
-    // }
+        newItemName.addEventListener("click", function () {
+            newItemInfo.classList.toggle("active");
+            newItemName.style.borderRadius = newItemInfo.classList.contains("active") ? "1.75vw 1.75vw 0 0" : "1.75vw";
+
+            itemElements.forEach((el, idx) => {
+                if (idx !== index) {
+                    const otherItemInfo = itemListContainer.children[(idx + 1) * 2];
+                    otherItemInfo.classList.remove("active");
+                    itemListContainer.children[idx * 2 + 1].style.borderRadius = "1.75vw";
+                }
+            });
+        });
+    });
 }
 
-generateItems(15);
+generateItemsFromData();

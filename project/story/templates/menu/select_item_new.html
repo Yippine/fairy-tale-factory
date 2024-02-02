@@ -14,7 +14,13 @@
   </head>
   <body>
     <main>
-      <section class="item_list_container"></section>
+      <section class="item_list_container">
+        <div id="data-container" style="display: none;">
+          {% for item in items %}
+            <div class="item-data" data-name="{{ item.item_name }}" data-info="{{ item.item_info }}"></div>
+          {% endfor %}
+        </div>
+      </section>
       <section class="background_image"></section>
     </main>
     <script src="{% static 'js/menu/select_item_new.js' %}"></script>
