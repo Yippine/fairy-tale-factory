@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  border-style: solid;
+  border-width: 3px;
+  color: #000;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+#right_container {
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10rem;
+  height: 77vh;
+  margin-right: 10vw;
+  display: flex;
+  flex-direction: column;
+  color: red;
+  flex: 0.4;
+}
+
+#title_container {
+  /* border-style: solid;
+      border-width: 3px; */
+  /* height: 77%; */
+  margin: 3vh 3vw;
+  display: flex;
+  color: green;
+  flex: 0.1;
+  font-size: 600%;
+  justify-content: center;
+}
+
+#form_container {
+  /* border-style: solid;
+      border-width: 3px; */
+  /* height: 77%; */
+  margin: 0vh 3vw 3vh 3vw;
+  display: flex;
+  flex-direction: column;
+  color: green;
+}
+
+#login_container {
+  /* border-style: solid;
+      border-width: 3px; */
+  height: 25vh;
+  margin: 3vh 3vw;
+  display: flex;
+  flex-direction: column;
+  color: blue;
+  flex: 0.8;
+}
+
+#buttom_container {
+  /* border-style: solid;
+      border-width: 3px; */
+  margin: 3vh 3vw;
+  display: flex;
+  flex-direction: row;
+  color: blue;
+  flex: 0.2;
+  justify-content: center;
+}
+
+#register_container {
+  /* border-style: solid;
+      border-width: 3px; */
+  margin: 0vh 3vw 3vh 3vw;
+  display: flex;
+  color: green;
+  height: 6vh;
+  flex: 0.1;
+  gap: 2vw;
+  justify-content: center;
+}
+
+#buttom {
+  font-size: 350%;
+  width: 8vw;
+  justify-content: center;
+}
+
+#register_container {
+  font-size: 200%;
+}
+
+.word_style {
+  font-size: 350%;
+  margin-top: 2vh;
+}
