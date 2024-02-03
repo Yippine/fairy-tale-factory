@@ -5,29 +5,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>童話工廠 Login</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login_new.css' %}" />
   </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1 class="title">童話工廠</h1>
-      </header>
-      <main>
-        <section class="login-form">
-          <input type="text" placeholder="請輸入帳號" />
-          <input type="password" placeholder="請輸入密碼" />
-          <button class="login_button">登入</button>
-          <p class="hint"><a class="hint_msg" href="/user/register">沒有帳號，請點此註冊</a></p>
-        </section>
-      </main>
-      <footer>
-        <p>版權所有 &copy; 童話工廠</p>
-      </footer>
+
+  <body id="background_container">
+    <div id="right_container">
+      <div id="title_container">童話工廠</div>
+      <div id="form_container">
+        <form action="">
+          <div id="login_container">
+            <input class="word_style" type="text" placeholder="輸入帳號" /><br />
+            <br />
+            <input class="word_style" type="text" placeholder="輸入密碼" /><br />
+            <br />
+          </div>
+          <div id="buttom_container">
+            <a href="/home"><input class="word_style" type="button" onclick="" value="登入" /></a>
+          </div>
+        </form>
+      </div>
+      <div id="register_container"><a href="/user/register">沒有帳號，請點此註冊</a></div>
     </div>
-    <script>
-        document.getElementsByClassName("login_button")[0].addEventListener("click", function () {
-            window.location.href = "/story/createstory";
-        });
-    </script>
+    <div id=" left_container"></div>
   </body>
 </html>

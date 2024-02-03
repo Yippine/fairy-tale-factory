@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    border-style: solid;
+    border-width: 3px;
+    color: #000;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  
+  #form_container {
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10rem;
+    height: 77vh;
+    margin-right: 10vw;
+    display: flex;
+    flex-direction: column;
+    color: red;
+    flex: 0.4;
+  }
+  
+  #title_container {
+    /* border-style: solid;
+        border-width: 3px; */
+    /* height: 77%; */
+    margin: 3vh 3vw;
+    display: flex;
+    color: green;
+    flex: 0.1;
+    font-size: 600%;
+    justify-content: center;
+  }
+  
+  #content_container {
+    /* border-style: solid;
+        border-width: 3px; */
+    /* height: 77%; */
+    margin: 0vh 3vw 3vh 3vw;
+    display: flex;
+    flex-direction: column;
+    color: green;
+    flex: 0.9;
+  }
+  
+  #word_1_container {
+    /* border-style: solid;
+        border-width: 3px; */
+    margin: 3vh 3vw;
+    display: flex;
+    flex-direction: column;
+    color: blue;
+    flex: 0.9;
+    height: 40vh;
+  }
+  
+  #word_2_container {
+    /* border-style: solid;
+        border-width: 3px; */
+    margin: 0vh 3vw 3vh 3vw;
+    display: flex;
+    color: blue;
+    height: 6vh;
+    flex: 0.1;
+    gap: 2vw;
+    justify-content: center;
+  }
+  
+  .word_style {
+    font-size: 300%;
+  }
+  

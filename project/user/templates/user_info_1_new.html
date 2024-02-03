@@ -1,37 +1,37 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>童話工廠 User Info</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A500%2C700" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A500%2C700" />
-    <link rel="stylesheet" href="{% static 'css/user_info_1.css' %}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>童話工廠</title>
+    <link rel="stylesheet" href="{% static 'css/background_new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user_info_1_new.css' %}" />
+
+    <body>
+      <div id="form_container">
+        <div class="word_style" id="title_container">個人資訊</div>
+        <br />
+        <div id="content_container">
+          <form action="">
+            <div id="word_1_container">
+              <label class="word_style" for="nickname">暱稱:</label>
+              <input class="word_style" type="text" disabled="disabled" id="nickname" name="nickname" value="" /><br />
+              <br />
+              <label class="word_style" for="account">帳號:</label>
+              <input class="word_style" type="text" disabled="disabled" id="account" name="account" value="" /><br />
+              <br />
+              <label class="word_style" for="password">密碼:</label>
+              <input class="word_style" type="password" disabled="disabled" id="password" name="password" value="" /><br />
+              <br />
+            </div>
+            <div id="word_2_container">
+              <a href="/home"><input class="word_style" type="button" onclick="" value="返回" /></a>
+              <a href="/user/userinfo2"><input class="word_style" type="button" value="編輯" /></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </body>
   </head>
-  <body>
-    <div class="user-information-b96">
-      <div class="rectangle-10-X2k"></div>
-      <p class="item--Rdv">個人資訊</p>
-      <div class="item--bgp">暱稱：</div>
-      <div class="item--H3r">###</div>
-      <div class="item--Nb6">###</div>
-      <div class="item--V9v">******</div>
-      <div class="item--oAc">密碼：</div>
-      <div class="item--V3S">帳號：</div>
-      <div class="group-10-nYL">編輯個人資訊</div>
-      <div class="group-11-2ha">返回</div>
-      <div class="line-1-tzg"></div>
-    </div>
-    <script>
-        document.getElementsByClassName("group-10-nYL")[0].addEventListener("click", function () {
-            window.location.href = "/user/userinfo2";
-        });
-        document.getElementsByClassName("group-11-2ha")[0].addEventListener("click", function () {
-            window.location.href = "/home";
-        });
-    </script>
-  </body>
 </html>

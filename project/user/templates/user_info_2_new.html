@@ -1,36 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>童話工廠 User Info</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A500%2C700" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A500%2C700" />
-    <link rel="stylesheet" href="{% static 'css/user_info_2.css' %}" />
-  </head>
-  <body>
-    <div class="user-information-2-2Q4">
-      <div class="rectangle-10-Mx8"></div>
-      <p class="item--5dE">個人資訊</p>
-      <p class="item--Ymi">(可編輯)</p>
-      <div class="item--qkp">暱稱：</div>
-      <div class="item--Y9S">###</div>
-      <div class="item--eiG">###</div>
-      <div class="item--Agc">******</div>
-      <div class="item--UhJ">密碼：</div>
-      <div class="id-yPA">ID：</div>
-      <div class="group-11-Tp8">
-        <div class="rectangle-18-zZA"></div>
-        <div class="item--vhi">完成</div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>童話工廠</title>
+    <link rel="stylesheet" href="{% static 'css/background_new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user_info_2_new.css' %}" />
+
+    <body>
+      <div id="form_container">
+        <div id="title_container">個人資訊</div>
+        <br />
+        <div id="content_container">
+          <form action="">
+            <div id="word_1_container">
+              <label class="word_style" for="nickname">暱稱:</label>
+              <input class="word_style" type="text" id="nickname" name="nickname" value="" /><br />
+              <br />
+              <label class="word_style" for="account">帳號:</label>
+              <input class="word_style" type="text" id="account" name="account" value="" /><br />
+              <br />
+              <label class="word_style" for="password">密碼:</label>
+              <input class="word_style" type="password" id="password" name="password" value="" /><br />
+              <br />
+            </div>
+            <div id="word_2_container">
+              <a href="/user/userinfo1"><input class="word_style" type="button" value="完成" /></a>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-    <script>
-        document.getElementsByClassName("rectangle-18-zZA")[0].addEventListener("click", function () {
-            window.location.href = "/user/userinfo1";
-        });
-    </script>
-  </body>
+    </body>
+  </head>
 </html>
