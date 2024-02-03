@@ -24,7 +24,8 @@ section {
 }
 
 .item_list_container {
-  margin: 4vh 1.5vw 4vh 3vw;
+  margin: 2.5vh 0 2.5vh 1.5vw;
+  padding: 3.5vh 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -32,14 +33,13 @@ section {
 }
 
 .background_image {
-  margin: 4vh 3vw 4vh 1.5vw;
+  margin: 2.5vh 1.5vw 2.5vh 0;
 }
 
 .item_name {
   border: 1px solid green;
   padding: 2vw;
-  width: 36vw;
-  margin: 0 1.5vh;
+  width: 39vw;
   border-radius: 1.75vw;
   font-size: clamp(1vw, 2.25vw, 10vw);
   text-align: center;
@@ -52,33 +52,36 @@ section {
 
 .item_info {
   border: 1px solid #008000;
-  letter-spacing: 0.5vw;
-  line-height: 7.5vh;
+  /* display: none; */
+  letter-spacing: 0.35rem;
+  line-height: 3.55rem;
   padding: 2vw;
-  width: 36vw;
+  width: 39vw;
   border-radius: 0 0 1.75vw 1.75vw;
   font-family: "自定義注音字體", sans-serif;
   font-size: clamp(1vw, 1.75vw, 8vw);
-  display: none;
   justify-content: center;
   transition: font-size 0.5s ease-in-out;
   margin: 0 1.5vh;
+  /* 展開縮合動畫效果 */
+  opacity: 0;
+  max-height: 0;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  position: absolute;
+  transform: scaleY(0);
+  transform-origin: top;
 }
 
 .item_info.active {
-  display: block;
-}
-
-.first_item_name {
-  margin-top: 3.5vh;
+  /* display: block; */
+  opacity: 1;
+  max-height: fit-content;
+  transform: scaleY(1);
+  position: relative;
 }
 
 .item_info + .item_name {
   margin-top: 3.5vh;
-}
-
-.item_info:last-of-type {
-  margin-bottom: 3.5vh;
 }
 
 ::-webkit-scrollbar {

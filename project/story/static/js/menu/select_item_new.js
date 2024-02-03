@@ -30,12 +30,10 @@ function generateItemsFromData() {
 
         var newItemName = document.createElement("div");
         newItemName.className = "item_name";
-        if (index === 0) {
-            newItemName.classList.add("first_item_name");
-        }
         newItemName.textContent = index + 1 + ". " + itemName;
         itemListContainer.appendChild(newItemName);
-
+        
+        var itemCount = 2;
         var newItemInfo = document.createElement("div");
         newItemInfo.className = "item_info";
         newItemInfo.textContent = itemInfo;
@@ -47,9 +45,9 @@ function generateItemsFromData() {
 
             itemElements.forEach((el, idx) => {
                 if (idx !== index) {
-                    const otherItemInfo = itemListContainer.children[(idx + 1) * 2];
+                    const otherItemInfo = itemListContainer.children[(idx + 1) * itemCount];
                     otherItemInfo.classList.remove("active");
-                    itemListContainer.children[idx * 2 + 1].style.borderRadius = "1.75vw";
+                    itemListContainer.children[idx * itemCount + 1].style.borderRadius = "1.75vw";
                 }
             });
         });
