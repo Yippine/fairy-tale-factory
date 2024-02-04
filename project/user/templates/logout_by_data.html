@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div class="slide-16-9-2-Wng">
+      <div class="group-9-QJx">開始創造故事</div>
+      添加下面的按钮
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">登出</button>
+      </form>
+    </div>
+  </body>
+</html>

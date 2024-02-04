@@ -115,6 +115,9 @@ class User(models.Model):
     modification_time = models.DateTimeField(blank=True, null=True)
     disable_time = models.DateTimeField(blank=True, null=True)
 
+    def check_password(self, password):
+        return self.user_password == password
+    
     class Meta:
         managed = False
         db_table = 'user'
