@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 
+
+#使用 redirect 函數將請求重定向到 "/home"。
 def redirect_to_home(request):
     return redirect("/home")
 
+
+#render 函數將 home.html 模板渲染為HTTP響應
 def home(request):
     return render(request, "home.html")
 
