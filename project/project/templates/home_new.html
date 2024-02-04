@@ -3,51 +3,57 @@
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/home_new.css' %}" />
     <link rel="stylesheet" href="{% static 'css/background_new.css' %}" />
   </head>
 
-  <body>
+  <body style="border-style:solid; border-color:red;">
     <div class="background_1">
       <div class="border1_1">
-        <h1 id="fair_tale_factory"><strong>童話工廠</strong></h1>
-        <p id="content" style="color: aliceblue;">
-          <strong>
-            讓我們來實現<br />
-            實現你幻想中的完美童話 . . .
-          </strong>
-        </p>
-
         <div class="border2_1">
           <div class="border3_1">
-            <a href="/aboutus"><img src="{% static 'img/item/chat.png' %}" alt="about_us" /></a>
-            <a href="/aboutus">
-              <p><strong style="color: white;">關於我們</strong></p>
-            </a>
+            <h1 id="fair_tale_factory"><strong>童話工廠</strong></h1>
+            <p id="content" style="color: aliceblue;">
+            <strong>
+              讓我們來實現<br>
+              實現你幻想中的完美童話 . . .
+            </strong>
+            </p>
           </div>
+          <div class="border3_2" >
+            <div class="border4_1">
+              <a href="/aboutus"><img src="{% static 'img/item/chat.png' %}" alt="about_us" /></a>
+              <a href="/aboutus">
+                <p><strong style="color: white;">關於我們</strong></p>
+              </a>
+            </div>
 
-          <div class="border3_2">
-            <a href="/user/userinfo1"><img src="{% static 'img/item/user.png' %}" alt="user" /></a>
-            <a href="/user/userinfo1">
-              <p><strong style="color: white;">個人資訊</strong></p>
-            </a>
-          </div>
+            <div class="border4_2" >
+              <a href="/user/userinfo1"><img src="{% static 'img/item/user.png' %}" alt="user" /></a>
+              <a href="/user/userinfo1">
+                <p><strong style="color: white;">個人資訊</strong></p>
+              </a>
+            </div>
 
-          <div class="border3_3">
-            <a href="user_imformation.html"><img src="{% static 'img/item/book.png' %}" alt="books" />
-            <a href="user_imformation.html">
-              <p><strong style="color: white;">收藏的故事</strong></p>
-            </a>
+            <div class="border4_3">
+              <a href="/story/mystorybooks"><img src="{% static 'img/item/book.png' %}" alt="books" />
+              <a href="user_imformation.html">
+                <p><strong style="color: white;">收藏的故事</strong></p>
+              </a>
+            </div>
+
           </div>
         </div>
-
-        <div class="border2_2">
-          <a href="/story/createstory"><img class="cat" src="{% static 'img/item/cat.png' %}" alt="cat" /></a>
-          <a href="/story/createstory">
+        
+        <div  class="border2_2">
+          <div class="border3_3">
+            <a href="/story/createstory"><img src="{% static 'img/item/cat.png' %}" alt="cat" style="border-style:solid; border-color:red;"></a>
+            <a href="/story/createstory">
             <h2 id="story_start"><strong style="color: white;">故事開始</strong></h2>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
     </div>

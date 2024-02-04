@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "自定義字體";
+  src: url("/static/fonts/清松手寫體/tw/JasonHandwriting1-SemiBold.ttf") format("truetype");
+  /* src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting3-Light.woff") format("truetype"); */
+  /* src: url("/static/fonts/清松手寫體/webfont/JasonHandwriting5.woff2") format("truetype"); */
+  /* src: url("/static/fonts/新蒂蠟筆體/HanyiSentyCrayon.ttf") format("truetype"); */
+  /* src: url("/static/fonts/字嗨注音標楷/BpmfZihiKaiStd-Regular.ttf") format("truetype"); */
+  /* src: url("/static/fonts/注音芫荽/BpmfIansui-Regular.ttf") format("truetype"); */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "自定義注音字體";
+  src: url("/static/fonts/注音芫荽/BpmfIansui-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "自定義字體", sans-serif;
+}
+
+.background_1 {
+  height: 100vh;
+  background-image: url("/static/img/background/mystic chronicles.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* @media screen and (max-width: 1000px) {
+  .background_1 {
+    background-image: url("/static/img/background/mystic chronicles.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .border2_2 {
+    position: relative;
+    margin: 25rem 0 0 0;
+    width: 50vw;
+    height: 30vh;
+  }
+
+  #story_start {
+    position: relative;
+    margin: -28% 0 0 67%;
+    font-size: 60%;
+  }
+} */
