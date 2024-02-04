@@ -1,23 +1,12 @@
-const observer = new MutationObserver((mutationsList, observer) => {
-    // mutationsList.forEach((mutation) => {
-    //     if (mutation.addedNodes.length > 0) {
-    //         mutation.addedNodes.forEach((node) => {
-    //             if (node.classList.contains("auto-group-sqvl-fMn") || node.classList.contains("auto-group-nomn-m9v")) {
-    //                 node.addEventListener("click", function () {
-    //                     window.location.href = "/story/itemdetails";
-    //                 });
-    //             } else if (node.classList.contains("group-10-cn7")) {
-    //                 node.addEventListener("click", function () {
-    //                     window.location.href = "/story/createstory";
-    //                 });
-    //             }
-    //         });
-    //     }
-    // });
+document.addEventListener("DOMContentLoaded", (event) => {
+    document.getElementById("select_button").addEventListener("click", () => redirectTo("createstory"));
+    document.getElementById("home_button").addEventListener("click", () => redirectTo("createstory"));
+    generateItemsFromData();
 });
 
-const config = { childList: true, subtree: true };
-observer.observe(document, config);
+function redirectTo(path) {
+    window.location.href = `/story/${path}`;
+}
 
 function generateItemsFromData() {
     const dataContainer = document.getElementById("data-container");
@@ -48,7 +37,7 @@ function generateItemsFromData() {
 
 function fetchItemInfo(id, infoDiv) {
     console.log('fetchItemInfo(id = ' + id + ', infoDiv = ' + infoDiv.textContent + ')')
-    fetch("/story/itemdetailsbydata/" + id)
+    fetch("/story/itemdetailsbydata?item_id=" + id)
         .then((response) => response.json())
         .then((data) => {
             console.log('data.item_info = ' + data.item_info)
@@ -72,5 +61,3 @@ function toggleActiveState(listContainer, elements, curIndex, nameDiv, infoDiv, 
         }
     });
 }
-
-generateItemsFromData();

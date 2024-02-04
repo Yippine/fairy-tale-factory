@@ -29,7 +29,8 @@ def select_item_by_data(request):
 def main_role_details(request):
     return render(request, "menu/main_role_details.html")
 
-def main_role_details_by_data(request, item_id):
+def main_role_details_by_data(request):
+    item_id = request.GET.get('item_id')
     item = get_object_or_404(Item, pk=item_id)
     return JsonResponse({
         'item_name': item.item_name,
@@ -39,7 +40,8 @@ def main_role_details_by_data(request, item_id):
 def sup_role_details(request):
     return render(request, "menu/sup_role_details.html")
 
-def sup_role_details_by_data(request, item_id):
+def sup_role_details_by_data(request):
+    item_id = request.GET.get('item_id')
     item = get_object_or_404(Item, pk=item_id)
     return JsonResponse({
         'item_name': item.item_name,
@@ -49,9 +51,11 @@ def sup_role_details_by_data(request, item_id):
 def item_details(request):
     return render(request, "menu/item_details.html")
 
-def item_details_by_data(request, item_id):
+def item_details_by_data(request):
+    item_id = request.GET.get('item_id')
     item = get_object_or_404(Item, pk=item_id)
     return JsonResponse({
+        'item_name': item.item_name,
         'item_info': item.item_info
     })
 
@@ -88,6 +92,13 @@ def sup_role_details_new(request):
 
 def item_details_new(request):
     return render(request, "menu/item_details_new.html")
+
+def item_details_by_data_new(request):
+    item_id = request.GET.get('item_id')
+    item = get_object_or_404(Item, pk=item_id)
+    return JsonResponse({
+        'item_info': item.item_info
+    })
 
 def loading_new(request):
     return render(request, "display/loading_new.html")
