@@ -16,6 +16,7 @@ SECRET_KEY = 'django-insecure-67rte1i+m((c#_$)kp7q85n6#%+g4gx@#ykz0bi*97d-f=9kjv
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_URL = '/user/loginbydata/' 
 
 
 # Application definition
@@ -31,6 +32,10 @@ INSTALLED_APPS = [
     'story',
 ]
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_SAVE_EVERY_REQUEST = True
+AUTHENTICATION_BACKENDS = ['user.Custom.CustomAuthBackend']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -42,7 +47,7 @@ MIDDLEWARE = [
     'project.middleware.webversion.WebVersionMiddleware',
 ]
 
-WEB_VERSION = 'NEW'
+# WEB_VERSION = 'NEW'
 
 ROOT_URLCONF = 'project.urls'
 

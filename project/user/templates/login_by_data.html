@@ -1,33 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>童話工廠 Login</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
     <div class="container">
-      <header>
-        <h1 class="title">童話工廠</h1>
-      </header>
-      <main>
-        <section class="login-form">
-          <input type="text" placeholder="請輸入帳號" />
-          <input type="password" placeholder="請輸入密碼" />
-          <button class="login_button">登入</button>
-          <p class="hint"><a class="hint_msg" href="/user/registerbydata">沒有帳號，請點此註冊</a></p>
-        </section>
-      </main>
-      <footer>
-        <p>版權所有 &copy; 童話工廠</p>
-      </footer>
+        <header>
+            <h1 class="title">童話工廠</h1>
+        </header>
+        <main>
+            <section class="login-form">
+                <form method="post" action="{% url 'login_by_data' %}">
+                    {% csrf_token %}
+                    {{ form.user_name.label_tag }} {{ form.user_name }}
+                    {{ form.user_password.label_tag }} {{ form.user_password }}
+                    <button type="submit" class="login_button">登入</button>
+                </form>
+                <p class="hint"><a class="hint_msg" href="/user/registerbydata">沒有帳號，請點此註冊</a></p>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="error-messages">
+                                <p class="error-msg">{{ message }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </section>
+        </main>
+        <footer>
+            <p>版權所有 &copy; 童話工廠</p>
+        </footer>
     </div>
-    <script>
-        document.getElementsByClassName("login_button")[0].addEventListener("click", function () {
-            window.location.href = "/story/createstory";
-        });
-    </script>
-  </body>
+</body>
 </html>
