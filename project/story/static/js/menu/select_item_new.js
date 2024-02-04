@@ -56,8 +56,33 @@ function toggleActiveState(listContainer, elements, curIndex, nameDiv, infoDiv, 
             otherinfoDiv.classList.remove("active");
             otherinfoDiv.textContent = '';
             listContainer.children[idx * count + 1].style.borderRadius = "1.75vw";
-        } else {
-            console.log('index = ' + (idx + 1) * count)
+        } else if (infoDiv.classList.contains("active")) {
+            console.log('index = ' + (idx + 1) * count);
+            nameDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            setImgSrc(nameDiv)
         }
     });
+}
+
+function setImgSrc(nameDiv) {
+    var itemName = getItemName(nameDiv.textContent);
+    fetch("/story/getstoryelementname?item_name=" + itemName)
+        .then((response) => response.json())
+        .then((data) => {
+            const imgElement = document.getElementById("item_image");
+            imgElement.src = "/static/img/story_elements/" + data.img_name;
+            console.log('data.img_name: ' + data.img_name)
+        })
+        .catch((error) => console.error("Fetch error:", error));
+}
+
+function getItemName(selectedItem) {
+    var regex = /\d+\.\s(.+)/;
+    var match = selectedItem.match(regex);
+
+    if (match) {
+        var formalName = match[1];
+        return formalName;
+    }
+    return "";
 }

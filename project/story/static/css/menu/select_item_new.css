@@ -1,5 +1,5 @@
 body {
-  border: 0.5rem solid red;
+  /* border: 0.5rem solid red; */
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -7,7 +7,7 @@ body {
 }
 
 main {
-  border: 0.5rem solid red;
+  /* border: 0.5rem solid red; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,7 +21,7 @@ main {
 }
 
 section {
-  border: 0.5rem solid red;
+  /* border: 0.5rem solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,7 +162,7 @@ img {
 }
 
 .button_container {
-  border: 0.5rem solid red;
+  /* border: 0.5rem solid red; */
   margin: 3vh 3.5vw;
   width: -webkit-fill-available;
   flex: 1;
@@ -187,4 +187,12 @@ button {
 button:hover {
   transform: scale(1.05);
   background-color: darken(#d6a982, 10%);
+}
+
+@media screen and (max-width: 600px) {
+  /* 針對手機設計的樣式 */
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  /* 針對平板電腦設計的樣式 */
 }

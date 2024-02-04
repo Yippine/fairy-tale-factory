@@ -24,6 +24,7 @@ urlpatterns = [
     path('suproledetailsnew/', views.sup_role_details_new, name='menu/sup_role_details_new'),
     path('itemdetailsnew/', views.item_details_new, name='menu/item_details_new'),
     path('itemdetailsbydatanew/', views.item_details_by_data_new, name='menu/item_details_by_data_new'),
+    path('getstoryelementnamenew/', views.get_story_element_name_new, name='menu/get_story_element_name_new'),
     path('loadingnew/', views.loading_new, name='display/loading_new'),
     path('storybookdisplaynew/', views.storybook_display_new, name='display/storybook_display_new'),
     path('socialfeaturesnew/', views.social_features_new, name='display/social_features_new'),
