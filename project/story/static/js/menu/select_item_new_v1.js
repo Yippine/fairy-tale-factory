@@ -47,7 +47,7 @@ function generateItemsFromData() {
 }
 
 function fetchItemInfo(id, infoDiv) {
-    console.log('fetchItemInfo(id = ' + id + ', infoDiv = ' + infoDiv.textContent + ')')
+    console.log('fetchItemInfo(id = ' + id + ', infoDiv = ' + infoDiv.textContent)
     fetch("/story/itemdetailsbydata/" + id)
         .then((response) => response.json())
         .then((data) => {

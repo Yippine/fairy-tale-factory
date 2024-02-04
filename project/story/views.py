@@ -52,7 +52,6 @@ def item_details(request):
 def item_details_by_data(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
     return JsonResponse({
-        'item_name': item.item_name,
         'item_info': item.item_info
     })
 
@@ -78,7 +77,7 @@ def select_sup_role_new(request):
     return render(request, "menu/select_sup_role_new.html")
 
 def select_item_new(request):
-    items = Item.objects.all().filter(item_type=2)
+    items = Item.objects.filter(item_type=2).values('item_id', 'item_name')
     return render(request, "menu/select_item_new.html", {"items": items})
 
 def main_role_details_new(request):

@@ -157,8 +157,7 @@ section {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
 }
 
 .button_container {
@@ -181,10 +180,4 @@ button {
   cursor: pointer;
   padding: 1vh 2vw;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-  background-color: darken(#d6a982, 10%);
 }
