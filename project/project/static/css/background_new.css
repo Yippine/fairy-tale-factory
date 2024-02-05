@@ -21,34 +21,45 @@
   font-family: "自定義字體", sans-serif;
 }
 
-.background_1 {
-  height: 100vh;
-  background-image: url("/static/img/background/mystic chronicles.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+.light_up_button {
   position: relative;
 }
 
-/* @media screen and (max-width: 1000px) {
-  .background_1 {
-    background-image: url("/static/img/background/mystic chronicles.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-  }
+.light_up_button::before {
+  content: ""; /* 添加一個偽元素，用於創建發光效果 */
+  position: absolute; /* 設置偽元素為絕對定位 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 1vh 1vw;
+  border-radius: 12%; /* 將偽元素設置為圓角方形 */
+  background-color: rgba(255, 255, 255, 0.2); /* 設置偽元素的背景顏色，可以自行調整顏色和不透明度 */
+  /* 添加動畫效果，實現閃爍效果 */
+  /* animation: glow 2s infinite alternate; */
+  /* 使用光暈動畫，無限循環 */
+  animation: glowing 6s infinite;
+}
 
-  .border2_2 {
-    position: relative;
-    margin: 25rem 0 0 0;
-    width: 50vw;
-    height: 30vh;
+@keyframes glow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
   }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
 
-  #story_start {
-    position: relative;
-    margin: -28% 0 0 67%;
-    font-size: 60%;
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 219, 157, 0.5); /* 初始陰影，透明度較低 */
   }
-} */
+  50% {
+    box-shadow: 0 0 20px rgba(255, 219, 157, 0.8); /* 高亮陰影，透明度較高 */
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 219, 157, 0.5); /* 回到初始陰影 */
+  }
+}

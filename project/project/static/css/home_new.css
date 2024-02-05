@@ -3,189 +3,210 @@
   padding: 0;
 }
 
-a {
-  text-decoration: none;
+body {
+  /* border: 1px solid red; */
+  height: 100vh;
+  overflow: hidden;
+  /* background-color: gray; */
+  background-image: url("/static/img/background/mystic chronicles.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.border1_1 {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  margin: 0 2.5rem 2.5rem 2.5rem;
-  height: 94vh;
+.background_container {
+  /* border: 1px solid red; */
+  height: 100%;
+  padding: 0 5vw;
 }
 
-.border2_1 {
-  width: 0;
-  flex: 1;
-}
-
-.border2_2 {
-  width: 0;
-  flex: 1;
-}
-
-.border3_1 {
-  height: 50%;
-}
-.border3_2 {
-  display: flex;
-  height: 50%;
-}
-
-.border3_3 {
-  position: relative;
-  margin: 60vh 0 0 0;
-  padding: 0 2vw 0 0;
-  height: 34vh;
-  width: auto;
+main {
+  /* border: 1px solid red; */
+  margin: 6.25vh 0;
+  height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
-  justify-content: end;
 }
 
-.border3_3 img {
-  margin: 0 0 0 28vw;
-  height: 16vw;
+.header_container {
+  /* border: 1px solid red; */
+  padding: 6vh;
+  /* flex: 7; */
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  gap: 6vh;
 }
 
-.border3_3 h2 {
-  margin: 0 0 0 28vw;
-  font-size: 3vw;
-}
-
-/* #story_start {
-    position: relative;
-    margin: -12vw 0 0 27vw;
-    font-size: 3vw;
-} */
-
-#fair_tale_factory {
-  position: absolute;
+.header_content {
+  /* border: 1px solid red; */
   color: aliceblue;
-  left: 4%;
-  top: 6%;
-  font-size: 6vw;
+  white-space: nowrap; /* 禁止文字換行 */
+  overflow: hidden; /* 隱藏超出範圍的文字 */
+  text-overflow: ellipsis; /* 顯示省略號 */
+  opacity: 0.875;
 }
 
-#content {
-  position: absolute;
-  color: aliceblue;
-  left: 5%;
-  top: 25%;
-  font-size: 2vw;
+.header_container h1 {
+  font-size: clamp(10.5vh, 2.5vw, 2.5vh);
+  -webkit-text-stroke-width: 0.2vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+  width: fit-content;
 }
 
-.border4_1 {
-  position: relative;
+.header_container p {
+  font-size: clamp(4vh, 2.5vw, 2.5vh);
+  padding-left: 1vw;
+  -webkit-text-stroke-width: 0.1vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+  width: fit-content;
+}
+
+.button_container {
+  /* border: 1px solid red; */
+  /* flex: 5; */
+  height: 35vh;
+  display: flex;
+}
+
+.item_button_container {
+  /* border: 1px solid red; */
+  padding-top: 12vh;
+  flex: 4;
+  display: flex;
+  overflow: hidden;
+}
+
+.item_button {
+  /* border: 1px solid red; */
+  flex: 1;
+  background: none;
   display: flex;
   flex-direction: column;
-  margin: 22vh 0 0 0;
-  height: 50%;
-  width: 33.3vw;
+  align-items: center;
+  opacity: 0.875;
 }
 
-.border4_1 img {
-  width: 9vw;
+.item_button:hover {
+  opacity: 1;
 }
 
-.border4_1 p,
-a {
-  margin: auto;
-  font-size: 2vw;
+.item_button div,
+.start_button div {
+  /* border: 1px solid red; */
+  width: -webkit-fill-available;
 }
 
-.border4_2 {
+.button_icon {
+  flex: 5;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-width: 90%;
+  max-height: -webkit-fill-available;
+}
+
+.book_image {
+  max-height: 83%;
+}
+
+.cat_image {
+  max-width: 66%;
+}
+
+.button_text {
+  flex: 1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(3.5vh, 2.5vw, 2.5vh);
+  -webkit-text-stroke-width: 0.1vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
   position: relative;
+}
+
+.button_text h2 {
+  font-size: clamp(4vh, 2.5vw, 2.5vh);
+  -webkit-text-stroke-width: 0.1vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+}
+
+.start_button_container {
+  /* border: 1px solid red; */
+  flex: 5;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.start_button {
+  /* border: 1px solid red; */
+  width: 16vw;
   display: flex;
   flex-direction: column;
-  margin: 22vh 0 0 0;
-  height: 50%;
-  width: 33.3vw;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.875;
 }
 
-.border4_2 img {
-  width: 9vw;
+.start_button:hover {
+  opacity: 1;
 }
 
-.border4_2 p,
-a {
-  margin: auto;
-  font-size: 2vw;
+@media only screen and (max-width: 768px) {
+  /* 針對平板和手機的樣式調整 */
+  .header_container h1 {
+    font-size: 5vh;
+    -webkit-text-stroke-width: 0.075vh;
+    -webkit-text-stroke-color: rgb(48, 48, 48);
+  }
+
+  .header_container p {
+    font-size: 3vh;
+    -webkit-text-stroke-width: 0.075vh;
+    -webkit-text-stroke-color: rgb(48, 48, 48);
+  }
+
+  .item_button {
+    flex-basis: 33%;
+  }
+
+  .start_button {
+    width: 50vw;
+  }
 }
 
-.border4_3 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: 22vh 0 0 0;
-  height: 50%;
-  width: 33.3vw;
+@media only screen and (max-width: 480px) {
+  /* 針對手機的樣式調整 */
+  .header_container h1 {
+    font-size: 4vh;
+    -webkit-text-stroke-width: 0.05vh;
+    -webkit-text-stroke-color: rgb(48, 48, 48);
+  }
+
+  .header_container p {
+    font-size: 2vh;
+    -webkit-text-stroke-width: 0.05vh;
+    -webkit-text-stroke-color: rgb(48, 48, 48);
+  }
+
+  .item_button {
+    flex-basis: 100%;
+  }
+
+  .start_button {
+    width: 80vw;
+  }
 }
 
-.border4_3 img {
-  margin: auto;
-  width: 7vw;
-}
-
-.border4_3 p,
-a {
-  margin: auto;
-  font-size: 2vw;
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    overflow: unset;
-  }
-
-  .border1_1 {
-    margin: 0 1rem 1rem 1rem;
-    height: 94vh;
-  }
-
-  .border2_1 {
-    flex: 2;
-  }
-
-  .border4_1 img {
-    flex-wrap: nowrap;
-    width: 18vw;
-  }
-
-  .border4_1 p,
-  a {
-    flex-wrap: nowrap;
-    margin: auto;
-    font-size: 4vw;
-  }
-
-  .border4_2 img {
-    flex-wrap: nowrap;
-    width: 18vw;
-  }
-
-  .border4_2 p,
-  a {
-    flex-wrap: nowrap;
-    margin: auto;
-    font-size: 4vw;
-  }
-
-  .border4_3 img {
-    flex-wrap: nowrap;
-    width: 16vw;
-  }
-
-  .border4_3 p,
-  a {
-    flex-wrap: nowrap;
-    margin: auto;
-    font-size: 4vw;
-  }
-
-  .header_text,
-  .button_text {
-    font-size: 5vw;
-  }
+/* 縮放效果 */
+.item_button:hover,
+.start_button:hover {
+  transform: scale(1.05); /* 鼠標懸停時放大 */
+  transition: transform 0.3s ease-in-out;
 }
