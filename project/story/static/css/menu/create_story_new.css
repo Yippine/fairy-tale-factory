@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: url('/static/img/background/mystic chronicles.png');
+  background-image: url("/static/img/background/mystic chronicles.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,7 +19,9 @@ body {
   margin: 2.5vh 1vw;
 }
 
-header, .create_button_container, .select_button {
+header,
+.create_button_container,
+.select_button {
   /* border: 1px solid red; */
   flex: 1;
   display: flex;
@@ -28,14 +30,16 @@ header, .create_button_container, .select_button {
 }
 
 header {
-  position: relative;  
-}
-
-.button_container {
   /* border: 1px solid red; */
+  position: relative;
 }
 
-.item_button, .create_button {
+/* .button_container {
+  border: 1px solid red;
+} */
+
+.item_button,
+.create_button {
   margin: 0 5vw;
   border-color: antiquewhite;
   border-width: 0.3vw;
@@ -62,7 +66,7 @@ button:hover {
   background: radial-gradient(circle, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
   background-size: cover;
   background-position: center;
-  background-image: url('/static/img/web_page/background/dreamscape bubble.png');
+  background-image: url("/static/img/web_page/background/dreamscape bubble.png");
   border-radius: 18vw;
   opacity: 0.4;
   transition: opacity 0.3s;
@@ -73,7 +77,16 @@ button:hover {
   opacity: 0.6;
 }
 
-.header_text, .button_text {
+.go_home_button {
+  /* border: 1px solid red; */
+  height: 5vh;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+}
+
+.header_text,
+.button_text {
   font-size: clamp(4.5vh, 2.5vw, 2.5vh);
   font-weight: bold;
   text-overflow: ellipsis;
@@ -81,48 +94,27 @@ button:hover {
 }
 
 .header_text {
+  /* border: 1px solid red; */
   -webkit-text-fill-color: white;
 }
-
-.go_back{
-  display: block;
-  height: 80%;
-  overflow: hidden;
-}
-
-.go_back_home{
-    height: 3vw;
-    max-width: 100%;
-    max-height: 100%;
-    position: absolute;
-    top: 10%;
-    bottom: 0;
-    left: 2%;
-    right: 0;
-}
-
-/* .go_back{
-  position: absolute;
-  top: 2vh;
-  left: 1vw;
-}
-
-.go_back_home{
-  height: 4vw;
-} */
 
 @media screen and (max-width: 768px) {
   body {
     overflow: unset;
   }
 
-  .item_button, .create_button {
+  .item_button,
+  .create_button {
     font-size: 4vw;
     padding: 2vw;
   }
 
-  .header_text, .button_text {
+  .header_text,
+  .button_text {
     font-size: 5vw;
   }
-}
 
+  .go_home_button {
+    height: 5.5vw;
+  }
+}

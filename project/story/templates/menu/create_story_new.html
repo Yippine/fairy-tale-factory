@@ -14,18 +14,17 @@
     <link rel="stylesheet" href="{% static 'css/menu/create_story_new.css' %}" />
   </head>
   <body>
-    <section class="container" style="border-style:solid; border-color:red;">
-      <header style="border-style:solid; border-color:blue;">
-        <!-- <div class="go_back" style="border-style:solid; border-color:red;"> -->
-          <img class="go_back_home" src="{% static 'img/web_page/vector/return_img.png' %}" alt="return_img">
-        <!-- </div> -->
-        <p class="header_text" style="border-style:solid; border-color:red;">
-          創造一個新故事...<br />你需要..
+    <section class="container">
+      <header>
+        <img class="go_home_button" src="{% static 'img/web_page/vector/return_img.png' %}" alt="return_img" />
+        <p class="header_text">
+          創造一個新故事...<br />
+          你需要..
         </p>
-      </header>
-      <div class="select_button" style="border-style:solid; border-color:red;">
-        <div class="button_container" style="border-style:solid; border-color:red;">
-          <button type="button" class="item_button" style="border-style:solid; border-color:red;">
+      </header>      
+      <div class="select_button">
+        <div class="button_container">
+          <button type="button" class="item_button">
             <span class="button_text" id="main_role_button">主&nbsp;&nbsp;角</span>
           </button>
         </div>
@@ -55,12 +54,9 @@
         document.getElementById("sup_role_button").addEventListener("click", () => redirectTo("selectsuprole"));
         document.getElementById("item_button").addEventListener("click", () => redirectTo("selectitem"));
         document.getElementById("create_button").addEventListener("click", () => redirectTo("loading"));
-        document.getElementsByClassName("go_back_home")[0].addEventListener("click", function () {
+        document.getElementsByClassName("go_home_button")[0].addEventListener("click", function () {
             window.location.href = "/home";
         });
-        // document.getElementsByClassName("go_back_home").addEventListener("click", function () {
-        // window.location.href = "/home";
-        // });
     </script>
   </body>
 </html>
