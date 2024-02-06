@@ -285,6 +285,10 @@ UPDATE item
 SET    disable_time = "2024-01-23 12:00:00"
 WHERE  original_story_id IN ( 5, 21, 36, 51 );
 
+UPDATE item
+SET    disable_time = "2024-02-05 12:00:00"
+WHERE  item_id IN ( 94 );
+
 
 
 -- 新增 item 備註

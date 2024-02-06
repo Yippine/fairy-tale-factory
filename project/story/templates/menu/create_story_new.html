@@ -16,10 +16,10 @@
   <body>
     <section class="container">
       <header>
-        <img class="go_home_button" src="{% static 'img/web_page/vector/return_img.png' %}" alt="return_img" />
+        <img class="go_home_button" id="go_home_button" src="{% static 'img/web_page/vector/return_img.png' %}" alt="return_img" />
         <p class="header_text">
           創造一個新故事...<br />
-          你需要..
+          你需要...
         </p>
       </header>
       <div class="select_button">
@@ -46,17 +46,6 @@
         </button>
       </div>
     </section>
-    <script>
-        function redirectTo(path) {
-            window.location.href = `/story/${path}`;
-        }
-        document.getElementById("main_role_button").addEventListener("click", () => redirectTo("selectmainrole"));
-        document.getElementById("sup_role_button").addEventListener("click", () => redirectTo("selectsuprole"));
-        document.getElementById("item_button").addEventListener("click", () => redirectTo("selectitem"));
-        document.getElementById("create_button").addEventListener("click", () => redirectTo("loading"));
-        document.getElementsByClassName("go_home_button")[0].addEventListener("click", function () {
-            window.location.href = "/home";
-        });
-    </script>
+    <script src="{% static 'js/menu/create_story_new.js' %}"></script>
   </body>
 </html>
