@@ -1,6 +1,6 @@
 import os
 import re
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from story.models import Item
 
@@ -65,7 +65,31 @@ def loading(request):
     return render(request, "display/loading.html")
 
 def storybook_display(request):
-    return render(request, "display/storybook_display.html")
+    a = '''在一個村莊裡，有一個年輕的牧羊男孩負責放牧村民的羊群。他的工作是保護羊群免受狼的攻擊。這位男孩很快感到了無聊，於是他開始用喊叫「狼來了！」來尋求村民的注意。
+
+村民聽到他的呼喊，紛紛前來幫助，但當他們到達時，發現並沒有狼。男孩哈哈大笑，對於自己的惡作劇感到非常高興。
+
+幾天後，男孩再次感到無聊，並再次欺騙村民，喊道：“狼來了！狼來了！”村民再次趕來，但這一次還是沒有發現狼，只有一個嘲笑他們的男孩。
+
+然而，當狼真的出現並威脅到羊群時，男孩急切地大聲呼喊，但這一次村民不再相信他，以為他再次在開玩笑，因此沒有人來救助他。最終，狼襲擊了羊群，男孩無法阻止，導致許多羊被狼吞噬。
+
+這個故事的教訓是告訴人們不要撒謊和欺騙。如果你一再說謊，別人就會失去對你的信任。即使說真話時，也可能因為過去的謊言而失去幫助和支持。因此，這個故事強調了誠實和信任的重要性。'''
+    article_list = split_paragraphs(a)
+    if article_list:
+        page_number = int(request.GET.get('page_number', 1))  # 获取页数，默认为第一页
+
+        if page_number < 1:
+            page_number = 1
+        if page_number > len(article_list):
+            page_number = len(article_list)
+
+        current_article = article_list[page_number - 1]
+        
+        return render(request, "display/storybook_display.html", {'article_list': current_article, 'page_number': page_number})
+
+    else:
+        # 如果article_list为空，你可以添加一些适当的处理方式，例如返回一个错误消息给用户
+        return HttpResponse("文章列表为空，请检查您的数据。")
 
 def social_features(request):
     return render(request, "display/social_features.html")
