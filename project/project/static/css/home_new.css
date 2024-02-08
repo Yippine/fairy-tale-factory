@@ -154,8 +154,20 @@ img {
   opacity: 0.875;
 }
 
+.item_button,
+.start_button {
+  padding: 2.5vh 0;
+}
+
 .start_button:hover {
   opacity: 1;
+}
+
+/* 縮放效果 */
+.item_button:hover,
+.start_button:hover {
+  transform: scale(1.05); /* 鼠標懸停時放大 */
+  transition: transform 0.3s ease-in-out;
 }
 
 @media only screen and (max-width: 768px) {
@@ -202,11 +214,4 @@ img {
   .start_button {
     width: 80vw;
   }
-}
-
-/* 縮放效果 */
-.item_button:hover,
-.start_button:hover {
-  transform: scale(1.05); /* 鼠標懸停時放大 */
-  transition: transform 0.3s ease-in-out;
 }

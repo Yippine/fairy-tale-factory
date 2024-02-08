@@ -136,7 +136,7 @@ section {
   align-items: center;
 }
 
-/* 相框樣式 */
+/* 反光效果 */
 .image_container::before {
   /* border: 0.5rem solid red; */
   content: "";
@@ -157,7 +157,7 @@ section {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
