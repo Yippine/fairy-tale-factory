@@ -64,4 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
             saveSuccessfulPopUp.style.display = "none";
         }, 1500);
     });
+    document.getElementById("next_page_button").addEventListener("click", function () {
+        if (page < 20) {
+            window.location.href = `/story/storybookdisplay?page=${page + 1}`;
+        }
+    });
 });
