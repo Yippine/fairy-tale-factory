@@ -1,20 +1,21 @@
 import os
 import re
-from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
-from story.models import Item
 import json
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.csrf import csrf_exempt
+from .dto import SelectItemDTO
+from .models import Item
 
 @csrf_exempt
-def set_item_type_new(request):
+def set_select_item(request):
     if request.method == "POST":
-        data = json.loads(request.body)
-        item_type = data.get("item_type")
-        request.session["item_type"] = item_type
+        json_dict = json.loads(request.body.decode("utf-8"))
+        select_item = json_dict.get("select_item", {})
+        request.session["select_item"] = select_item
+        request.session.modified = True
         return JsonResponse({"status": "success"})
-    return JsonResponse({"status": "`error"}, status=400)
+    return JsonResponse({"status": "error"}, status=400)
 
 def create_story(request):
     return render(request, "menu/create_story.html")
@@ -78,25 +79,18 @@ def storybook_display(request):
 
 這個故事的教訓是告訴人們不要撒謊和欺騙。如果你一再說謊，別人就會失去對你的信任。即使說真話時，也可能因為過去的謊言而失去幫助和支持。因此，這個故事強調了誠實和信任的重要性。"""
     article_list = split_paragraphs(a)
-    if article_list:
-        page_number = int(request.GET.get("page_number", 1))  # 获取页数，默认为第一页
 
+    if article_list:
+        page_number = int(request.GET.get("page_number", 1)) # 取得頁數，預設為第一頁
         if page_number < 1:
             page_number = 1
         if page_number > len(article_list):
             page_number = len(article_list)
-
         current_article = article_list[page_number - 1]
-
-        return render(
-            request,
-            "display/storybook_display.html",
-            {"article_list": current_article, "page_number": page_number},
-        )
-
+        return render(request, "display/storybook_display.html", {"article_list": current_article, "page_number": page_number},)
     else:
-        # 如果article_list为空，你可以添加一些适当的处理方式，例如返回一个错误消息给用户
-        return HttpResponse("文章列表为空，请检查您的数据。")
+        # 如果 article_list 為空，你可以加入一些適當的處理方式，例如傳回一個錯誤訊息給使用者
+        return HttpResponse("文章列表為空，請檢查您的資料。")
 
 def social_features(request):
     return render(request, "display/social_features.html")
@@ -114,18 +108,23 @@ def select_sup_role_new(request):
     return render(request, "menu/select_sup_role_new.html")
 
 def select_item_new(request):
-    item_types = {"main_role": 1, "sup_role": 1, "item": 2}
-    item_type = request.session.get("item_type", None)
-    item_type_val = item_types.get(item_type, 0)
-    items = Item.objects.filter(
-        item_type=item_type_val, disable_time__isnull=True
-    ).values("item_id", "item_name")
+    item_type_enum = {
+        "main_role": 1,
+        "sup_role": 1,
+        "item": 2
+    }
+    select_item_dict = request.session.get('select_item')
+    dto = SelectItemDTO.from_dict(select_item_dict)
+    item_type = item_type_enum.get(dto.item_page)
+    items = Item.objects.filter(item_type=item_type, disable_time__isnull=True).values(
+        "item_id", "item_name"
+    )
     return render(
         request,
         "menu/select_item_new.html",
         {
-            "items": items,
-        },
+            "items": items
+        }
     )
 
 def main_role_details_new(request):

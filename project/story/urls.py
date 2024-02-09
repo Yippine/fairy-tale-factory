@@ -17,7 +17,7 @@ urlpatterns = [
 
     # 新版網頁
     path('createstorynew/', views.create_story_new, name='menu/create_story_new'),
-    path('setitemtypenew/', views.set_item_type_new, name='menu/set_item_type_new'),
+    path('setselectitemnew/', views.set_select_item, name='menu/set_select_item'),
     path('selectmainrolenew/', views.select_main_role_new, name='menu/select_main_role_new'),
     path('selectsuprolenew/', views.select_sup_role_new, name='menu/select_sup_role_new'),
     path('selectitemnew/', views.select_item_new, name='menu/select_item_new'),

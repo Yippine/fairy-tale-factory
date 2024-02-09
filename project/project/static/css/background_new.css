@@ -39,6 +39,7 @@
   /* animation: glow 2s infinite alternate; */
   /* 使用光暈動畫，無限循環 */
   animation: glowing 6s infinite;
+  pointer-events: none;
 }
 
 @keyframes glow {

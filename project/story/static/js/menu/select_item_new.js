@@ -1,8 +1,58 @@
+var page_item_selected = {
+    item_id: null,
+    item_name: null,
+    cover_design_link: null,
+};
+
 document.addEventListener("DOMContentLoaded", (event) => {
-    document.getElementById("select_button").addEventListener("click", () => redirectTo("createstory"));
+    document.getElementById("select_button").addEventListener("click", () => {
+        if (checkSelectedItem()) {
+            setSelectedItem();
+        }
+        redirectTo("createstory");
+    });
     document.getElementById("home_button").addEventListener("click", () => redirectTo("createstory"));
     generateItemsFromData();
 });
+
+function checkSelectedItem() {
+    result = page_item_selected.item_id !== undefined && page_item_selected.item_id !== null;
+    return result;
+}
+
+function setSelectedItem() {
+    var select_item = JSON.parse(sessionStorage.getItem("select_item"));
+    var item_page = select_item.item_page;
+    if (!select_item.story_info) {
+        select_item.story_info = {
+            main_role: {
+                item_id: "",
+                item_name: "",
+                cover_design_link: "",
+            },
+            sup_role: {
+                item_id: "",
+                item_name: "",
+                cover_design_link: "",
+            },
+            item: {
+                item_id: "",
+                item_name: "",
+                cover_design_link: "",
+            },
+        };   
+    }
+    var story_info = select_item.story_info;
+    if (item_page && story_info.hasOwnProperty(item_page)) {
+        var selected_item = story_info[item_page];
+        selected_item.item_id = page_item_selected.item_id;
+        selected_item.item_name = page_item_selected.item_name;
+        selected_item.cover_design_link = page_item_selected.cover_design_link;
+        sessionStorage.setItem("select_item", JSON.stringify(select_item))
+    } else {
+        console.error("Invalid item page: " + item_page);
+    }
+}
 
 function redirectTo(path) {
     window.location.href = `/story/${path}`;
@@ -23,43 +73,44 @@ function generateItemsFromData() {
         newItemName.className = "item_name";
         newItemName.textContent = index + 1 + ". " + itemName;
         itemListContainer.appendChild(newItemName);
-        
+
         var newItemInfo = document.createElement("div");
         newItemInfo.className = "item_info";
         itemListContainer.appendChild(newItemInfo);
 
         newItemName.addEventListener("click", function (event) {
-            fetchItemInfo(itemId, newItemInfo);
+            fetchItemInfo(itemId, itemName, newItemInfo);
             toggleActiveState(itemListContainer, itemElements, index, newItemName, newItemInfo, itemCount);
         });
     });
 }
 
-function fetchItemInfo(id, infoDiv) {
-    console.log('fetchItemInfo(id = ' + id + ', infoDiv = ' + infoDiv.textContent + ')')
+function fetchItemInfo(id, name, infoDiv) {
     fetch("/story/itemdetailsbydata?item_id=" + id)
         .then((response) => response.json())
         .then((data) => {
-            console.log('data.item_info = ' + data.item_info)
             infoDiv.textContent = data.item_info;
+            page_item_selected.item_id = id;
+            page_item_selected.item_name = name;
         })
         .catch((error) => console.error("Fetch error:", error));
 }
 
 function toggleActiveState(listContainer, elements, curIndex, nameDiv, infoDiv, count) {
     infoDiv.classList.toggle("active");
-    nameDiv.style.borderRadius = infoDiv.classList.contains("active") ? "1.75vw 1.75vw 0 0" : "1.75vw";
-    
+    if (infoDiv.classList.contains("active")) {
+        nameDiv.style.borderRadius = "1.75vw 1.75vw 0 0";
+        nameDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        setImgSrc(nameDiv);
+    } else {
+        nameDiv.style.borderRadius = "1.75vw";
+    }
     elements.forEach((el, idx) => {
         if (idx !== curIndex) {
             const otherinfoDiv = listContainer.children[(idx + 1) * count];
             otherinfoDiv.classList.remove("active");
-            otherinfoDiv.textContent = '';
+            otherinfoDiv.textContent = "";
             listContainer.children[idx * count + 1].style.borderRadius = "1.75vw";
-        } else if (infoDiv.classList.contains("active")) {
-            console.log('index = ' + (idx + 1) * count);
-            nameDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
-            setImgSrc(nameDiv)
         }
     });
 }
@@ -70,15 +121,16 @@ function setImgSrc(nameDiv) {
         .then((response) => response.json())
         .then((data) => {
             const imgElement = document.getElementById("item_image");
-            imgElement.src = "/static/img/story_elements/" + data.img_name;
-            console.log('data.img_name: ' + data.img_name)
+            cover_design_link = "/static/img/story_elements/" + data.img_name
+            imgElement.src = cover_design_link;
+            page_item_selected.cover_design_link = cover_design_link;
         })
         .catch((error) => console.error("Fetch error:", error));
 }
 
-function getItemName(selectedItem) {
+function getItemName(itemName) {
     var regex = /\d+\.\s(.+)/;
-    var match = selectedItem.match(regex);
+    var match = itemName.match(regex);
 
     if (match) {
         var formalName = match[1];
