@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* border: 1px solid red; */
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  /* border: 1px solid red; */
+  height: -webkit-fill-available;
+  padding: 4vmin;
+  display: flex;
+}
+
+.display_container {
+  flex: 10;
+  display: flex;
+  flex-direction: column;
+  /* 相框樣式 */
+  border: 0.45vw solid white;
+  border-radius: 3vw 0 0 3vw;
+  padding: 1vw;
+  border-width: 1vw 0 1vw 1vw;
+  border-style: solid;
+  border-color: #2f2d2d #434040 #4f4c4c #434040;
+  background: #f5f5f5;
+  background-image: linear-gradient(#525252, #333333);
+  box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 反光效果 */
+.display_container::before {
+  /* border: 0.5rem solid red; */
+  content: "";
+  position: absolute;
+  top: -29vh;
+  left: -19vw;
+  width: 40vw;
+  height: 40vh;
+  transform: rotateZ(40deg);
+  -webkit-transform: rotateZ(40deg);
+  -moz-transform: rotateZ(40deg);
+  -o-transform: rotateZ(40deg);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.4)), to(rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+}
+
+.image_container {
+  /* border: 1px solid red; */
+  width: -webkit-fill-available;
+}
+
+.image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info_container {
+  flex: 10;
+  display: flex;
+  flex-direction: column;
+  /* 相框樣式 */
+  border: 0.45vw solid white;
+  border-radius: 0 3vw 3vw 0;
+  padding: 0 1.1vmin;
+  border-width: 1vw 1vw 1vw 0;
+  border-style: solid;
+  border-color: #2f2d2d #434040 #4f4c4c #434040;
+  background: #f5f5f5;
+  background-image: linear-gradient(#525252, #333333);
+  box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.title_container {
+  /* border: 1px solid red; */
+  flex: 1.75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(3.57vmin, 2.5vmin, 2.5vmin);
+}
+
+.title,
+.page {
+  /* border: 1px solid red; */
+}
+
+.content_container {
+  /* border: 1px solid red; */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
+  box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
+  padding: 1.75vmin 1.75vmin 0 1.75vmin;
+  flex: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button_container {
+  /* border: 1px solid red; */
+  flex: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.go_home_button,
+.save_story_button {
+  font-size: clamp(3.57vmin, 2.5vmin, 2.5vmin);
+  border-color: antiquewhite;
+  border-width: 0.3vw;
+  border-radius: 3vw;
+  background-color: #d6a982;
+  cursor: pointer;
+  padding: 1.5vh 3vw;
+}
+
+.title,
+.story,
+.page {
+  /* border: 1px solid red; */
+  display: flex;
+  color: antiquewhite;
+  font-size: clamp(3.5vmin, 2.5vmin, 2.5vmin);
+}
+
+.story {
+  flex: 10;
+  overflow: auto;
+  max-height: 57vh;
+}
+
+::-webkit-scrollbar {
+  width: 0.75vw;
+}
+
+/* ::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+} */
+
+::-webkit-scrollbar-thumb {
+  /* border: 0.2vw solid #4f4c4c; */
+  background-color: #525252;
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.page {
+  flex: 1;
+  width: -webkit-fill-available;
+  padding: 0 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: clamp(2vmin, 2.5vmin, 2.5vmin);
+}
+
+.story span {
+  letter-spacing: 0.3vw;
+  line-height: 8vh;
+  font-family: "自定義注音字體", sans-serif;
+}

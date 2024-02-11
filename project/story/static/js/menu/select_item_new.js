@@ -97,14 +97,6 @@ function fetchItemInfo(id, name, infoDiv) {
 }
 
 function toggleActiveState(listContainer, elements, curIndex, nameDiv, infoDiv, count) {
-    infoDiv.classList.toggle("active");
-    if (infoDiv.classList.contains("active")) {
-        nameDiv.style.borderRadius = "1.75vw 1.75vw 0 0";
-        nameDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        setImgSrc(nameDiv);
-    } else {
-        nameDiv.style.borderRadius = "1.75vw";
-    }
     elements.forEach((el, idx) => {
         if (idx !== curIndex) {
             const otherinfoDiv = listContainer.children[(idx + 1) * count];
@@ -113,6 +105,14 @@ function toggleActiveState(listContainer, elements, curIndex, nameDiv, infoDiv, 
             listContainer.children[idx * count + 1].style.borderRadius = "1.75vw";
         }
     });
+    infoDiv.classList.toggle("active");
+    if (infoDiv.classList.contains("active")) {
+        nameDiv.style.borderRadius = "1.75vw 1.75vw 0 0";
+        nameDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        setImgSrc(nameDiv);
+    } else {
+        nameDiv.style.borderRadius = "1.75vw";
+    }
 }
 
 function setImgSrc(nameDiv) {
