@@ -21,11 +21,15 @@
         <img class="rectangle-10-GPn" src="{% static 'img/web_page/background/enchanted kingdom.png' %}" />
         <div class="item--D48">.....的故事</div>
         <div class="item--tRA" id="page_no"></div>
-        <div class="item--tRB">在一個遙遠的村莊裡，有一個善良聰明的小女孩，她戴著一頂鮮豔的紅色帽子，所以大家都叫她小紅帽。</div>
+        <div class="item--tRB" id="article_content">
+          {% for paragraph in article_list %}
+            <p>{{ paragraph }}</p>
+          {% endfor %}
+        </div>
         <div class="group-10-Ff2" id="home_button">回到首頁</div>
         <div class="group-11-j4Q" id="save_button">SAVE</div>
         <div class="group-12-bsJ">
-          <img class="vector-KHW" src="{% static 'img/web_page/vector/next page.png' %}" />
+          <img class="vector-KHW" src="{% static 'img/web_page/vector/next page.png' %}" id="next_page_button" />
         </div>
         <div class="group-11-eqa" id="home_pop_up" style="display: none;">
           <div class="item--8kk">
@@ -52,6 +56,74 @@
         </div>
       </div>
     </div>
-    <script src="{% static 'js/display/storybook_display.js' %}"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    var pageNumberElement = document.getElementById('page_no');
+    var articleContentElement = document.getElementById('article_content');
+
+    var homeButton = document.getElementById('home_button');
+    var nextPageButton = document.getElementById('next_page_button');
+
+    var articleList = JSON.parse('{{ article_list_json|escapejs }}');
+    var totalPageCount = articleList.length; 
+
+    var pageNumber = 1;
+    pageNumberElement.textContent = pageNumber;
+    articleContentElement.innerHTML = articleList[pageNumber - 1];
+
+    homeButton.addEventListener('click', function() {
+       
+        document.getElementById('home_pop_up').style.display = 'block';
+    });
+
+    document.getElementById('check_home_button').addEventListener('click', function() {
+        pageNumber = 1;
+        pageNumberElement.textContent = pageNumber;
+        
+        articleContentElement.innerHTML = articleList[pageNumber - 1];
+        
+        document.getElementById('home_pop_up').style.display = 'none';
+    });
+
+    nextPageButton.addEventListener('click', function() {
+        if (pageNumber < totalPageCount) { 
+            pageNumber++;
+            pageNumberElement.textContent = pageNumber;
+            
+            articleContentElement.innerHTML = articleList[pageNumber - 1];
+            
+            window.history.pushState(null, '', '/story/storybookdisplay?page=' + pageNumber);
+        } else {
+            
+            articleContentElement.innerHTML = '故事结束';
+            
+            nextPageButton.style.display = 'none';
+        }
+    });
+
+    document.getElementsByClassName("group-12-bsJ")[0].addEventListener("click", function () {
+        if (pageNumber < totalPageCount) {
+            pageNumber++;
+            pageNumberElement.textContent = pageNumber;
+            articleContentElement.innerHTML = articleList[pageNumber - 1];
+            window.history.pushState(null, '', '/story/storybookdisplay?page=' + pageNumber);
+        } else {
+            
+            articleContentElement.innerHTML = '故事结束';
+
+            nextPageButton.style.display = 'none';
+        }
+    });
+
+    document.getElementsByClassName("group-13-Tx8")[0].addEventListener("click", function () {
+        if (pageNumber > 1) {
+            pageNumber--;
+            pageNumberElement.textContent = pageNumber;
+            articleContentElement.innerHTML = articleList[pageNumber - 1];
+            window.history.pushState(null, '', '/story/storybookdisplay?page=' + pageNumber);
+        }
+    });
+});
+  </script>
   </body>
 </html>

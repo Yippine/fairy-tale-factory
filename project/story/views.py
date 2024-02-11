@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
 from .dto import SelectItemDTO
 from .models import Item
-
+from .utils import split_paragraphs
 @csrf_exempt
 def set_select_item(request):
     if request.method == "POST":
@@ -69,28 +69,31 @@ def loading(request):
     return render(request, "display/loading.html")
 
 def storybook_display(request):
-    a = """在一個村莊裡，有一個年輕的牧羊男孩負責放牧村民的羊群。他的工作是保護羊群免受狼的攻擊。這位男孩很快感到了無聊，於是他開始用喊叫「狼來了！」來尋求村民的注意。
+    a = '''有一天，大地上空的太陽變得異常火熱，炙烤著整個世界。人們汗流浹背，苦不堪言。於是，他們紛紛祈求夸父的力量，期望他能夠幫助解決這個燙人的難題。夸父心懷天下苍生，毅然決定追逐太陽，調整天氣，為百姓帶來涼爽。
 
-村民聽到他的呼喊，紛紛前來幫助，但當他們到達時，發現並沒有狼。男孩哈哈大笑，對於自己的惡作劇感到非常高興。
+夸父開始了他驚險又艱辛的追逐之旅。他的步伐踏遍了千山萬水，縱橫了原野和河川。他毫不猶豫地奔跑著，一往無前，但太陽似乎總是挂在他眼前，處處逃之夭夭。夸父不禁感慨萬分，原來即便是力大無窮的他，也無法逾越天上神聖的界限。
 
-幾天後，男孩再次感到無聊，並再次欺騙村民，喊道：“狼來了！狼來了！”村民再次趕來，但這一次還是沒有發現狼，只有一個嘲笑他們的男孩。
+在追逐的過程中，夸父遇見了無盡的艱難與困境。有時他穿越蒼茫的沙漠，有時穿越蓊鬱的叢林。他時而奔馳於高山之巔，時而穿越湍急的江河。然而，太陽的速度總是超越他的步伐，如影隨形卻又不可捉摸。
 
-然而，當狼真的出現並威脅到羊群時，男孩急切地大聲呼喊，但這一次村民不再相信他，以為他再次在開玩笑，因此沒有人來救助他。最終，狼襲擊了羊群，男孩無法阻止，導致許多羊被狼吞噬。
+隨著時間的推移，夸父的體力逐漸消耗殆盡，口渴難耐。但他的堅持卻是無法動搖的，因為他深知，只有追上太陽，才能讓天空恢復正常，為人們帶來安慰和歡愉。
 
-這個故事的教訓是告訴人們不要撒謊和欺騙。如果你一再說謊，別人就會失去對你的信任。即使說真話時，也可能因為過去的謊言而失去幫助和支持。因此，這個故事強調了誠實和信任的重要性。"""
+然而，命運的捉弄，夸父最終感到疲憊不堪，倦怠滿身。他在追逐的征程中，因過度的努力而英勇地犧牲了。夸父倒下的地方，天地為之一震，萬物為之黯然。他的傳奇事蹟感動了天地間的眾生，人們為了紀念他的英勇和犧牲，舉行了隆重的祭祀儀式。
+
+夸父死後，他的高大身軀變成了山脉，頭髮變成了樹木，血液变成了河流，扔出去的那根手杖，變成了一片桃林。他的一切都融入了大自然，成為了大地的一部分。夸父的靈魂和力量繼續流傳，他的英勇事蹟成為了永恆的傳說，激勵著後人努力向前。夸父節的日子，人們總是在夜晚點燃篝火，唱起傳承千古的歌謠，紀念這位曾經為了眾生而追逐太陽的英雄'''
+
     article_list = split_paragraphs(a)
-
     if article_list:
-        page_number = int(request.GET.get("page_number", 1)) # 取得頁數，預設為第一頁
+        page_number = int(request.GET.get('page_number', 1)) 
+
         if page_number < 1:
             page_number = 1
         if page_number > len(article_list):
             page_number = len(article_list)
+
         current_article = article_list[page_number - 1]
-        return render(request, "display/storybook_display.html", {"article_list": current_article, "page_number": page_number},)
-    else:
-        # 如果 article_list 為空，你可以加入一些適當的處理方式，例如傳回一個錯誤訊息給使用者
-        return HttpResponse("文章列表為空，請檢查您的資料。")
+        article_list_json = json.dumps(article_list)
+        
+        return render(request, "display/storybook_display.html", {'article_list': current_article, 'page_number': page_number, 'article_list_json': article_list_json})
 
 def social_features(request):
     return render(request, "display/social_features.html")
