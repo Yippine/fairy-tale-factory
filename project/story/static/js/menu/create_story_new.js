@@ -1,4 +1,4 @@
-const default_select_item = {
+const defaultSelectItem = {
     item_page: "",
     story_info: {
         main_role: { item_id: "", item_name: "", cover_design_link: "" },
@@ -8,39 +8,49 @@ const default_select_item = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    setButtonText();
+    const selectItem = JSON.parse(sessionStorage.getItem("select_item")) || defaultSelectItem;
+    console.log(`selectItem:`, selectItem);
+
     document.getElementById("create_button").addEventListener("click", () => redirectTo("/story/loading"));
     document.getElementById("go_home_button").addEventListener("click", () => redirectTo("/home"));
+
     ["main_role", "sup_role", "item"].forEach(function (itemPage) {
-        document.getElementById(itemPage + "_button").addEventListener("click", function () {
+        setButtonText(selectItem, itemPage);
+        document.getElementById(itemPage + "_button").parentNode.addEventListener("click", function () {
             setItemPage(itemPage);
         });
     });
 });
 
-function setButtonText() {
-    const buttons = {
-        main_role: document.getElementById("main_role_button_text"),
-        sup_role: document.getElementById("sup_role_button_text"),
-        item: document.getElementById("item_button_text"),
-    };
-    const select_item = JSON.parse(sessionStorage.getItem("select_item")) || default_select_item;
-    console.log(`select_item:`, select_item);
-    const setButtonText = (button, name) => {
-        button.innerHTML =
-            name ? name :
-            button.id === buttons.main_role.id ? "主角" :
-            button.id === buttons.sup_role.id ? "配角" :
-            button.id === buttons.item.id ? "道具" :
-            "";
-    };
-    setButtonText(buttons.main_role, select_item.story_info.main_role.item_name);
-    setButtonText(buttons.sup_role, select_item.story_info.sup_role.item_name);
-    setButtonText(buttons.item, select_item.story_info.item.item_name);
+function setButtonText(select_item, item_page) {
+    const button = document.getElementById(item_page + "_button")
+    var text = select_item.story_info[item_page].item_name;
+    if (!text) {
+        switch (button.id) {
+            case "main_role_button":
+                text = "主角";
+                break;
+            case "sup_role_button":
+                text = "配角";
+                break;
+            case "item_button":
+                text = "道具";
+                break;
+            default:
+                text = "";
+        }
+    }
+    const chars = text.split('');
+    chars.forEach(char => {
+        const span = document.createElement('span');
+        span.className = 'button_text';
+        span.innerText = char;
+        button.appendChild(span);
+    });
 }
 
 function setItemPage(item_page) {
-    const select_item = JSON.parse(sessionStorage.getItem("select_item")) || default_select_item;
+    const select_item = JSON.parse(sessionStorage.getItem("select_item")) || defaultSelectItem;
     select_item.item_page = item_page;
     sessionStorage.setItem("select_item", JSON.stringify(select_item));
 
