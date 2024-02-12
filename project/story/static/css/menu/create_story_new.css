@@ -1,17 +1,4 @@
-body {
-  /* border: 1px solid red; */
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background-image: url("/static/img/background/mystic chronicles.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
 .container {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +9,6 @@ body {
 header,
 .create_button_container,
 .select_button_container {
-  /* border: 1px solid red; */
   flex: 1;
   display: flex;
   justify-content: center;
@@ -30,7 +16,6 @@ header,
 }
 
 header {
-  /* border: 1px solid red; */
   position: relative;
 }
 
@@ -39,7 +24,6 @@ header {
 }
 
 .item_button_container {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,12 +34,7 @@ header {
 
 .item_button,
 .create_button {
-  border-color: antiquewhite;
-  border-width: 0.3vw;
-  border-radius: 3vw;
-  background-color: #d6a982;
   font-size: 2.5vh;
-  cursor: pointer;
   padding: 1.5vh 3vw;
 }
 
@@ -90,10 +69,6 @@ header {
   margin: 0;
 }
 
-button:hover {
-  transform: scale(1.05);
-}
-
 .background_image {
   border: 0.25vh solid white;
   position: absolute;
@@ -116,15 +91,18 @@ button:hover {
 }
 
 .go_home_button {
-  /* border: 1px solid red; */
   height: 5vh;
   position: absolute;
   top: 10%;
   left: 2%;
+  cursor: pointer;
+}
+
+.go_home_button.ftf_hover_button:hover {
+  transform: scale(1.17);
 }
 
 .header_text_container {
-  /* border: 1px solid red; */
   padding: 0 3.5vw;
 }
 
@@ -135,7 +113,6 @@ button:hover {
 }
 
 .header_text {
-  /* border: 1px solid red; */
   -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 0.1vh;
   -webkit-text-stroke-color: rgb(48, 48, 48);

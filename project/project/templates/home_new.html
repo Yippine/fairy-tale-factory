@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/background_new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ftf_common_new.css' %}" />
     <link rel="stylesheet" href="{% static 'css/home_new.css' %}" />
   </head>
-  <body>
+  <body class="ftf_background">
     <div class="background_container">
       <main>
         <div class="header_container">
@@ -24,7 +24,7 @@
         </div>
         <div class="button_container">
           <div class="item_button_container">
-            <div class="item_button light_up_button" id="about_us_button">
+            <div class="item_button light_up_button ftf_hover_button" id="about_us_button">
               <div class="button_icon">
                 <img src="{% static 'img/item/chat.png' %}" alt="about_us" />
               </div>
@@ -32,7 +32,7 @@
                 <p><strong>關於我們</strong></p>
               </div>
             </div>
-            <div class="item_button light_up_button" id="user_info_button">
+            <div class="item_button light_up_button ftf_hover_button" id="user_info_button">
               <div class="button_icon">
                 <img src="{% static 'img/item/user.png' %}" alt="user" />
               </div>
@@ -40,7 +40,7 @@
                 <p><strong>個人資訊</strong></p>
               </div>
             </div>
-            <div class="item_button light_up_button" id="collect_button">
+            <div class="item_button light_up_button ftf_hover_button" id="collect_button">
               <div class="button_icon">
                 <img class="book_image" src="{% static 'img/item/book.png' %}" alt="books" />
               </div>
@@ -50,8 +50,8 @@
             </div>
           </div>
           <div class="start_button_container">
-            <div class="start_button light_up_button" id="start_button">
-              <div class="button_icon">
+            <div class="start_button light_up_button ftf_hover_button" id="start_button">
+              <div class="button_icon ftf_hover_button">
                 <img class="cat_image" src="{% static 'img/item/cat.png' %}" alt="cat" />
               </div>
               <div class="button_text">
@@ -68,6 +68,7 @@
         function redirectTo(path) {
             window.location.href = `${path}`;
         }
+        document.querySelector("h1.header_content").addEventListener("click", () => redirectTo("/home"));
         document.getElementById("about_us_button").addEventListener("click", () => redirectTo("/aboutus"));
         document.getElementById("user_info_button").addEventListener("click", () => redirectTo("/user/userinfo1"));
         document.getElementById("collect_button").addEventListener("click", () => redirectTo("/story/mystorybooks"));

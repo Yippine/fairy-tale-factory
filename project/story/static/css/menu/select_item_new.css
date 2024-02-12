@@ -1,27 +1,12 @@
-body {
-  /* border: 0.5rem solid red; */
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
 main {
-  /* border: 0.5rem solid red; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 95vh;
   padding: 2.5vh 1vw;
-  /* 背景圖片 */
-  background-image: url('/static/img/background/mystic chronicles.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 section {
-  /* border: 0.5rem solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +27,6 @@ section {
 }
 
 .item_name {
-  /* border: 0.5rem solid red; */
   padding: 2vw;
   width: 40vw;
   font-size: clamp(1vw, 2vw, 10vw);
@@ -67,7 +51,7 @@ section {
   padding: 2.5vh 2vw;
   width: 40vw;
   border-radius: 0 0 1.75vw 1.75vw;
-  font-family: "自定義注音字體", sans-serif;
+  font-family: "自定義注音字體", "自定義字體", sans-serif;
   font-size: clamp(1vw, 1.62vw, 8vw);
   justify-content: center;
   transition: font-size 0.5s ease-in-out;
@@ -128,7 +112,6 @@ img {
 }
 
 .button_container {
-  /* border: 0.5rem solid red; */
   margin: 3vh 3.5vw;
   width: -webkit-fill-available;
   flex: 1;
@@ -140,19 +123,7 @@ button {
   font-size: clamp(1vw, 1.62vw, 8vw);
   flex:0.25;
   margin: 3vh 0;
-  border-color: antiquewhite;
-  border-width: 0.3vw;
-  border-radius: 3vw;
-  background-color: #d6a982;
-  cursor: pointer;
   padding: 1vh 2vw;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-  background-color: darken(#d6a982, 10%);
 }
 
 @media screen and (max-width: 600px) {

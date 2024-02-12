@@ -9,11 +9,11 @@
     <title>童話工廠 Selec Item</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Maru+Gothic%3A700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A700" />
-    <link rel="stylesheet" href="{% static 'css/background_new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ftf_common_new.css' %}" />
     <link rel="stylesheet" href="{% static 'css/menu/select_item_new.css' %}" />
   </head>
   <body>
-    <main>
+    <main class="ftf_background">
       <section class="item_list_container">
         <div id="data-container" style="display: none;">
           {% for item in items %}
@@ -26,10 +26,10 @@
           <img id="item_image" />
         </div>
         <div class="button_container">
-          <button type="button" id="select_button">
+          <button type="button" class="ftf_button ftf_hover_button" id="select_button">
             <span class="button_text">選&nbsp;&nbsp;擇</span>
           </button>
-          <button type="button" id="home_button">
+          <button type="button" class="ftf_button ftf_hover_button" id="home_button">
             <span class="button_text">返&nbsp;&nbsp;回</span>
           </button>
         </div>

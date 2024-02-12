@@ -28,13 +28,13 @@ function setButtonText(select_item, item_page) {
     if (!text) {
         switch (button.id) {
             case "main_role_button":
-                text = "主角";
+                text = "請選擇主角";
                 break;
             case "sup_role_button":
-                text = "配角";
+                text = "請選擇配角";
                 break;
             case "item_button":
-                text = "道具";
+                text = "請選擇道具";
                 break;
             default:
                 text = "";

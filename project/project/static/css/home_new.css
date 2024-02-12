@@ -1,27 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  /* border: 1px solid red; */
-  height: 100vh;
-  overflow: hidden;
-  /* background-color: gray; */
-  background-image: url("/static/img/background/mystic chronicles.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .background_container {
-  /* border: 1px solid red; */
   height: 100%;
   padding: 0 5vw;
 }
 
 main {
-  /* border: 1px solid red; */
   margin: 6.25vh 0;
   height: -webkit-fill-available;
   display: flex;
@@ -29,7 +11,6 @@ main {
 }
 
 .header_container {
-  /* border: 1px solid red; */
   padding: 6vh;
   /* flex: 7; */
   height: 65vh;
@@ -39,7 +20,6 @@ main {
 }
 
 .header_content {
-  /* border: 1px solid red; */
   color: aliceblue;
   white-space: nowrap; /* 禁止文字換行 */
   overflow: hidden; /* 隱藏超出範圍的文字 */
@@ -52,6 +32,7 @@ main {
   -webkit-text-stroke-width: 0.2vh;
   -webkit-text-stroke-color: rgb(48, 48, 48);
   width: fit-content;
+  cursor: pointer;
 }
 
 .header_container p {
@@ -63,14 +44,12 @@ main {
 }
 
 .button_container {
-  /* border: 1px solid red; */
   /* flex: 5; */
   height: 35vh;
   display: flex;
 }
 
 .item_button_container {
-  /* border: 1px solid red; */
   padding-top: 12vh;
   flex: 4;
   display: flex;
@@ -78,7 +57,6 @@ main {
 }
 
 .item_button {
-  /* border: 1px solid red; */
   flex: 1;
   background: none;
   display: flex;
@@ -93,7 +71,6 @@ main {
 
 .item_button div,
 .start_button div {
-  /* border: 1px solid red; */
   width: -webkit-fill-available;
 }
 
@@ -137,7 +114,6 @@ img {
 }
 
 .start_button_container {
-  /* border: 1px solid red; */
   flex: 5;
   display: flex;
   justify-content: flex-end;
@@ -145,7 +121,6 @@ img {
 }
 
 .start_button {
-  /* border: 1px solid red; */
   width: 16vw;
   display: flex;
   flex-direction: column;
@@ -157,17 +132,11 @@ img {
 .item_button,
 .start_button {
   padding: 2.5vh 0;
+  cursor: pointer;
 }
 
 .start_button:hover {
   opacity: 1;
-}
-
-/* 縮放效果 */
-.item_button:hover,
-.start_button:hover {
-  transform: scale(1.05); /* 鼠標懸停時放大 */
-  transition: transform 0.3s ease-in-out;
 }
 
 @media only screen and (max-width: 768px) {

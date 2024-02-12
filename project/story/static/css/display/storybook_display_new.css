@@ -1,16 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  /* border: 1px solid red; */
-  height: 100vh;
-  overflow: hidden;
-}
-
 main {
-  /* border: 1px solid red; */
   height: -webkit-fill-available;
   padding: 4vmin;
   display: flex;
@@ -38,7 +26,6 @@ main {
 
 /* 反光效果 */
 .display_container::before {
-  /* border: 0.5rem solid red; */
   content: "";
   position: absolute;
   top: -29vh;
@@ -57,7 +44,6 @@ main {
 }
 
 .image_container {
-  /* border: 1px solid red; */
   width: -webkit-fill-available;
 }
 
@@ -86,7 +72,6 @@ main {
 }
 
 .title_container {
-  /* border: 1px solid red; */
   flex: 1.75;
   display: flex;
   justify-content: center;
@@ -94,13 +79,7 @@ main {
   font-size: clamp(3.57vmin, 2.5vmin, 2.5vmin);
 }
 
-.title,
-.page {
-  /* border: 1px solid red; */
-}
-
 .content_container {
-  /* border: 1px solid red; */
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
   box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
   padding: 1.75vmin 1.75vmin 0 1.75vmin;
@@ -112,7 +91,6 @@ main {
 }
 
 .button_container {
-  /* border: 1px solid red; */
   flex: 2;
   display: flex;
   justify-content: space-evenly;
@@ -122,18 +100,12 @@ main {
 .go_home_button,
 .save_story_button {
   font-size: clamp(3.57vmin, 2.5vmin, 2.5vmin);
-  border-color: antiquewhite;
-  border-width: 0.3vw;
-  border-radius: 3vw;
-  background-color: #d6a982;
-  cursor: pointer;
   padding: 1.5vh 3vw;
 }
 
 .title,
 .story,
 .page {
-  /* border: 1px solid red; */
   display: flex;
   color: antiquewhite;
   font-size: clamp(3.5vmin, 2.5vmin, 2.5vmin);
@@ -149,12 +121,7 @@ main {
   width: 0.75vw;
 }
 
-/* ::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-} */
-
 ::-webkit-scrollbar-thumb {
-  /* border: 0.2vw solid #4f4c4c; */
   background-color: #525252;
   border-radius: 0.5vw;
 }
@@ -176,5 +143,5 @@ main {
 .story span {
   letter-spacing: 0.3vw;
   line-height: 8vh;
-  font-family: "自定義注音字體", sans-serif;
+  font-family: "自定義注音字體", "自定義字體", sans-serif;
 }

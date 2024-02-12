@@ -18,7 +18,22 @@
 }
 
 * {
+  /* border: 1px solid red; */
+  margin: 0;
+  padding: 0;
   font-family: "自定義字體", sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ftf_background {
+  background-image: url("/static/img/background/mystic chronicles.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .light_up_button {
@@ -100,4 +115,18 @@
   background-image: -moz-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
   background-image: -o-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
   background-image: linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
+}
+
+.ftf_button {
+  border-color: antiquewhite;
+  border-width: 0.3vw;
+  border-radius: 3vw;
+  background-color: #d6a982;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ftf_hover_button:hover {
+  transform: scale(1.05); /* 鼠標懸停時放大 */
+  transition: transform 0.3s ease-in-out;
 }
