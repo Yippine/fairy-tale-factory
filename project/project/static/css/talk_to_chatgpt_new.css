@@ -1,0 +1,149 @@
+main {
+  margin: 3vmin;
+  height: -webkit-fill-available;
+  display: flex;
+}
+
+.search_container {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  max-width: 40vw;
+}
+
+.search {
+  border-radius: 3vmin;
+  margin: 3vmin 3vmin 0 3vmin;
+  flex: 1;
+  font-size: clamp(3vmin, 2.5vmin, 2.5vmin);
+  padding-left: 3vmin;
+}
+
+.selected_file_container {
+  border-radius: 3vmin;
+  margin: 3vmin 3vmin 0 3vmin;
+  background-color: rgba(152, 152, 152, 0.25);
+  backdrop-filter: blur(0.5rem);
+  flex: 5;
+}
+
+.search_result_container {
+  border-radius: 3vmin;
+  margin: 3vmin;
+  background-color: rgba(152, 152, 152, 0.25);
+  backdrop-filter: blur(0.5rem);
+  flex: 5;
+}
+
+.search_container div {
+  display: flex;
+  flex-direction: column;
+}
+
+.search_container div .title_container {
+  border: 0.3vmin solid antiquewhite;
+  border-radius: 3vmin 3vmin 0 0;
+  background-color: #d6a982;
+  padding: 0.5vmin;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(3vmin, 2.5vmin, 2.5vmin);
+  cursor: pointer;
+}
+
+.count {
+  color: red;
+}
+
+.search_container div .file_list {
+  max-height: 29vh; /* 最大高度設定為視口高度的一半 */
+  overflow-y: auto; /* 超出部分顯示垂直滾動條 */
+  word-wrap: break-word; /* 允許在單詞內斷行 */
+  padding: 0.5vmin;
+  font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
+  color: aliceblue;
+  -webkit-text-stroke-width: 0.05vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+}
+
+.search_container div .file_list a {
+  display: block;
+  padding: 1.5vmin 2.5vmin;
+  margin: 1vmin;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 3vmin;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search_container div .file_list a:hover,
+.search_container div .file_list a:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #d6a982; /* 顏色與網頁主題相匹配 */
+}
+
+.search_container div .file_list a:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chat_room_container {
+  flex: 7;
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt {
+  display: none;
+}
+
+.chat_room_container textarea {
+  flex: 1;
+  border: 0.45vw solid white;
+  border-radius: 3vw;
+  padding: 3vmin;
+  border-width: 1vw;
+  border-style: solid;
+  border-color: #2f2d2d #434040 #4f4c4c #434040;
+  background: #f5f5f5;
+  background-image: linear-gradient(#525252, #333333);
+  box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
+  color: aliceblue;
+  -webkit-text-stroke-width: 0.05vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+  letter-spacing: 0.3vw;
+  line-height: 7vh;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0.75vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.ask_container {
+  margin: 3vmin 3vmin 0 3vmin;
+}
+
+.display_container {
+  margin: 3vmin;
+}

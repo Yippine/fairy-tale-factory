@@ -19,7 +19,16 @@ class WebVersionMiddleware:
         return response
 
     def should_redirect(self, path):
-        return not path.endswith('new/') and (path.startswith(("/story/", "/user/")) or path in ("/aboutus/", "/home/"))
+        return not path.endswith("new/") and (
+            path.startswith(("/user/", "/story/"))
+            or path in (
+                "/home/",
+                "/aboutus/",
+                "/talktochatgpt/",
+                "/searchfiles/",
+                "/getfilecontent/"
+            )
+        )
 
     def insert_new_before_last_slash(self, path):
         segments = path.rstrip('/').split('/')

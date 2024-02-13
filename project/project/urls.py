@@ -7,10 +7,16 @@ urlpatterns = [
     # 一般網頁
     path('home/', views.home, name='home'),
     path('aboutus/', views.about_us, name='about_us'),
+    path('talktochatgpt/', views.talk_to_chatgpt, name='talk_to_chatgpt'),
+    path('searchfiles/', views.search_files, name='search_files'),
+    path('getfilecontent/', views.get_file_content, name='get_file_content'),
 
     # 新版網頁
-    path('homenew/', views.home_new, name='home'),
-    path('aboutusnew/', views.about_us_new, name='about_us'),
+    path('homenew/', views.home_new, name='home_new'),
+    path('aboutusnew/', views.about_us_new, name='about_us_new'),
+    path('talktochatgptnew/', views.talk_to_chatgpt_new, name='talk_to_chatgpt_new'),
+    path('searchfilesnew/', views.search_files_new, name='search_files_new'),
+    path('getfilecontentnew/', views.get_file_content_new, name='get_file_content_new'),
 
     # 後台網頁
     path('admin/', admin.site.urls),
