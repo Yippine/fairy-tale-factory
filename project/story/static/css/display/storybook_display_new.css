@@ -145,3 +145,35 @@ main {
   line-height: 8vh;
   font-family: "自定義注音字體", "自定義字體", sans-serif;
 }
+
+.navigation_button {
+  position: fixed;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  backdrop-filter: blur(0.06vmin);
+  border: none;
+  cursor: pointer;
+  padding: 0 1vw;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease, display 0.5s;
+}
+
+.navigation_button:hover {
+  opacity: 1;
+}
+
+.navigation_button.prev {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  left: 0;
+}
+
+.navigation_button.next {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  right: 0;
+}
+
+.navigation_button img {
+  width: 8vmin;
+}
