@@ -46,7 +46,7 @@ section {
 .item_info {
   border: 0.3vw solid antiquewhite;
   background-color: antiquewhite;
-  letter-spacing: 0.3vw;
+  letter-spacing: 0.5vmin;
   line-height: 7vh;
   padding: 2.5vh 2vw;
   width: 40vw;

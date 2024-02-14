@@ -114,7 +114,6 @@ main {
 .story {
   flex: 10;
   overflow: auto;
-  max-height: 57vh;
 }
 
 ::-webkit-scrollbar {
@@ -141,8 +140,8 @@ main {
 }
 
 .story span {
-  letter-spacing: 0.3vw;
-  line-height: 8vh;
+  letter-spacing: 0.5vmin;
+  line-height: 8vmin;
   font-family: "自定義注音字體", "自定義字體", sans-serif;
 }
 
@@ -188,7 +187,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
@@ -198,9 +197,20 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  letter-spacing: 0.3vw;
-  gap: 3vh;
+  letter-spacing: 0.5vmin;
+  justify-content: space-evenly;
+}
+
+#popup_container_with_button .popup_content {
+  height: 18vmin;
+}
+
+#popup_container_with_button .ftf_pink_button {
+  padding: 0 4.5vmin;
+}
+
+#popup_message_with_button {
+  padding-top: 2vmin;
 }
 
 .popup_button_container {
@@ -211,8 +221,8 @@ main {
 
 .popup_button {
   border-color: rgb(255 148 183);
-  border-width: 0.3vw;
-  border-radius: 3vw;
+  border-width: 0.5vmin;
+  border-radius: 3vmin;
   padding: 0.62vmin 2.75vmin;
   background-color: rgb(255 73 132);
   cursor: pointer;
@@ -220,8 +230,11 @@ main {
 }
 
 .popup_content, .popup_button {
+  font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
+}
+
+.popup_button {
   color: aliceblue;
   -webkit-text-stroke-width: 0.01vmin;
   -webkit-text-stroke-color: rgb(48, 48, 48);
-  font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
 }

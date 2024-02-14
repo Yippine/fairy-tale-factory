@@ -52,47 +52,43 @@ function setupNavigationButtons(page) {
 function setupPopupHandlers() {
     const homeButton = document.querySelector(".go_home_button");
     const saveButton = document.querySelector(".save_story_button");
-    const popupContainer = document.getElementById("popup_container");
-    const popupMessage = document.getElementById("popup_message");
-    const popupConfirm = document.getElementById("popup_confirm");
-    const popupCancel = document.getElementById("popup_cancel");
-    const popupButtonContainer = document.querySelector(".popup_button_container");
-    const ftfPinkButton = document.querySelector(".ftf_pink_button");
+    const popupButtonContainer = document.getElementById("popup_container_with_button");
+    const popupButtonMessage = document.getElementById("popup_message_with_button");
+    const popupButtonConfirm = document.getElementById("popup_confirm_with_button");
+    const popupButtonCancel = document.getElementById("popup_cancel_with_button");
+    const popupMessageContainer = document.getElementById("popup_container_without_button");
 
     homeButton.addEventListener("click", () => togglePopup("確認是否回到首頁？"));
     saveButton.addEventListener("click", () => togglePopup("確認是否放入珍藏？"));
 
-    popupConfirm.addEventListener("click", () => {
-        if (popupMessage.innerText === "確認是否放入珍藏？") {
-            showMessage("珍藏成功！");
+    popupButtonConfirm.addEventListener("click", () => {
+        if (popupButtonMessage.innerText === "確認是否放入珍藏？") {
+            showMessage();
         } else {
             window.location.href = "/home"; // 假定回到首頁的路徑
         }
     });
 
-    popupCancel.addEventListener("click", () => {
-        popupContainer.style.display = "none";
+    popupButtonCancel.addEventListener("click", () => {
+        popupButtonContainer.style.display = "none";
     });
 
-    popupContainer.addEventListener("click", (e) => {
-        if (e.target === popupContainer) {
-            popupContainer.style.display = "none";
+    popupButtonContainer.addEventListener("click", (e) => {
+        if (e.target === popupButtonContainer) {
+            popupButtonContainer.style.display = "none";
         }
     });
 
     function togglePopup(message) {
-        popupMessage.innerText = message;
-        popupContainer.style.display = popupContainer.style.display === "none" ? "flex" : "none";
+        popupButtonMessage.innerText = message;
+        popupButtonContainer.style.display = popupButtonContainer.style.display === "flex" ? "none" : "flex";
     }
 
-    function showMessage(message) {
-        ftfPinkButton.style.paddingBottom = "4.5vmin";
-        popupMessage.innerText = message;
+    function showMessage() {
         popupButtonContainer.style.display = "none";
+        popupMessageContainer.style.display = "flex";
         setTimeout(() => {
-            popupContainer.style.display = "none";
-            ftfPinkButton.style.paddingBottom = "3.25vmin";
-            popupButtonContainer.style.display = "flex";
+            popupMessageContainer.style.display = "none";
         }, 1500);
     }
 }

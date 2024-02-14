@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectItem = JSON.parse(sessionStorage.getItem("select_item")) || defaultSelectItem;
     console.log(`selectItem:`, selectItem);
 
-    document.getElementById("create_button").addEventListener("click", () => redirectTo("/story/loading"));
+    document.getElementById("create_button").addEventListener("click", loading);
     document.getElementById("go_home_button").addEventListener("click", () => redirectTo("/home"));
 
     ["main_role", "sup_role", "item"].forEach(function (itemPage) {
@@ -22,8 +22,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function loading() {
+    const popupMessageContainer = document.getElementById("popup_container_without_button");
+    const popupMessage = document.getElementById("popup_message_without_button");
+    popupMessageContainer.style.display = "flex";
+    var loadingTime = 1; // 加載時間為 1 秒
+    setTimeout(function () {
+        popupMessage.textContent = "即將為你呈現";
+        setTimeout(function () {
+            window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
+        }, 1000); // 延遲 1 秒後跳轉
+    }, loadingTime * 1000);
+}
+
 function setButtonText(select_item, item_page) {
-    const button = document.getElementById(item_page + "_button")
+    const button = document.getElementById(item_page + "_button");
     var text = select_item.story_info[item_page].item_name;
     if (!text) {
         switch (button.id) {
@@ -40,10 +53,10 @@ function setButtonText(select_item, item_page) {
                 text = "";
         }
     }
-    const chars = text.split('');
-    chars.forEach(char => {
-        const span = document.createElement('span');
-        span.className = 'button_text';
+    const chars = text.split("");
+    chars.forEach((char) => {
+        const span = document.createElement("span");
+        span.className = "button_text";
         span.innerText = char;
         button.appendChild(span);
     });
@@ -70,23 +83,23 @@ function setItemPage(item_page) {
         .catch((error) => {
             console.error("Error:", error);
         });
-}
 
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== "") {
-        const cookies = document.cookie.split(";");
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === name + "=") {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
             }
         }
+        return cookieValue;
     }
-    return cookieValue;
-}
 
-function redirectTo(path) {
-    window.location.href = `${path}`;
+    function redirectTo(path) {
+        window.location.href = `${path}`;
+    }
 }

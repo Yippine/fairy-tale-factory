@@ -122,7 +122,7 @@ main {
   color: aliceblue;
   -webkit-text-stroke-width: 0.05vh;
   -webkit-text-stroke-color: rgb(48, 48, 48);
-  letter-spacing: 0.3vw;
+  letter-spacing: 0.5vmin;
   line-height: 7vh;
   overflow: auto;
 }
