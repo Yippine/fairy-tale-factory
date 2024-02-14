@@ -33,11 +33,22 @@
         </div>
         <div class="button_container">
           <button class="go_home_button ftf_button ftf_hover_button">回到首頁</button>
-          <button class="save_story_button ftf_button ftf_hover_button">收藏故事</button>
+          <button class="save_story_button ftf_button ftf_hover_button">珍藏故事</button>
         </div>
       </section>
-      <button class="navigation_button prev"><img src="{% static 'img/web_page/vector/previous page new.png' %}" alt=""></button>
-      <button class="navigation_button next"><img src="{% static 'img/web_page/vector/next page new.png' %}" alt=""></button>
+      <section class="fixed_container">
+        <button class="navigation_button prev"><img src="{% static 'img/web_page/vector/previous page new.png' %}" alt="" /></button>
+        <button class="navigation_button next"><img src="{% static 'img/web_page/vector/next page new.png' %}" alt="" /></button>
+        <div class="popup_container" id="popup_container" style="display: none;">
+          <div class="popup_content ftf_pink_button">
+            <p id="popup_message"></p>
+            <div class="popup_button_container">
+              <button id="popup_confirm" class="popup_button ftf_hover_button">Ｖ</button>
+              <button id="popup_cancel" class="popup_button ftf_hover_button">Ｘ</button>
+            </div>
+          </div>
+        </div>        
+      </section>
     </main>
     <script src="{% static 'js/display/storybook_display_new.js' %}"></script>
   </body>

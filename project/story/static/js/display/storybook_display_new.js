@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let page = parseInt(urlParams.get("page"), 10);
     initializePageNavigation(page);
     setupNavigationButtons(page);
-    // setupPopupHandlers();
+    setupPopupHandlers();
 });
 
 window.addEventListener("resize", adjustStoryAlignment);
@@ -35,50 +35,64 @@ function setupNavigationButtons(page) {
     prevPage.addEventListener("click", () => navigatePage(false, page));
     nextPage.addEventListener("click", () => navigatePage(true, page));
 
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft" && prevPage.style.display != "none") {
             navigatePage(false, page);
         } else if (event.key === "ArrowRight" && nextPage.style.display != "none") {
             navigatePage(true, page);
         }
     });
-}
 
-function navigatePage(isNext, currentPage) {
-    const newPage = isNext ? Math.min(currentPage + 1, maxPage) : Math.max(currentPage - 1, 1);
-    window.location.href = `/story/storybookdisplay?page=${newPage}`;
+    function navigatePage(isNext, currentPage) {
+        const newPage = isNext ? Math.min(currentPage + 1, maxPage) : Math.max(currentPage - 1, 1);
+        window.location.href = `/story/storybookdisplay?page=${newPage}`;
+    }
 }
 
 function setupPopupHandlers() {
-    ["save_story", "go_home"].forEach((type) => {
-        const button = document.querySelector(`#${type}_button`);
-        const popup = document.querySelector(`#${type}_pop_up`);
-        button.addEventListener("click", (event) => togglePopup(popup, event));
-    });
+    const homeButton = document.querySelector(".go_home_button");
+    const saveButton = document.querySelector(".save_story_button");
+    const popupContainer = document.getElementById("popup_container");
+    const popupMessage = document.getElementById("popup_message");
+    const popupConfirm = document.getElementById("popup_confirm");
+    const popupCancel = document.getElementById("popup_cancel");
+    const popupButtonContainer = document.querySelector(".popup_button_container");
+    const ftfPinkButton = document.querySelector(".ftf_pink_button");
 
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest(".pop_up")) {
-            document.querySelectorAll(".pop_up").forEach((popup) => (popup.style.display = "none"));
+    homeButton.addEventListener("click", () => togglePopup("確認是否回到首頁？"));
+    saveButton.addEventListener("click", () => togglePopup("確認是否放入珍藏？"));
+
+    popupConfirm.addEventListener("click", () => {
+        if (popupMessage.innerText === "確認是否放入珍藏？") {
+            showMessage("珍藏成功！");
+        } else {
+            window.location.href = "/home"; // 假定回到首頁的路徑
         }
     });
 
-    document.getElementById("confirm_button").addEventListener("click", () => {
-        document.querySelector("#save_pop_up").style.display = "none";
-        showSaveSuccessPopup();
+    popupCancel.addEventListener("click", () => {
+        popupContainer.style.display = "none";
     });
-}
 
-function togglePopup(popup, event) {
-    event.stopPropagation();
-    const isVisible = popup.style.display === "flex";
-    document.querySelectorAll(".pop_up").forEach((p) => (p.style.display = "none"));
-    popup.style.display = isVisible ? "none" : "flex";
-}
+    popupContainer.addEventListener("click", (e) => {
+        if (e.target === popupContainer) {
+            popupContainer.style.display = "none";
+        }
+    });
 
-function showSaveSuccessPopup() {
-    const saveSuccessPopup = document.querySelector("#save_success_pop_up");
-    saveSuccessPopup.style.display = "flex";
-    setTimeout(() => {
-        saveSuccessPopup.style.display = "none";
-    }, 1500);
+    function togglePopup(message) {
+        popupMessage.innerText = message;
+        popupContainer.style.display = popupContainer.style.display === "none" ? "flex" : "none";
+    }
+
+    function showMessage(message) {
+        ftfPinkButton.style.paddingBottom = "4.5vmin";
+        popupMessage.innerText = message;
+        popupButtonContainer.style.display = "none";
+        setTimeout(() => {
+            popupContainer.style.display = "none";
+            ftfPinkButton.style.paddingBottom = "3.25vmin";
+            popupButtonContainer.style.display = "flex";
+        }, 1500);
+    }
 }
