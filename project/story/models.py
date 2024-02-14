@@ -113,7 +113,8 @@ class StoryIssueCategory(models.Model):
 class CoverDesign(models.Model):
     item = models.OneToOneField('Item', models.DO_NOTHING, primary_key=True)  # The composite primary key (item_id, cover_design_id) found, that is not supported. The first column is selected.
     cover_design_id = models.PositiveIntegerField(unique=True)
-    cover_design_prompt_desc = models.CharField(max_length=2000)
+    cover_design_positive_prompt = models.CharField(max_length=1000)
+    cover_design_negative_prompt = models.CharField(max_length=1000, blank=True, null=True)
     cover_design_seed_value = models.PositiveIntegerField()
     cover_design_link = models.CharField(max_length=255)
     creation_time = models.DateTimeField(blank=True, null=True)

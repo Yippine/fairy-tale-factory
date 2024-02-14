@@ -19,3 +19,6 @@ python manage.py migrate
 
 # 建立翻譯文件，特別是針對中文翻譯
 python manage.py makemessages -l zh_TW
+
+# 將資料庫轉換成 JSON 格式的 fixture 文件
+python -Xutf8 manage.py dumpdata --indent 4 --output=fixture/sql/database_data.json

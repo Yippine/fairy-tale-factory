@@ -1,0 +1,51 @@
+get_original_story_details:
+  description: "透過項目編號查詢項目種類、原故事上層分類以及原故事內容"
+  query: |
+    WITH RECURSIVE CategoryPath AS (
+      SELECT
+        sc.category_id,
+        sc.category_name,
+        sc.parent_category_id,
+        CAST(sc.category_name AS CHAR(255)) AS path
+      FROM
+        story_category AS sc
+      WHERE
+        sc.parent_category_id IS NULL
+      
+      UNION ALL
+      
+      SELECT
+        sc.category_id,
+        sc.category_name,
+        sc.parent_category_id,
+        CONCAT(cp.path, ' -> ', sc.category_name)
+      FROM
+        story_category AS sc
+        JOIN CategoryPath AS cp ON sc.parent_category_id = cp.category_id
+    ), ItemRole AS (
+      SELECT
+        i.item_id,
+        i.item_name,
+        i.item_type,
+        i.original_story_id,
+        IF(i.item_type = 1, IF(@last_story_id = i.original_story_id, '配角', '主角'), '道具') AS role,
+        @last_story_id := i.original_story_id
+      FROM
+        item i
+        JOIN (SELECT @last_story_id := 0) AS init
+      ORDER BY
+        i.original_story_id, i.creation_time
+    )
+    SELECT
+      ir.item_name,
+      ir.role AS item_type,
+      os.original_story_name,
+      cp.path AS category_path,
+      os.original_story_content
+    FROM
+      ItemRole AS ir
+      JOIN original_story AS os ON ir.original_story_id = os.original_story_id
+      LEFT JOIN story_category AS sc ON os.original_story_category_id = sc.category_id
+      LEFT JOIN CategoryPath AS cp ON sc.category_id = cp.category_id
+    WHERE
+      ir.item_id = %s;
