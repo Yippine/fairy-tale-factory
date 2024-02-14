@@ -26,10 +26,14 @@ section {
   backdrop-filter: blur(0.5rem);
 }
 
+#data-container, #selected_item_id {
+  display: none;
+}
+
 .item_name {
-  padding: 2vw;
+  padding: 1.75vh 3vw;
   width: 40vw;
-  font-size: clamp(1vw, 2vw, 10vw);
+  font-size: clamp(1vmin, 3vmin, 8vmin);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -37,22 +41,31 @@ section {
   text-overflow: ellipsis;
   transition: font-size 0.5s ease-in-out;
   /* 按鈕樣式設計 */
-  border: 0.3vw solid antiquewhite;
+  border-color: antiquewhite;
+  border-width: 0.3vw;
   border-radius: 3vw;
+  border-style: outset;
   background-color: #d6a982;
   cursor: pointer;
 }
 
+.item_name:not(.active):hover {
+  transform: scale(1.05); /* 輕微放大 */
+  transition: transform 0.3s ease-in-out;
+}
+
 .item_info {
-  border: 0.3vw solid antiquewhite;
   background-color: antiquewhite;
-  letter-spacing: 0.5vmin;
-  line-height: 7vh;
-  padding: 2.5vh 2vw;
-  width: 40vw;
+  padding: 1vh 2vw 1.25vh 2vw;
+  width: 42vw;
+  border-color: antiquewhite;
+  border-width: 0.3vw;
+  border-style: outset;
   border-radius: 0 0 1.75vw 1.75vw;
   font-family: "自定義注音字體", "自定義字體", sans-serif;
-  font-size: clamp(1vw, 1.62vw, 8vw);
+  font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
+  letter-spacing: 0.5vmin;
+  line-height: 7vh;
   justify-content: center;
   transition: font-size 0.5s ease-in-out;
   /* 展開縮合動畫效果 */
@@ -63,6 +76,13 @@ section {
   position: absolute;
   transform: scaleY(0);
   transform-origin: top;
+}
+
+.item_info:hover {
+  /* 增加動態效果以提升沉浸感 */
+  background-color: #f0ebe1; /* 淺色調 */
+  color: #333; /* 文字顏色 */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .item_info.active {
@@ -120,8 +140,8 @@ img {
 }
 
 button {
-  font-size: clamp(1vw, 1.62vw, 8vw);
-  flex:0.25;
+  font-size: clamp(1vmin, 3vmin, 8vmin);
+  flex: 0.25;
   margin: 3vh 0;
   padding: 1vh 2vw;
 }

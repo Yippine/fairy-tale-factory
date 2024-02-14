@@ -35,6 +35,10 @@ function loading() {
     }, loadingTime * 1000);
 }
 
+function redirectTo(path) {
+    window.location.href = `${path}`;
+}
+
 function setButtonText(select_item, item_page) {
     const button = document.getElementById(item_page + "_button");
     var text = select_item.story_info[item_page].item_name;
@@ -97,9 +101,5 @@ function setItemPage(item_page) {
             }
         }
         return cookieValue;
-    }
-
-    function redirectTo(path) {
-        window.location.href = `${path}`;
     }
 }

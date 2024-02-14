@@ -116,17 +116,19 @@ def select_item_new(request):
         "sup_role": 1,
         "item": 2
     }
-    select_item_dict = request.session.get('select_item')
-    dto = SelectItemDTO.from_dict(select_item_dict)
-    item_type = item_type_enum.get(dto.item_page)
+    select_item_dict = request.session.get('select_item', {})
+    item_page = select_item_dict.get('item_page', '')
+    item_type = item_type_enum.get(item_page, 0)
     items = Item.objects.filter(item_type=item_type, disable_time__isnull=True).values(
         "item_id", "item_name"
     )
+    selected_item_id = select_item_dict.get('story_info', {}).get(item_page, {}).get('item_id', None)
     return render(
         request,
         "menu/select_item_new.html",
         {
-            "items": items
+            "items": items,
+            "selected_item_id": selected_item_id
         }
     )
 

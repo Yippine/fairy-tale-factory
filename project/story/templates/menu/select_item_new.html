@@ -15,10 +15,11 @@
   <body>
     <main class="ftf_background">
       <section class="item_list_container">
-        <div id="data-container" style="display: none;">
+        <div id="data-container">
           {% for item in items %}
             <div class="item-data" data-id="{{ item.item_id }}" data-name="{{ item.item_name }}"></div>
           {% endfor %}
+          <div id="selected_item_id">{{ selected_item_id }}</div>
         </div>
       </section>
       <section class="item_display_container">
