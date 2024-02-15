@@ -15,7 +15,7 @@ section {
 
 .item_list_container {
   margin: 2.5vh 0 2.5vh 1.5vw;
-  padding: 4.25vh 0;
+  padding-bottom: 4.25vh;
   border-radius: 4.5vw;
   display: flex;
   flex-direction: column;
@@ -26,14 +26,29 @@ section {
   backdrop-filter: blur(0.5rem);
 }
 
+.header_container {
+  border-style: outset;
+  border-radius: 4.5vw 4.5vw 0px 0px;
+  width: -webkit-fill-available;
+  background: linear-gradient(rgb(188, 122, 122), rgb(255, 195, 102));
+  padding: 3vh 0;
+  font-size: clamp(1vmin, 3.5vmin, 8vmin);
+  color: rgb(247, 241, 231);
+  -webkit-text-stroke: 0.01vmin rgb(214, 169, 130);
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #data-container, #selected_item_id {
   display: none;
 }
 
 .item_name {
+  margin-top: 3.5vh;
   padding: 1.75vh 3vw;
   width: 40vw;
   font-size: clamp(1vmin, 3vmin, 8vmin);
+  letter-spacing: 0.5vmin;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -41,11 +56,11 @@ section {
   text-overflow: ellipsis;
   transition: font-size 0.5s ease-in-out;
   /* 按鈕樣式設計 */
-  border-color: antiquewhite;
+  border-color: #ede3d3;
   border-width: 0.3vw;
   border-radius: 3vw;
+  background: linear-gradient(#ffc366, #bc7a7a);
   border-style: outset;
-  background-color: #d6a982;
   cursor: pointer;
 }
 
@@ -92,10 +107,6 @@ section {
   max-height: fit-content;
   transform: scaleY(1);
   position: relative;
-}
-
-.item_info + .item_name {
-  margin-top: 3.5vh;
 }
 
 ::-webkit-scrollbar {

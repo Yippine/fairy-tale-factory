@@ -8,6 +8,9 @@ def redirect_to_home(request):
 
 #render 函數將 home.html 模板渲染為HTTP響應
 def home(request):
+    for data in ["select_item_page", "create_story_page"]:
+        if data in request.session:
+            del request.session[data]
     return render(request, "home.html")
 
 def about_us(request):

@@ -35,6 +35,7 @@
           <button type="button" class="item_button ftf_button ftf_hover_button" id="item_button"></button>
         </div>
         <div class="background_image"></div>
+        <div id="item-data" data-select-item-page="{{ select_item_page }}" data-create-story-page="{{ create_story_page }}"></div>
       </div>
       <div class="create_button_container">
         <button type="button" class="create_button ftf_button ftf_hover_button" id="create_button">
@@ -50,6 +51,7 @@
         </div>
       </div>
     </section>
+    <script src="{% static 'js/ftf_common_new.js' %}"></script>
     <script src="{% static 'js/menu/create_story_new.js' %}"></script>
   </body>
 </html>

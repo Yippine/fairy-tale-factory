@@ -15,11 +15,17 @@
   <body>
     <main class="ftf_background">
       <section class="item_list_container">
+        <div class="header_container">
+          <span>請</span>
+          <span>選</span>
+          <span>擇</span>
+          <span>主</span>
+          <span>角</span>
+        </div>
         <div id="data-container">
           {% for item in items %}
             <div class="item-data" data-id="{{ item.item_id }}" data-name="{{ item.item_name }}"></div>
           {% endfor %}
-          <div id="selected_item_id">{{ selected_item_id }}</div>
         </div>
       </section>
       <section class="item_display_container">
@@ -30,12 +36,13 @@
           <button type="button" class="ftf_button ftf_hover_button" id="select_button">
             <span class="button_text">選&nbsp;&nbsp;擇</span>
           </button>
-          <button type="button" class="ftf_button ftf_hover_button" id="home_button">
+          <button type="button" class="ftf_button ftf_hover_button" id="return_button">
             <span class="button_text">返&nbsp;&nbsp;回</span>
           </button>
         </div>
       </section>
     </main>
+    <script src="{% static 'js/ftf_common_new.js' %}"></script>
     <script src="{% static 'js/menu/select_item_new.js' %}"></script>
   </body>
 </html>

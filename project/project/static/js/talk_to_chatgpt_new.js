@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function clearDefaultText() {
-  var textarea = document.getElementsByClassName("ask_container")[0];
+  var textarea = document.querySelector(".ask_container");
   if (textarea.value == defaultText) {
     textarea.value = "";
   }
 }
 
 function restoreDefaultText() {
-  var textarea = document.getElementsByClassName("ask_container")[0];
+  var textarea = document.querySelector(".ask_container");
   if (textarea.value == "") {
     textarea.value = defaultText;
   }
@@ -25,12 +25,12 @@ function restoreDefaultText() {
 
 function renderPrompt() {
     const promptElement = document.getElementById("prompt");
-    const displayContainer = document.getElementsByClassName("display_container")[0];
+    const displayContainer = document.querySelector(".display_container");
     displayContainer.value = `${promptElement.innerHTML}\n\n"""${currentPrompt.file_content}${currentPrompt.user_question}"""`;
 }
 
 function initializePrompt() {
-    const askContainer = document.getElementsByClassName("ask_container")[0];
+    const askContainer = document.querySelector(".ask_container");
     askContainer.addEventListener("input", updatePrompt);
 }
 
@@ -52,7 +52,8 @@ function initializeSearch() {
                         searchFileList.appendChild(a); // 將列表項目添加到容器中
                     });
                     updateCounts();
-                });
+                })
+                .catch((error) => console.error("Fetch error:", error));
         } else {
             searchFileList.innerHTML = ""; // 如果搜尋框清空，則清空搜尋結果
             updateCounts();
@@ -117,7 +118,8 @@ function updateDisplayContainer() {
                 if (index === selectedFiles.length - 1) {
                     updateFileContent(displayText);
                 }
-            });
+            })
+            .catch((error) => console.error("Fetch error:", error));
     });
 }
 

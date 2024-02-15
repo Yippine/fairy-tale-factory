@@ -1,9 +1,16 @@
 import os
 from pathlib import Path
+import sys
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+
+# 獲取專案根目錄的路徑
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# 將專案根目錄加入到 PYTHONPATH 中
+sys.path.insert(0, BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production

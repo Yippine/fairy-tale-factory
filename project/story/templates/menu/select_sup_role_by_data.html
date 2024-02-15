@@ -26,12 +26,7 @@
         document.getElementById("item-selector").addEventListener("change", function () {
             var itemId = this.value;
             fetch("/story/mainroledetailsbydata?item_id=" + itemId)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
+                .then((response) => response.json())
                 .then((data) => {
                     document.getElementById("item-details").innerHTML = `
                             <h3>角色名稱</h3>
@@ -41,9 +36,7 @@
                         `;
                     document.getElementById("item-details").style.height = "auto";
                 })
-                .catch((error) => {
-                    console.error("Fetch error:", error);
-                });
+                .catch((error) => console.error("Fetch error:", error));
         });
     </script>
   </body>

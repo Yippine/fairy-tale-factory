@@ -46,13 +46,14 @@
       </div>
       <div class="group-10-x68">回到首頁</div>
     </div>
+    <script src="{% static 'js/ftf_common_new.js' %}"></script>
     <script>
         document.querySelectorAll(".rectangle-22-fzt, .rectangle-22-ugG, .rectangle-22-228").forEach(function (element) {
             element.addEventListener("click", function () {
                 window.location.href = "/story/storybookdisplay?page=1";
             });
         });
-        document.getElementsByClassName("group-10-x68")[0].addEventListener("click", function () {
+        document.querySelector(".group-10-x68").addEventListener("click", function () {
             window.location.href = "/home";
         });
     </script>

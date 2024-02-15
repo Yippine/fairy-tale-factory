@@ -118,10 +118,10 @@ body {
 }
 
 .ftf_button {
-  border-color: antiquewhite;
+  border-color: #ede3d3;
   border-width: 0.3vw;
   border-radius: 3vw;
-  background-color: #d6a982;
+  background: linear-gradient(#ffc366, #bc7a7a);
   cursor: pointer;
   text-align: center;
 }

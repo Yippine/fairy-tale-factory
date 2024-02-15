@@ -27,11 +27,12 @@
       </div>
       <img class="cat-61383661280-2-hyv" src="{% static 'img/web_page/item/cat on white bg.png' %}" />
     </div>
+    <script src="{% static 'js/ftf_common_new.js' %}"></script>
     <script>
-        document.getElementsByClassName("group-10-cn7")[0].addEventListener("click", function () {
+        document.querySelector(".group-10-cn7").addEventListener("click", function () {
             window.location.href = "/story/selectsuprole";
         });
-        document.getElementsByClassName("group-10-cn8")[0].addEventListener("click", function () {
+        document.querySelector(".group-10-cn8").addEventListener("click", function () {
             window.location.href = "/story/createstory";
         });
     </script>

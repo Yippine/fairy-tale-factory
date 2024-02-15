@@ -1,4 +1,5 @@
 from django.urls import path
+from utils.common_functions import handle_post_request
 from . import views
 
 urlpatterns = [
@@ -16,14 +17,10 @@ urlpatterns = [
     path('mystorybooks/', views.my_storybooks, name='display/my_storybooks'),
 
     # 新版網頁
+    path('setcreatestorypagenew/', lambda request: handle_post_request(request)),
     path('createstorynew/', views.create_story_new, name='menu/create_story_new'),
-    path('setselectitemnew/', views.set_select_item, name='menu/set_select_item'),
-    path('selectmainrolenew/', views.select_main_role_new, name='menu/select_main_role_new'),
-    path('selectsuprolenew/', views.select_sup_role_new, name='menu/select_sup_role_new'),
+    path('setselectitempagenew/', lambda request: handle_post_request(request)),
     path('selectitemnew/', views.select_item_new, name='menu/select_item_new'),
-    path('mainroledetailsnew/', views.main_role_details_new, name='menu/main_role_details_new'),
-    path('suproledetailsnew/', views.sup_role_details_new, name='menu/sup_role_details_new'),
-    path('itemdetailsnew/', views.item_details_new, name='menu/item_details_new'),
     path('itemdetailsbydatanew/', views.item_details_by_data_new, name='menu/item_details_by_data_new'),
     path('getstoryelementnamenew/', views.get_story_element_name_new, name='menu/get_story_element_name_new'),
     path('loadingnew/', views.loading_new, name='display/loading_new'),

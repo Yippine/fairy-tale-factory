@@ -1,21 +1,12 @@
 import os
 import re
 import json
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
-from .dto import SelectItemDTO
+from .dto import ItemDTO, SelectItemDto, CreateStoryDto
 from .models import Item
-from .utils import split_paragraphs
-@csrf_exempt
-def set_select_item(request):
-    if request.method == "POST":
-        json_dict = json.loads(request.body.decode("utf-8"))
-        select_item = json_dict.get("select_item", {})
-        request.session["select_item"] = select_item
-        request.session.modified = True
-        return JsonResponse({"status": "success"})
-    return JsonResponse({"status": "error"}, status=400)
+from utils.common_functions import split_paragraphs
 
 def create_story(request):
     return render(request, "menu/create_story.html")
@@ -69,31 +60,35 @@ def loading(request):
     return render(request, "display/loading.html")
 
 def storybook_display(request):
-    a = '''有一天，大地上空的太陽變得異常火熱，炙烤著整個世界。人們汗流浹背，苦不堪言。於是，他們紛紛祈求夸父的力量，期望他能夠幫助解決這個燙人的難題。夸父心懷天下苍生，毅然決定追逐太陽，調整天氣，為百姓帶來涼爽。
+    a = """有一天，大地上空的太陽變得異常火熱，炙烤著整個世界。 人們汗流浹背，苦不堪言。 於是，他們紛紛祈求夸父的力量，期望他能夠幫助解決這個燙人的難題。 夸父心懷天下蒼生，毅然決定追逐太陽，調整天氣，為百姓帶來涼爽。
 
-夸父開始了他驚險又艱辛的追逐之旅。他的步伐踏遍了千山萬水，縱橫了原野和河川。他毫不猶豫地奔跑著，一往無前，但太陽似乎總是挂在他眼前，處處逃之夭夭。夸父不禁感慨萬分，原來即便是力大無窮的他，也無法逾越天上神聖的界限。
+夸父開始了他驚險又艱辛的追逐之旅。 他的步伐踏遍了千山萬水，縱橫了原野和河流。 他毫不猶豫地奔跑著，一往無前，但太陽似乎總是掛在他眼前，處處逃之夭夭。 夸父不禁感慨萬分，原來即便是力大無窮的他，也無法逾越天上神聖的界限。
 
-在追逐的過程中，夸父遇見了無盡的艱難與困境。有時他穿越蒼茫的沙漠，有時穿越蓊鬱的叢林。他時而奔馳於高山之巔，時而穿越湍急的江河。然而，太陽的速度總是超越他的步伐，如影隨形卻又不可捉摸。
+在追逐的過程中，夸父遇見了無盡的艱難與困境。 有時他會穿越蒼茫的沙漠，有時會穿越蓊鬱的叢林。 他時而奔馳於高山之巔，時而穿越湍急的江河。 然而，太陽的速度總是超越他的步伐，如影隨形卻又不可捉摸。
 
-隨著時間的推移，夸父的體力逐漸消耗殆盡，口渴難耐。但他的堅持卻是無法動搖的，因為他深知，只有追上太陽，才能讓天空恢復正常，為人們帶來安慰和歡愉。
+隨著時間的推移，夸父的體力逐漸消耗殆盡，口渴難耐。 但他的堅持卻是無法動搖的，因為他深知，只有追上太陽，才能讓天空恢復正常，為人們帶來安慰和快樂。
 
-然而，命運的捉弄，夸父最終感到疲憊不堪，倦怠滿身。他在追逐的征程中，因過度的努力而英勇地犧牲了。夸父倒下的地方，天地為之一震，萬物為之黯然。他的傳奇事蹟感動了天地間的眾生，人們為了紀念他的英勇和犧牲，舉行了隆重的祭祀儀式。
+然而，命運的捉弄，夸父最終感到疲憊不堪，倦怠滿身。 他在追逐的旅程中，因過度的努力而英勇地犧牲了。 夸父倒下的地方，天地為之一震，萬物為之黯然。 他的傳奇事蹟感動了天地間的眾生，人們為了紀念他的英勇和犧牲，舉行了隆重的祭祀儀式。
 
-夸父死後，他的高大身軀變成了山脉，頭髮變成了樹木，血液变成了河流，扔出去的那根手杖，變成了一片桃林。他的一切都融入了大自然，成為了大地的一部分。夸父的靈魂和力量繼續流傳，他的英勇事蹟成為了永恆的傳說，激勵著後人努力向前。夸父節的日子，人們總是在夜晚點燃篝火，唱起傳承千古的歌謠，紀念這位曾經為了眾生而追逐太陽的英雄'''
-
+夸父死後，他的高大身軀變成了山脈，頭髮變成了樹木，血液變成了河流，扔出去的那根手杖，變成了一片桃林。 他的一切都融入了大自然，成為了大地的一部分。 夸父的靈魂和力量繼續流傳，他的英勇事蹟成為了永恆的傳說，激勵後人努力向前邁進。 夸父節的日子，人們總是在夜晚點燃篝火，唱起傳承千古的歌謠，紀念這位曾經為了眾生而追逐太陽的英雄。"""
     article_list = split_paragraphs(a)
     if article_list:
-        page_number = int(request.GET.get('page_number', 1)) 
-
+        page_number = int(request.GET.get("page_number", 1))
         if page_number < 1:
             page_number = 1
         if page_number > len(article_list):
             page_number = len(article_list)
-
         current_article = article_list[page_number - 1]
         article_list_json = json.dumps(article_list)
-        
-        return render(request, "display/storybook_display.html", {'article_list': current_article, 'page_number': page_number, 'article_list_json': article_list_json})
+        return render(
+            request,
+            "display/storybook_display.html",
+            {
+                "article_list": current_article,
+                "page_number": page_number,
+                "article_list_json": article_list_json,
+            },
+        )
 
 def social_features(request):
     return render(request, "display/social_features.html")
@@ -102,44 +97,34 @@ def my_storybooks(request):
     return render(request, "display/my_storybooks.html")
 
 def create_story_new(request):
-    return render(request, "menu/create_story_new.html")
-
-def select_main_role_new(request):
-    return render(request, "menu/select_main_role_new.html")
-
-def select_sup_role_new(request):
-    return render(request, "menu/select_sup_role_new.html")
+    select_item_page = request.session.get("select_item_page", {})
+    create_story_page = request.session.get("create_story_page", {})
+    if not select_item_page:
+        select_item_page = SelectItemDto(item_page="", item=ItemDTO()).to_dict()
+        request.session["select_item_page"] = select_item_page
+    if not create_story_page:
+        create_story_page = CreateStoryDto(
+            main_role=ItemDTO(), sup_role=ItemDTO(), item=ItemDTO()
+        ).to_dict()
+        request.session["create_story_page"] = create_story_page
+    return render(
+        request,
+        "menu/create_story_new.html",
+        {
+            "select_item_page": json.dumps(select_item_page),
+            "create_story_page": json.dumps(create_story_page),
+        },
+    )
 
 def select_item_new(request):
-    item_type_enum = {
-        "main_role": 1,
-        "sup_role": 1,
-        "item": 2
-    }
-    select_item_dict = request.session.get('select_item', {})
-    item_page = select_item_dict.get('item_page', '')
+    item_type_enum = {"main_role": 1, "sup_role": 1, "item": 2}
+    select_item_page = request.session.get("select_item_page", {})
+    item_page = select_item_page.get("item_page", "")
     item_type = item_type_enum.get(item_page, 0)
     items = Item.objects.filter(item_type=item_type, disable_time__isnull=True).values(
         "item_id", "item_name"
     )
-    selected_item_id = select_item_dict.get('story_info', {}).get(item_page, {}).get('item_id', None)
-    return render(
-        request,
-        "menu/select_item_new.html",
-        {
-            "items": items,
-            "selected_item_id": selected_item_id
-        }
-    )
-
-def main_role_details_new(request):
-    return render(request, "menu/main_role_details_new.html")
-
-def sup_role_details_new(request):
-    return render(request, "menu/sup_role_details_new.html")
-
-def item_details_new(request):
-    return render(request, "menu/item_details_new.html")
+    return render(request, "menu/select_item_new.html", {"items": items})
 
 def item_details_by_data_new(request):
     item_id = request.GET.get("item_id")

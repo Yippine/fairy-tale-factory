@@ -7,30 +7,30 @@
     <title>童話工廠 User Info</title>
     <link rel="stylesheet" href="{% static 'css/ftf_common_new.css' %}" />
     <link rel="stylesheet" href="{% static 'css/user_info_2_new.css' %}" />
-
-    <body>
-      <div id="form_container">
-        <div id="title_container">個人資訊</div>
-        <br />
-        <div id="content_container">
-          <form action="">
-            <div id="word_1_container">
-              <label class="word_style" for="nickname">暱稱:</label>
-              <input class="word_style" type="text" id="nickname" name="nickname" value="" /><br />
-              <br />
-              <label class="word_style" for="account">帳號:</label>
-              <input class="word_style" type="text" id="account" name="account" value="" /><br />
-              <br />
-              <label class="word_style" for="password">密碼:</label>
-              <input class="word_style" type="password" id="password" name="password" value="" /><br />
-              <br />
-            </div>
-            <div id="word_2_container">
-              <a href="/user/userinfo1"><input class="word_style" type="button" value="完成" /></a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </body>
   </head>
+  <body>
+    <div id="form_container">
+      <div id="title_container">個人資訊</div>
+      <br />
+      <div id="content_container">
+        <form action="">
+          <div id="word_1_container">
+            <label class="word_style" for="nickname">暱稱:</label>
+            <input class="word_style" type="text" id="nickname" name="nickname" value="" /><br />
+            <br />
+            <label class="word_style" for="account">帳號:</label>
+            <input class="word_style" type="text" id="account" name="account" value="" /><br />
+            <br />
+            <label class="word_style" for="password">密碼:</label>
+            <input class="word_style" type="password" id="password" name="password" value="" /><br />
+            <br />
+          </div>
+          <div id="word_2_container">
+            <a href="/user/userinfo1"><input class="word_style" type="button" value="完成" /></a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="{% static 'js/ftf_common_new.js' %}"></script>
+  </body>
 </html>

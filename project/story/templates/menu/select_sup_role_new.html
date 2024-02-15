@@ -29,14 +29,15 @@
         <div class="group-10-cn7">返回</div>
       </div>
     </div>
+    <script src="{% static 'js/ftf_common_new.js' %}"></script>
     <script>
-        document.getElementsByClassName("auto-group-sqvl-fMn")[0].addEventListener("click", function () {
+        document.querySelector(".auto-group-sqvl-fMn").addEventListener("click", function () {
             window.location.href = "/story/suproledetails";
         });
-        document.getElementsByClassName("auto-group-nomn-m9v")[0].addEventListener("click", function () {
+        document.querySelector(".auto-group-nomn-m9v").addEventListener("click", function () {
             window.location.href = "/story/suproledetails";
         });
-        document.getElementsByClassName("group-10-cn7")[0].addEventListener("click", function () {
+        document.querySelector(".group-10-cn7").addEventListener("click", function () {
             window.location.href = "/story/createstory";
         });
     </script>
