@@ -16,7 +16,7 @@ function initialButtons() {
     document.getElementById("create_button").addEventListener("click", loading);
     ["main_role", "sup_role", "item"].forEach(function (itemPage) {
         setButtonText(itemPage);
-        document.getElementById(itemPage + "_button").parentNode.addEventListener("click", function () {
+        document.getElementById(`${itemPage}_button`).parentNode.addEventListener("click", function () {
             setItemPage(itemPage);
         });
     });
@@ -35,36 +35,17 @@ function initialButtons() {
     }
 
     function setButtonText(item_page) {
-        const button = document.getElementById(item_page + "_button");
-        var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
-        var text = create_story_page[item_page].item_name;
-        if (!text) {
-            switch (button.id) {
-                case "main_role_button":
-                    text = "請選擇主角";
-                    break;
-                case "sup_role_button":
-                    text = "請選擇配角";
-                    break;
-                case "item_button":
-                    text = "請選擇道具";
-                    break;
-                default:
-                    text = "";
-            }
-        }
-        const chars = text.split("");
-        chars.forEach((char) => {
-            const span = document.createElement("span");
-            span.className = "button_text";
-            span.innerText = char;
-            button.appendChild(span);
-        });
+        const button = document.getElementById(`${item_page}_button`);
+        const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
+        const text = create_story_page[item_page]?.item_name || getItemPageText(item_page);
+        wrapTextWithSpans(text, button, "button_text");
     }
 
     async function setItemPage(item_page) {
+        const button = document.getElementById(`${item_page}_button`)
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
         select_item_page.item_page = item_page;
+        select_item_page.item_page_text = button.dataset.text;
         sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
         await sendDataToServer("/story/selectitem", { "select_item_page": select_item_page });
     }

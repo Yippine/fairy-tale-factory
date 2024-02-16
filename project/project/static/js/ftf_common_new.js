@@ -45,3 +45,38 @@ async function sendDataToServer(redirectURL, data) {
         return cookieValue;
     }
 }
+
+function wrapTextWithSpans(text, element, className = "") {
+    if (!element) {
+        console.error("Element not found.");
+        return;
+    }
+    element.dataset.text = text;
+    const chars = text.split("");
+    chars.forEach((char) => {
+        const span = document.createElement("span");
+        if (className) {
+            span.className = className;
+        }
+        span.innerText = char;
+        element.appendChild(span);
+    });
+}
+
+function getItemPageText(itemPage) {
+    let text;
+    switch (itemPage) {
+        case "main_role":
+            text = "請選擇主角";
+            break;
+        case "sup_role":
+            text = "請選擇配角";
+            break;
+        case "item":
+            text = "請選擇道具";
+            break;
+        default:
+            text = "請選擇？？";
+    }
+    return text;
+}
