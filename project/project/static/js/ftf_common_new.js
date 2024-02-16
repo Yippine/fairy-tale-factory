@@ -51,8 +51,11 @@ function wrapTextWithSpans(text, element, className = "") {
         console.error("Element not found.");
         return;
     }
-    element.dataset.text = text;
     const chars = text.split("");
+    element.dataset.text = text;
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
     chars.forEach((char) => {
         const span = document.createElement("span");
         if (className) {

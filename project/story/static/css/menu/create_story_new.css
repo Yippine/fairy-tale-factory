@@ -32,6 +32,11 @@ header {
   position: relative;
 }
 
+.light_up_button::before {
+  border-radius: 3vw;
+  margin: 0;
+}
+
 .item_button,
 .create_button {
   font-size: 2.5vh;
@@ -53,6 +58,7 @@ header {
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+, Edge */
+
 }
 
 .item_button::-webkit-scrollbar {
@@ -64,9 +70,17 @@ header {
   font-size: 5.25vmin;
 }
 
-.light_up_button::before {
-  border-radius: 3vw;
-  margin: 0;
+.remove_icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  cursor: pointer;
+  background: linear-gradient(rgba(255, 195, 102, 1), rgba(207, 200, 189, 0.8));
+  border-radius: 25%;
+  width: 4vmin;
+  height: 4vmin;
+  padding: 0.5vmin;
 }
 
 .background_image {

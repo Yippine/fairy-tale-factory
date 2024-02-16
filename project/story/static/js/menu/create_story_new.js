@@ -16,6 +16,7 @@ function initialButtons() {
     document.getElementById("create_button").addEventListener("click", loading);
     ["main_role", "sup_role", "item"].forEach(function (itemPage) {
         setButtonText(itemPage);
+        setButotnEffects(itemPage);
         document.getElementById(`${itemPage}_button`).parentNode.addEventListener("click", function () {
             setItemPage(itemPage);
         });
@@ -37,8 +38,42 @@ function initialButtons() {
     function setButtonText(item_page) {
         const button = document.getElementById(`${item_page}_button`);
         const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
-        const text = create_story_page[item_page]?.item_name || getItemPageText(item_page);
+        const defaultText = getItemPageText(item_page);
+        const text = create_story_page[item_page]?.item_name || defaultText;
         wrapTextWithSpans(text, button, "button_text");
+        button.title = defaultText; // 使用 title 屬性顯示預設文字
+    }
+
+    function setButotnEffects(item_page) {
+        const button = document.getElementById(`${item_page}_button`);
+        const removeIcon = document.getElementById(`${item_page}_remove_icon`);
+        const wrapText = button.dataset.text;
+        const defaultText = button.title;
+        const hasSelected = wrapText !== defaultText;
+        if (hasSelected) {
+            // 添加滑鼠滑過事件
+            button.addEventListener('mouseenter', (event) => {
+                wrapTextWithSpans(defaultText, button, "button_text");
+                removeIcon.style.display = 'flex';
+            });
+            // 添加滑鼠離開事件
+            button.addEventListener('mouseleave', (event) => {
+                wrapTextWithSpans(wrapText, button, "button_text");
+                removeIcon.style.display = 'none';
+            });
+        }
+        // 為 X 圖標添加事件處理器
+        removeIcon.addEventListener('click', function(event) {
+            event.stopPropagation();
+            button.textContent = defaultText; // 重置為預設文本
+            removeIcon.style.display = 'none'; // 隱藏 X 圖標
+            const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
+            var item_type = create_story_page[item_page];
+            item_type.item_id = null;
+            item_type.item_name = null;
+            item_type.cover_design_link = null;
+            sessionStorage.setItem("create_story_page", JSON.stringify(create_story_page));
+        });
     }
 
     async function setItemPage(item_page) {

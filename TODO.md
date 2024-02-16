@@ -4,7 +4,6 @@
     - [ ]  View
         - [ ]  createstorynew page
             - [ ]  增加務必選擇一個主角的檢核
-            - [ ]  移動到按鈕時顯示「請選擇主角 請選擇配角 請選擇道具」文字
             - [ ]  item_button 上下箭頭造型的捲軸樣式
         - [ ]  selectitemnew page
             - [ ]  自適應設計
