@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
 from .dto import ItemDTO, SelectItemDto, CreateStoryDto
 from .models import Item
-from utils.common_functions import split_paragraphs
+from .utils.common_functions import split_paragraphs
 
 def create_story(request):
     return render(request, "menu/create_story.html")

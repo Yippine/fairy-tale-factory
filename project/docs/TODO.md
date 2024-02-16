@@ -1,0 +1,29 @@
+- [ ]  專題資料期限
+- [ ]  整合開發
+    - [ ]  Model
+    - [ ]  View
+        - [ ]  createstorynew page
+            - [ ]  增加務必選擇一個主角的檢核
+            - [ ]  移動到按鈕時顯示「請選擇主角 請選擇配角 請選擇道具」文字
+            - [ ]  item_button 上下箭頭造型的捲軸樣式
+        - [ ]  selectitemnew page
+            - [ ]  請選擇主角 請選擇配角 請選擇道具顯示在項目列上方
+            - [ ]  自適應設計
+                - [ ]  createstorynew page
+                    - [ ]  項目按鈕在手機版一行一個
+                - [ ]  seleceitemnew page
+                    - [ ]  圖片改顯示在 item_name, item_info 區
+    - [ ]  Controller
+        - [ ]  storybookdisplaynew page
+            - [ ]  顯示主角原故事內容
+        - [ ]  selectitemnew page
+            - [ ]  原故事分類和內容
+                - [ ]  項目編號
+                    - [ ]  原故事所有上級階層
+                    - [ ]  原故事內容
+            - [ ]  取消點擊
+                - [ ]  checkbox
+            - [ ]  主角配角不能選同一個
+        - [ ]  loginnew related page
+            - [ ]  是否有清除所有 session
+- [ ]  API Key 風險
