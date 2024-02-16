@@ -41,47 +41,76 @@ function initialButtons() {
         const defaultText = getItemPageText(item_page);
         const text = create_story_page[item_page]?.item_name || defaultText;
         wrapTextWithSpans(text, button, "button_text");
-        button.title = defaultText; // 使用 title 屬性顯示預設文字
+        button.dataset.defaultText = defaultText;
+        button.title = button.dataset.wrapText; // 使用 title 屬性顯示預設文字
     }
 
     function setButotnEffects(item_page) {
         const button = document.getElementById(`${item_page}_button`);
         const removeIcon = document.getElementById(`${item_page}_remove_icon`);
-        const wrapText = button.dataset.text;
-        const defaultText = button.title;
+        const wrapText = button.dataset.wrapText;
+        const defaultText = button.dataset.defaultText;
         const hasSelected = wrapText !== defaultText;
+        const removeText = `是否移除${wrapText}？`;
+        removeIcon.title = removeText;
+        removeIcon.addEventListener("mouseenter", enterRemoveIcon); // 當滑鼠懸浮在移除圖標上時
+        removeIcon.addEventListener("mouseleave", leaveRemoveIcon); // 當滑鼠移開移除圖標時
         if (hasSelected) {
-            // 添加滑鼠滑過事件
-            button.addEventListener('mouseenter', (event) => {
-                wrapTextWithSpans(defaultText, button, "button_text");
-                removeIcon.style.display = 'flex';
-            });
-            // 添加滑鼠離開事件
-            button.addEventListener('mouseleave', (event) => {
-                wrapTextWithSpans(wrapText, button, "button_text");
-                removeIcon.style.display = 'none';
-            });
+            button.addEventListener("mouseenter", enterButton); // 添加滑鼠滑過事件
+            button.addEventListener("mouseleave", leaveButton); // 添加滑鼠離開事件
         }
-        // 為 X 圖標添加事件處理器
-        removeIcon.addEventListener('click', function(event) {
-            event.stopPropagation();
-            button.textContent = defaultText; // 重置為預設文本
-            removeIcon.style.display = 'none'; // 隱藏 X 圖標
+        removeIcon.addEventListener("click", clickRemoveIcon); // 為移除圖標添加點擊事件處理器
+    
+        function enterRemoveIcon(event) {
+            event.stopPropagation(); // 阻止事件冒泡
+            button.textContent = removeText; // 顯示移除提示
+        }
+    
+        function leaveRemoveIcon(event) {
+            if (event.relatedTarget !== button) {
+                wrapTextWithSpans(wrapText, button, "button_text"); // 恢復到選擇過的項目名稱
+                removeIcon.style.display = "none";
+            }
+        }
+    
+        function enterButton(event) {
+            wrapTextWithSpans(defaultText, button, "button_text");
+            removeIcon.style.display = "flex";
+        }
+    
+        function leaveButton(event) {
+            if (event.relatedTarget !== removeIcon) {
+                wrapTextWithSpans(wrapText, button, "button_text");
+                removeIcon.style.display = "none";
+            }
+        }
+    
+        function clickRemoveIcon(event) {
+            event.stopPropagation(); // 阻止事件冒泡
+            removeIcon.removeEventListener("mouseenter", enterRemoveIcon);
+            button.removeEventListener("mouseenter", enterButton);
+            button.removeEventListener("mouseleave", leaveButton);
+            wrapTextWithSpans(defaultText, button, "button_text"); // 重置為預設文本
+            removeIcon.style.display = "none"; // 隱藏移除圖標
+            // 更新 sessionStorage 中的數據
             const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
             var item_type = create_story_page[item_page];
             item_type.item_id = null;
             item_type.item_name = null;
             item_type.cover_design_link = null;
             sessionStorage.setItem("create_story_page", JSON.stringify(create_story_page));
-        });
+        }
     }
 
     async function setItemPage(item_page) {
-        const button = document.getElementById(`${item_page}_button`)
+        const button = document.getElementById(`${item_page}_button`);
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
+        var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
         select_item_page.item_page = item_page;
-        select_item_page.item_page_text = button.dataset.text;
+        select_item_page.item_page_text = button.dataset.wrapText;
         sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
-        await sendDataToServer("/story/selectitem", { "select_item_page": select_item_page });
+        await sendDataToServer("/story/selectitem", {
+            "select_item_page": select_item_page, "create_story_page": create_story_page
+        });
     }
 }

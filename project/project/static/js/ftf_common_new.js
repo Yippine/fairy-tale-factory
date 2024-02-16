@@ -52,7 +52,7 @@ function wrapTextWithSpans(text, element, className = "") {
         return;
     }
     const chars = text.split("");
-    element.dataset.text = text;
+    element.dataset.wrapText = text;
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }

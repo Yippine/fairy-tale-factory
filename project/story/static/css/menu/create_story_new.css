@@ -55,10 +55,12 @@ header {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5vw;
+  font-size: clamp(2.75vmin, 2.75vmin, 2.5vmin);
+  letter-spacing: 0.5vmin;
+  line-height: 7vh;
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+, Edge */
-
 }
 
 .item_button::-webkit-scrollbar {
