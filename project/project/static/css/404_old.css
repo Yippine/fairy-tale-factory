@@ -1,22 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
   background-color: #f0f0f0;
 }
+
 .container {
-  padding: 100px;
+  position: relative;
+  width: fit-content;
+  margin: 10% 0% 0 37%;
+  padding: 20px;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 54px;
   color: #333;
+  padding: 20px;
 }
+
 p {
-  font-size: 24px;
+  font-size: 36px;
   color: #666;
+  padding: 20px;
 }
+
 a {
-  text-decoration: none;
+  font-size: 36px;
   color: #007bff;
   font-weight: bold;
+  padding: 20px;
 }

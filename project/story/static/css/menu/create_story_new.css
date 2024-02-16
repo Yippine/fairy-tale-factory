@@ -102,6 +102,10 @@ header {
   z-index: -1;
 }
 
+#item-data {
+  display: none;
+}
+
 .select_button_container:hover .background_image {
   opacity: 0.6;
 }

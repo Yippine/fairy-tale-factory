@@ -1,31 +1,100 @@
-*{
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.ftf_frame {
   padding: 0;
-  margin: 0;
 }
-body {
-  font-family: Arial, sans-serif;
+
+.background_container {
+  margin: 8vmin 0;
+  height: -webkit-fill-available;
+  aspect-ratio: 1 / 1;
+  background-image: url('/static/img/background/little red riding hood.jpg');
+  background-size: cover; /* 調整背景圖片大小以覆蓋整個容器 */
+  background-position: center; /* 將背景圖片置中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0.75vw;
+  /* width: 0; */
+}
+
+::-webkit-scrollbar-track {
+  backdrop-filter: blur(0.2rem);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.article_container {
+  height: -webkit-fill-available;
+  font-size: clamp(3.5vh, 2.5vw, 2.5vh);
+  color: white;
+  -webkit-text-stroke-width: 0.1vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+  letter-spacing: 0.5vmin;
+  line-height: 7vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5vh;
+  overflow: auto;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 5.5vh;
+}
+
+header h1, footer p {
   text-align: center;
-  background-color: #f0f0f0;
 }
-.container {
+
+header h1 {
+  margin: 8vh 1.25vw 0 2vw;
+}
+
+article p {
+  margin: 0 1.25vw 0 2vw;
+}
+
+footer p:last-of-type {
+  margin: 0 1.25vw 75vh 2vw;
   position: relative;
-  width:fit-content;
-  margin: 10% 0% 0 37%;
-  padding: 20px;
 }
-h1 {
-  font-size: 54px;
-  color: #333;
-  padding: 20px;
+
+.article_container h1, .article_container p, .space_container, .go_home_button {
+  display: none;
 }
-p {
-  font-size: 36px;
-  color: #666;
-  padding: 20px;
+
+.space_container {
+  min-height: 1vh;
 }
-a {
-  font-size: 36px;
-  color: #007bff;
-  font-weight: bold;
-  padding: 20px;
+
+.go_home_button {
+  height: 9vmin;
+  opacity: 0.7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.go_home_button.ftf_hover_button:hover {
+  opacity: 0.275;
+  transform: translate(-50%, -50%) scale(8);
 }

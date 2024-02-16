@@ -1,20 +1,17 @@
 - [ ]  記錄專題資料期限
-- [ ]  整合開發 ing ...
+- [ ]  整合開發 ing …
     - [ ]  Model
     - [ ]  View
-        - [ ]  createstorynew page
-            - [ ]  增加務必選擇一個主角的檢核
-            - [ ]  item_button 上下箭頭造型的捲軸樣式
-        - [ ]  selectitemnew page
-            - [ ]  自適應設計
-                - [ ]  createstorynew page
-                    - [ ]  項目按鈕在手機版一行一個
-                - [ ]  seleceitemnew page
-                    - [ ]  圖片改顯示在 item_name, item_info 區
+            - [ ]  createstorynew page
+                - [ ]  項目檢核邏輯
+                    - [ ]  必須選一位主角
+                    - [ ]  主角、配角不能重複
+                    - [ ]  主角、配角如果是不同故事的同一角色也不行
+                - [ ]  驚嘆號 icon 顯示故事生成指令
     - [ ]  Controller
-        - [ ] API
-            - [ ] ChatGPT API
-            - [ ] SDXL API
+        - [ ]  API
+            - [ ]  ChatGPT API
+            - [ ]  SDXL API
         - [ ]  storybookdisplaynew page
             - [ ]  顯示主角原故事內容
         - [ ]  selectitemnew page
@@ -22,9 +19,4 @@
                 - [ ]  項目編號
                     - [ ]  原故事所有上級階層
                     - [ ]  原故事內容
-            - [ ]  取消點擊
-                - [ ]  checkbox
-            - [ ]  主角配角不能選同一個
-        - [ ]  loginnew related page
-            - [ ]  是否有清除所有 session
 - [ ]  研究 API Key 風險

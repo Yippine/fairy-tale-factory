@@ -83,3 +83,36 @@ function getItemPageText(itemPage) {
     }
     return text;
 }
+
+function typewriterEffect(selector, millisecond, finishedCallback, typingCallback) {
+    const elements = document.querySelectorAll(selector);
+    let index = 0;
+    if (elements.length > 0) {
+        prepareNext(elements[index]); // 從第一個元素開始
+    }
+
+    function prepareNext(element) {
+        const text = element.textContent;
+        element.textContent = ""; // 清空元素的文字，準備逐字顯示
+        element.style.display = "block";
+        typeWriter(text, element);
+    }
+
+    function typeWriter(text, element, i = 0) {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i++);
+            if (typingCallback && typeof typingCallback === 'function') {
+                typingCallback(); // 執行打字時的回調函式
+            }
+            setTimeout(() => {
+                typeWriter(text, element, i);
+            }, millisecond); // 調整速度
+        } else if (index < elements.length - 1) {
+            prepareNext(elements[++index]);
+        } else {
+            if (finishedCallback && typeof finishedCallback === 'function') {
+                finishedCallback(); // 執行完成後的回調函式
+            }
+        }
+    }
+}
