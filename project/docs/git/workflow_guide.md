@@ -38,21 +38,17 @@
 
 ## Git Flow vs GitHub Flow vs GitLab Flow
 
-### Git Flow
+- **Git Flow**
+   - Git Flow 包含兩個主要分支和三個輔助分支，複雜度較高，適用於大型專案。
 
-Git Flow 包含兩個主要分支和三個輔助分支，複雜度較高，適用於大型專案。
+- **GitHub Flow**
+   - GitHub Flow 主要整合在主要分支，適用於快速迭代和持續部署的小型專案。
 
-### GitHub Flow
+- **GitLab Flow**
+   - GitLab Flow 採用多個環境的測試方式，並根據上游優先不斷部署到下游環境中，適用於中等規模的專案。
 
-GitHub Flow 主要整合在主要分支，適用於快速迭代和持續部署的小型專案。
-
-### GitLab Flow
-
-GitLab Flow 採用多個環境的測試方式，並根據上游優先不斷部署到下游環境中，適用於中等規模的專案。
-
-### GitLab Flow（簡化版）
-
-相較於 Git Flow 和 GitHub Flow，我們採用了更簡化的 GitLab Flow，保留了主要分支和版本分支，以解決固定上線的審核拖延問題。
+- **GitLab Flow（簡化版）**
+   - 相較於 Git Flow 和 GitHub Flow，我們採用了更簡化的 GitLab Flow，保留了主要分支和版本分支，以解決固定上線的審核拖延問題。
 
 ## 使用指南
 

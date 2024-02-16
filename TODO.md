@@ -1,5 +1,5 @@
-- [ ]  專題資料期限
-- [ ]  整合開發
+- [ ]  記錄專題資料期限
+- [ ]  整合開發 ing ...
     - [ ]  Model
     - [ ]  View
         - [ ]  createstorynew page
@@ -14,6 +14,9 @@
                 - [ ]  seleceitemnew page
                     - [ ]  圖片改顯示在 item_name, item_info 區
     - [ ]  Controller
+        - [ ] API
+            - [ ] ChatGPT API
+            - [ ] SDXL API
         - [ ]  storybookdisplaynew page
             - [ ]  顯示主角原故事內容
         - [ ]  selectitemnew page
@@ -26,4 +29,4 @@
             - [ ]  主角配角不能選同一個
         - [ ]  loginnew related page
             - [ ]  是否有清除所有 session
-- [ ]  API Key 風險
+- [ ]  研究 API Key 風險

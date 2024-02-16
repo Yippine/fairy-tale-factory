@@ -12,11 +12,11 @@
 
 在使用本專案前，請確保在 `.env` 檔案中填寫正確的資料庫設定。以下是一個範例 `.env` 檔案內容（請將帳號和密碼更換為您的資訊）：
 
-```plaintext
+```bash
 MYSQL_DATABASE=fairy_tale_factory
-MYSQL_USER=你的MySQL帳戶名稱
-MYSQL_PASSWORD=你的MySQL帳戶密碼
-MYSQL_ROOT_PASSWORD=你的MySQL帳戶密碼
+MYSQL_USER=你的資料庫使用者名稱
+MYSQL_PASSWORD=你的資料庫使用者密碼
+MYSQL_ROOT_PASSWORD=你的資料庫根使用者密碼
 DB_HOST=
 DB_PORT=
 ```

@@ -70,19 +70,19 @@
 
 2. **資料庫設定**
 
-執行 `database_structure.sql` 創建並配置 `fairy_tale_factory` 資料庫，並建立一筆 `user` 表格的資料。
+    執行 `database_structure.sql` 創建並配置 `fairy_tale_factory` 資料庫，並建立一筆 `user` 表格的資料。
 
 3. **配置 Django 設定**
 
-更新 `project/project/settings.py` 中的資料庫配置。
+    更新 `project/project/settings.py` 中的資料庫配置。
 
-    ```python
+    ```bash
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'fairy_tale_factory',
-            'USER': '你的使用者名稱',
-            'PASSWORD': '你的密碼',
+            'USER': '你的資料庫使用者名稱',
+            'PASSWORD': '你的資料庫使用者密碼',
             'HOST': 'localhost',
             'PORT': '3306',
         }
