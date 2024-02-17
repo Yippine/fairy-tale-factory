@@ -7,9 +7,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function initialHeaderText() {
     const headerContainer = document.querySelector(".header_container");
-    var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
+    const pageData = document.getElementById("page-data");
+    var select_item_page = JSON.parse(pageData.dataset.selectItemPage);
     var text = getItemPageText(select_item_page.item_page);
-    wrapTextWithSpans(text, headerContainer);
+    wrapTextWithSpans(text, headerContainer)
+    sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
 }
 
 function generateItemsFromData() {
@@ -129,31 +131,34 @@ function generateItemsFromData() {
     }
 
     function scrollToSelectedItem() {
+        const pageData = document.getElementById("page-data");
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
-        var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
-        const selectedItemId = create_story_page[select_item_page.item_page].item_id;
-        const selectedItemName = document.querySelector(`.item_name[data-id="${selectedItemId}"]`);
-        if (selectedItemName) {
-            // 觸發點擊以展開 item_info
-            selectedItemName.click();
-            // 監聽 item_info 的過渡結束事件，然後滾動到視圖中
-            // 假設 item_info 緊隨 item_name 之後
-            const selectedItemInfo = selectedItemName.nextElementSibling;
-            if (selectedItemInfo && selectedItemInfo.classList.contains("item_info")) {
-                selectedItemInfo.addEventListener(
-                    "transitionend",
-                    function () {
-                        // 確保 item_info 完全展開後再滾動
-                        if (selectedItemInfo.classList.contains("active")) {
-                            // 獲取 header 的高度作為偏移量
-                            const headerHeight = document.querySelector(".header_container").offsetHeight;
-                            // 調整滾動位置以完整顯示 item_name 和 item_info
-                            const offsetTop = selectedItemName.offsetTop - headerHeight;
-                            itemList.scrollTop = offsetTop - selectedItemName.scrollHeight;
-                        }
-                    },
-                    { once: true }
-                ); // 監聽器只觸發一次
+        var create_story_page = JSON.parse(pageData.dataset.createStoryPage);
+        if (select_item_page.item_page) {
+            const selectedItemId = create_story_page[select_item_page.item_page].item_id;
+            const selectedItemName = document.querySelector(`.item_name[data-id="${selectedItemId}"]`);
+            if (selectedItemName) {
+                // 觸發點擊以展開 item_info
+                selectedItemName.click();
+                // 監聽 item_info 的過渡結束事件，然後滾動到視圖中
+                // 假設 item_info 緊隨 item_name 之後
+                const selectedItemInfo = selectedItemName.nextElementSibling;
+                if (selectedItemInfo && selectedItemInfo.classList.contains("item_info")) {
+                    selectedItemInfo.addEventListener(
+                        "transitionend",
+                        function () {
+                            // 確保 item_info 完全展開後再滾動
+                            if (selectedItemInfo.classList.contains("active")) {
+                                // 獲取 header 的高度作為偏移量
+                                const headerHeight = document.querySelector(".header_container").offsetHeight;
+                                // 調整滾動位置以完整顯示 item_name 和 item_info
+                                const offsetTop = selectedItemName.offsetTop - headerHeight;
+                                itemList.scrollTop = offsetTop - selectedItemName.scrollHeight;
+                            }
+                        },
+                        { once: true }
+                    ); // 監聽器只觸發一次
+                }
             }
         }
     }
@@ -184,11 +189,13 @@ function handleButtonClick() {
     function setSelectedItem() {
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
         var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
-        var selected_item = create_story_page[select_item_page.item_page];
-        selected_item.item_id = select_item_page.item_id;
-        selected_item.item_name = select_item_page.item_name;
-        selected_item.cover_design_link = select_item_page.cover_design_link;
-        sessionStorage.setItem("create_story_page", JSON.stringify(create_story_page));
+        if (select_item_page.item_page) {
+            var selected_item = create_story_page[select_item_page.item_page];
+            selected_item.item_id = select_item_page.item_id;
+            selected_item.item_name = select_item_page.item_name;
+            selected_item.cover_design_link = select_item_page.cover_design_link;
+            sessionStorage.setItem("create_story_page", JSON.stringify(create_story_page));
+        }
     }
 }
 

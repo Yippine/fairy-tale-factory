@@ -51,7 +51,7 @@ Fairy Tale Factory 專案的結構設計使得導航和開發變得輕鬆。以�
   - *forms.py, models.py, views.py*：用於用戶管理的表單定義、模型定義和視圖邏輯。
 
 - **utils/**：在整個專案中使用的實用程序函數和輔助工具。
-  - *common_functions.py*：常用的輔助函數。
+  - *common_utils.py*：常用的輔助函數。
 
 ## 開始使用
 

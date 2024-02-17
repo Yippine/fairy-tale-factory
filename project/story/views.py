@@ -6,7 +6,8 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
 from .dto import ItemDTO, SelectItemDto, CreateStoryDto
 from .models import Item
-from .utils.common_functions import split_paragraphs
+from .utils.dto_utils import get_select_item_page, get_create_story_page
+from .utils.common_utils import split_paragraphs
 
 def create_story(request):
     return render(request, "menu/create_story.html")
@@ -97,34 +98,33 @@ def my_storybooks(request):
     return render(request, "display/my_storybooks.html")
 
 def create_story_new(request):
-    select_item_page = request.session.get("select_item_page", {})
-    create_story_page = request.session.get("create_story_page", {})
-    if not select_item_page:
-        select_item_page = SelectItemDto(item_page="", item_page_text="", item=ItemDTO()).to_dict()
-        request.session["select_item_page"] = select_item_page
-    if not create_story_page:
-        create_story_page = CreateStoryDto(
-            main_role=ItemDTO(), sup_role=ItemDTO(), item=ItemDTO()
-        ).to_dict()
-        request.session["create_story_page"] = create_story_page
     return render(
         request,
         "menu/create_story_new.html",
         {
-            "select_item_page": json.dumps(select_item_page),
-            "create_story_page": json.dumps(create_story_page),
+            "select_item_page": json.dumps(get_select_item_page(request)),
+            "create_story_page": json.dumps(get_create_story_page(request)),
         },
     )
 
 def select_item_new(request):
     item_type_enum = {"main_role": 1, "sup_role": 1, "item": 2}
-    select_item_page = request.session.get("select_item_page", {})
+    select_item_page = get_select_item_page(request)
     item_page = select_item_page.get("item_page", "")
     item_type = item_type_enum.get(item_page, 0)
     items = Item.objects.filter(item_type=item_type, disable_time__isnull=True).values(
         "item_id", "item_name"
     )
-    return render(request, "menu/select_item_new.html", {"items": items})
+    create_story_page = get_create_story_page(request)
+    return render(
+        request,
+        "menu/select_item_new.html",
+        {
+            "items": items,
+            "select_item_page": json.dumps(select_item_page),
+            "create_story_page": json.dumps(create_story_page),
+        },
+    )
 
 def item_details_by_data_new(request):
     item_id = request.GET.get("item_id")

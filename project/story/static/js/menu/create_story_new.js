@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initialSession() {
-    const data = document.getElementById("item-data");
-    var select_item_page = data.dataset.selectItemPage;
-    var create_story_page = data.dataset.createStoryPage;
+    const pageData = document.getElementById("page-data");
+    var select_item_page = pageData.dataset.selectItemPage;
+    var create_story_page = pageData.dataset.createStoryPage;
     sessionStorage.setItem("select_item_page", select_item_page);
     sessionStorage.setItem("create_story_page", create_story_page);
 }

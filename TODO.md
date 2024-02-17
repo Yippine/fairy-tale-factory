@@ -2,12 +2,18 @@
 - [ ]  整合開發 ing …
     - [ ]  Model
     - [ ]  View
-            - [ ]  createstorynew page
-                - [ ]  項目檢核邏輯
+        - [ ]  selectitemnew page
+            - [ ]  項目檢核
+                - [ ]  沒選項目不能按選擇鈕
+        - [ ]  createstorynew page
+            - [ ]  項目檢核
+                - [ ]  元素
+                    - [ ]  跳窗
+                - [ ]  邏輯
                     - [ ]  必須選一位主角
                     - [ ]  主角、配角不能重複
                     - [ ]  主角、配角如果是不同故事的同一角色也不行
-                - [ ]  驚嘆號 icon 顯示故事生成指令
+            - [ ]  驚嘆號 icon 顯示故事生成指令
     - [ ]  Controller
         - [ ]  API
             - [ ]  ChatGPT API

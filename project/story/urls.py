@@ -1,5 +1,5 @@
 from django.urls import path
-from utils.common_functions import handle_post_request
+from utils.common_utils import handle_post_request
 from . import views
 
 urlpatterns = [
