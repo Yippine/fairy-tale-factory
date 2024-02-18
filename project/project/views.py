@@ -2,11 +2,11 @@ import os
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 
-#使用 redirect 函數將請求重定向到 "/home"。
+#使用 redirect 函式將請求重定向到 "/home"。
 def redirect_to_home(request):
     return redirect("/home")
 
-#render 函數將 home.html 模板渲染為HTTP響應
+#render 函式將 home.html 模板渲染為 HTTP 響應
 def home(request):
     return render(request, "home.html")
 

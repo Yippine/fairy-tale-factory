@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS original_story (
 CREATE TABLE IF NOT EXISTS user (
     user_id MEDIUMINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	-- 0 - 開發人員
-	-- 1 - 一般用戶
+	-- 1 - 一般使用者
     user_type TINYINT DEFAULT 1 CHECK (user_type IN (0, 1)),
     user_name VARCHAR(50) NOT NULL,
     user_nick_name VARCHAR(50),

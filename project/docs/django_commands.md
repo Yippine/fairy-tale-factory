@@ -66,13 +66,13 @@ python manage.py migrate
 
 - 執行遷移以更新資料庫結構。
 
-## 建立超級用戶
+## 建立超級使用者
 
 ```bash
 python manage.py createsuperuser
 ```
 
-- 建立一個可以登入管理後台的超級用戶。
+- 建立一個可以登入管理後台的超級使用者。
 
 ## 建立翻譯文件
 
@@ -92,7 +92,7 @@ python manage.py compilemessages
 
 ## 將資料庫轉換成 JSON 格式的 fixture 文件
 
-要將資料庫中的數據轉換成 JSON 格式的 fixture 文件，可以使用以下命令：
+要將資料庫中的資料轉換成 JSON 格式的 fixture 文件，可以使用以下命令：
 
 ```bash
 python -Xutf8 manage.py dumpdata --indent 4 --output=fixture/sql/database_data.json
@@ -100,16 +100,16 @@ python -Xutf8 manage.py dumpdata --indent 4 --output=fixture/sql/database_data.j
 
 - 這個命令將當前資料庫的資料導出為 JSON 格式，並指定了輸出文件的路徑為 fixture/sql/database_data.json。
 - 使用 --indent 4 參數可以美化輸出的 JSON 文件，使其易讀性更高。
-- 該操作對於數據遷移、備份和重用非常有用。
+- 該操作對於資料遷移、備份和重用非常有用。
 
-## 加載 fixture 數據
+## 加載 fixture 資料
 
-一旦您已經將資料庫數據導出為 JSON fixture 文件，您可以使用以下命令來加載數據：
+一旦您已經將資料庫資料導出為 JSON fixture 文件，您可以使用以下命令來加載資料：
 
 ```bash
 python manage.py loaddata fixture/sql/database_data.json
 ```
 
-- 這個命令將指定的 fixture 文件中的數據加載到當前資料庫中。
-- 請確保指定的文件路徑和文件名正確，以免加載錯誤的數據。
-- 通常在測試、開發或數據還原的情況下使用此操作。
+- 這個命令將指定的 fixture 文件中的資料加載到當前資料庫中。
+- 請確保指定的文件路徑和文件名正確，以免加載錯誤的資料。
+- 通常在測試、開發或資料還原的情況下使用此操作。

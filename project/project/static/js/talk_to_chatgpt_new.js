@@ -38,7 +38,7 @@ function initializeSearch() {
     const searchInput = document.getElementById("search"); // 獲取搜尋輸入框
     const searchFileList = document.querySelector(".search_result_container .file_list"); // 獲取用於顯示搜尋結果的容器
     searchInput.addEventListener("input", () => {
-        const searchText = searchInput.value; // 獲取用戶輸入
+        const searchText = searchInput.value; // 獲取使用者輸入
         if (searchText.length > 0) {
             fetch(`/searchfiles?searchText=${encodeURIComponent(searchText)}`) // 向後端發送請求
                 .then(response => response.json())
@@ -88,7 +88,7 @@ function initializeClickHandlers() {
     });
 }
 
-// 更新計數的函數
+// 更新計數的函式
 function updateCounts() {
     const selectedFileList = document.querySelector(".selected_file_container .file_list");
     const searchResultList = document.querySelector(".search_result_container .file_list");

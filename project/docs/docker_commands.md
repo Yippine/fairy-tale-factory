@@ -56,18 +56,18 @@ docker-compose exec web python manage.py migrate
 ```
 - 在 Docker Compose 環境中執行 Django 程式的資料庫遷移命令。
 
-## 進入運行中的容器內部（交互式方式）
+## 進入運行中的容器內部（互動式方式）
 ```bash
 docker exec -it <container_id> bash
 ```
 - `<container_id>`：替換為容器的 ID。
-- 這將以交互式方式進入容器的命令行界面。
+- 這將以互動式方式進入容器的命令行界面。
 
-## 進入運行中的 MySQL 容器並使用指定的用戶名進行登錄
+## 進入運行中的 MySQL 容器並使用指定的使用者名進行登入
 ```bash
 docker exec -it <container_id> mysql -u <user_name> -p
 ```
 - `<container_id>`：替換為 MySQL 容器的 ID。
-- `<user_name>`：替換為要使用的 MySQL 用戶名。
-- 這將以交互式方式進入 MySQL 容器並使用指定的用戶名登錄 MySQL。
-- 登錄後，系統將提示您輸入密碼以完成登錄。
+- `<user_name>`：替換為要使用的 MySQL 使用者名。
+- 這將以互動式方式進入 MySQL 容器並使用指定的使用者名登入 MySQL。
+- 登入後，系統將提示您輸入密碼以完成登入。

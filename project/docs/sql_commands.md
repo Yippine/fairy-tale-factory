@@ -20,29 +20,29 @@ SELECT column_names FROM table_name WHERE condition;
 ```
 - 查詢資料表中符合條件的資料列。
 
-## 插入數據
+## 插入資料
 ```sql
 INSERT INTO table_name (column1, column2) VALUES (value1, value2);
 ```
-- 向資料表中插入數據。
+- 向資料表中插入資料。
 
-## 更新數據
+## 更新資料
 ```sql
 UPDATE table_name SET column1 = value1 WHERE condition;
 ```
-- 更新資料表中符合條件的數據。
+- 更新資料表中符合條件的資料。
 
-## 刪除數據
+## 刪除資料
 ```sql
 DELETE FROM table_name WHERE condition;
 ```
-- 刪除資料表中符合條件的數據。
+- 刪除資料表中符合條件的資料。
 
 ## 建立新的資料表
 ```sql
 CREATE TABLE table_name (column1 datatype, column2 datatype, ...);
 ```
-- 建立新的資料表，並指定列名和數據類型。
+- 建立新的資料表，並指定列名和資料類型。
 
 ## 刪除資料表
 ```sql
@@ -63,7 +63,7 @@ CREATE INDEX index_name ON table_name (column_name);
 ```sql
 CREATE UNIQUE INDEX index_name ON table_name (column_name);
 ```
-- 確保索引列中的數據是唯一的，防止重複值。
+- 確保索引列中的資料是唯一的，防止重複值。
 
 ## 查看表格的索引
 ```sql
