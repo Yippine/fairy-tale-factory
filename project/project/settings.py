@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'project.middleware.webversion.WebVersionMiddleware',
 ]
 
-# WEB_VERSION = 'NEW'
+WEB_VERSION = 'NEW'
 
 ROOT_URLCONF = 'project.urls'
 
