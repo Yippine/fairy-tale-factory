@@ -29,12 +29,19 @@
           </button>
         </div>
       </section>
-      <div id="data-container">
-        {% for item in items %}
-          <div class="item-data" data-id="{{ item.item_id }}" data-name="{{ item.item_name }}"></div>
-        {% endfor %}
-        <div id="page-data" data-select-item-page="{{ select_item_page }}" data-create-story-page="{{ create_story_page }}"></div>
-      </div>
+      <section class="fixed_container">
+        <div class="popup_container" id="popup_container_without_button">
+          <div class="popup_content ftf_pink_button">
+            <p id="popup_message_without_button">您尚未選擇任何項目！</p>
+          </div>
+        </div>
+        <div id="data-container">
+          {% for item in items %}
+            <div class="item-data" data-id="{{ item.item_id }}" data-name="{{ item.item_name }}"></div>
+          {% endfor %}
+          <div id="page-data" data-select-item-page="{{ select_item_page }}" data-create-story-page="{{ create_story_page }}"></div>
+        </div>
+      </section>
     </main>
     <script src="{% static 'js/ftf_common_new.js' %}"></script>
     <script src="{% static 'js/menu/select_item_new.js' %}"></script>

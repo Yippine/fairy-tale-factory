@@ -167,13 +167,17 @@ function generateItemsFromData() {
 function handleButtonClick() {
     const actions = {
         select_button: async () => {
-            if (checkSelectedItem()) setSelectedItem();
-            var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
-            var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
-            await sendDataToServer("/story/createstory", {
-                select_item_page: select_item_page,
-                create_story_page: create_story_page,
-            });
+            if (checkSelectedItem()) {
+                setSelectedItem();
+                var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
+                var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
+                await sendDataToServer("/story/createstory", {
+                    select_item_page: select_item_page,
+                    create_story_page: create_story_page,
+                });
+            } else {
+                showErrorMessage();
+            }
         },
         return_button: () => redirectTo("/story/createstory"),
     };
@@ -183,6 +187,7 @@ function handleButtonClick() {
 
     function checkSelectedItem() {
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
+        console.log(`select_item_page:`, select_item_page)
         return select_item_page.item_id != null;
     }
 
@@ -195,6 +200,32 @@ function handleButtonClick() {
             selected_item.item_name = select_item_page.item_name;
             selected_item.cover_design_link = select_item_page.cover_design_link;
             sessionStorage.setItem("create_story_page", JSON.stringify(create_story_page));
+            select_item_page.item_id = null;
+            select_item_page.item_name = null;
+            select_item_page.cover_design_link = null;
+            sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
+        }
+    }
+
+    function showErrorMessage() {
+        const popupMessageContainer = document.getElementById("popup_container_without_button");
+        popupMessageContainer.style.display = "flex";
+        // 設置計時器，3 秒後自動關閉錯誤訊息
+        const timeout = setTimeout(() => {
+            closePopupAndRedirect();
+        }, 3000);
+        // 處理點擊非 .popup_container 區域讓錯誤訊息消失的功能
+        document.addEventListener("click", function outsideClick(event) {
+            if (event.target.id === 'popup_container_without_button' && !event.target.closest('.popup_content')) {
+                closePopupAndRedirect();
+                document.removeEventListener("click", outsideClick); // 移除此事件監聽器以避免多次觸發
+            }
+        });
+
+        function closePopupAndRedirect() {
+            const popupMessageContainer = document.getElementById("popup_container_without_button");
+            popupMessageContainer.style.display = "none";
+            clearTimeout(timeout); // 清除計時器以避免再次自動關閉
         }
     }
 }

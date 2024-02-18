@@ -12,8 +12,10 @@ function initialSession() {
 }
 
 function initialButtons() {
-    document.getElementById("go_home_button").addEventListener("click", () => redirectTo("/home"));
-    document.getElementById("create_button").addEventListener("click", loading);
+    const goHomeButton = document.getElementById("go_home_button");
+    const createButton = document.getElementById("create_button");
+    goHomeButton.addEventListener("click", () => redirectTo("/home"));
+    createButton.addEventListener("click", () => checkItems());
     ["main_role", "sup_role", "item"].forEach(function (itemPage) {
         setButtonText(itemPage);
         setButotnEffects(itemPage);
@@ -22,17 +24,74 @@ function initialButtons() {
         });
     });
 
-    function loading() {
+    function checkItems() {
         const popupMessageContainer = document.getElementById("popup_container_without_button");
+        const loader = document.getElementById("loader")
         const popupMessage = document.getElementById("popup_message_without_button");
-        popupMessageContainer.style.display = "flex";
-        var loadingTime = 1; // 加載時間為 1 秒
-        setTimeout(function () {
-            popupMessage.textContent = "即將為你呈現";
+        const errorMessage = checkErrorMessage();
+        if (errorMessage) {
+            showErrorMessage();
+        } else {
+            loading();
+        }
+
+        function checkErrorMessage() {
+            const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
+            const mainRole = create_story_page.main_role;
+            const supRole = create_story_page.sup_role;
+            // 檢查是否選擇主角
+            if (!mainRole || !mainRole.item_id) {
+                return "請至少選擇一位主角！";
+            }
+            // 檢查主角、配角是否相同
+            if (mainRole.item_id === supRole.item_id) {
+                return "主角、配角不得重複！";
+            }
+            if (mainRole.item_name && supRole.item_name) {
+                // 移除角色名稱中的括號
+                mainRole.item_name = removeParentheses(mainRole.item_name);
+                supRole.item_name = removeParentheses(supRole.item_name);
+                // 檢查主角、配角是否為同一人物
+                if (mainRole.item_name === supRole.item_name) {
+                    return "角色不得為同一人！";
+                }
+            }
+        
+            function removeParentheses(s) {
+                return s.includes("（") ? s.substring(0, s.indexOf("（")) : s;
+            }
+        }
+
+        function showErrorMessage() {
+            popupMessage.textContent = errorMessage;
+            loader.style.display = "none";
+            popupMessageContainer.style.display = "flex";
+            // 設置計時器，3秒後自動關閉錯誤訊息
+            const timeout = setTimeout(() => {
+                popupMessageContainer.style.display = "none";
+            }, 3000);
+            // 處理點擊非 .popup_container 區域讓錯誤訊息消失的功能
+            document.addEventListener("click", function outsideClick(event) {
+                if (event.target.id === 'popup_container_without_button' && !event.target.closest('.popup_content')) {
+                    popupMessageContainer.style.display = "none";
+                    clearTimeout(timeout); // 清除計時器以避免再次自動關閉
+                    document.removeEventListener("click", outsideClick); // 移除此事件監聽器以避免多次觸發
+                }
+            });
+        }
+
+        function loading() {
+            popupMessage.textContent = "高效生成中...";
+            loader.style.display = "flex";
+            popupMessageContainer.style.display = "flex";
+            var loadingTime = 1; // 加載時間為 1 秒
             setTimeout(function () {
-                window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
-            }, 1000); // 延遲 1 秒後跳轉
-        }, loadingTime * 1000);
+                popupMessage.textContent = "即將為你呈現";
+                setTimeout(function () {
+                    window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
+                }, 1000); // 延遲 1 秒後跳轉
+            }, loadingTime * 1000);
+        }
     }
 
     function setButtonText(item_page) {
@@ -92,7 +151,7 @@ function initialButtons() {
             button.removeEventListener("mouseleave", leaveButton);
             wrapTextWithSpans(defaultText, button, "button_text"); // 重置為預設文本
             removeIcon.style.display = "none"; // 隱藏移除圖標
-            // 更新 sessionStorage 中的數據
+            // 更新 sessionStorage 中的資料
             const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
             var item_type = create_story_page[item_page];
             item_type.item_id = null;
