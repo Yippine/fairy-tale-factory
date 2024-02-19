@@ -20,6 +20,7 @@ Fairy Tale Factory 專案的結構設計使得導航和開發變得輕鬆。以�
   - *layout_design_guide.md*：版面設計指南，介紹專案中的版面設計規範和最佳實踐。
   - *sql_commands.md*：用於資料庫管理的常見 SQL 命令，包括資料查詢、修改等操作。
   - *talk_to_chatgpt.md*：集成並與 ChatGPT 進行互動的說明，介紹如何整合 ChatGPT 並進行對話。
+  - *data_integration_guide.md*：解釋並展示如何在我們的專案中實現前後端的資料串接和資料流。
   - *TODO.md*：待實現的任務和功能列表，列出尚未完成的任務和待辦事項。
   - **git/**：Git 相關文件目錄，提供了有關版本控制的指南和命令參考。
     - *command_guide.md*：Git 命令參考指南，列舉了常見的 Git 命令及其用法。
