@@ -25,8 +25,9 @@ function initialButtons() {
     });
 
     function checkItems() {
+        const itemButtonContainers = Array.from(document.querySelectorAll(".item_button_container"));
         const popupMessageContainer = document.getElementById("popup_container_without_button");
-        const loader = document.getElementById("loader")
+        const loadingEarth = document.getElementById("loading_earth")
         const popupMessage = document.getElementById("popup_message_without_button");
         const errorMessage = checkErrorMessage();
         if (errorMessage) {
@@ -64,7 +65,10 @@ function initialButtons() {
 
         function showErrorMessage() {
             popupMessage.textContent = errorMessage;
-            loader.style.display = "none";
+            loadingEarth.style.display = "none";
+            itemButtonContainers.forEach(element => {
+                element.style.opacity = "1";
+            });
             popupMessageContainer.style.display = "flex";
             // 設置計時器，3秒後自動關閉錯誤訊息
             const timeout = setTimeout(() => {
@@ -79,10 +83,13 @@ function initialButtons() {
                 }
             });
         }
-
+        
         function loading() {
             popupMessage.textContent = "高效生成中...";
-            loader.style.display = "flex";
+            loadingEarth.style.display = "flex";
+            itemButtonContainers.forEach(element => {
+                element.style.opacity = "0";
+            });
             popupMessageContainer.style.display = "flex";
             var loadingTime = 1; // 加載時間為 1 秒
             setTimeout(function () {

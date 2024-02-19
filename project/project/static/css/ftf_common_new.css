@@ -167,7 +167,7 @@ body {
   background-color: rgb(255 0 106); /* 時針顏色 */
   border-radius: 5px; /* 時針邊緣圓滑 */
   transform-origin: 50% 100%; /* 確保時針從底部中心旋轉 */
-  animation: spin 3s linear infinite; /* 調整旋轉速度為每 5 秒轉一圈 */
+  animation: clockwise 3s linear infinite; /* 調整旋轉速度為每 5 秒轉一圈 */
 }
 
 .ftf_ring_loading:before {
@@ -181,14 +181,58 @@ body {
   border-radius: 50%;
   height: 7vmin;
   transform-origin: 50% 100%;
-  animation: spin 2s linear infinite;
+  animation: clockwise 2s linear infinite;
 }
 
-@keyframes spin {
+@keyframes clockwise {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes counterclockwise {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeAndRotate {
+  0% {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dayAndNightAlternation {
+  0% {
+    background-color: rgba(0, 0, 0, 0.175);
+    backdrop-filter: blur(0.01rem);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(0.75rem);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.175);
+    backdrop-filter: blur(0.01rem);
   }
 }
