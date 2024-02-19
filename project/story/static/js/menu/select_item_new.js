@@ -171,10 +171,7 @@ function handleButtonClick() {
                 setSelectedItem();
                 var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
                 var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
-                await sendDataToServer("/story/createstory", {
-                    select_item_page: select_item_page,
-                    create_story_page: create_story_page,
-                });
+                await sendDataToServer("/story/createstory", ["select_item_page", "create_story_page"]);
             } else {
                 showErrorMessage();
             }
@@ -187,7 +184,6 @@ function handleButtonClick() {
 
     function checkSelectedItem() {
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
-        console.log(`select_item_page:`, select_item_page)
         return select_item_page.item_id != null;
     }
 

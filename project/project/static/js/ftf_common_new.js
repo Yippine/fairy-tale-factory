@@ -11,7 +11,7 @@ async function sendDataToServer(redirectURL, data) {
                 "X-CSRFToken": getCookie("csrftoken"),
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: getSessionData(pages),
         });
         if (response.ok) {
             redirectTo(redirectURL);
@@ -43,6 +43,14 @@ async function sendDataToServer(redirectURL, data) {
             }
         }
         return cookieValue;
+    }
+
+    function getSessionData(pages) {
+        const data = {};
+        for (const page of pages) {
+            data[page] = JSON.parse(sessionStorage.getItem(page));
+        }
+        return JSON.stringify(data);
     }
 }
 

@@ -164,12 +164,9 @@ function initialButtons() {
     async function setItemPage(item_page) {
         const button = document.getElementById(`${item_page}_button`);
         var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
-        var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
         select_item_page.item_page = item_page;
         select_item_page.item_page_text = button.dataset.wrapText;
         sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
-        await sendDataToServer("/story/selectitem", {
-            "select_item_page": select_item_page, "create_story_page": create_story_page
-        });
+        await sendDataToServer("/story/selectitem", ["select_item_page", "create_story_page"]);
     }
 }

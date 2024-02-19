@@ -116,7 +116,7 @@
     - Setter
         
         ```jsx
-        sessionStorage.setItem("select_item_page", select_item_page);
+        sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
         ```
         
     - Getter
@@ -167,9 +167,9 @@
             function getSessionData(pages) {
                 const data = {};
                 for (const page of pages) {
-                    data[page] = sessionStorage.getItem(page);
+                    data[page] = JSON.parse(sessionStorage.getItem(page));
                 }
-                return data;
+                return JSON.stringify(data);
             }
         }
         ```
