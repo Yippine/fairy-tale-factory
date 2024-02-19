@@ -27,8 +27,10 @@ function initialButtons() {
     function checkItems() {
         const itemButtonContainers = Array.from(document.querySelectorAll(".item_button_container"));
         const popupMessageContainer = document.getElementById("popup_container_without_button");
+        const popupLoadingContainer = document.getElementById("popup_loading_container");
         const loadingEarth = document.getElementById("loading_earth")
         const popupMessage = document.getElementById("popup_message_without_button");
+        const popupLoadingMessage = document.getElementById("popup_loading_message");
         const errorMessage = checkErrorMessage();
         if (errorMessage) {
             showErrorMessage();
@@ -85,15 +87,15 @@ function initialButtons() {
         }
         
         function loading() {
-            popupMessage.textContent = "高效生成中...";
+            popupLoadingMessage.textContent = "高效生成中...";
             loadingEarth.style.display = "flex";
             itemButtonContainers.forEach(element => {
                 element.style.opacity = "0";
             });
-            popupMessageContainer.style.display = "flex";
+            popupLoadingContainer.style.display = "flex";
             var loadingTime = 1; // 加載時間為 1 秒
             setTimeout(function () {
-                popupMessage.textContent = "即將為你呈現";
+                popupLoadingMessage.textContent = "即將為你呈現";
                 setTimeout(function () {
                     window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
                 }, 1000); // 延遲 1 秒後跳轉

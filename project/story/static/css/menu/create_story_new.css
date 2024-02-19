@@ -156,14 +156,18 @@ header {
   display: none;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup_loading_container {
   background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(0.75rem);
   animation: dayAndNightAlternation 30s infinite alternate;
 }
 
 .popup_content {
-  height: 62vmin;
-  width: 62vmin;
+  height: 33vmin;
+  width: 33vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,7 +175,14 @@ header {
   letter-spacing: 0.5vmin;
 }
 
+.popup_container .ftf_pink_button {
+  border-radius: 9.5vmin;
+  padding: 1.5vmin;
+}
+
 .loading_earth {
+  height: 62vmin;
+  width: 62vmin;
   background-image: url('/static/img/web_page/item/loading.png');
   background-size: cover; /* 調整背景圖片大小以覆蓋整個容器 */
   background-position: center; /* 將背景圖片置中 */
@@ -182,6 +193,10 @@ header {
 
 .popup_content p {
   text-align: center;
+  font-size: clamp(3.75vmin, 2.5vmin, 2.5vmin);
+}
+
+#popup_loading_message {
   font-size: clamp(5.5vmin, 3.75vmin, 2.5vmin);
   color: white;
   -webkit-text-stroke-width: 0.075vh;
