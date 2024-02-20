@@ -5,10 +5,11 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
 from .dto import ItemDTO, SelectItemDto, CreateStoryDto
-from .models import Item
+from .models import Item, OriginalStory,NewStory
 from .utils.dto_utils import get_role_info_by_role_item, get_select_item_page, get_create_story_page
 from .utils.common_utils import split_paragraphs
-
+from .utils.create_new_text import gen_story_text
+from .utils import sdxl_controller
 def create_story(request):
     return render(request, "menu/create_story.html")
 
@@ -98,6 +99,29 @@ def my_storybooks(request):
     return render(request, "display/my_storybooks.html")
 
 def create_story_new(request):
+    create_story_page = request.session.get("create_story_page", {})
+    main_role_name = create_story_page.get("main_role", {}).get("item_name")
+    sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
+    item_name = create_story_page.get("item", {}).get("item_name")
+    main_role_detail = Item.objects.filter(item_name=main_role_name).values('item_info').first()
+    sup_role_detail = Item.objects.filter(item_name=sup_role_name).values('item_info').first()
+    item_detail = Item.objects.filter(item_name=item_name).values('item_info').first()
+    orm_story = OriginalStory.objects.filter(original_story_name=create_story_page.get("main_role", {}).get("item_name")).values('original_story_content')
+    story_info = {
+        "main_character_info": f"""主角名稱：{main_role_name}
+        主角特徵：{main_role_detail}
+        """,
+        "supporting_character_info": f"""配角名稱：{sup_role_name}
+        配角特徵：{sup_role_detail}
+        """,
+        "props_info": f"""道具名稱：{item_name}
+        道具功能：{item_detail}""",
+        "story_text": f"""
+        故事背景敘述：{orm_story}""",
+    }
+    story_text = gen_story_text(story_info)
+    generated_story = NewStory(tw_new_story_content=story_text)
+    generated_story.save()
     return render(
         request,
         "menu/create_story_new.html",
@@ -212,6 +236,26 @@ def loading_new(request):
     return render(request, "display/loading_new.html")
 
 def storybook_display_new(request):
+    newstory = NewStory.objects.last()
+    new_story_content = newstory.tw_new_story_content
+    article_list = split_paragraphs(new_story_content)
+    if article_list:
+        page_number = int(request.GET.get("page_number", 1))
+        if page_number < 1:
+            page_number = 1
+        if page_number > len(article_list):
+            page_number = len(article_list)
+        current_article = article_list[page_number - 1]
+        article_list_json = json.dumps(article_list)
+        return render(
+            request,
+            "display/storybook_display_new.html",
+            {
+                "article_list": current_article,
+                "page_number": page_number,
+                "article_list_json": article_list_json,
+            },
+        )
     return render(request, "display/storybook_display_new.html")
 
 def social_features_new(request):
