@@ -122,6 +122,19 @@ header {
   transform: scale(1.17);
 }
 
+.show_command_button {
+  width: 7vmin;
+  height: 7vmin;
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  cursor: pointer;
+}
+
+.show_command_button.ftf_hover_button:hover {
+  transform: scale(1.17);
+}
+
 .header_text_container {
   padding: 0 3.5vw;
 }
@@ -205,6 +218,50 @@ header {
   animation: clockwise 30s linear infinite; /* 調整旋轉速度為每 5 秒轉一圈 */
 }
 
+#popup_command_container .popup_content {
+  border-radius: 3vmin;
+  border-style: solid;
+  width: 80vw;
+  height: 85vh;
+  padding: 1.5vh 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: initial;
+  flex-direction: initial;
+  align-items: initial;
+  justify-content: initial;
+  text-align: initial;
+}
+
+#popup_message_container {
+  padding: 6.5vmin;
+  font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 0.1vh;
+  -webkit-text-stroke-color: rgb(48, 48, 48);
+  letter-spacing: 0.55vmin;
+  line-height: 6vh;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0.75vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+#popup_command_container .remove_icon {
+  display: flex;
+  top: 1.8vmin;
+  left: 1.8vmin;
+}
+
 @media screen and (min-width: 1001px) and (max-width: 1200px) {
   .item_button_container {
     width: 27.5vmin;
@@ -249,6 +306,10 @@ header {
   }
 
   .go_home_button {
+    height: 5.5vw;
+  }
+
+  .show_command_button {
     height: 5.5vw;
   }
 }

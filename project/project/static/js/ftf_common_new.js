@@ -2,7 +2,7 @@ function redirectTo(path) {
     window.location.href = path;
 }
 
-async function sendDataToServer(redirectURL, data) {
+async function sendDataToServer(redirectURL, pages, finishedCallback) {
     try {
         const endpointURL = transformRoute(redirectURL);
         const response = await fetch(endpointURL, {
@@ -14,7 +14,11 @@ async function sendDataToServer(redirectURL, data) {
             body: getSessionData(pages),
         });
         if (response.ok) {
-            redirectTo(redirectURL);
+            if (finishedCallback && typeof finishedCallback === 'function') {
+                finishedCallback(); // 執行完成後的回調函式
+            } else {
+                redirectTo(redirectURL);
+            }
         } else {
             throw new Error("Failed to send data to server");
         }
@@ -122,5 +126,49 @@ function typewriterEffect(selector, millisecond, finishedCallback, typingCallbac
                 finishedCallback(); // 執行完成後的回調函式
             }
         }
+    }
+}
+
+function showCommonMessage(buttonId) {
+    const popupMessageContainer = document.getElementById(buttonId);
+    popupMessageContainer.style.display = "flex";
+    // 設置計時器，3 秒後自動關閉錯誤訊息
+    const timeout = setTimeout(() => {
+        closePopupAndRedirect();
+    }, 3000);
+    // 處理點擊非 .popup_container 區域讓錯誤訊息消失的功能
+    document.addEventListener("click", function outsideClick(event) {
+        if (event.target.id === buttonId && !event.target.closest('.popup_content')) {
+            closePopupAndRedirect();
+            document.removeEventListener("click", outsideClick); // 移除此事件監聽器以避免多次觸發
+        }
+    });
+
+    function closePopupAndRedirect() {
+        const popupMessageContainer = document.getElementById(buttonId);
+        popupMessageContainer.style.display = "none";
+        clearTimeout(timeout); // 清除計時器以避免再次自動關閉
+    }
+}
+
+function showFTFMessage(button, millisecond) {
+    button.style.display = "flex";
+    // 設置計時器，3 秒後自動關閉錯誤訊息
+    if (millisecond) {
+        const timeout = setTimeout(() => {
+            closePopupAndRedirect();
+        }, millisecond);
+    }
+    // 處理點擊非 .popup_container 區域讓錯誤訊息消失的功能
+    document.addEventListener("click", function outsideClick(event) {
+        if (event.target.id === button.id && !event.target.closest('.popup_content')) {
+            closePopupAndRedirect();
+            document.removeEventListener("click", outsideClick); // 移除此事件監聽器以避免多次觸發
+        }
+    });
+
+    function closePopupAndRedirect() {
+        button.style.display = "none";
+        clearTimeout(timeout); // 清除計時器以避免再次自動關閉
     }
 }

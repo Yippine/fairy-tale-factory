@@ -20,6 +20,7 @@
             你需要...
           </p>
         </div>
+        <img class="show_command_button ftf_hover_button" id="show_command_button" src="{% static 'img/web_page/vector/exclamation mark.png' %}" alt="顯示故事生成完整指令" title="顯示故事生成完整指令" />
       </header>
       <div class="select_button_container">
         <div class="item_button_container light_up_button">
@@ -52,6 +53,12 @@
       <div class="popup_container" id="popup_loading_container">
         <div class="popup_content loading_earth" id="loading_earth">
           <p id="popup_loading_message"></p>
+        </div>
+      </div>
+      <div class="popup_container" id="popup_command_container">
+        <div class="popup_content item_button ftf_button light_up_button">
+          <div id="popup_message_container"><pre id="popup_command_message"></pre></div>
+          <img class="remove_icon" id="popup_command_remove_icon" src="{% static 'img/web_page/vector/remove icon 2.png' %}" />
         </div>
       </div>
     </section>

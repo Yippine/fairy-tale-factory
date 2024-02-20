@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
 from .dto import ItemDTO, SelectItemDto, CreateStoryDto
 from .models import Item
-from .utils.dto_utils import get_select_item_page, get_create_story_page
+from .utils.dto_utils import get_role_info_by_role_item, get_select_item_page, get_create_story_page
 from .utils.common_utils import split_paragraphs
 
 def create_story(request):
@@ -142,6 +142,71 @@ def get_story_element_name_new(request):
                 img_name = match.group(1)
                 break
     return JsonResponse({"img_name": img_name})
+
+def fetch_text_command_new(request):
+    create_story_page = request.session.get("create_story_page", {})
+    create_story_dto = CreateStoryDto.from_dict(create_story_page)
+    roles = ['main_role', 'sup_role', 'item']  # 定義角色列表
+    # 初始化數據字典
+    data = {f"{role}_{info}": "" for role in roles for info in ['id', 'name', 'info']}
+    data['original_story_content'] = ''
+    # 用一個循環處理所有角色，避免代碼重複
+    for role in roles:
+        role_item = getattr(create_story_dto, role, None)
+        if role_item:
+            data[f"{role}_name"] = role_item.item_name
+            data[f"{role}_id"] = role_item.item_id
+            if role_item.item_id:
+                item_with_story = Item.objects.filter(item_id=role_item.item_id).select_related('original_story').first()
+                print(f'item_with_story: {item_with_story}')
+                if item_with_story and item_with_story.original_story:
+                    data[f"{role}_info"] = item_with_story.item_info
+                    if role == 'main_role':
+                        data['original_story_content'] = item_with_story.original_story.original_story_content
+    story_example_spacing = "\n" if data['original_story_content'] else ""
+    text_command = f'''您是一位在最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的童話故事作家，需要創作一個適合台灣地區 3 到 12 歲小朋友的童話故事。故事必須包含 1 個主角、1 個配角和 1 個道具，並按照以下要素進行故事創作：
+
+一、主角資訊
+主角名稱：{data['main_role_name']}
+特徵性格：{data['main_role_info']}
+
+二、配角資訊
+配角名稱：{data['sup_role_name']}
+特徵性格：{data['sup_role_info']}
+
+三、道具資訊
+道具名稱：{data['item_name']}
+神奇特性：{data['item_info']}
+
+四、故事範例{story_example_spacing}{data['original_story_content']}
+
+五、生成格式
+"""【故事名稱】為接下來的故事取一個最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的故事名稱。
+【起】故事開頭，主角和配角的介紹，故事背景簡介。
+【承】主角面臨挑戰或問題，展開情節，加入道具。
+【轉】高潮部分，意想不到的情節發生，深刻的教訓浮現。
+【合】結局，主角得到成長或改變，故事總結。"""
+
+六、故事要素
+1. 創造力：故事情節要富有想像力。
+2. 深刻的情感：主角和配角之間有情感連結，故事觸動人心。
+3. 簡單而深刻的教訓：故事要傳達明確的價值觀或教訓。
+4. 精彩的角色：主角和配角要有鮮明的性格。
+5. 意想不到的情節：故事中要有令人驚喜的轉折。
+6. 豐富的描述：場景和角色要有生動的描寫。
+7. 流暢的文筆：故事要流暢易讀。
+8. 現代感：故事要吸引當代年輕讀者。
+9. 年齡適宜性：適合3到12歲的小朋友閱讀。
+10. 教育性質：故事要有教育價值。
+11. 文化連結：故事要具有文化元素。
+12. 趣味性：故事要引人入勝，讓小朋友喜歡閱讀。
+13. 視覺元素：可以包括圖畫或插圖。
+14. 情感連結：故事要觸動讀者的情感。
+15. 啟發性：故事要啟發讀者思考。
+16. 長度和結構：故事要遵循起承轉合結構，長度約360字左右。
+
+請以您的專業經驗，直接創作出，根據以上指令創作一個動人的童話故事，完美地結合上述的 1 個主角、1 個配角和 1 個道具，且充分發揮這三個元素的功能和特色，創作出新穎、有趣且完全不突兀的故事內容。'''
+    return JsonResponse({"text_command": text_command})
 
 def loading_new(request):
     return render(request, "display/loading_new.html")

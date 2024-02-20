@@ -14,8 +14,10 @@ function initialSession() {
 function initialButtons() {
     const goHomeButton = document.getElementById("go_home_button");
     const createButton = document.getElementById("create_button");
+    const showCommandButton = document.getElementById("show_command_button");
     goHomeButton.addEventListener("click", () => redirectTo("/home"));
     createButton.addEventListener("click", () => checkItems());
+    showCommandButton.addEventListener("click", () => showCommand());
     ["main_role", "sup_role", "item"].forEach(function (itemPage) {
         setButtonText(itemPage);
         setButotnEffects(itemPage);
@@ -71,19 +73,7 @@ function initialButtons() {
             itemButtonContainers.forEach(element => {
                 element.style.opacity = "1";
             });
-            popupMessageContainer.style.display = "flex";
-            // 設置計時器，3秒後自動關閉錯誤訊息
-            const timeout = setTimeout(() => {
-                popupMessageContainer.style.display = "none";
-            }, 3000);
-            // 處理點擊非 .popup_container 區域讓錯誤訊息消失的功能
-            document.addEventListener("click", function outsideClick(event) {
-                if (event.target.id === 'popup_container_without_button' && !event.target.closest('.popup_content')) {
-                    popupMessageContainer.style.display = "none";
-                    clearTimeout(timeout); // 清除計時器以避免再次自動關閉
-                    document.removeEventListener("click", outsideClick); // 移除此事件監聽器以避免多次觸發
-                }
-            });
+            showFTFMessage(popupMessageContainer, 3000);
         }
         
         function loading() {
@@ -100,6 +90,50 @@ function initialButtons() {
                     window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
                 }, 1000); // 延遲 1 秒後跳轉
             }, loadingTime * 1000);
+        }
+    }
+
+    function showCommand() {
+        const popupCommandContainer = document.getElementById("popup_command_container");
+        const popupMessage = document.getElementById("popup_command_message");
+        const itemButtonContainers = Array.from(document.querySelectorAll(".item_button_container"));
+        const popupMessageContainer = document.getElementById("popup_container_without_button");
+        const loadingEarth = document.getElementById("loading_earth")
+        const popupErrorMessage = document.getElementById("popup_message_without_button");
+        getTextCommand().then(text_command => {
+            if (text_command) {
+                showTextCommand();
+            } else {
+                showErrorMessage();
+            }
+
+            function showTextCommand() {
+                popupMessage.textContent = text_command;
+                showFTFMessage(popupCommandContainer);
+            }
+    
+            function showErrorMessage() {
+                const errorMessage = "非常抱歉，但是系統找不到您需要的資訊！";
+                popupErrorMessage.textContent = errorMessage;
+                loadingEarth.style.display = "none";
+                itemButtonContainers.forEach(element => {
+                    element.style.opacity = "1";
+                });
+                showFTFMessage(popupMessageContainer, 3000);
+            }
+        });
+
+        async function getTextCommand() {
+            const redirectURL = "/story/fetchtextcommand";
+            try {
+                await sendDataToServer(redirectURL, ["create_story_page"], () => {});
+                const response = await fetch(redirectURL); // 向後端發送請求
+                const data = await response.json();
+                return data.text_command;
+            } catch (error) {
+                console.error("Fetch error:", error);
+                return null; // 在這裡可以處理錯誤或返回一個預設值
+            }
         }
     }
 
