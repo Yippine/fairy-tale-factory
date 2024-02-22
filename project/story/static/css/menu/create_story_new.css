@@ -33,7 +33,7 @@ header {
 }
 
 .light_up_button::before {
-  border-radius: 3vw;
+  border-radius: 3vmin;
   margin: 0;
 }
 
@@ -160,7 +160,7 @@ header {
   position: fixed;
 }
 
-.popup_container {
+.popup_container {  /*右上視窗外底色*/
   position: fixed;
   top: 0;
   left: 0;
@@ -178,7 +178,7 @@ header {
   animation: dayAndNightAlternation 30s infinite alternate;
 }
 
-.popup_content {
+.popup_content {  /*右上視窗*/
   height: 33vmin;
   width: 33vmin;
   display: flex;
@@ -205,8 +205,8 @@ header {
 }
 
 .popup_content p {
-  text-align: center;
-  font-size: clamp(3.75vmin, 2.5vmin, 2.5vmin);
+  text-align: justify;
+  font-size: clamp(3vmin, 2.5vmin, 2.5vmin);
 }
 
 #popup_loading_message {
@@ -225,15 +225,21 @@ header {
   height: 85vh;
   padding: 1.5vh 0;
   background-color: rgba(0, 0, 0, 0.75);
-  display: initial;
+  display: flex;
   flex-direction: initial;
   align-items: initial;
   justify-content: initial;
   text-align: initial;
+  flex-wrap: nowrap;
 }
 
+#popup_command_container .ftf_button{
+  cursor:auto;
+}
+
+
 #popup_message_container {
-  padding: 6.5vmin;
+  padding: 7.5vmin;
   font-size: clamp(2.75vmin, 2.5vmin, 2.5vmin);
   -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 0.1vh;
@@ -241,6 +247,7 @@ header {
   letter-spacing: 0.55vmin;
   line-height: 6vh;
   overflow-y: auto;
+  white-space:break-spaces;
 }
 
 ::-webkit-scrollbar {

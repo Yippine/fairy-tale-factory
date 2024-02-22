@@ -15,6 +15,7 @@ function initialButtons() {
     const goHomeButton = document.getElementById("go_home_button");
     const createButton = document.getElementById("create_button");
     const showCommandButton = document.getElementById("show_command_button");
+    const popupCommandRemoveIco = document.getElementById("popup_command_remove_icon");   /* X按鈕 */
     goHomeButton.addEventListener("click", () => redirectTo("/home"));
     createButton.addEventListener("click", () => checkItems());
     showCommandButton.addEventListener("click", () => showCommand());
@@ -25,6 +26,12 @@ function initialButtons() {
             setItemPage(itemPage);
         });
     });
+    function closePopupCommandContainer() {
+        const popupMessageContainer = document.getElementById("popup_command_container");
+        popupMessageContainer.style.display = "none";
+        clearTimeout(timeout); // 清除計時器以避免再次自動關閉
+    }
+    popupCommandRemoveIco.addEventListener("click", () => closePopupCommandContainer());
 
     function checkItems() {
         const itemButtonContainers = Array.from(document.querySelectorAll(".item_button_container"));
@@ -137,7 +144,7 @@ function initialButtons() {
         }
     }
 
-    function setButtonText(item_page) {
+    function setButtonText(item_page) { 
         const button = document.getElementById(`${item_page}_button`);
         const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
         const defaultText = getItemPageText(item_page);

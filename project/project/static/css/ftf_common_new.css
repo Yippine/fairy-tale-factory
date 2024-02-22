@@ -124,6 +124,7 @@ body {
   background: linear-gradient(#ffc366, #bc7a7a);
   cursor: pointer;
   text-align: center;
+  border-radius: 3vmin;
 }
 
 .ftf_hover_button:hover {
