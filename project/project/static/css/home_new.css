@@ -52,7 +52,7 @@ main {
 .item_button_container {
   padding-top: 12vh;
   flex: 4;
-  display: flex;
+  display: none;
   overflow: hidden;
 }
 

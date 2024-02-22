@@ -103,6 +103,10 @@ main {
   padding: 1.5vh 3vw;
 }
 
+.save_story_button {
+  display: none;
+}
+
 .title,
 .story,
 .page {
