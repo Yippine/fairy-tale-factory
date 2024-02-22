@@ -5,11 +5,16 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
 from .dto import ItemDTO, SelectItemDto, CreateStoryDto
-from .models import Item, OriginalStory,NewStory
-from .utils.dto_utils import get_role_info_by_role_item, get_select_item_page, get_create_story_page
+from .models import Item, OriginalStory, NewStory
+from .utils.dto_utils import (
+    get_role_info_by_role_item,
+    get_select_item_page,
+    get_create_story_page,
+)
 from .utils.common_utils import split_paragraphs
 from .utils.create_new_text import gen_story_text
 from .utils import sdxl_controller
+
 def create_story(request):
     return render(request, "menu/create_story.html")
 
@@ -103,10 +108,16 @@ def create_story_new(request):
     main_role_name = create_story_page.get("main_role", {}).get("item_name")
     sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
     item_name = create_story_page.get("item", {}).get("item_name")
-    main_role_detail = Item.objects.filter(item_name=main_role_name).values('item_info').first()
-    sup_role_detail = Item.objects.filter(item_name=sup_role_name).values('item_info').first()
-    item_detail = Item.objects.filter(item_name=item_name).values('item_info').first()
-    orm_story = OriginalStory.objects.filter(original_story_name=create_story_page.get("main_role", {}).get("item_name")).values('original_story_content')
+    main_role_detail = (
+        Item.objects.filter(item_name=main_role_name).values("item_info").first()
+    )
+    sup_role_detail = (
+        Item.objects.filter(item_name=sup_role_name).values("item_info").first()
+    )
+    item_detail = Item.objects.filter(item_name=item_name).values("item_info").first()
+    orm_story = OriginalStory.objects.filter(
+        original_story_name=create_story_page.get("main_role", {}).get("item_name")
+    ).values("original_story_content")
     story_info = {
         "main_character_info": f"""主角名稱：{main_role_name}
         主角特徵：{main_role_detail}
@@ -170,10 +181,10 @@ def get_story_element_name_new(request):
 def fetch_text_command_new(request):
     create_story_page = request.session.get("create_story_page", {})
     create_story_dto = CreateStoryDto.from_dict(create_story_page)
-    roles = ['main_role', 'sup_role', 'item']  # 定義角色列表
+    roles = ["main_role", "sup_role", "item"]  # 定義角色列表
     # 初始化數據字典
-    data = {f"{role}_{info}": "" for role in roles for info in ['id', 'name', 'info']}
-    data['original_story_content'] = ''
+    data = {f"{role}_{info}": "" for role in roles for info in ["id", "name", "info"]}
+    data["original_story_content"] = ""
     # 用一個循環處理所有角色，避免代碼重複
     for role in roles:
         role_item = getattr(create_story_dto, role, None)
@@ -181,13 +192,19 @@ def fetch_text_command_new(request):
             data[f"{role}_name"] = role_item.item_name
             data[f"{role}_id"] = role_item.item_id
             if role_item.item_id:
-                item_with_story = Item.objects.filter(item_id=role_item.item_id).select_related('original_story').first()
-                print(f'item_with_story: {item_with_story}')
+                item_with_story = (
+                    Item.objects.filter(item_id=role_item.item_id)
+                    .select_related("original_story")
+                    .first()
+                )
+                print(f"item_with_story: {item_with_story}")
                 if item_with_story and item_with_story.original_story:
                     data[f"{role}_info"] = item_with_story.item_info
-                    if role == 'main_role':
-                        data['original_story_content'] = item_with_story.original_story.original_story_content
-    story_example_spacing = "\n" if data['original_story_content'] else ""
+                    if role == "main_role":
+                        data[
+                            "original_story_content"
+                        ] = item_with_story.original_story.original_story_content
+    story_example_spacing = "\n" if data["original_story_content"] else ""
     text_command = f'''您是一位在最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的童話故事作家，需要創作一個適合台灣地區 3 到 12 歲小朋友的童話故事。故事必須包含 1 個主角、1 個配角和 1 個道具，並按照以下要素進行故事創作：
 
 一、主角資訊

@@ -160,7 +160,8 @@ header {
   position: fixed;
 }
 
-.popup_container {  /*右上視窗外底色*/
+.popup_container {
+  /*右上視窗外底色*/
   position: fixed;
   top: 0;
   left: 0;
@@ -178,7 +179,8 @@ header {
   animation: dayAndNightAlternation 30s infinite alternate;
 }
 
-.popup_content {  /*右上視窗*/
+.popup_content {
+  /*右上視窗*/
   height: 33vmin;
   width: 33vmin;
   display: flex;
@@ -196,7 +198,7 @@ header {
 .loading_earth {
   height: 62vmin;
   width: 62vmin;
-  background-image: url('/static/img/web_page/item/loading.png');
+  background-image: url("/static/img/web_page/item/loading.png");
   background-size: cover; /* 調整背景圖片大小以覆蓋整個容器 */
   background-position: center; /* 將背景圖片置中 */
   display: none; /* 預設不顯示，通過 JS 控制顯示 */
@@ -233,10 +235,9 @@ header {
   flex-wrap: nowrap;
 }
 
-#popup_command_container .ftf_button{
-  cursor:auto;
+#popup_command_container .ftf_button {
+  cursor: auto;
 }
-
 
 #popup_message_container {
   padding: 7.5vmin;
@@ -247,7 +248,7 @@ header {
   letter-spacing: 0.55vmin;
   line-height: 6vh;
   overflow-y: auto;
-  white-space:break-spaces;
+  white-space: break-spaces;
 }
 
 ::-webkit-scrollbar {
@@ -296,7 +297,7 @@ header {
     font-size: 4vw;
     width: 23vmin;
   }
-  
+
   .create_button {
     font-size: 4vw;
     padding: 2vw;

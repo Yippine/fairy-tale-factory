@@ -15,7 +15,7 @@ function initialButtons() {
     const goHomeButton = document.getElementById("go_home_button");
     const createButton = document.getElementById("create_button");
     const showCommandButton = document.getElementById("show_command_button");
-    const popupCommandRemoveIco = document.getElementById("popup_command_remove_icon");   /* X按鈕 */
+    const popupCommandRemoveIco = document.getElementById("popup_command_remove_icon"); /* X按鈕 */
     goHomeButton.addEventListener("click", () => redirectTo("/home"));
     createButton.addEventListener("click", () => checkItems());
     showCommandButton.addEventListener("click", () => showCommand());
@@ -37,7 +37,7 @@ function initialButtons() {
         const itemButtonContainers = Array.from(document.querySelectorAll(".item_button_container"));
         const popupMessageContainer = document.getElementById("popup_container_without_button");
         const popupLoadingContainer = document.getElementById("popup_loading_container");
-        const loadingEarth = document.getElementById("loading_earth")
+        const loadingEarth = document.getElementById("loading_earth");
         const popupMessage = document.getElementById("popup_message_without_button");
         const popupLoadingMessage = document.getElementById("popup_loading_message");
         const errorMessage = checkErrorMessage();
@@ -68,7 +68,7 @@ function initialButtons() {
                     return "角色不得為同一人！";
                 }
             }
-        
+
             function removeParentheses(s) {
                 return s.includes("（") ? s.substring(0, s.indexOf("（")) : s;
             }
@@ -77,16 +77,16 @@ function initialButtons() {
         function showErrorMessage() {
             popupMessage.textContent = errorMessage;
             loadingEarth.style.display = "none";
-            itemButtonContainers.forEach(element => {
+            itemButtonContainers.forEach((element) => {
                 element.style.opacity = "1";
             });
             showFTFMessage(popupMessageContainer, 3000);
         }
-        
+
         function loading() {
             popupLoadingMessage.textContent = "高效生成中...";
             loadingEarth.style.display = "flex";
-            itemButtonContainers.forEach(element => {
+            itemButtonContainers.forEach((element) => {
                 element.style.opacity = "0";
             });
             popupLoadingContainer.style.display = "flex";
@@ -105,9 +105,9 @@ function initialButtons() {
         const popupMessage = document.getElementById("popup_command_message");
         const itemButtonContainers = Array.from(document.querySelectorAll(".item_button_container"));
         const popupMessageContainer = document.getElementById("popup_container_without_button");
-        const loadingEarth = document.getElementById("loading_earth")
+        const loadingEarth = document.getElementById("loading_earth");
         const popupErrorMessage = document.getElementById("popup_message_without_button");
-        getTextCommand().then(text_command => {
+        getTextCommand().then((text_command) => {
             if (text_command) {
                 showTextCommand();
             } else {
@@ -118,12 +118,12 @@ function initialButtons() {
                 popupMessage.textContent = text_command;
                 showFTFMessage(popupCommandContainer);
             }
-    
+
             function showErrorMessage() {
                 const errorMessage = "非常抱歉，但是系統找不到您需要的資訊！";
                 popupErrorMessage.textContent = errorMessage;
                 loadingEarth.style.display = "none";
-                itemButtonContainers.forEach(element => {
+                itemButtonContainers.forEach((element) => {
                     element.style.opacity = "1";
                 });
                 showFTFMessage(popupMessageContainer, 3000);
@@ -144,7 +144,7 @@ function initialButtons() {
         }
     }
 
-    function setButtonText(item_page) { 
+    function setButtonText(item_page) {
         const button = document.getElementById(`${item_page}_button`);
         const create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
         const defaultText = getItemPageText(item_page);
@@ -169,31 +169,31 @@ function initialButtons() {
             button.addEventListener("mouseleave", leaveButton); // 添加滑鼠離開事件
         }
         removeIcon.addEventListener("click", clickRemoveIcon); // 為移除圖標添加點擊事件處理器
-    
+
         function enterRemoveIcon(event) {
             event.stopPropagation(); // 阻止事件冒泡
             button.textContent = removeText; // 顯示移除提示
         }
-    
+
         function leaveRemoveIcon(event) {
             if (event.relatedTarget !== button) {
                 wrapTextWithSpans(wrapText, button, "button_text"); // 恢復到選擇過的項目名稱
                 removeIcon.style.display = "none";
             }
         }
-    
+
         function enterButton(event) {
             wrapTextWithSpans(defaultText, button, "button_text");
             removeIcon.style.display = "flex";
         }
-    
+
         function leaveButton(event) {
             if (event.relatedTarget !== removeIcon) {
                 wrapTextWithSpans(wrapText, button, "button_text");
                 removeIcon.style.display = "none";
             }
         }
-    
+
         function clickRemoveIcon(event) {
             event.stopPropagation(); // 阻止事件冒泡
             removeIcon.removeEventListener("mouseenter", enterRemoveIcon);

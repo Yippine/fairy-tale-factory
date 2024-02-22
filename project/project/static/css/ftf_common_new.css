@@ -87,10 +87,10 @@ body {
   padding: 1vw;
   border-width: 1vw;
   border-style: solid;
-  border-color: #2F2D2D #434040 #4F4C4C #434040;
+  border-color: #2f2d2d #434040 #4f4c4c #434040;
   background: #f5f5f5;
   background-image: linear-gradient(#1b1b1b, #333333);
-  box-shadow: inset 0 0.2vw 0.5vw rgba(0,0,0,.6), 0 0.5vw 0.2vw rgba(0,0,0,.1), 0 1vw 2vw rgba(0,0,0,.8);
+  box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -110,11 +110,11 @@ body {
   -webkit-transform: rotateZ(-40deg);
   -moz-transform: rotateZ(-40deg);
   -o-transform: rotateZ(-40deg);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,.4)), to(rgba(255,255,255,0)));
-  background-image: -webkit-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
-  background-image: -moz-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
-  background-image: -o-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
-  background-image: linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.4)), to(rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
 }
 
 .ftf_button {
@@ -142,24 +142,25 @@ body {
   /* border-color: #ffc8da #c68198 #9e586e #fdaac5; */
   background: #f5f5f5;
   background-image: linear-gradient(#ff4984, #d9d9d9);
-  box-shadow: inset 0 0.2vw 0.5vw rgba(0,0,0,.6), 0 0.5vw 0.2vw rgba(0,0,0,.1), 0 1vw 2vw rgba(0,0,0,.8);  
+  box-shadow: inset 0 0.2vw 0.5vw rgba(0, 0, 0, 0.6), 0 0.5vw 0.2vw rgba(0, 0, 0, 0.1), 0 1vw 2vw rgba(0, 0, 0, 0.8);
   color: aliceblue;
   -webkit-text-stroke-width: 0.01vmin;
   -webkit-text-stroke-color: rgb(48, 48, 48);
 }
 
-.ftf_clock_loading, .ftf_ring_loading {
+.ftf_clock_loading,
+.ftf_ring_loading {
   position: relative; /* 確保時鐘中心點可以放置時針 */
   border: 1vmin solid #f3f3f3; /* 時鐘外圈 */
   border-radius: 50%;
   height: 18vmin;
   width: 18vmin; /* 確保時鐘為圓形 */
   background-color: white; /* 時鐘背景顏色 */
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.2); /* 給時鐘添加一些深度 */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* 給時鐘添加一些深度 */
 }
 
 .ftf_clock_loading:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 10%;
   left: 48%; /* 時針位置調整 */
@@ -172,7 +173,7 @@ body {
 }
 
 .ftf_ring_loading:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 1%;
   left: 2%;
@@ -204,8 +205,12 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeAndRotate {

@@ -1,33 +1,30 @@
 # chatgpt_api資訊
 from openai import OpenAI
-API_KEY = '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'
-client = OpenAI(organization = 'org-BbuOFHuZiHsodlzbcmMNJlLp', api_key=API_KEY)
 
+API_KEY = "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"
+client = OpenAI(organization="org-BbuOFHuZiHsodlzbcmMNJlLp", api_key=API_KEY)
 
 # 假故事資訊包
 story_info = {
- "main_character_info": """主角名稱：夸父
+    "main_character_info": """主角名稱：夸父
  主角特徵：力大無窮
  主角性格：堅毅、慈悲""",
- "supporting_character_info": """配角名稱：醜小鴨
+    "supporting_character_info": """配角名稱：醜小鴨
  配角特徵：一度被認為醜陋的外貌
  配角性格：堅毅、善良""",
- "props_info": """道具名稱：玫瑰
+    "props_info": """道具名稱：玫瑰
  道具功能：代表貝兒的願望，她在鄉下看不到玫瑰，所以希望父親帶回一支。""",
- "story_text": """故事發生的地點：大地
+    "story_text": """故事發生的地點：大地
  故事背景敘述：太陽異常火熱，人們苦不堪言，祈求夸父的力量。夸父決定追逐太陽，調整天氣，為百姓帶來涼爽。他踏遍千山萬水，但太陽總是逃之夭夭。在追逐過程中，遇到無盡困難，但堅持不懈。最終，夸父倦怠犧牲，他的傳奇事蹟感動眾生，成為永恆的傳說。他的身軀、頭髮、血液都融入大自然，成為大地的一部分。夸父節紀念這位英雄。""",
 }
 
 # 用故事資訊生成全新內文
 def gen_story_text(story_info):
-# 故事資訊生成指令  
+    # 故事資訊生成指令
     text_prompt = gen_text_prompt(story_info)
-# 指令連接api生成新故事
+    # 指令連接api生成新故事
     story_text = call_chatgpt_api(text_prompt)
     return story_text
-
-
-
 
 # 故事資訊生成指令包
 def gen_text_prompt(story_info):
@@ -81,12 +78,11 @@ def call_chatgpt_api(text_prompt):
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": f"{text_prompt}"},
-        ]
-    )   
+        ],
+    )
 
     story_text = response.choices[0].message.content
     return story_text
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     gen_story_text(story_info)
