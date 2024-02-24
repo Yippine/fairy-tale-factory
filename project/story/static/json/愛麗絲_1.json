@@ -1,0 +1,11 @@
+{
+    "item_name": "愛麗絲",
+    "item_type": 1,
+    "cover_design_id": 1,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad, alice_liddell_v2: 2b8e62e89f9e",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white background, simple background:1.2),alice liddell, light smile,\n((ghibli)),1 girl, black hair bow, blue dress, blonde hair curly hair, apron,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.7>, <lora:alice_liddell_v2:0.5>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)), blush,",
+    "cover_design_seed_value": 3368802280,
+    "cover_design_link": ""
+}

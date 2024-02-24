@@ -1,0 +1,11 @@
+{
+    "item_name": "艾莎",
+    "item_type": 1,
+    "cover_design_id": 1,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad, snow_queen_elsa: 52bcc304893f",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white backgeround, simple background:1.5),different expressions,smile,\n((ghibli)),1 girl,(blonde hair single braid),snow_queen_elsa,(light blue gown:1.2),\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.8>,<lora:snow_queen_elsa:0.3>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,on hand with less than 5 fingers,crown,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 21895848,
+    "cover_design_link": ""
+}
