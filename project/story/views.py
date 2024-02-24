@@ -172,7 +172,7 @@ def get_story_element_name_new(request):
     img_name = "問號_0.jpg"
     for file_name in os.listdir(dir_path):
         if file_name.endswith((".jpg", ".png", ".jpeg", ".gif")):
-            match = re.match(r"((.+)_\d\.(jpg|png|jpeg|gif))", file_name)
+            match = re.match(r"((.+)_\d\.(jpg|png|jpeg|gif|tif))", file_name)
             if match and item_name == match.group(2):
                 img_name = match.group(1)
                 break

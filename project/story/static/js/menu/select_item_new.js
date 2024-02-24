@@ -111,13 +111,8 @@ function generateItemsFromData() {
                         .catch((error) => console.error("Fetch error:", error));
 
                     function getItemName(itemName) {
-                        var regex = /\d+\.\s(.+)/;
-                        var match = itemName.match(regex);
-                        if (match) {
-                            var formalName = match[1];
-                            return formalName;
-                        }
-                        return "";
+                        formalName = itemName.replace(/^\d+\.\s+/, '').replace(/\s*（.*?）\s*$/, '')
+                        return formalName
                     }
                 }
             }
