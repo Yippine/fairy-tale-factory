@@ -1,7 +1,7 @@
 # chatgpt_api資訊
 from openai import OpenAI
 
-API_KEY = "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"
+API_KEY = "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"
 client = OpenAI(organization="org-BbuOFHuZiHsodlzbcmMNJlLp", api_key=API_KEY)
 
 # 假故事資訊包

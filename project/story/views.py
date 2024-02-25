@@ -1,6 +1,4 @@
-import os
-import re
-import json
+import os, re, json, threading
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +11,9 @@ from .utils.dto_utils import (
 )
 from .utils.common_utils import split_paragraphs
 from .utils.create_new_text import gen_story_text
-from .utils import sdxl_controller
+from .utils.sdxl_api import create_image_from_prompt
+from .utils.create_prompt import create_prompt
+lock = threading.Lock()
 
 def create_story(request):
     return render(request, "menu/create_story.html")
@@ -67,36 +67,7 @@ def loading(request):
     return render(request, "display/loading.html")
 
 def storybook_display(request):
-    a = """有一天，大地上空的太陽變得異常火熱，炙烤著整個世界。 人們汗流浹背，苦不堪言。 於是，他們紛紛祈求夸父的力量，期望他能夠幫助解決這個燙人的難題。 夸父心懷天下蒼生，毅然決定追逐太陽，調整天氣，為百姓帶來涼爽。
-
-夸父開始了他驚險又艱辛的追逐之旅。 他的步伐踏遍了千山萬水，縱橫了原野和河流。 他毫不猶豫地奔跑著，一往無前，但太陽似乎總是掛在他眼前，處處逃之夭夭。 夸父不禁感慨萬分，原來即便是力大無窮的他，也無法逾越天上神聖的界限。
-
-在追逐的過程中，夸父遇見了無盡的艱難與困境。 有時他會穿越蒼茫的沙漠，有時會穿越蓊鬱的叢林。 他時而奔馳於高山之巔，時而穿越湍急的江河。 然而，太陽的速度總是超越他的步伐，如影隨形卻又不可捉摸。
-
-隨著時間的推移，夸父的體力逐漸消耗殆盡，口渴難耐。 但他的堅持卻是無法動搖的，因為他深知，只有追上太陽，才能讓天空恢復正常，為人們帶來安慰和快樂。
-
-然而，命運的捉弄，夸父最終感到疲憊不堪，倦怠滿身。 他在追逐的旅程中，因過度的努力而英勇地犧牲了。 夸父倒下的地方，天地為之一震，萬物為之黯然。 他的傳奇事蹟感動了天地間的眾生，人們為了紀念他的英勇和犧牲，舉行了隆重的祭祀儀式。
-
-夸父死後，他的高大身軀變成了山脈，頭髮變成了樹木，血液變成了河流，扔出去的那根手杖，變成了一片桃林。 他的一切都融入了大自然，成為了大地的一部分。 夸父的靈魂和力量繼續流傳，他的英勇事蹟成為了永恆的傳說，激勵後人努力向前邁進。 夸父節的日子，人們總是在夜晚點燃篝火，唱起傳承千古的歌謠，紀念這位曾經為了眾生而追逐太陽的英雄。"""
-    article_list = split_paragraphs(a)
-    if article_list:
-        page_number = int(request.GET.get("page_number", 1))
-        if page_number < 1:
-            page_number = 1
-        if page_number > len(article_list):
-            page_number = len(article_list)
-        current_article = article_list[page_number - 1]
-        article_list_json = json.dumps(article_list)
-        return render(
-            request,
-            "display/storybook_display.html",
-            {
-                "article_list": current_article,
-                "page_number": page_number,
-                "article_list_json": article_list_json,
-            },
-        )
-
+    pass
 def social_features(request):
     return render(request, "display/social_features.html")
 
@@ -108,31 +79,26 @@ def create_story_new(request):
     main_role_name = create_story_page.get("main_role", {}).get("item_name")
     sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
     item_name = create_story_page.get("item", {}).get("item_name")
-    main_role_detail = (
-        Item.objects.filter(item_name=main_role_name).values("item_info").first()
-    )
-    sup_role_detail = (
-        Item.objects.filter(item_name=sup_role_name).values("item_info").first()
-    )
-    item_detail = Item.objects.filter(item_name=item_name).values("item_info").first()
-    orm_story = OriginalStory.objects.filter(
-        original_story_name=create_story_page.get("main_role", {}).get("item_name")
-    ).values("original_story_content")
-    story_info = {
-        "main_character_info": f"""主角名稱：{main_role_name}
-        主角特徵：{main_role_detail}
-        """,
-        "supporting_character_info": f"""配角名稱：{sup_role_name}
-        配角特徵：{sup_role_detail}
-        """,
-        "props_info": f"""道具名稱：{item_name}
-        道具功能：{item_detail}""",
-        "story_text": f"""
-        故事背景敘述：{orm_story}""",
-    }
-    story_text = gen_story_text(story_info)
-    generated_story = NewStory(tw_new_story_content=story_text)
-    generated_story.save()
+    if main_role_name and sup_role_name and item_name:
+        main_role_detail = Item.objects.filter(item_name=main_role_name).values('item_info').first()
+        sup_role_detail = Item.objects.filter(item_name=sup_role_name).values('item_info').first()
+        item_detail = Item.objects.filter(item_name=item_name).values('item_info').first()
+        orm_story = OriginalStory.objects.filter(original_story_name=create_story_page.get("main_role", {}).get("item_name")).values('original_story_content')
+        story_info = {
+            "main_character_info": f"""主角名稱：{main_role_name}
+            主角特徵：{main_role_detail}
+            """,
+            "supporting_character_info": f"""配角名稱：{sup_role_name}
+            配角特徵：{sup_role_detail}
+            """,
+            "props_info": f"""道具名稱：{item_name}
+            道具功能：{item_detail}""",
+            "story_text": f"""
+            故事背景敘述：{orm_story}""",
+        }
+        story_text = gen_story_text(story_info)
+        generated_story = NewStory(tw_new_story_content=story_text)
+        generated_story.save()
     return render(
         request,
         "menu/create_story_new.html",
@@ -252,6 +218,16 @@ def fetch_text_command_new(request):
 def loading_new(request):
     return render(request, "display/loading_new.html")
 
+def generate_images_background(article_list, seed):
+    with lock:  
+        prompt_list = []
+        seed = 2751417741
+        for article in article_list:
+            prompt = create_prompt(article)
+            prompt_list.append(prompt)
+        for promptlist in prompt_list:
+            create_image_from_prompt(promptlist, seed)
+            
 def storybook_display_new(request):
     newstory = NewStory.objects.last()
     new_story_content = newstory.tw_new_story_content
@@ -264,6 +240,7 @@ def storybook_display_new(request):
             page_number = len(article_list)
         current_article = article_list[page_number - 1]
         article_list_json = json.dumps(article_list)
+        # threading.Thread(target=generate_images_background, args=(article_list, 2751417741)).start()
         return render(
             request,
             "display/storybook_display_new.html",
