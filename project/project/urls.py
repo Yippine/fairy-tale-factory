@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
+from django.views.static import serve
+from django.conf.urls.static import static
+from django.conf import settings
 from . import views
 
 urlpatterns = [
@@ -28,4 +31,4 @@ urlpatterns = [
     # 自動導頁
     path('', views.redirect_to_home, name='redirect_home'),
     re_path(r'^.*/$', TemplateView.as_view(template_name='404.html'), name="redirect_to_not_found"),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
