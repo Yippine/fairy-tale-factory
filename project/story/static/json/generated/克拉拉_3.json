@@ -1,0 +1,11 @@
+{
+    "item_name": "克拉拉",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white backgeround, simple background:1.5),innocent expression,light blush,grin, cute,\n((ghibli)),1 girl,light skin,(dark brown hair),french braid,long hair,night gown,(purple dress:1.2),long sleeves,(white shawl:1.2),\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.7>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)), (three legs),",
+    "cover_design_seed_value": 2285358172,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211593529508368444/3.png?ex=65eec367&is=65dc4e67&hm=0e6235bc916d6ae30785c6fed340f82e5c0b6f8ca0642251a93e4d5833b29490&=&format=webp&quality=lossless&width=780&height=780"
+}

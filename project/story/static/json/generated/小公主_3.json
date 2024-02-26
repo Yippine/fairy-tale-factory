@@ -1,0 +1,11 @@
+{
+    "item_name": "小公主",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view, front view,\n(white background, simple background:1.5),joyful expression, innocent face,\n((ghibli)),1 girl, age 5-8,long blonde hair, traditional princess dress, lace and ribbons,( soft pink dress:1.2), (gold accessories:1.5)\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.8>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4), monochrome, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts,((signature)), watermark, username, blurry, deformed eyes,((disfigured)),bad art, deformed,((extra limbs)),((duplicate)), morbid, multilated, bad body,one hand with less than 5 fingers, stacked torses, stacked hands, totem pole,((text)),",
+    "cover_design_seed_value": 2303151328,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211588606720741406/3.png?ex=65eebed2&is=65dc49d2&hm=b6f4809ebfae37793303b1c7bcfb0279bc8ccfd11c48857275004febd0899bea&=&format=webp&quality=lossless&width=780&height=780"
+}

@@ -1,0 +1,11 @@
+{
+    "item_name": "拇指姑娘",
+    "item_type": 1,
+    "cover_design_id": 0,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad, SN-PetalDress: 416625a1950d",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white backgeround, simple background:1.5),cute,(detailed eyes), (twinkle smile:1.2),necklace,PetalDress,Thumbelina,\n((ghibli)),1 girl,(little girl:1.3),(short:1.3),yellow hair,flower wreath,pink dress,barefoot,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.8>, <lora:SN-PetalDress:1>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 3848377244,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211595181082808382/0.png?ex=65eec4f1&is=65dc4ff1&hm=6956376c314a263be11e7eed26ba50f9973e14d24b95da61a54d5119cc21012f&=&format=webp&quality=lossless&width=780&height=780"
+}

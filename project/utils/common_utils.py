@@ -1,4 +1,5 @@
 import json
+import os
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -17,3 +18,11 @@ def handle_post_request(request):
     return JsonResponse(
         {"status": "error", "message": "Method not allowed"}, status=405
     )
+
+# 清空目錄下的所有檔案和子目錄
+def clear_directory(directory):
+    for root, dirs, files in os.walk(directory, topdown=False):
+        for file in files:
+            os.remove(os.path.join(root, file))
+        for dir in dirs:
+            os.rmdir(os.path.join(root, dir))

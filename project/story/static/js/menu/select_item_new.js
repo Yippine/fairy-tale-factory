@@ -104,6 +104,7 @@ function generateItemsFromData() {
                             const img = document.getElementById("item_image");
                             var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
                             cover_design_link = "/static/img/story_elements/" + data.img_name;
+                            // cover_design_link = data.cover_design_link;
                             img.src = cover_design_link;
                             select_item_page.cover_design_link = cover_design_link;
                             sessionStorage.setItem("select_item_page", JSON.stringify(select_item_page));
@@ -164,8 +165,6 @@ function handleButtonClick() {
         select_button: async () => {
             if (checkSelectedItem()) {
                 setSelectedItem();
-                var select_item_page = JSON.parse(sessionStorage.getItem("select_item_page"));
-                var create_story_page = JSON.parse(sessionStorage.getItem("create_story_page"));
                 await sendDataToServer("/story/createstory", ["select_item_page", "create_story_page"]);
             } else {
                 showErrorMessage();

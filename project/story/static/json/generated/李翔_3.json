@@ -1,0 +1,11 @@
+{
+    "item_name": "李翔",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "li_shang-30: f12faddc2266, GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(upper body), potrait,\nbattlefield,brave,\n((ghibli)),(1 young man),strong muscular build,determined expression,heroic stance,li shang,cape,(long sleeves),armor,serious look,\n<lora:li_shang-30:0.3>,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.5>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)), (three legs), nipple,",
+    "cover_design_seed_value": 2706797433,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211594349150867456/3.png?ex=65eec42b&is=65dc4f2b&hm=d44d83eedb908c1b7fb1199922f43fe7dafa1cbb6a6351ff846085fe21429fcc&=&format=webp&quality=lossless&width=780&height=780"
+}

@@ -1,0 +1,11 @@
+{
+    "item_name": "小女孩",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white backgeround, simple background:1.5),(detailed eyes),blush,cute little girl,female child,\n((ghibli)),1 little girl,(red shawl:1.3),(blonde hair:1.2),(low twin braids:1.6),long hair,(holding a basket:1.4),(dirty dress:1.1),apron,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.8>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,on hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 967941714,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211588354764836924/3.png?ex=65eebe95&is=65dc4995&hm=7def155355291abd17efe4b284e2e8eb09acff29e3d333de966d6784714f342f&=&format=webp&quality=lossless&width=780&height=780"
+}

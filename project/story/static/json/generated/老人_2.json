@@ -1,0 +1,11 @@
+{
+    "item_name": "老人",
+    "item_type": 1,
+    "cover_design_id": 2,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(upper body), potrait,\nchinese building,(detailed eyes),wise,trustworthy,\n((ghibli)),1 male,long white beard,flowing beard,walking stick,dark ordinary clothing,deep and insightful eyes,gentle smile,mystical aura,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.5>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)), three legs,",
+    "cover_design_seed_value": 4273041287,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211592523630514216/2.png?ex=65eec277&is=65dc4d77&hm=f49b723b4a36cf8e67a0391798225b1fdf17b2c032d5274229bf312a8bbb8f17&=&format=webp&quality=lossless&width=780&height=780"
+}

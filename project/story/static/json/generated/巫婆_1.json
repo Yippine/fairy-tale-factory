@@ -1,0 +1,11 @@
+{
+    "item_name": "巫婆",
+    "item_type": 1,
+    "cover_design_id": 1,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),((detailed face)),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white background, simple background:1.5),wicked,(old woman:0.1),\n((ghibli)),1 woman,gray hair,withered face,dark robes,witch hat,malevolent eyes,magic wand,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.8>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 4212517303,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211593747763171399/1.png?ex=65eec39b&is=65dc4e9b&hm=99147b625f7bed38b9dc0eb66c3003f44edc57c9bccaecea30212e2bf2f7cc4a&=&format=webp&quality=lossless&width=780&height=780"
+}

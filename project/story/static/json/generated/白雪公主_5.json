@@ -1,0 +1,11 @@
+{
+    "item_name": "白雪公主",
+    "item_type": 1,
+    "cover_design_id": 5,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad, blancanieves: 8161c38fc09d",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white backgeround, simple background:1.5),smile, snow white,\n((ghibli)),1 girl, black hair, brown eyes, puffy short sleeves, short sleeves, bow, (blue shirt), bob hair, red hairband, elaborate dress, (yellow long skirt),\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.7>,<lora:blancanieves:0.3>",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.3),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,on hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 2683578958,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211590659425964052/5.png?ex=65eec0bb&is=65dc4bbb&hm=c5744a981e5c5e0cd3d4654e6deb5c14671be75183f4ccdab01b56de81be71d0&=&format=webp&quality=lossless&width=780&height=780"
+}

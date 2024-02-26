@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS cover_design (
     cover_design_lora VARCHAR(200),
     cover_design_positive_prompt VARCHAR(1000) NOT NULL,
     cover_design_negative_prompt VARCHAR(1000),
-    cover_design_seed_value INT UNSIGNED NOT NULL,
+    cover_design_seed_value INT UNSIGNED,
     cover_design_link VARCHAR(255) NOT NULL,
     creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modification_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

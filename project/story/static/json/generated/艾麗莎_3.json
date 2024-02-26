@@ -1,0 +1,11 @@
+{
+    "item_name": "艾麗莎",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.5),perfect face,perfect eyes,\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white backgeround, simple background:1.5),quiet,simple tiara,sad,\n((ghibli)),1 girl,(long hair),blue eyes,(blue dress:1.2),necklace,long dress,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.7>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.3),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,on hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 3529988214,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211593199240355870/3.png?ex=65eec319&is=65dc4e19&hm=26571cd2cca8872e84bdbead7b796bcc247ca32f4a90f1ae1a2c2b42d1b05656&=&format=webp&quality=lossless&width=780&height=780"
+}

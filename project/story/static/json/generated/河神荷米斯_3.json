@@ -1,0 +1,11 @@
+{
+    "item_name": "河神荷米斯",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept-10: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(CharacterSheet:1),(multiple views, full body, upper body, reference sheet:1),back view,front view,\n(white background, simple background:1.5),divine,powerful, sparkle print, light smile,\n((ghibli)),1 god,flowing robes,elements of water,expression of wisdom and compassion,holding a staff,ethereal presence,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept-10:0.8>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)),",
+    "cover_design_seed_value": 1796027679,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211595404718899211/3.png?ex=65eec526&is=65dc5026&hm=933a73465cc55c0468c17ac5e0522f254eb655c52708c6af74d3c7fb8c4bcdce&=&format=webp&quality=lossless&width=780&height=780"
+}

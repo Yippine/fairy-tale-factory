@@ -1,0 +1,11 @@
+{
+    "item_name": "夸父",
+    "item_type": 1,
+    "cover_design_id": 3,
+    "cover_design_model": "sdvn8Art_ghibli",
+    "cover_design_lora": "GoodHands-beta2: c05ed279295e, CharacterDesign_Concept: 6f65857a23ad",
+    "cover_design_positive_prompt": "parameters\n\n((best quality)),((masterpiece)),(detailed:1.4),\n(upper body), potrait,\nrunning on a road,sunny, big sun, (detailed eyes),heroic,noble,\n((ghibli)),1 male,muscular build,long hair,[black|brown] hair,bare chested,ancient Chinese style shorts,sun tattoo,expressive eyes,determined expression, beard, mustache,\n<lora:GoodHands-beta2:1>,\n<lora:CharacterDesign_Concept:0.5>,",
+    "cover_design_negative_prompt": "(worst quality, low quality:1.4),monochrome,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,((signature)),watermark,username,blurry,deformed eyes,((disfigured)),bad art,deformed,((extra limbs)),((duplicate)),morbid,multilated,bad body,one hand with less than 5 fingers,stacked torses,stacked hands,totem pole,((text)), three legs,",
+    "cover_design_seed_value": 70384668,
+    "cover_design_link": "https://media.discordapp.net/attachments/1211578077826650132/1211591719557140520/3.png?ex=65eec1b8&is=65dc4cb8&hm=edf011728425d1e5e16e7ecdc31d7dbf7cbe75ba02d136160abe1bdeb21815b7&=&format=webp&quality=lossless&width=780&height=780"
+}

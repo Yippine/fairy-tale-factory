@@ -1,19 +1,15 @@
 import os, re, json, threading, logging
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.decorators.csrf import csrf_exempt
-from .dto import ItemDTO, SelectItemDto, CreateStoryDto
-from .models import Item, OriginalStory, NewStory
-from .utils.dto_utils import (
-    get_role_info_by_role_item,
-    get_select_item_page,
-    get_create_story_page,
-)
+from .dto import CreateStoryDto
+from .models import CoverDesign, Item, OriginalStory, NewStory
+from .utils.dto_utils import get_select_item_page, get_create_story_page
 from .utils.common_utils import split_paragraphs
 from .utils.create_new_text import gen_story_text
 from .utils.sdxl_api import create_image_from_prompt
 from .utils.create_prompt import create_prompt
 from queue import Queue
+
 lock = threading.Lock()
 generated_image_paths = Queue()
 
@@ -140,11 +136,19 @@ def get_story_element_name_new(request):
     img_name = "問號_0.jpg"
     for file_name in os.listdir(dir_path):
         if file_name.endswith((".jpg", ".png", ".jpeg", ".gif")):
-            match = re.match(r"((.+)_\d\.(jpg|png|jpeg|gif|tif))", file_name)
+            match = re.match(r"((.+)_\d\.(jpg|png|jpeg|gif))", file_name)
             if match and item_name == match.group(2):
                 img_name = match.group(1)
                 break
     return JsonResponse({"img_name": img_name})
+    # try:
+    #     item_name = request.GET.get("item_name")
+    #     item = Item.objects.get(item_name=item_name)
+    #     cover_design = CoverDesign.objects.get(item_id=item.item_id, cover_design_id=0)
+    #     cover_design_link = cover_design.cover_design_link
+    # except (Item.DoesNotExist, CoverDesign.DoesNotExist):
+    #     cover_design_link = None
+    # return JsonResponse({"cover_design_link": cover_design_link})
 
 def fetch_text_command_new(request):
     create_story_page = request.session.get("create_story_page", {})
