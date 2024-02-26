@@ -1,4 +1,4 @@
-import os, re, json, threading
+import os, re, json, threading, logging
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +13,9 @@ from .utils.common_utils import split_paragraphs
 from .utils.create_new_text import gen_story_text
 from .utils.sdxl_api import create_image_from_prompt
 from .utils.create_prompt import create_prompt
+from queue import Queue
 lock = threading.Lock()
+generated_image_paths = Queue()
 
 def create_story(request):
     return render(request, "menu/create_story.html")
@@ -219,15 +221,23 @@ def loading_new(request):
     return render(request, "display/loading_new.html")
 
 def generate_images_background(article_list, seed):
-    with lock:  
-        prompt_list = []
-        seed = 2751417741
-        for article in article_list:
-            prompt = create_prompt(article)
-            prompt_list.append(prompt)
-        for promptlist in prompt_list:
-            create_image_from_prompt(promptlist, seed)
-            
+    generated_image_paths = Queue()  # 使用队列存储生成的图片路径
+    threads = []
+    for article in article_list:
+        prompt = create_prompt(article)
+        t = threading.Thread(target=create_image_from_prompt, args=(prompt, seed, generated_image_paths))
+        threads.append(t)
+        t.start()
+        logging.info(f"Generated image for prompt: {prompt}")
+    # 等待所有线程完成
+    for t in threads:
+        t.join()
+    
+    # 将队列中的路径取出放入列表中
+    generated_image_paths_list = list(generated_image_paths.queue)
+    
+    return generated_image_paths_list  # 返回生成的图片路径列表
+
 def storybook_display_new(request):
     newstory = NewStory.objects.last()
     new_story_content = newstory.tw_new_story_content
@@ -239,18 +249,27 @@ def storybook_display_new(request):
         if page_number > len(article_list):
             page_number = len(article_list)
         current_article = article_list[page_number - 1]
-        article_list_json = json.dumps(article_list)
-        # threading.Thread(target=generate_images_background, args=(article_list, 2751417741)).start()
+        
+        # 生成图片并获取生成的图片路径列表
+        generated_image_paths_list = generate_images_background(article_list, 2751417741)
+        print(generated_image_paths_list)
+        # 构建 article_list_with_images
+        article_list_with_images = [{"text": paragraph, "image_path": os.path.join('\\', path)} for path, paragraph in zip(generated_image_paths_list, article_list)]
+        article_list_json = json.dumps(article_list_with_images)
+        print(article_list_with_images)
+        # 返回快速渲染的页面
         return render(
             request,
             "display/storybook_display_new.html",
             {
-                "article_list": current_article,
+                "article_list": article_list_with_images,
                 "page_number": page_number,
                 "article_list_json": article_list_json,
             },
         )
-    return render(request, "display/storybook_display_new.html")
+    return render(request, "display/storybook_display_new.html", {"article_list": []})
+
+
 
 def social_features_new(request):
     return render(request, "display/social_features_new.html")
