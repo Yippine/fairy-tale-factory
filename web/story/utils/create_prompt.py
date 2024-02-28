@@ -5,7 +5,8 @@ article = '一天晚上，當他們正準備啟程時，突然出現了一群兇
 
 def create_prompt(article):
     prompt = gen_prompt(article)
-    gpt_response = call_chatgpt_api(prompt)
+    # gpt_response = call_chatgpt_api(prompt)
+    gpt_response = ''
     if ":" in gpt_response:
         prompt_result = gpt_response.split(":")[1].strip()
         return prompt_result

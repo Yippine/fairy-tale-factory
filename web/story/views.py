@@ -94,9 +94,9 @@ def create_story_new(request):
             "story_text": f"""
             故事背景敘述：{orm_story}""",
         }
-        story_text = gen_story_text(story_info)
-        generated_story = NewStory(tw_new_story_content=story_text)
-        generated_story.save()
+        # story_text = gen_story_text(story_info)
+        # generated_story = NewStory(tw_new_story_content=story_text)
+        # generated_story.save()
     return render(
         request,
         "menu/create_story_new.html",
@@ -243,9 +243,10 @@ def generate_images_background(article_list, seed):
     return generated_image_paths_list  # 返回生成的图片路径列表
 
 def storybook_display_new(request):
-    newstory = NewStory.objects.last()
-    new_story_content = newstory.tw_new_story_content
-    article_list = split_paragraphs(new_story_content)
+    # newstory = NewStory.objects.last()
+    # new_story_content = newstory.tw_new_story_content
+    # article_list = split_paragraphs(new_story_content)
+    article_list = []
     if article_list:
         page_number = int(request.GET.get("page_number", 1))
         if page_number < 1:
