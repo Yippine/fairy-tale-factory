@@ -20,7 +20,7 @@
     </section>
     <section class="info_container">
         <div class="title_container">
-            <span class="title">白雪公主</span>
+            <span class="title">{{ story_title }}</span>
         </div>
         <div class="content_container">
             <!-- 文章显示区域 -->
@@ -102,7 +102,7 @@ $(document).ready(function() {
             pageNumber++;
             renderPage(pageNumber);
         } else {
-            contentContainer.html('故事结束');
+            contentContainer.html('故事結束');
         }
     });
 });

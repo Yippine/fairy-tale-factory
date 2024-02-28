@@ -98,6 +98,8 @@ def create_story_new(request):
             "story_text": f"""
             故事背景敘述：{orm_story}""",
         }
+        create_story_page['story_info'] = story_info
+        request.session['create_story_page'] = create_story_page
         story_text = gen_story_text(story_info)
         generated_story = NewStory(tw_new_story_content=story_text)
         generated_story.save()
@@ -252,6 +254,11 @@ def get_cover_design_seed_value(item_name):
     return None
     
 def storybook_display_new(request):
+    create_story_page = request.session.get("create_story_page", {})
+    main_role_name = create_story_page.get("main_role", {}).get("item_name")
+    sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
+    item_name = create_story_page.get("item", {}).get("item_name")
+    story_title = f'{main_role_name}和{sup_role_name}的童話故事'
     newstory = NewStory.objects.last()
     new_story_content = newstory.tw_new_story_content
     article_list = split_paragraphs(new_story_content)
@@ -262,10 +269,6 @@ def storybook_display_new(request):
         if page_number > len(article_list):
             page_number = len(article_list)
         current_article = article_list[page_number - 1]
-        create_story_page = request.session.get("create_story_page", {})
-        main_role_name = create_story_page.get("main_role", {}).get("item_name")
-        sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
-        item_name = create_story_page.get("item", {}).get("item_name")
         for articles in article_list:
             if main_role_name in articles:
                 seed = get_cover_design_seed_value(main_role_name)
@@ -287,6 +290,7 @@ def storybook_display_new(request):
             request,
             "display/storybook_display_new.html",
             {
+                "story_title": story_title,
                 "article_list": article_list_with_images,
                 "page_number": page_number,
                 "article_list_json": article_list_json,

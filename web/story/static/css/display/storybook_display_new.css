@@ -90,7 +90,7 @@ main {
   align-items: center;
 }
 
-.story_container {
+.story_container, .story_container p {
   font-family: '自定義注音字體', sans-serif;
 }
 

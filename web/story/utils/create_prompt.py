@@ -1,6 +1,7 @@
 from openai import OpenAI
-API_KEY = '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'
-client = OpenAI(organization = 'org-BbuOFHuZiHsodlzbcmMNJlLp', api_key=API_KEY)
+from decouple import config
+
+client = OpenAI(organization=config("OPENAI_ORGANIZATION"), api_key=config("OPENAI_API_KEY"))
 article = '一天晚上，當他們正準備啟程時，突然出現了一群兇猛的海盜，他們的領袖就是虎克船長。'
 
 def create_prompt(article):

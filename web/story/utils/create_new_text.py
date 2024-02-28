@@ -1,9 +1,8 @@
 # chatgpt_api資訊
 from openai import OpenAI
+from decouple import config
 
-API_KEY = "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"
-client = OpenAI(organization="org-BbuOFHuZiHsodlzbcmMNJlLp", api_key=API_KEY)
-
+client = OpenAI(organization=config("OPENAI_ORGANIZATION"), api_key=config("OPENAI_API_KEY"))
 # 假故事資訊包
 story_info = {
     "main_character_info": """主角名稱：夸父

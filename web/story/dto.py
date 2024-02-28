@@ -44,16 +44,18 @@ class SelectItemDto:
         )
 
 class CreateStoryDto:
-    def __init__(self, main_role=ItemDTO(), sup_role=ItemDTO(), item=ItemDTO()):
+    def __init__(self, main_role=ItemDTO(), sup_role=ItemDTO(), item=ItemDTO(), story_info=""):
         self.main_role = main_role
         self.sup_role = sup_role
         self.item = item
+        self.story_info = story_info
 
     def to_dict(self):
         return {
             "main_role": self.main_role.to_dict(),
             "sup_role": self.sup_role.to_dict(),
             "item": self.item.to_dict(),
+            "story_info": self.story_info,
         }
 
     @staticmethod
@@ -62,6 +64,7 @@ class CreateStoryDto:
             main_role=ItemDTO.from_dict(data.get("main_role", {})),
             sup_role=ItemDTO.from_dict(data.get("sup_role", {})),
             item=ItemDTO.from_dict(data.get("item", {})),
+            story_info=data.get("story_info", ""),
         )
 
 if __name__ == "__main__":
@@ -89,7 +92,7 @@ if __name__ == "__main__":
             "item_name": "Item",
             "cover_design_link": "item_cover.jpg",
         },
-        "item_page": "example.com",
+        "story_info": "example.com",
     }
 
     # Testing from_dict method
@@ -119,6 +122,7 @@ if __name__ == "__main__":
             item_id="2", item_name="Sup Role", cover_design_link="sup_role_cover.jpg"
         ),
         item=ItemDTO(item_id="3", item_name="Item", cover_design_link="item_cover.jpg"),
+        story_info="故事資訊：主角、配角和道具名稱",
     )
 
     print("Testing to_dict method:")
