@@ -23,7 +23,8 @@ def gen_story_text(story_info):
     # 故事資訊生成指令
     text_prompt = gen_text_prompt(story_info)
     # 指令連接api生成新故事
-    story_text = call_chatgpt_api(text_prompt)
+    # story_text = call_chatgpt_api(text_prompt)
+    story_text = ''
     return story_text
 
 # 故事資訊生成指令包

@@ -1,7 +1,8 @@
 import os
 from pathlib import Path
 import sys
-from decouple import config
+import mimetypes
+# from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,9 +10,11 @@ from decouple import config
 # 獲取專案根目錄的路徑
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # 將專案根目錄加入到 PYTHONPATH 中
 sys.path.insert(0, BASE_DIR)
 
+mimetypes.add_type("text/css","css",True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -84,11 +87,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('MYSQL_DATABASE'),
-        'USER': config('MYSQL_USER'),
-        'PASSWORD': config('MYSQL_PASSWORD'),
-        'HOST': config('DB_HOST', 'localhost'),
-        'PORT': config('DB_PORT', '3306'),
+        'NAME': 'fairy_tale_factory',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': '34.84.200.139',
+        'PORT': '3306',
     }
 }
 
@@ -127,10 +130,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT =os.path.join(BASE_DIR,'static/')
+print(BASE_DIR,STATIC_ROOT)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'project', 'static'),
+    os.path.join(BASE_DIR, 'story', 'static'),
+    os.path.join(BASE_DIR, 'user', 'static'),
 ]
 
 # Default primary key field type
