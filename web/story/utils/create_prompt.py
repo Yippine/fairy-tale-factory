@@ -1,12 +1,11 @@
 from openai import OpenAI
-API_KEY = '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'
+API_KEY = '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'
 client = OpenAI(organization = 'org-BbuOFHuZiHsodlzbcmMNJlLp', api_key=API_KEY)
 article = '一天晚上，當他們正準備啟程時，突然出現了一群兇猛的海盜，他們的領袖就是虎克船長。'
 
 def create_prompt(article):
     prompt = gen_prompt(article)
-    # gpt_response = call_chatgpt_api(prompt)
-    gpt_response = ''
+    gpt_response = call_chatgpt_api(prompt)
     if ":" in gpt_response:
         prompt_result = gpt_response.split(":")[1].strip()
         return prompt_result
@@ -30,5 +29,5 @@ def call_chatgpt_api(prompt):
     gpt_response = response.choices[0].message.content
     return gpt_response
 
-
-create_prompt(article)
+if __name__ == "__main__":
+    create_prompt(article)
