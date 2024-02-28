@@ -1,7 +1,7 @@
 # chatgpt_api資訊
 from openai import OpenAI
 
-API_KEY = "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"
+API_KEY = "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"
 client = OpenAI(organization="org-BbuOFHuZiHsodlzbcmMNJlLp", api_key=API_KEY)
 
 # 假故事資訊包
@@ -23,8 +23,7 @@ def gen_story_text(story_info):
     # 故事資訊生成指令
     text_prompt = gen_text_prompt(story_info)
     # 指令連接api生成新故事
-    # story_text = call_chatgpt_api(text_prompt)
-    story_text = ''
+    story_text = call_chatgpt_api(text_prompt)
     return story_text
 
 # 故事資訊生成指令包

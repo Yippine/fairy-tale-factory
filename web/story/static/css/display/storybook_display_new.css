@@ -90,6 +90,10 @@ main {
   align-items: center;
 }
 
+.story_container {
+  font-family: '自定義注音字體', sans-serif;
+}
+
 .button_container {
   flex: 2;
   display: flex;

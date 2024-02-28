@@ -1,15 +1,19 @@
 import os, re, json, threading, logging
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
-from .dto import CreateStoryDto
-from .models import CoverDesign, Item, OriginalStory, NewStory
-from .utils.dto_utils import get_select_item_page, get_create_story_page
+from django.views.decorators.csrf import csrf_exempt
+from .dto import ItemDTO, SelectItemDto, CreateStoryDto
+from .models import Item, OriginalStory, NewStory, CoverDesign
+from .utils.dto_utils import (
+    get_role_info_by_role_item,
+    get_select_item_page,
+    get_create_story_page,
+)
 from .utils.common_utils import split_paragraphs
 from .utils.create_new_text import gen_story_text
 from .utils.sdxl_api import create_image_from_prompt
 from .utils.create_prompt import create_prompt
 from queue import Queue
-
 lock = threading.Lock()
 generated_image_paths = Queue()
 
@@ -94,9 +98,9 @@ def create_story_new(request):
             "story_text": f"""
             故事背景敘述：{orm_story}""",
         }
-        # story_text = gen_story_text(story_info)
-        # generated_story = NewStory(tw_new_story_content=story_text)
-        # generated_story.save()
+        story_text = gen_story_text(story_info)
+        generated_story = NewStory(tw_new_story_content=story_text)
+        generated_story.save()
     return render(
         request,
         "menu/create_story_new.html",
@@ -136,19 +140,11 @@ def get_story_element_name_new(request):
     img_name = "問號_0.jpg"
     for file_name in os.listdir(dir_path):
         if file_name.endswith((".jpg", ".png", ".jpeg", ".gif")):
-            match = re.match(r"((.+)_\d\.(jpg|png|jpeg|gif))", file_name)
+            match = re.match(r"((.+)_\d\.(jpg|png|jpeg|gif|tif))", file_name)
             if match and item_name == match.group(2):
                 img_name = match.group(1)
                 break
     return JsonResponse({"img_name": img_name})
-    # try:
-    #     item_name = request.GET.get("item_name")
-    #     item = Item.objects.get(item_name=item_name)
-    #     cover_design = CoverDesign.objects.get(item_id=item.item_id, cover_design_id=0)
-    #     cover_design_link = cover_design.cover_design_link
-    # except (Item.DoesNotExist, CoverDesign.DoesNotExist):
-    #     cover_design_link = None
-    # return JsonResponse({"cover_design_link": cover_design_link})
 
 def fetch_text_command_new(request):
     create_story_page = request.session.get("create_story_page", {})
@@ -242,11 +238,23 @@ def generate_images_background(article_list, seed):
     
     return generated_image_paths_list  # 返回生成的图片路径列表
 
+def get_cover_design_seed_value(item_name):
+    try:
+        item = Item.objects.filter(item_name=item_name).first()  # 使用filter获取第一个匹配的对象
+        if item:
+            cover_design = CoverDesign.objects.filter(item_id=item.item_id).first()  # 使用filter获取第一个匹配的对象
+            if cover_design:
+                return cover_design.cover_design_seed_value
+    except Item.DoesNotExist:
+        pass
+    except CoverDesign.DoesNotExist:
+        pass
+    return None
+    
 def storybook_display_new(request):
-    # newstory = NewStory.objects.last()
-    # new_story_content = newstory.tw_new_story_content
-    # article_list = split_paragraphs(new_story_content)
-    article_list = []
+    newstory = NewStory.objects.last()
+    new_story_content = newstory.tw_new_story_content
+    article_list = split_paragraphs(new_story_content)
     if article_list:
         page_number = int(request.GET.get("page_number", 1))
         if page_number < 1:
@@ -254,9 +262,21 @@ def storybook_display_new(request):
         if page_number > len(article_list):
             page_number = len(article_list)
         current_article = article_list[page_number - 1]
-        
-        # 生成图片并获取生成的图片路径列表
-        generated_image_paths_list = generate_images_background(article_list, 2751417741)
+        create_story_page = request.session.get("create_story_page", {})
+        main_role_name = create_story_page.get("main_role", {}).get("item_name")
+        sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
+        item_name = create_story_page.get("item", {}).get("item_name")
+        for articles in article_list:
+            if main_role_name in articles:
+                seed = get_cover_design_seed_value(main_role_name)
+            if sup_role_name in articles:
+                seed = get_cover_design_seed_value(sup_role_name)
+            if item_name in articles:
+                seed = get_cover_design_seed_value(item_name)
+            else:
+                seed = get_cover_design_seed_value(main_role_name)
+                
+        generated_image_paths_list = generate_images_background(article_list, seed)
         print(generated_image_paths_list)
         # 构建 article_list_with_images
         article_list_with_images = [{"text": paragraph, "image_path": os.path.join('\\', path)} for path, paragraph in zip(generated_image_paths_list, article_list)]
