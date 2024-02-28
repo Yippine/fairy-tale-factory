@@ -1,8 +1,7 @@
 import os
-from pathlib import Path
 import sys
 import mimetypes
-# from decouple import config
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,11 +86,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fairy_tale_factory',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': '34.84.200.139',
-        'PORT': '3306',
+        'NAME': config('MYSQL_DATABASE'),
+        'USER': config('MYSQL_USER'),
+        'PASSWORD': config('MYSQL_PASSWORD'),
+        'HOST': config('DB_HOST', 'localhost'),
+        'PORT': config('DB_PORT', '3306'),
     }
 }
 
@@ -131,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT =os.path.join(BASE_DIR,'static/')
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 print(BASE_DIR,STATIC_ROOT)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'project', 'static'),
