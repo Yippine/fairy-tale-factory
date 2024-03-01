@@ -13,9 +13,9 @@ def create_prompt(article):
 
 def gen_prompt(article):
     prompt = f'''請根據以下文本,幫我生成用於使用AI生圖工具的英文prompt
-    ,{article},
-    並以以下格式生成。
-    prompt:英文prompt'''
+,{article},
+並以以下格式生成。
+prompt:英文prompt'''
     return prompt
 
 def call_chatgpt_api(prompt):

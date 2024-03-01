@@ -1,19 +1,22 @@
-import os, re, json, threading, logging
+import json
+import logging
+import os
+import re
+import threading
+from queue import Queue
+
+from decouple import config
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.decorators.csrf import csrf_exempt
-from .dto import ItemDTO, SelectItemDto, CreateStoryDto
+
+from .dto import CreateStoryDto
 from .models import Item, OriginalStory, NewStory, CoverDesign
-from .utils.dto_utils import (
-    get_role_info_by_role_item,
-    get_select_item_page,
-    get_create_story_page,
-)
 from .utils.common_utils import split_paragraphs
 from .utils.create_new_text import gen_story_text
-from .utils.sdxl_api import create_image_from_prompt
 from .utils.create_prompt import create_prompt
-from queue import Queue
+from .utils.dto_utils import get_create_story_page, get_select_item_page
+from .utils.sdxl_api import create_image_from_prompt
+
 lock = threading.Lock()
 generated_image_paths = Queue()
 
@@ -70,6 +73,7 @@ def loading(request):
 
 def storybook_display(request):
     pass
+
 def social_features(request):
     return render(request, "display/social_features.html")
 
@@ -82,10 +86,18 @@ def create_story_new(request):
     sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
     item_name = create_story_page.get("item", {}).get("item_name")
     if main_role_name and sup_role_name and item_name:
-        main_role_detail = Item.objects.filter(item_name=main_role_name).values('item_info').first()
-        sup_role_detail = Item.objects.filter(item_name=sup_role_name).values('item_info').first()
-        item_detail = Item.objects.filter(item_name=item_name).values('item_info').first()
-        orm_story = OriginalStory.objects.filter(original_story_name=create_story_page.get("main_role", {}).get("item_name")).values('original_story_content')
+        main_role_detail = (
+            Item.objects.filter(item_name=main_role_name).values("item_info").first()
+        )
+        sup_role_detail = (
+            Item.objects.filter(item_name=sup_role_name).values("item_info").first()
+        )
+        item_detail = (
+            Item.objects.filter(item_name=item_name).values("item_info").first()
+        )
+        orm_story = OriginalStory.objects.filter(
+            original_story_name=create_story_page.get("main_role", {}).get("item_name")
+        ).values("original_story_content")
         story_info = {
             "main_character_info": f"""主角名稱：{main_role_name}
             主角特徵：{main_role_detail}
@@ -98,9 +110,10 @@ def create_story_new(request):
             "story_text": f"""
             故事背景敘述：{orm_story}""",
         }
-        create_story_page['story_info'] = story_info
-        request.session['create_story_page'] = create_story_page
+        create_story_page["story_info"] = story_info
+        request.session["create_story_page"] = create_story_page
         story_text = gen_story_text(story_info)
+        print(f"story_text: {story_text}")
         generated_story = NewStory(tw_new_story_content=story_text)
         generated_story.save()
     return render(
@@ -222,29 +235,13 @@ def fetch_text_command_new(request):
 def loading_new(request):
     return render(request, "display/loading_new.html")
 
-def generate_images_background(article_list, seed):
-    generated_image_paths = Queue()  # 使用队列存储生成的图片路径
-    threads = []
-    for article in article_list:
-        prompt = create_prompt(article)
-        t = threading.Thread(target=create_image_from_prompt, args=(prompt, seed, generated_image_paths))
-        threads.append(t)
-        t.start()
-        logging.info(f"Generated image for prompt: {prompt}")
-    # 等待所有线程完成
-    for t in threads:
-        t.join()
-    
-    # 将队列中的路径取出放入列表中
-    generated_image_paths_list = list(generated_image_paths.queue)
-    
-    return generated_image_paths_list  # 返回生成的图片路径列表
-
 def get_cover_design_seed_value(item_name):
     try:
-        item = Item.objects.filter(item_name=item_name).first()  # 使用filter获取第一个匹配的对象
+        item = Item.objects.filter(item_name=item_name).first()  # 使用 filter 取得第一個符合的對象
         if item:
-            cover_design = CoverDesign.objects.filter(item_id=item.item_id).first()  # 使用filter获取第一个匹配的对象
+            cover_design = CoverDesign.objects.filter(
+                item_id=item.item_id
+            ).first()  # 使用 filter 取得第一個符合的對象
             if cover_design:
                 return cover_design.cover_design_seed_value
     except Item.DoesNotExist:
@@ -252,53 +249,81 @@ def get_cover_design_seed_value(item_name):
     except CoverDesign.DoesNotExist:
         pass
     return None
-    
+
+def generate_images_background(data):
+    generated_image_paths = Queue() # 使用隊列存儲生成的圖片路徑
+    threads = []
+    for article in data["article_list"]:
+        prompt = create_prompt(article)
+        print(f'prompt: {prompt}')
+        # 初始化種子值為配置中的默認值
+        seed = int(config("SEED_VALUE"))
+        # 檢查項目名稱出現的順序並選擇種子值
+        positions = {
+            "main_role": article.find(data["main_role_name"]),
+            "sup_role": article.find(data["sup_role_name"]),
+            "item": article.find(data["item_name"]),
+        }
+        # 過濾未找到的項目，即 find 方法返回 -1 的項目
+        positions = {k: v for k, v in positions.items() if v != -1}
+        # 如果有找到任何名稱，則按出現順序選擇種子值
+        if positions:
+            seed_name = min(positions, key=positions.get)
+            seed = data.get(f"{seed_name}_seed")
+            if seed is None:
+                seed = int(config("SEED_VALUE"))
+            print(f"{seed_name}_seed: {seed}")
+        t = threading.Thread(
+            target=create_image_from_prompt, args=(prompt, seed, generated_image_paths)
+        )
+        threads.append(t)
+        t.start()
+        logging.info(f"Generated image for prompt: {prompt}")
+    # 等待所有執行緒完成
+    for t in threads:
+        t.join()
+    # 將隊列中的路徑取出放入列表中
+    generated_image_paths_list = list(generated_image_paths.queue)
+    return generated_image_paths_list # 返回生成的圖片路徑列表
+
 def storybook_display_new(request):
-    create_story_page = request.session.get("create_story_page", {})
-    main_role_name = create_story_page.get("main_role", {}).get("item_name")
-    sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
-    item_name = create_story_page.get("item", {}).get("item_name")
-    story_title = f'{main_role_name}和{sup_role_name}的童話故事'
     newstory = NewStory.objects.last()
     new_story_content = newstory.tw_new_story_content
     article_list = split_paragraphs(new_story_content)
     if article_list:
+        create_story_page = request.session.get("create_story_page", {})
+        main_role_name = create_story_page.get("main_role", {}).get("item_name")
+        sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
+        item_name = create_story_page.get("item", {}).get("item_name")
+        page_data = {
+            "main_role_name": main_role_name,
+            "main_role_seed": get_cover_design_seed_value(main_role_name),
+            "sup_role_name": sup_role_name,
+            "sup_role_seed": get_cover_design_seed_value(sup_role_name),
+            "item_name": item_name,
+            "item_seed": get_cover_design_seed_value(item_name),
+            "article_list": article_list,
+        }
         page_number = int(request.GET.get("page_number", 1))
         if page_number < 1:
             page_number = 1
         if page_number > len(article_list):
             page_number = len(article_list)
-        current_article = article_list[page_number - 1]
-        for articles in article_list:
-            if main_role_name in articles:
-                seed = get_cover_design_seed_value(main_role_name)
-            if sup_role_name in articles:
-                seed = get_cover_design_seed_value(sup_role_name)
-            if item_name in articles:
-                seed = get_cover_design_seed_value(item_name)
-            else:
-                seed = get_cover_design_seed_value(main_role_name)
-                
-        generated_image_paths_list = generate_images_background(article_list, seed)
-        print(generated_image_paths_list)
-        # 构建 article_list_with_images
-        article_list_with_images = [{"text": paragraph, "image_path": os.path.join('\\', path)} for path, paragraph in zip(generated_image_paths_list, article_list)]
-        article_list_json = json.dumps(article_list_with_images)
-        print(article_list_with_images)
-        # 返回快速渲染的页面
-        return render(
-            request,
-            "display/storybook_display_new.html",
-            {
-                "story_title": story_title,
-                "article_list": article_list_with_images,
-                "page_number": page_number,
-                "article_list_json": article_list_json,
-            },
-        )
+        generated_image_paths_list = generate_images_background(page_data)
+        print(f"generated_image_paths_list: {generated_image_paths_list}")
+        article_list_with_images = [
+            {"text": paragraph, "image_path": os.path.join("\\", path)}
+            for path, paragraph in zip(generated_image_paths_list, article_list)
+        ]
+        print(f"article_list_with_images: {article_list_with_images}")
+        render_data = {
+            "story_title": f'{page_data["main_role_name"]}和{page_data["sup_role_name"]}的童話故事',
+            "page_number": page_number,
+            "article_list": article_list_with_images,
+            "article_list_json": json.dumps(article_list_with_images),
+        }
+        return render(request, "display/storybook_display_new.html", render_data)
     return render(request, "display/storybook_display_new.html", {"article_list": []})
-
-
 
 def social_features_new(request):
     return render(request, "display/social_features_new.html")
