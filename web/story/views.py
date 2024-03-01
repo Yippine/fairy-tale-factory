@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404, render
 from .dto import CreateStoryDto
 from .models import Item, NewStory, CoverDesign
 from .utils.common_utils import split_paragraphs
-from .utils.chatgpt_api import gen_storyboard_desc_prompt, call_chatgpt_api_by_json
+from .utils.chatgpt_api import gen_storyboard_desc_prompt, gen_story_by_chatgpt
 from .utils.dto_utils import get_create_story_page, get_select_item_page
 from .utils.sdxl_api import create_image_from_prompt
 
@@ -52,7 +52,7 @@ def create_story(request):
     if all_roles_have_names:
         story_prompt = response_data.get('story_prompt', '')
         print(f"story_prompt: {story_prompt}")
-        story_content = call_chatgpt_api_by_json(story_prompt)
+        story_content = gen_story_by_chatgpt(story_prompt)
         print(f'story_content:\n{story_content}')
         generated_story = NewStory(tw_new_story_content=story_content)
         generated_story.save()
@@ -198,7 +198,8 @@ def generate_images_background(data):
     threads = []
     for article in data["article_list"]:
         prompt, negative_prompt = gen_storyboard_desc_prompt(article)
-        print(f'prompt: {prompt}')
+        print(f'\narticle: {article}')
+        print(f'prompt: {prompt}\n')
         # 初始化種子值為配置中的默認值
         seed = int(config("SEED_VALUE"))
         # 檢查項目名稱出現的順序並選擇種子值
