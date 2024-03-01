@@ -19,5 +19,4 @@ def split_paragraphs(new_story):
         paragraph = "。".join(sentences[start:end]) + "。"
         article_list.append(paragraph)
         start = end
-    print(article_list)
     return article_list

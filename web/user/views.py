@@ -22,7 +22,7 @@ def login_by_data(request):
             user = None
 
         if user and user.user_password == user_password:
-            print('登入成功用户ID:', user.user_id)
+            print('Login Success!\nuser_id:', user.user_id)
             request.session['user_id'] = user.user_id   
             request.user = user
             print('Session user_id:', request.session.get('user_id'))

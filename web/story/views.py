@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404, render
 from .dto import CreateStoryDto
 from .models import Item, NewStory, CoverDesign
 from .utils.common_utils import split_paragraphs
-from .utils.chatgpt_api import gen_storyboard_desc_prompt, call_chatgpt_api
+from .utils.chatgpt_api import gen_storyboard_desc_prompt, call_chatgpt_api_by_json
 from .utils.dto_utils import get_create_story_page, get_select_item_page
 from .utils.sdxl_api import create_image_from_prompt
 
@@ -80,19 +80,20 @@ def my_storybooks(request):
     return render(request, "display/my_storybooks.html")
 
 def create_story_new(request):
-    # 調用 fetch_text_prompt_new 函式
-    response = fetch_text_prompt_new(request)
+    # 調用 fetch_story_prompt_new 函式
+    response = fetch_story_prompt_new(request)
     # JsonResponse 對象的內容是 bytes，需要解碼成 str
     response_content = response.content.decode('utf-8')
     # 將 JSON 字符串轉換成 Python 字典
     response_data = json.loads(response_content)
-    # 從字典中取得 text_prompt
+    # 從字典中取得 story_prompt
     all_roles_have_names = response_data.get('all_roles_have_names', False)
     if all_roles_have_names:
-        text_prompt = response_data.get('text_prompt', '')
-        print(f"text_prompt: {text_prompt}")
-        story_text = call_chatgpt_api(text_prompt)
-        generated_story = NewStory(tw_new_story_content=story_text)
+        story_prompt = response_data.get('story_prompt', '')
+        print(f"story_prompt: {story_prompt}")
+        story_content = call_chatgpt_api_by_json(story_prompt)
+        print(f'story_content:\n{story_content}')
+        generated_story = NewStory(tw_new_story_content=story_content)
         generated_story.save()
     return render(
         request,
@@ -139,7 +140,7 @@ def get_story_element_name_new(request):
                 break
     return JsonResponse({"img_name": img_name})
 
-def fetch_text_prompt_new(request):
+def fetch_story_prompt_new(request):
     create_story_page = request.session.get("create_story_page", {})
     create_story_dto = CreateStoryDto.from_dict(create_story_page)
     roles = ["main_role", "sup_role", "item"] # 定義角色列表
@@ -163,7 +164,6 @@ def fetch_text_prompt_new(request):
                     .select_related("original_story")
                     .first()
                 )
-                print(f"item_with_story: {item_with_story}")
                 if item_with_story and item_with_story.original_story:
                     data[f"{role}_info"] = item_with_story.item_info
                     if role == "main_role":
@@ -171,7 +171,7 @@ def fetch_text_prompt_new(request):
                             "original_story_content"
                         ] = item_with_story.original_story.original_story_content
     story_example_spacing = "\n" if data["original_story_content"] else ""
-    text_prompt = f'''您是一位在最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的童話故事作家，需要創作一個適合台灣地區 3 到 12 歲小朋友的童話故事。故事必須包含 1 個主角、1 個配角和 1 個道具，並按照以下要素進行故事創作：
+    story_prompt = f'''您是一位在最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的童話故事作家，需要創作一個適合台灣地區 3 到 12 歲小朋友的童話故事。故事必須包含 1 個主角、1 個配角和 1 個道具，並按照以下要素進行故事創作：
 
 一、主角資訊
 主角名稱：{data['main_role_name']}
@@ -214,7 +214,7 @@ def fetch_text_prompt_new(request):
 
 請以您的專業經驗，根據以上指令直接創作出一個動人的童話故事，完美地結合上述的 1 個主角、1 個配角和 1 個道具，且充分發揮這三個元素的功能和特色，創作出新穎、有趣且完全不突兀的故事內容。'''
     return JsonResponse(
-        {"text_prompt": text_prompt, "all_roles_have_names": all_roles_have_names}
+        {"story_prompt": story_prompt, "all_roles_have_names": all_roles_have_names}
     )
 
 def loading_new(request):
@@ -271,9 +271,17 @@ def generate_images_background(data):
     return generated_image_paths_list # 返回生成的圖片路徑列表
 
 def storybook_display_new(request):
-    newstory = NewStory.objects.last()
-    new_story_content = newstory.tw_new_story_content
-    article_list = split_paragraphs(new_story_content)
+    story = NewStory.objects.last()
+    story_details_json = story.tw_new_story_content
+    # 解析 JSON 資訊
+    story_details = json.loads(story_details_json)
+    # 串接起承轉合四個資訊成為一個故事內容
+    story_content = "\n\n".join(
+        [story_details["起"], story_details["承"], story_details["轉"], story_details["合"]]
+    )
+    print(f"story_content: {story_content}")
+    article_list = split_paragraphs(story_content)
+    print(f"article_list: {article_list}")
     if article_list:
         create_story_page = request.session.get("create_story_page", {})
         main_role_name = create_story_page.get("main_role", {}).get("item_name")
@@ -288,6 +296,7 @@ def storybook_display_new(request):
             "item_seed": get_cover_design_seed_value(item_name),
             "article_list": article_list,
         }
+        story_name = story_details.get("故事名稱", f"{main_role_name}和{sup_role_name}的童話故事")
         page_number = int(request.GET.get("page_number", 1))
         if page_number < 1:
             page_number = 1
@@ -301,7 +310,7 @@ def storybook_display_new(request):
         ]
         print(f"article_list_with_images: {article_list_with_images}")
         render_data = {
-            "story_title": f'{page_data["main_role_name"]}和{page_data["sup_role_name"]}的童話故事',
+            "story_name": story_name,
             "page_number": page_number,
             "article_list": article_list_with_images,
             "article_list_json": json.dumps(article_list_with_images),

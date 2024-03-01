@@ -13,7 +13,7 @@ SAMPLES = 1 # 要產生的影像數量
 WIDTH = 1024 # 產生影像的寬度
 HEIGHT = 1024 # 產生影像的高度
 CFG_SCALE = 7 # 提示中使用的 CFG 比例
-SAMPLER = generation.SAMPLER_K_LMS # 產生中使用的取樣器
+SAMPLER = generation.SAMPLER_K_EULER_ANCESTRAL # 產生中使用的取樣器
 
 def create_image_from_prompt(
     prompt: str, negative_prompt: str, seed: int, generated_image_paths: Queue

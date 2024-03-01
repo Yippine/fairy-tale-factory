@@ -16,7 +16,6 @@ Some images have poor quality and may feature disfigured or mutated body parts, 
 The artwork also suffers from poor quality and distracting backgrounds.'''
     return positive_prompt, negative_prompt
 
-# 指令連接api生成新故事包
 def call_chatgpt_api(prompt):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
@@ -24,6 +23,29 @@ def call_chatgpt_api(prompt):
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": f"{prompt}"},
         ],
+        temperature=0.7,
+        max_tokens=1500,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+    )
+    gpt_response = response.choices[0].message.content
+    return gpt_response
+
+def call_chatgpt_api_by_json(prompt):
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant designed to output JSON."},
+            {"role": "user", "content": f"{prompt}"},
+        ],
+        response_format={"type": "json_object"},
+        temperature=0.7,
+        max_tokens=1500,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        stop=["故事結束。"], # 終止符，可根據需要調整
     )
     gpt_response = response.choices[0].message.content
     return gpt_response
