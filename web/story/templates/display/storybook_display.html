@@ -1,127 +1,112 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>童話工廠 Social Features</title>
-    <link rel="stylesheet" href="{% static 'css/background.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/display/storybook_display.css' %}" />
-  </head>
-  <body>
-    <div class="story-Y4U">
-      <div class="group-13-Tx8">
-        <img class="vector-PKz" src="{% static 'img/web_page/vector/previous page.png' %}" />
-      </div>
-      <div class="auto-group-kqbn-KzL">
-        <img class="rectangle-10-GPn" src="{% static 'img/web_page/background/enchanted kingdom.png' %}" />
-        <div class="item--D48">.....的故事</div>
-        <div class="item--tRA" id="page_no"></div>
-        <div class="item--tRB" id="article_content">
-          {% for paragraph in article_list %}
-            <p>{{ paragraph }}</p>
-          {% endfor %}
-        </div>
-        <div class="group-10-Ff2" id="home_button">回到首頁</div>
-        <div class="group-11-j4Q" id="save_button">SAVE</div>
-        <div class="group-12-bsJ">
-          <img class="vector-KHW" src="{% static 'img/web_page/vector/next page.png' %}" id="next_page_button" />
-        </div>
-        <div class="group-11-eqa" id="home_pop_up" style="display: none;">
-          <div class="item--8kk">
-            確認是否回到首頁？
-            <br />
-          </div>
-          <div class="item--9kk"></div>
-          <img class="done-outline-dhW" id="check_home_button" src="{% static 'img/web_page/vector/check.png' %}" />
-        </div>
-        <div class="group-11-eqa" id="save_pop_up" style="display: none;">
-          <div class="item--8kk">
-            確認是否儲存？
-            <br />
-          </div>
-          <div class="item--9kk"></div>
-          <img class="done-outline-dhW" id="check_save_button" src="{% static 'img/web_page/vector/check.png' %}" />
-        </div>
-        <div class="group-12-eqa" id="save_successful_pop_up" style="display: none;">
-          <div class="item--8kk">
-            儲存成功！
-            <br />
-          </div>
-          <div class="item--9kk"></div>
-        </div>
-      </div>
-    </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var pageNumberElement = document.getElementById('page_no');
-    var articleContentElement = document.getElementById('article_content');
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Display</title>
+    <link rel="stylesheet" href="{% static 'css/ftf_common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/display/storybook_display.css' %}">
+</head>
+<body class="ftf_background">
 
-    var homeButton = document.getElementById('home_button');
-    var nextPageButton = document.getElementById('next_page_button');
+<main>
+    <section class="display_container">
+        <!-- 图片显示区域 -->
+        <div class="image_container">
+            <img id="story_image" src="" alt="Image">
+        </div>
+    </section>
+    <section class="info_container">
+        <div class="title_container">
+            <span class="title">{{ story_name }}</span>
+        </div>
+        <div class="content_container">
+            <!-- 文章显示区域 -->
+            <div class="story_container" id="story_container">
+                <!-- 保留第一段文章的显示区域 -->
+            </div>
+        </div>
+        <div class="page" id="page">第 <span id="page_number">1</span> 頁 / 共 <span id="max_page"></span> 頁</div>
+        <div class="button_container">
+            <button class="go_home_button ftf_button ftf_hover_button">回到首頁</button>
+            <button class="save_story_button ftf_button ftf_hover_button">珍藏故事</button>
+        </div>
+    </section>
+    <section class="fixed_container">
+        <button class="navigation_button prev"><img src="{% static 'img/web_page/vector/previous page new.png' %}" alt="" /></button>
+        <button class="navigation_button next"><img src="{% static 'img/web_page/vector/next page new.png' %}" alt="" /></button>
+        <div class="popup_container" id="popup_container_with_button">
+            <div class="popup_content ftf_pink_button">
+                <p id="popup_message_with_button"></p>
+                <div class="popup_button_container">
+                    <button id="popup_confirm_with_button" class="popup_button ftf_hover_button">Ｖ</button>
+                    <button id="popup_cancel_with_button" class="popup_button ftf_hover_button">Ｘ</button>
+                </div>
+            </div>
+        </div>
+        <div class="popup_container" id="popup_container_without_button">
+            <div class="popup_content ftf_pink_button">
+                <p id="popup_message_without_button">珍藏成功！</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/ftf_common.js' %}"></script>
+<script>
+$(document).ready(function() {
+    var pageElement = $('#page_number');
+    var maxPageElement = $('#max_page');
+    var contentContainer = $('.content_container .story_container');
+    var imageContainer = $('.display_container .image_container');
+
+    var goHomeButton = $('.go_home_button');
+    var saveStoryButton = $('.save_story_button');
+    var prevPageButton = $('.navigation_button.prev');
+    var nextPageButton = $('.navigation_button.next');
 
     var articleList = JSON.parse('{{ article_list_json|escapejs }}');
-    var totalPageCount = articleList.length; 
-
+    var maxPage = articleList.length;
     var pageNumber = 1;
-    pageNumberElement.textContent = pageNumber;
-    articleContentElement.innerHTML = articleList[pageNumber - 1];
 
-    homeButton.addEventListener('click', function() {
-       
-        document.getElementById('home_pop_up').style.display = 'block';
+    function renderPage(page) {
+        var article = articleList[page - 1];
+        $('#page_number').text(page);
+        $('#max_page').text(maxPage);
+        $('#story_container').html('<p>' + article.text + '</p>');
+        $('#story_image').attr('src', article.image_path);
+    }
+
+    renderPage(pageNumber);
+
+    goHomeButton.on('click', function() {
+        window.location.href = '/';
     });
 
-    document.getElementById('check_home_button').addEventListener('click', function() {
-        pageNumber = 1;
-        pageNumberElement.textContent = pageNumber;
-        
-        articleContentElement.innerHTML = articleList[pageNumber - 1];
-        
-        document.getElementById('home_pop_up').style.display = 'none';
+    saveStoryButton.on('click', function() {
+        // Add your logic to save the story
     });
 
-    nextPageButton.addEventListener('click', function() {
-        if (pageNumber < totalPageCount) { 
-            pageNumber++;
-            pageNumberElement.textContent = pageNumber;
-            
-            articleContentElement.innerHTML = articleList[pageNumber - 1];
-            
-            window.history.pushState(null, '', '/story/storybookdisplay?page=' + pageNumber);
-        } else {
-            
-            articleContentElement.innerHTML = '故事結束';
-            
-            nextPageButton.style.display = 'none';
-        }
-    });
-
-    document.getElementsByClassName("group-12-bsJ")[0].addEventListener("click", function () {
-        if (pageNumber < totalPageCount) {
-            pageNumber++;
-            pageNumberElement.textContent = pageNumber;
-            articleContentElement.innerHTML = articleList[pageNumber - 1];
-            window.history.pushState(null, '', '/story/storybookdisplay?page=' + pageNumber);
-        } else {
-            
-            articleContentElement.innerHTML = '故事結束';
-
-            nextPageButton.style.display = 'none';
-        }
-    });
-
-    document.getElementsByClassName("group-13-Tx8")[0].addEventListener("click", function () {
+    prevPageButton.on('click', function() {
         if (pageNumber > 1) {
             pageNumber--;
-            pageNumberElement.textContent = pageNumber;
-            articleContentElement.innerHTML = articleList[pageNumber - 1];
-            window.history.pushState(null, '', '/story/storybookdisplay?page=' + pageNumber);
+            renderPage(pageNumber);
+        }
+    });
+
+    nextPageButton.on('click', function() {
+        if (pageNumber < maxPage) {
+            pageNumber++;
+            renderPage(pageNumber);
+        } else {
+            contentContainer.html('故事結束');
         }
     });
 });
-  </script>
-  </body>
+</script>
+
+</body>
 </html>

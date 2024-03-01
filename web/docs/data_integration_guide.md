@@ -143,13 +143,13 @@
 在前後端間的資料流動，涉及到從前端向後端發送資料，以及後端向前端回傳資料的過程。這包括了使用 JavaScript 和 Python 進行資料的獲取、處理和展示。
 
 - **前端 → 後端**
-    - project\story\static\js\menu\select_item_new.js
+    - project\story\static\js\menu\select_item.js
     
         ```jsx
         await sendDataToServer("/story/selectitem", ["select_item_page", "create_story_page"]);
         ```
     
-    - project\project\static\js\ftf_common_new.js
+    - project\project\static\js\ftf_common.js
     
         ```jsx
         async function sendDataToServer(redirectURL, pages, finishedCallback) {
@@ -181,7 +181,7 @@
         
         path('setselectitempagenew/', lambda request: handle_post_request(request)),
         # 於後端 → 前端處發揮作用
-        path('selectitemnew/', views.select_item_new, name='menu/select_item_new'),
+        path('selectitemnew/', views.select_item, name='menu/select_item'),
         ```
     
     - project\utils\common_utils.py
@@ -203,12 +203,12 @@
     - project\story\views.py
     
         ```python
-        def select_item_new(request):
+        def select_item(request):
             select_item_page = get_select_item_page(request)
             create_story_page = get_create_story_page(request)
             return render(
                 request,
-                "menu/select_item_new.html",
+                "menu/select_item.html",
                 {
                     "items": items,
                     "select_item_page": json.dumps(select_item_page),

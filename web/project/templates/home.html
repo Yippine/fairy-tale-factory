@@ -1,50 +1,82 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>童話工廠 Home</title>
-    <link rel="stylesheet" href="{% static 'css/background.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ftf_common.css' %}" />
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
   </head>
-  <body>
-    <div class="first-main-rGk">
-      <p class="item--xag">童話工廠</p>
-      <div class="auto-group-cze4-TXS">
-        <div class="auto-group-bgha-L5S">
-          <div class="frame-2-FCQ">
-            <img class="user-16996351280-2-mwS" src="{% static 'img/item/chat.png' %}" />
-            <img class="book-3125471280-1-H96" src="{% static 'img/item/book.png' %}" />
-            <img class="user-16996351280-1-PT2" src="{% static 'img/item/user.png' %}" />
+  <body class="ftf_background">
+    <div class="background_container">
+      <main>
+        <div class="header_container">
+          <h1 class="header_content">
+            <strong>童話工廠</strong>
+          </h1>
+          <p class="header_content">
+            <strong>
+              讓我們來實現<br />
+              實現你幻想中的完美童話 . . .
+            </strong>
+          </p>
+        </div>
+        <div class="button_container">
+          <div class="item_button_container">
+            <div class="item_button light_up_button ftf_hover_button" id="about_us_button">
+              <div class="button_icon">
+                <img src="{% static 'img/item/chat.png' %}" alt="about_us" />
+              </div>
+              <div class="button_text">
+                <p><strong>關於我們</strong></p>
+              </div>
+            </div>
+            <div class="item_button light_up_button ftf_hover_button" id="user_info_button">
+              <div class="button_icon">
+                <img src="{% static 'img/item/user.png' %}" alt="user" />
+              </div>
+              <div class="button_text">
+                <p><strong>個人資訊</strong></p>
+              </div>
+            </div>
+            <div class="item_button light_up_button ftf_hover_button" id="collect_button">
+              <div class="button_icon">
+                <img class="book_image" src="{% static 'img/item/book.png' %}" alt="books" />
+              </div>
+              <div class="button_text">
+                <p><strong>故事收藏</strong></p>
+              </div>
+            </div>
           </div>
-          <div class="frame-1-iEQ">
-            <div class="item--EiY">關於我們</div>
-            <div class="item--kgt">收藏的故事</div>
-            <div class="item--HB2">個人資訊</div>
+          <div class="start_button_container">
+            <div class="start_button light_up_button ftf_hover_button" id="start_button">
+              <div class="button_icon ftf_hover_button">
+                <img class="cat_image" src="{% static 'img/item/cat.png' %}" alt="cat" />
+              </div>
+              <div class="button_text">
+                <h2>
+                  <strong>故事開始</strong>
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="auto-group-skme-Con">故事開始</div>
-      </div>
+      </main>
     </div>
+    <script src="{% static 'js/ftf_common.js' %}"></script>
     <script>
-        document.getElementsByClassName("auto-group-skme-Con")[0].addEventListener("click", function () {
-            window.location.href = "/user/login";
+        document.addEventListener("DOMContentLoaded", (event) => {
+            setupNavigation();
         });
-        document.getElementsByClassName("item--HB2")[0].addEventListener("click", function () {
-            window.location.href = "/user/userinfo1";
-        });
-        document.getElementsByClassName("item--kgt")[0].addEventListener("click", function () {
-            window.location.href = "/story/mystorybooks";
-        });
-        document.getElementsByClassName("user-16996351280-2-mwS")[0].addEventListener("click", function () {
-            window.location.href = "/aboutus";
-        });
-        document.getElementsByClassName("item--xag")[0].addEventListener("click", function () {
-            window.location.href = "/home";
-        });
+
+        function setupNavigation() {
+            document.querySelector("h1.header_content").addEventListener("click", () => redirectTo("/home"));
+            document.getElementById("about_us_button").addEventListener("click", () => redirectTo("/aboutus"));
+            document.getElementById("user_info_button").addEventListener("click", () => redirectTo("/user/userinfo1"));
+            document.getElementById("collect_button").addEventListener("click", () => redirectTo("/story/mystorybooks"));
+            document.getElementById("start_button").addEventListener("click", () => redirectTo("/story/createstory"));
+        }
     </script>
   </body>
 </html>

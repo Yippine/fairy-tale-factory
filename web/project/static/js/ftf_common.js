@@ -37,7 +37,7 @@ async function sendDataToServer(redirectURL, pages, finishedCallback) {
     function transformRoute(originalRoute) {
         const parts = originalRoute.split("/");
         const lastPart = parts.pop();
-        const newLastPart = `set${lastPart}pagenew/`;
+        const newLastPart = `set${lastPart}page/`;
         const newRoute = `${parts.join("/")}/${newLastPart}`;
         return newRoute;
     }

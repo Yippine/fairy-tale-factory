@@ -43,7 +43,7 @@ function generateItemsFromData() {
         }
 
         function fetchItemInfo(event, itemData) {
-            fetch("/story/itemdetailsbydata?item_id=" + itemData.id)
+            fetch("/story/fetchiteminfo?item_id=" + itemData.id)
                 .then((response) => response.json())
                 .then((data) => {
                     const nameDiv = event.target;

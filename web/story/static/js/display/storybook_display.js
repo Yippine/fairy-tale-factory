@@ -1,72 +1,94 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var urlParams = new URLSearchParams(window.location.search);
-    var page = parseInt(urlParams.get("page"), 10);
-    if (isNaN(page) || page < 1) {
-        window.location.href = "/story/storybookdisplay?page=1";
-    } else if (page > 20) {
-        window.location.href = "/story/storybookdisplay?page=20";
-    } else {
-        document.getElementById("page_no").innerHTML = "<h1>第 " + page + " 頁</h1>";
+const maxPage = 20;
+
+document.addEventListener("DOMContentLoaded", () => {
+    adjustStoryAlignment();
+    const urlParams = new URLSearchParams(window.location.search);
+    let page = parseInt(urlParams.get("page"), 10);
+    initializePageNavigation(page);
+    setupNavigationButtons(page);
+    setupPopupHandlers();
+});
+
+window.addEventListener("resize", adjustStoryAlignment);
+
+function adjustStoryAlignment() {
+    const storyContainer = document.querySelector(".story");
+    storyContainer.style.alignItems = storyContainer.scrollHeight > storyContainer.clientHeight ? "flex-start" : "center";
+}
+
+function initializePageNavigation(pagePar) {
+    let page = isNaN(pagePar) ? 1 : Math.min(Math.max(pagePar, 1), maxPage);
+    if (page !== pagePar) {
+        window.location.href = `/story/storybookdisplay?page=${page}`;
+    }
+    document.getElementById("page").innerHTML = `<span>第 ${page} 頁 / 共 ${maxPage} 頁</span>`;
+}
+
+function setupNavigationButtons(page) {
+    const prevPage = document.querySelector(".navigation_button.prev");
+    const nextPage = document.querySelector(".navigation_button.next");
+    if (page === 1) {
+        prevPage.style.display = "none";
+    } else if (page === maxPage) {
+        nextPage.style.display = "none";
+    }
+    prevPage.addEventListener("click", () => navigatePage(false, page));
+    nextPage.addEventListener("click", () => navigatePage(true, page));
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft" && prevPage.style.display != "none") {
+            navigatePage(false, page);
+        } else if (event.key === "ArrowRight" && nextPage.style.display != "none") {
+            navigatePage(true, page);
+        }
+    });
+
+    function navigatePage(isNext, currentPage) {
+        const newPage = isNext ? Math.min(currentPage + 1, maxPage) : Math.max(currentPage - 1, 1);
+        window.location.href = `/story/storybookdisplay?page=${newPage}`;
+    }
+}
+
+function setupPopupHandlers() {
+    const homeButton = document.querySelector(".go_home_button");
+    const saveButton = document.querySelector(".save_story_button");
+    const popupButtonContainer = document.getElementById("popup_container_with_button");
+    const popupButtonMessage = document.getElementById("popup_message_with_button");
+    const popupButtonConfirm = document.getElementById("popup_confirm_with_button");
+    const popupButtonCancel = document.getElementById("popup_cancel_with_button");
+    const popupMessageContainer = document.getElementById("popup_container_without_button");
+
+    homeButton.addEventListener("click", () => togglePopup("確認是否回到首頁？"));
+    saveButton.addEventListener("click", () => togglePopup("確認是否放入珍藏？"));
+
+    popupButtonConfirm.addEventListener("click", () => {
+        if (popupButtonMessage.innerText === "確認是否放入珍藏？") {
+            showMessage();
+        } else {
+            window.location.href = "/home"; // 假定回到首頁的路徑
+        }
+    });
+
+    popupButtonCancel.addEventListener("click", () => {
+        popupButtonContainer.style.display = "none";
+    });
+
+    popupButtonContainer.addEventListener("click", (e) => {
+        if (e.target === popupButtonContainer) {
+            popupButtonContainer.style.display = "none";
+        }
+    });
+
+    function togglePopup(message) {
+        popupButtonMessage.innerText = message;
+        popupButtonContainer.style.display = popupButtonContainer.style.display === "flex" ? "none" : "flex";
     }
 
-    document.getElementsByClassName("group-12-bsJ")[0].addEventListener("click", function () {
-        if (page < 20) {
-            window.location.href = `/story/storybookdisplay?page=${page + 1}`;
-        }
-    });
-
-    document.getElementsByClassName("group-13-Tx8")[0].addEventListener("click", function () {
-        if (page > 1) {
-            window.location.href = `/story/storybookdisplay?page=${page - 1}`;
-        }
-    });
-
-    const togglePopUp = (popUpElement, otherPopUp) => {
-        if (getComputedStyle(otherPopUp).display !== "none") {
-            otherPopUp.style.display = "none";
-        }
-        popUpElement.style.display = popUpElement.style.display === "flex" ? "none" : "flex";
-    };
-
-    const saveButton = document.querySelector("#save_button");
-    const homeButton = document.querySelector("#home_button");
-    const savePopUp = document.querySelector("#save_pop_up");
-    const homePopUp = document.querySelector("#home_pop_up");
-    const saveSuccessfulPopUp = document.querySelector("#save_successful_pop_up");
-
-    saveButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        togglePopUp(savePopUp, homePopUp);
-    });
-
-    homeButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        togglePopUp(homePopUp, savePopUp);
-    });
-
-    document.addEventListener("click", function (event) {
-        if (!savePopUp.contains(event.target) && event.target !== saveButton) {
-            savePopUp.style.display = "none";
-        }
-        if (!homePopUp.contains(event.target) && event.target !== homeButton) {
-            homePopUp.style.display = "none";
-        }
-    });
-
-    document.getElementById("check_home_button").addEventListener("click", function () {
-        window.location.href = "/home";
-    });
-
-    document.getElementById("check_save_button").addEventListener("click", function () {
-        savePopUp.style.display = "none";
-        saveSuccessfulPopUp.style.display = "flex";
-        setTimeout(function () {
-            saveSuccessfulPopUp.style.display = "none";
+    function showMessage() {
+        popupButtonContainer.style.display = "none";
+        popupMessageContainer.style.display = "flex";
+        setTimeout(() => {
+            popupMessageContainer.style.display = "none";
         }, 1500);
-    });
-    document.getElementById("next_page_button").addEventListener("click", function () {
-        if (page < 20) {
-            window.location.href = `/story/storybookdisplay?page=${page + 1}`;
-        }
-    });
-});
+    }
+}

@@ -19,69 +19,30 @@ from .utils.sdxl_api import create_image_from_prompt
 lock = threading.Lock()
 generated_image_paths = Queue()
 
-def create_story(request):
-    return render(request, "menu/create_story.html")
-
 def select_main_role(request):
     return render(request, "menu/select_main_role.html")
-
-def select_main_role_by_data(request):
-    items = Item.objects.all().filter(item_type=1)
-    return render(request, "menu/select_main_role_by_data.html", {"items": items})
 
 def select_sup_role(request):
     return render(request, "menu/select_sup_role.html")
 
-def select_sup_role_by_data(request):
-    items = Item.objects.all().filter(item_type=1)
-    return render(request, "menu/select_sup_role_by_data.html", {"items": items})
-
 def select_item(request):
     return render(request, "menu/select_item.html")
-
-def select_item_by_data(request):
-    items = Item.objects.all().filter(item_type=2)
-    return render(request, "menu/select_item_by_data.html", {"items": items})
 
 def main_role_details(request):
     return render(request, "menu/main_role_details.html")
 
-def main_role_details_by_data(request):
-    item_id = request.GET.get("item_id")
-    item = get_object_or_404(Item, pk=item_id)
-    return JsonResponse({"item_name": item.item_name, "item_info": item.item_info})
-
 def sup_role_details(request):
     return render(request, "menu/sup_role_details.html")
-
-def sup_role_details_by_data(request):
-    item_id = request.GET.get("item_id")
-    item = get_object_or_404(Item, pk=item_id)
-    return JsonResponse({"item_name": item.item_name, "item_info": item.item_info})
 
 def item_details(request):
     return render(request, "menu/item_details.html")
 
-def item_details_by_data(request):
-    item_id = request.GET.get("item_id")
-    item = get_object_or_404(Item, pk=item_id)
-    return JsonResponse({"item_name": item.item_name, "item_info": item.item_info})
-
-def loading(request):
-    return render(request, "display/loading.html")
-
-def storybook_display(request):
-    pass
-
-def social_features(request):
-    return render(request, "display/social_features.html")
-
 def my_storybooks(request):
     return render(request, "display/my_storybooks.html")
 
-def create_story_new(request):
-    # 調用 fetch_story_prompt_new 函式
-    response = fetch_story_prompt_new(request)
+def create_story(request):
+    # 調用 fetch_story_prompt 函式
+    response = fetch_story_prompt(request)
     # JsonResponse 對象的內容是 bytes，需要解碼成 str
     response_content = response.content.decode('utf-8')
     # 將 JSON 字符串轉換成 Python 字典
@@ -97,14 +58,14 @@ def create_story_new(request):
         generated_story.save()
     return render(
         request,
-        "menu/create_story_new.html",
+        "menu/create_story.html",
         {
             "select_item_page": json.dumps(get_select_item_page(request)),
             "create_story_page": json.dumps(get_create_story_page(request)),
         },
     )
 
-def select_item_new(request):
+def select_item(request):
     item_type_enum = {"main_role": 1, "sup_role": 1, "item": 2}
     select_item_page = get_select_item_page(request)
     item_page = select_item_page.get("item_page", "")
@@ -115,7 +76,7 @@ def select_item_new(request):
     create_story_page = get_create_story_page(request)
     return render(
         request,
-        "menu/select_item_new.html",
+        "menu/select_item.html",
         {
             "items": items,
             "select_item_page": json.dumps(select_item_page),
@@ -123,12 +84,12 @@ def select_item_new(request):
         },
     )
 
-def item_details_by_data_new(request):
+def fetch_item_info(request):
     item_id = request.GET.get("item_id")
     item = get_object_or_404(Item, pk=item_id)
     return JsonResponse({"item_info": item.item_info})
 
-def get_story_element_name_new(request):
+def get_story_element_name(request):
     item_name = request.GET.get("item_name")
     dir_path = "story/static/img/story_elements/"
     img_name = "問號_0.jpg"
@@ -140,7 +101,7 @@ def get_story_element_name_new(request):
                 break
     return JsonResponse({"img_name": img_name})
 
-def fetch_story_prompt_new(request):
+def fetch_story_prompt(request):
     create_story_page = request.session.get("create_story_page", {})
     create_story_dto = CreateStoryDto.from_dict(create_story_page)
     roles = ["main_role", "sup_role", "item"] # 定義角色列表
@@ -217,9 +178,6 @@ def fetch_story_prompt_new(request):
         {"story_prompt": story_prompt, "all_roles_have_names": all_roles_have_names}
     )
 
-def loading_new(request):
-    return render(request, "display/loading_new.html")
-
 def get_cover_design_seed_value(item_name):
     try:
         item = Item.objects.filter(item_name=item_name).first()  # 使用 filter 取得第一個符合的對象
@@ -240,6 +198,7 @@ def generate_images_background(data):
     threads = []
     for article in data["article_list"]:
         prompt, negative_prompt = gen_storyboard_desc_prompt(article)
+        print(f'prompt: {prompt}')
         # 初始化種子值為配置中的默認值
         seed = int(config("SEED_VALUE"))
         # 檢查項目名稱出現的順序並選擇種子值
@@ -270,7 +229,7 @@ def generate_images_background(data):
     generated_image_paths_list = list(generated_image_paths.queue)
     return generated_image_paths_list # 返回生成的圖片路徑列表
 
-def storybook_display_new(request):
+def storybook_display(request):
     story = NewStory.objects.last()
     story_details_json = story.tw_new_story_content
     # 解析 JSON 資訊
@@ -315,11 +274,8 @@ def storybook_display_new(request):
             "article_list": article_list_with_images,
             "article_list_json": json.dumps(article_list_with_images),
         }
-        return render(request, "display/storybook_display_new.html", render_data)
-    return render(request, "display/storybook_display_new.html", {"article_list": []})
-
-def social_features_new(request):
-    return render(request, "display/social_features_new.html")
+        return render(request, "display/storybook_display.html", render_data)
+    return render(request, "display/storybook_display.html", {"article_list": []})
 
 def my_storybooks_new(request):
     return render(request, "display/my_storybooks_new.html")

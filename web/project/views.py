@@ -6,36 +6,23 @@ from django.shortcuts import render, redirect
 def redirect_to_home(request):
     return redirect("/home")
 
-#render 函式將 home.html 模板渲染為 HTTP 響應
-def home(request):
-    return render(request, "home.html")
-
 def about_us(request):
     return render(request, 'about_us.html')
 
-def talk_to_chatgpt(request):
-    return render(request, 'talk_to_chatgpt.html')
-
-def search_files(request):
-    return JsonResponse({'files': ''})
-
-def get_file_content(request):
-    return HttpResponse("", content_type='text/plain; charset=utf-8')
-
-def home_new(request):
+def home(request):
     for data in ["select_item_page", "create_story_page"]:
         if data in request.session:
             del request.session[data]
-    return render(request, "home_new.html")
+    return render(request, "home.html")
 
 def about_us_new(request):
     return render(request, 'about_us_new.html')
 
-def talk_to_chatgpt_new(request):
+def talk_to_chatgpt(request):
     prompt = "你已經是經營這個領域幾十年的 IT 專家，請直接告訴我最簡潔、最有效能且最精美的程式碼範例和最簡單、最有效、最系統且最全面的解答，以及你的心路歷程，感謝您："
-    return render(request, 'talk_to_chatgpt_new.html', {"prompt": prompt})
+    return render(request, 'talk_to_chatgpt.html', {"prompt": prompt})
 
-def search_files_new(request):
+def search_files(request):
     search_text = request.GET.get('searchText', '') # 獲取URL參數中的搜尋文字
     directory = os.path.abspath(os.path.dirname(__name__)) # 指定要搜尋的目錄
     matching_files = []
@@ -52,7 +39,7 @@ def search_files_new(request):
                 matching_files.append(file_info)
     return JsonResponse({'files': matching_files}) # 返回JSON響應
 
-def get_file_content_new(request):
+def get_file_content(request):
     # 從請求中獲取檔案路徑參數
     file_path = request.GET.get('path', '')
     # 確認檔案存在

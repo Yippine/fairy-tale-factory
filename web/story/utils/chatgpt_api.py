@@ -41,7 +41,7 @@ def call_chatgpt_api_by_json(prompt):
         ],
         response_format={"type": "json_object"},
         temperature=0.7,
-        max_tokens=1500,
+        # max_tokens=1500,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,

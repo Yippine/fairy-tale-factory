@@ -7,36 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <title>童話工廠 Selec Item</title>
-    <link rel="stylesheet" href="{% static 'css/background.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ftf_common.css' %}" />
     <link rel="stylesheet" href="{% static 'css/menu/select_item.css' %}" />
   </head>
   <body>
-    <div class="main-character-exU">
-      <div class="item--n36">
-        <div class="auto-group-sqvl-fMn">毒蘋果</div>
-        <div class="auto-group-nomn-m9v">玻璃鞋</div>
-        <div class="rectangle-16-g1z"></div>
-        <div class="rectangle-15-S1A"></div>
-        <div class="rectangle-17-Pwz"></div>
-      </div>
-      <div class="auto-group-zlig-MP2">
-        <div class="rectangle-23-HXa"></div>
-      </div>
-      <div class="auto-group-zlig-MP3">
-        <div class="rectangle-24-njE"></div>
-        <div class="group-10-cn7">返回</div>
-      </div>
-    </div>
-    <script>
-        document.getElementsByClassName("auto-group-sqvl-fMn")[0].addEventListener("click", function () {
-            window.location.href = "/story/mainroledetails";
-        });
-        document.getElementsByClassName("auto-group-nomn-m9v")[0].addEventListener("click", function () {
-            window.location.href = "/story/mainroledetails";
-        });
-        document.getElementsByClassName("group-10-cn7")[0].addEventListener("click", function () {
-            window.location.href = "/story/createstory";
-        });
-    </script>
+    <main class="ftf_background">
+      <section class="item_list_container">
+        <div class="header_container"></div>
+        <div class="list_container"></div>
+      </section>
+      <section class="item_display_container">
+        <div class="image_container ftf_frame">
+          <img id="item_image" />
+        </div>
+        <div class="button_container">
+          <button type="button" class="ftf_button ftf_hover_button" id="select_button">
+            <span class="button_text">選&nbsp;&nbsp;擇</span>
+          </button>
+          <button type="button" class="ftf_button ftf_hover_button" id="return_button">
+            <span class="button_text">返&nbsp;&nbsp;回</span>
+          </button>
+        </div>
+      </section>
+      <section class="fixed_container">
+        <div class="popup_container" id="popup_container_without_button">
+          <div class="popup_content ftf_pink_button">
+            <p id="popup_message_without_button">您尚未選擇任何項目！</p>
+          </div>
+        </div>
+        <div id="data-container">
+          {% for item in items %}
+            <div class="item-data" data-id="{{ item.item_id }}" data-name="{{ item.item_name }}"></div>
+          {% endfor %}
+          <div id="page-data" data-select-item-page="{{ select_item_page }}" data-create-story-page="{{ create_story_page }}"></div>
+        </div>
+      </section>
+    </main>
+    <script src="{% static 'js/ftf_common.js' %}"></script>
+    <script src="{% static 'js/menu/select_item.js' %}"></script>
   </body>
 </html>
