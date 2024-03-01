@@ -1,19 +1,22 @@
-import os, io, warnings, threading
-from PIL import Image
-from stability_sdk import client
-import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
-import time
+import os, io, warnings, threading, time
 from datetime import datetime
 from queue import Queue
-from decouple import config
 
-STEPS = 50
-SAMPLES = 1
-WIDTH = 1024
-HEIGHT = 1024
+from PIL import Image
+from decouple import config
+from stability_sdk import client
+from stability_sdk.interfaces.gooseai.generation import generation_pb2 as generation
+
+# 您應該將這些常數替換為您設定中的實際值
+STEPS = 20 # 擴散步驟數
+SAMPLES = 1 # 要產生的影像數量
+WIDTH = 1024 # 產生影像的寬度
+HEIGHT = 1024 # 產生影像的高度
+CFG_SCALE = 7 # 提示中使用的 CFG 比例
+SAMPLER = generation.SAMPLER_K_LMS # 產生中使用的取樣器
 
 def create_image_from_prompt(
-    prompt: str, seed: int, generated_image_paths: Queue
+    prompt: str, negative_prompt: str, seed: int, generated_image_paths: Queue
 ) -> None:
     os.environ["STABILITY_HOST"] = config("STABILITY_HOST")
     os.environ["STABILITY_KEY"] = config("STABILITY_KEY")
@@ -23,14 +26,21 @@ def create_image_from_prompt(
         engine="stable-diffusion-xl-1024-v1-0",
     )
     answers = stability_api.generate(
-        prompt=prompt,
+        prompt=[
+            generation.Prompt(
+                text=prompt, parameters=generation.PromptParameters(weight=1)
+            ),
+            generation.Prompt(
+                text=negative_prompt, parameters=generation.PromptParameters(weight=-1)
+            ),
+        ],
         seed=seed,
         steps=STEPS,
-        cfg_scale=8.0,
+        cfg_scale=CFG_SCALE,
         width=WIDTH,
         height=HEIGHT,
         samples=SAMPLES,
-        sampler=generation.SAMPLER_K_DPMPP_2M,
+        sampler=SAMPLER,
     )
     for resp in answers:
         for artifact in resp.artifacts:
@@ -42,8 +52,7 @@ def create_image_from_prompt(
             if artifact.type == generation.ARTIFACT_IMAGE:
                 img = Image.open(io.BytesIO(artifact.binary))
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                file_name = f"{timestamp}.png" # 使用傳入的 seed 參數建立檔案名
-                # 儲存到 media 資料夾
+                file_name = f"{timestamp}.png" # 使用時間戳記命名文件
                 media_folder = "media"
                 if not os.path.exists(media_folder):
                     os.makedirs(media_folder)
@@ -53,9 +62,10 @@ def create_image_from_prompt(
                 threading.Thread(
                     target=delete_after_10_minutes, args=(file_path,), daemon=True
                 ).start()
-                return file_path # 返回生成的圖像路徑
+                return file_path # 傳回產生影像的路徑
 
 def delete_after_10_minutes(file_path: str) -> None:
+   # 函式將在10分鐘後刪除圖像文件
     time.sleep(600)
     if os.path.exists(file_path):
         os.remove(file_path)

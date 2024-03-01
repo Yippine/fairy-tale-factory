@@ -107,15 +107,15 @@ function initialButtons() {
         const popupMessageContainer = document.getElementById("popup_container_without_button");
         const loadingEarth = document.getElementById("loading_earth");
         const popupErrorMessage = document.getElementById("popup_message_without_button");
-        getTextCommand().then((text_command) => {
-            if (text_command) {
-                showTextCommand();
+        getTextPrompt().then((text_prompt) => {
+            if (text_prompt) {
+                showTextPrompt();
             } else {
                 showErrorMessage();
             }
 
-            function showTextCommand() {
-                popupMessage.textContent = text_command;
+            function showTextPrompt() {
+                popupMessage.textContent = text_prompt;
                 showFTFMessage(popupCommandContainer);
             }
 
@@ -130,13 +130,13 @@ function initialButtons() {
             }
         });
 
-        async function getTextCommand() {
-            const redirectURL = "/story/fetchtextcommand";
+        async function getTextPrompt() {
+            const redirectURL = "/story/fetchtextprompt";
             try {
                 await sendDataToServer(redirectURL, ["create_story_page"], () => {});
                 const response = await fetch(redirectURL); // 向後端發送請求
                 const data = await response.json();
-                return data.text_command;
+                return data.text_prompt;
             } catch (error) {
                 console.error("Fetch error:", error);
                 return null; // 在這裡可以處理錯誤或返回一個預設值

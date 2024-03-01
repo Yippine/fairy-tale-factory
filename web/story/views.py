@@ -10,10 +10,9 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from .dto import CreateStoryDto
-from .models import Item, OriginalStory, NewStory, CoverDesign
+from .models import Item, NewStory, CoverDesign
 from .utils.common_utils import split_paragraphs
-from .utils.create_new_text import gen_story_text
-from .utils.create_prompt import create_prompt
+from .utils.chatgpt_api import gen_storyboard_desc_prompt, call_chatgpt_api
 from .utils.dto_utils import get_create_story_page, get_select_item_page
 from .utils.sdxl_api import create_image_from_prompt
 
@@ -81,39 +80,18 @@ def my_storybooks(request):
     return render(request, "display/my_storybooks.html")
 
 def create_story_new(request):
-    create_story_page = request.session.get("create_story_page", {})
-    main_role_name = create_story_page.get("main_role", {}).get("item_name")
-    sup_role_name = create_story_page.get("sup_role", {}).get("item_name")
-    item_name = create_story_page.get("item", {}).get("item_name")
-    if main_role_name and sup_role_name and item_name:
-        main_role_detail = (
-            Item.objects.filter(item_name=main_role_name).values("item_info").first()
-        )
-        sup_role_detail = (
-            Item.objects.filter(item_name=sup_role_name).values("item_info").first()
-        )
-        item_detail = (
-            Item.objects.filter(item_name=item_name).values("item_info").first()
-        )
-        orm_story = OriginalStory.objects.filter(
-            original_story_name=create_story_page.get("main_role", {}).get("item_name")
-        ).values("original_story_content")
-        story_info = {
-            "main_character_info": f"""主角名稱：{main_role_name}
-            主角特徵：{main_role_detail}
-            """,
-            "supporting_character_info": f"""配角名稱：{sup_role_name}
-            配角特徵：{sup_role_detail}
-            """,
-            "props_info": f"""道具名稱：{item_name}
-            道具功能：{item_detail}""",
-            "story_text": f"""
-            故事背景敘述：{orm_story}""",
-        }
-        create_story_page["story_info"] = story_info
-        request.session["create_story_page"] = create_story_page
-        story_text = gen_story_text(story_info)
-        print(f"story_text: {story_text}")
+    # 調用 fetch_text_prompt_new 函式
+    response = fetch_text_prompt_new(request)
+    # JsonResponse 對象的內容是 bytes，需要解碼成 str
+    response_content = response.content.decode('utf-8')
+    # 將 JSON 字符串轉換成 Python 字典
+    response_data = json.loads(response_content)
+    # 從字典中取得 text_prompt
+    all_roles_have_names = response_data.get('all_roles_have_names', False)
+    if all_roles_have_names:
+        text_prompt = response_data.get('text_prompt', '')
+        print(f"text_prompt: {text_prompt}")
+        story_text = call_chatgpt_api(text_prompt)
         generated_story = NewStory(tw_new_story_content=story_text)
         generated_story.save()
     return render(
@@ -161,19 +139,24 @@ def get_story_element_name_new(request):
                 break
     return JsonResponse({"img_name": img_name})
 
-def fetch_text_command_new(request):
+def fetch_text_prompt_new(request):
     create_story_page = request.session.get("create_story_page", {})
     create_story_dto = CreateStoryDto.from_dict(create_story_page)
-    roles = ["main_role", "sup_role", "item"]  # 定義角色列表
+    roles = ["main_role", "sup_role", "item"] # 定義角色列表
     # 初始化數據字典
     data = {f"{role}_{info}": "" for role in roles for info in ["id", "name", "info"]}
     data["original_story_content"] = ""
+    # 檢查是否所有角色的 item_name 都有值
+    all_roles_have_names = True # 初始化為 True
     # 用一個循環處理所有角色，避免代碼重複
     for role in roles:
         role_item = getattr(create_story_dto, role, None)
         if role_item:
             data[f"{role}_name"] = role_item.item_name
             data[f"{role}_id"] = role_item.item_id
+            # 如果任一角色的 item_name 沒有值，更新標誌
+            if not role_item.item_name:
+                all_roles_have_names = False
             if role_item.item_id:
                 item_with_story = (
                     Item.objects.filter(item_id=role_item.item_id)
@@ -188,7 +171,7 @@ def fetch_text_command_new(request):
                             "original_story_content"
                         ] = item_with_story.original_story.original_story_content
     story_example_spacing = "\n" if data["original_story_content"] else ""
-    text_command = f'''您是一位在最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的童話故事作家，需要創作一個適合台灣地區 3 到 12 歲小朋友的童話故事。故事必須包含 1 個主角、1 個配角和 1 個道具，並按照以下要素進行故事創作：
+    text_prompt = f'''您是一位在最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的童話故事作家，需要創作一個適合台灣地區 3 到 12 歲小朋友的童話故事。故事必須包含 1 個主角、1 個配角和 1 個道具，並按照以下要素進行故事創作：
 
 一、主角資訊
 主角名稱：{data['main_role_name']}
@@ -229,8 +212,10 @@ def fetch_text_command_new(request):
 15. 啟發性：故事要啟發讀者思考。
 16. 長度和結構：故事要遵循起承轉合結構，長度約360字左右。
 
-請以您的專業經驗，直接創作出，根據以上指令創作一個動人的童話故事，完美地結合上述的 1 個主角、1 個配角和 1 個道具，且充分發揮這三個元素的功能和特色，創作出新穎、有趣且完全不突兀的故事內容。'''
-    return JsonResponse({"text_command": text_command})
+請以您的專業經驗，根據以上指令直接創作出一個動人的童話故事，完美地結合上述的 1 個主角、1 個配角和 1 個道具，且充分發揮這三個元素的功能和特色，創作出新穎、有趣且完全不突兀的故事內容。'''
+    return JsonResponse(
+        {"text_prompt": text_prompt, "all_roles_have_names": all_roles_have_names}
+    )
 
 def loading_new(request):
     return render(request, "display/loading_new.html")
@@ -254,8 +239,7 @@ def generate_images_background(data):
     generated_image_paths = Queue() # 使用隊列存儲生成的圖片路徑
     threads = []
     for article in data["article_list"]:
-        prompt = create_prompt(article)
-        print(f'prompt: {prompt}')
+        prompt, negative_prompt = gen_storyboard_desc_prompt(article)
         # 初始化種子值為配置中的默認值
         seed = int(config("SEED_VALUE"))
         # 檢查項目名稱出現的順序並選擇種子值
@@ -274,7 +258,7 @@ def generate_images_background(data):
                 seed = int(config("SEED_VALUE"))
             print(f"{seed_name}_seed: {seed}")
         t = threading.Thread(
-            target=create_image_from_prompt, args=(prompt, seed, generated_image_paths)
+            target=create_image_from_prompt, args=(prompt, negative_prompt, seed, generated_image_paths)
         )
         threads.append(t)
         t.start()
