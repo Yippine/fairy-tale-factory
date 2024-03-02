@@ -94,7 +94,7 @@ function initialButtons() {
             setTimeout(function () {
                 popupLoadingMessage.textContent = "即將為你呈現";
                 setTimeout(function () {
-                    window.location.href = "/story/storybookdisplay?page=1"; // 跳轉到 storybook_display.html 的第一頁
+                    window.location.href = "/story/storybookdisplay"; // 跳轉到 storybook_display.html 的第一頁
                 }, 1000); // 延遲 1 秒後跳轉
             }, loadingTime * 1000);
         }

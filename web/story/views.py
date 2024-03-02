@@ -258,25 +258,22 @@ def storybook_display(request):
             "article_list": article_list,
         }
         story_name = story_details.get("故事名稱", f"{main_role_name}和{sup_role_name}的童話故事")
-        page_number = int(request.GET.get("page_number", 1))
-        if page_number < 1:
-            page_number = 1
-        if page_number > len(article_list):
-            page_number = len(article_list)
         generated_image_paths_list = generate_images_background(page_data)
-        print(f"【generated_image_paths_list】{generated_image_paths_list}\n")
+        print(f"\n【generated_image_paths_list】{generated_image_paths_list}\n")
         article_list_with_images = [
-            {"text": paragraph, "image_path": os.path.join("\\", path)}
+            {"line_content": paragraph, "line_image_link": os.path.join("/", path)}
             for path, paragraph in zip(generated_image_paths_list, article_list)
         ]
-        print(f"【article_list_with_images】{article_list_with_images}")
-        render_data = {
+        print(f"【article_list_with_images】{article_list_with_images}\n")
+        storybook_display_page = {
             "story_name": story_name,
-            "page_number": page_number,
-            "article_list": article_list_with_images,
-            "article_list_json": json.dumps(article_list_with_images),
+            "article_list": json.dumps(article_list_with_images),
+            "cur_page": 1,
+            "max_page": len(article_list)
         }
-        return render(request, "display/storybook_display.html", render_data)
+        return render(request, "display/storybook_display.html", {
+            "storybook_display_page": json.dumps(storybook_display_page)
+        })
     return render(request, "display/storybook_display.html", {"article_list": []})
 
 def my_storybooks_new(request):

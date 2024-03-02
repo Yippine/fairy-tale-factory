@@ -1,11 +1,7 @@
-const maxPage = 20;
-
 document.addEventListener("DOMContentLoaded", () => {
     adjustStoryAlignment();
-    const urlParams = new URLSearchParams(window.location.search);
-    let page = parseInt(urlParams.get("page"), 10);
-    initializePageNavigation(page);
-    setupNavigationButtons(page);
+    initialSession();
+    iniitalArticle();
     setupPopupHandlers();
 });
 
@@ -16,36 +12,69 @@ function adjustStoryAlignment() {
     storyContainer.style.alignItems = storyContainer.scrollHeight > storyContainer.clientHeight ? "flex-start" : "center";
 }
 
-function initializePageNavigation(pagePar) {
-    let page = isNaN(pagePar) ? 1 : Math.min(Math.max(pagePar, 1), maxPage);
-    if (page !== pagePar) {
-        window.location.href = `/story/storybookdisplay?page=${page}`;
-    }
-    document.getElementById("page").innerHTML = `<span>第 ${page} 頁 / 共 ${maxPage} 頁</span>`;
+function initialSession() {
+    const pageData = document.querySelector(".page-data");
+    const storybookDisplayPage = JSON.parse(pageData.dataset.storybookDisplayPage);
+    sessionStorage.setItem("storybook_display_page", JSON.stringify(storybookDisplayPage));
 }
 
-function setupNavigationButtons(page) {
-    const prevPage = document.querySelector(".navigation_button.prev");
-    const nextPage = document.querySelector(".navigation_button.next");
-    if (page === 1) {
-        prevPage.style.display = "none";
-    } else if (page === maxPage) {
-        nextPage.style.display = "none";
+function iniitalArticle() {
+    const title = document.querySelector(".title");
+    const pageDiv = document.getElementById("page");
+    const spanElement = document.createElement("span");
+    const story = document.querySelector(".story");
+    const image = document.querySelector(".image_container img");
+    const storybookDisplayPage = JSON.parse(sessionStorage.getItem("storybook_display_page"));
+    title.textContent = storybookDisplayPage.story_name;
+    displayArticle();
+    setupNavigationButtons();
+
+    function displayArticle() {
+        const storybookDisplayPage = JSON.parse(sessionStorage.getItem("storybook_display_page"));
+        const curPage = storybookDisplayPage.cur_page;
+        const maxPage = storybookDisplayPage.max_page;
+        const articleList = JSON.parse(storybookDisplayPage.article_list);
+        const article = articleList[curPage - 1];
+        pageDiv.innerHTML = `<span>第 ${curPage} 頁 / 共 ${maxPage} 頁</span>`;
+        spanElement.textContent = article.line_content;
+        story.innerHTML = "";
+        story.appendChild(spanElement);
+        image.src = article.line_image_link;
     }
-    prevPage.addEventListener("click", () => navigatePage(false, page));
-    nextPage.addEventListener("click", () => navigatePage(true, page));
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft" && prevPage.style.display != "none") {
-            navigatePage(false, page);
-        } else if (event.key === "ArrowRight" && nextPage.style.display != "none") {
-            navigatePage(true, page);
+    function setupNavigationButtons() {
+        const prevPage = document.querySelector(".navigation_button.prev");
+        const nextPage = document.querySelector(".navigation_button.next");
+        prevPage.style.display = "none";
+        prevPage.addEventListener("click", () => navigatePage(false));
+        nextPage.addEventListener("click", () => navigatePage(true));
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft" && prevPage.style.display != "none") {
+                navigatePage(false);
+            } else if (event.key === "ArrowRight" && nextPage.style.display != "none") {
+                navigatePage(true);
+            }
+        });
+    
+        function navigatePage(isNext) {
+            const storybookDisplayPage = JSON.parse(sessionStorage.getItem("storybook_display_page"));
+            const startPage = 1;
+            const curPage = storybookDisplayPage.cur_page;
+            const maxPage = storybookDisplayPage.max_page;
+            const newPage = isNext ? Math.min(curPage + 1, maxPage) : Math.max(curPage - 1, startPage);
+            prevPage.style.display = "block";
+            nextPage.style.display = "block";
+            if (newPage === startPage) {
+                prevPage.style.display = "none";
+            } else if (newPage === maxPage) {
+                nextPage.style.display = "none";
+            }
+            if (newPage !== curPage) {
+                storybookDisplayPage.cur_page = newPage;
+                sessionStorage.setItem("storybook_display_page", JSON.stringify(storybookDisplayPage));
+                displayArticle();
+            }
         }
-    });
-
-    function navigatePage(isNext, currentPage) {
-        const newPage = isNext ? Math.min(currentPage + 1, maxPage) : Math.max(currentPage - 1, 1);
-        window.location.href = `/story/storybookdisplay?page=${newPage}`;
     }
 }
 
