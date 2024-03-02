@@ -65,7 +65,7 @@ def create_image_from_prompt(
                 return file_path # 傳回產生影像的路徑
 
 def delete_after_10_minutes(file_path: str) -> None:
-   # 函式將在10分鐘後刪除圖像文件
+    # 函式將在10分鐘後刪除圖像文件
     time.sleep(600)
     if os.path.exists(file_path):
         os.remove(file_path)

@@ -51,9 +51,9 @@ def create_story(request):
     all_roles_have_names = response_data.get('all_roles_have_names', False)
     if all_roles_have_names:
         story_prompt = response_data.get('story_prompt', '')
-        print(f"story_prompt: {story_prompt}")
+        print(f"【story_prompt】{story_prompt}\n")
         story_content = gen_story_by_chatgpt(story_prompt)
-        print(f'story_content:\n{story_content}')
+        print(f'【story_content】\n{story_content}')
         generated_story = NewStory(tw_new_story_content=story_content)
         generated_story.save()
     return render(
@@ -149,11 +149,14 @@ def fetch_story_prompt(request):
 四、故事範例{story_example_spacing}{data['original_story_content']}
 
 五、生成格式
-"""【故事名稱】為接下來的故事取一個最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的故事名稱。
-【起】故事開頭，主角和配角的介紹，故事背景簡介。
-【承】主角面臨挑戰或問題，展開情節，加入道具。
-【轉】高潮部分，意想不到的情節發生，深刻的教訓浮現。
-【合】結局，主角得到成長或改變，故事總結。"""
+請以 JSON 格式回答生成的故事資訊，內容如下：
+"""{{
+    "故事名稱":"為接下來的故事取一個最吸引人、最受矚目、最熱門、最廣為討論且最值得推薦的故事名稱。",
+    "起":"故事開頭，主角和配角的介紹，故事背景簡介。",
+    "承":"主角面臨挑戰或問題，展開情節，加入道具。",
+    "轉":"高潮部分，意想不到的情節發生，深刻的教訓浮現。",
+    "合":"結局，主角得到成長或改變，故事總結。"
+}}"""
 
 六、故事要素
 1. 創造力：故事情節要富有想像力。
@@ -198,8 +201,6 @@ def generate_images_background(data):
     threads = []
     for article in data["article_list"]:
         prompt, negative_prompt = gen_storyboard_desc_prompt(article)
-        print(f'\narticle: {article}')
-        print(f'prompt: {prompt}\n')
         # 初始化種子值為配置中的默認值
         seed = int(config("SEED_VALUE"))
         # 檢查項目名稱出現的順序並選擇種子值
@@ -216,7 +217,7 @@ def generate_images_background(data):
             seed = data.get(f"{seed_name}_seed")
             if seed is None:
                 seed = int(config("SEED_VALUE"))
-            print(f"{seed_name}_seed: {seed}")
+            print(f"【{seed_name}_seed】{seed}")
         t = threading.Thread(
             target=create_image_from_prompt, args=(prompt, negative_prompt, seed, generated_image_paths)
         )
@@ -239,9 +240,9 @@ def storybook_display(request):
     story_content = "\n\n".join(
         [story_details["起"], story_details["承"], story_details["轉"], story_details["合"]]
     )
-    print(f"story_content: {story_content}")
+    print(f"【story_content】{story_content}\n")
     article_list = split_paragraphs(story_content)
-    print(f"article_list: {article_list}")
+    print(f"【article_list】{article_list}")
     if article_list:
         create_story_page = request.session.get("create_story_page", {})
         main_role_name = create_story_page.get("main_role", {}).get("item_name")
@@ -263,12 +264,12 @@ def storybook_display(request):
         if page_number > len(article_list):
             page_number = len(article_list)
         generated_image_paths_list = generate_images_background(page_data)
-        print(f"generated_image_paths_list: {generated_image_paths_list}")
+        print(f"【generated_image_paths_list】{generated_image_paths_list}\n")
         article_list_with_images = [
             {"text": paragraph, "image_path": os.path.join("\\", path)}
             for path, paragraph in zip(generated_image_paths_list, article_list)
         ]
-        print(f"article_list_with_images: {article_list_with_images}")
+        print(f"【article_list_with_images】{article_list_with_images}")
         render_data = {
             "story_name": story_name,
             "page_number": page_number,
