@@ -228,11 +228,11 @@ main {
 }
 
 .popup_button {
-  border-color: rgb(255 148 183);
+  border-color: #F1EEE4;
   border-width: 0.5vmin;
   border-radius: 3vmin;
   padding: 0.62vmin 2.75vmin;
-  background-color: rgb(255 73 132);
+  background-color: #C8AF4F;
   cursor: pointer;
   text-align: center;
 }
