@@ -71,7 +71,7 @@ function generateItemsFromData() {
 
             function resetItemStyles(nameDiv) {
                 const infoDiv = nameDiv.nextElementSibling;
-                nameDiv.style.background = "linear-gradient(#ffc366, #bc7a7a)";
+                nameDiv.style.background = "linear-gradient(#666477, #F1EEE4)";
                 nameDiv.style.color = "initial";
                 nameDiv.style.webkitTextStrokeWidth = "initial";
                 nameDiv.style.webkitTextStrokeColor = "initial";
@@ -85,7 +85,7 @@ function generateItemsFromData() {
                 nameDiv.classList.toggle("active");
                 infoDiv.classList.toggle("active");
                 if (infoDiv.classList.contains("active")) {
-                    nameDiv.style.background = "linear-gradient(#bc7a7a, #ffc366)";
+                    nameDiv.style.background = "linear-gradient(#666477, #F1EEE4)";
                     nameDiv.style.color = "#f7f1e7";
                     nameDiv.style.webkitTextStrokeWidth = "0.01vmin";
                     nameDiv.style.webkitTextStrokeColor = "#d6a982";
